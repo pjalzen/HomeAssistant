@@ -1,0 +1,98 @@
+- id: '1532956645522'
+  alias: Just before sunset
+  trigger:
+  - event: sunset
+    offset: -00:30:00
+    platform: sun
+  condition:
+  - before: '23:30'
+    condition: time
+  action:
+  - data:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
+    service: switch.turn_on
+  - data:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_2
+    service: switch.turn_on
+  - data:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_3
+    service: switch.turn_on
+  - data:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_4
+    service: switch.turn_on
+  - data:
+      entity_id: switch.everspring_an180_plugin_onoff_module_switch
+    service: switch.turn_on
+  - data:
+      entity_id: switch.everspring_an180_plugin_onoff_module_switch_2
+    service: switch.turn_on
+  - data:
+      entity_id: switch.everspring_an180_plugin_onoff_module_switch_3
+    service: switch.turn_on
+- id: '1534049443061'
+  alias: Turn lights off by midnight
+  trigger:
+  - at: '23:59'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
+    service: switch.turn_off
+  - data:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_2
+    service: switch.turn_off
+  - data:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_3
+    service: switch.turn_off
+  - data:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_4
+    service: switch.turn_off
+  - data:
+      entity_id: switch.everspring_an180_plugin_onoff_module_switch
+    service: switch.turn_off
+  - data:
+      entity_id: switch.everspring_an180_plugin_onoff_module_switch_2
+    service: switch.turn_off
+  - data:
+      entity_id: switch.everspring_an180_plugin_onoff_module_switch_3
+    service: switch.turn_off
+- id: '1543169877134'
+  alias: Lights on in the morning
+  trigger:
+  - at: 06:00
+    platform: time
+  condition:
+  - before: sunrise
+    condition: sun
+  action:
+  - data:
+      entity_id: switch.everspring_an180_plugin_onoff_module_switch
+    service: switch.turn_on
+  - data:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
+    service: switch.turn_on
+- id: '1543170136376'
+  alias: Lights off by sunrise
+  trigger:
+  - event: sunrise
+    offset: 00:00
+    platform: sun
+  condition: []
+  action:
+  - data:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
+    service: switch.turn_off
+  - data:
+      entity_id: switch.everspring_an180_plugin_onoff_module_switch
+    service: switch.turn_off
+- id: '1543612075331'
+  alias: Beamer Home
+  trigger:
+  - entity_id: device_tracker.x3_xdrive20d
+    event: enter
+    platform: zone
+    zone: zone.home
+  condition: []
+  action:
+  - service: media_player.turn_on
