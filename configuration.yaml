@@ -53,6 +53,11 @@ discovery:
 conversation:
 
 recorder:
+  include:
+    domains:
+      -sensor
+      -switch
+      -media_player
 
 # Enables support for tracking state changes over time
 history:
