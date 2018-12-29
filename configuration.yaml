@@ -107,3 +107,7 @@ media_player:
    platform: heos
    host: 192.168.72.62
    name: heos_altan
+
+camera:
+  platform: mjpeg
+  mjpeg_url: http://192.168.72.150/video/mjpg.cgi
