@@ -91,7 +91,7 @@ zwave:
     
 maxcube:
   gateways:
-    - host: 192.168.72.244
+    - host: 192.168.72.243
 
 bmw_connected_drive:
   name:
