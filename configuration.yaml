@@ -83,8 +83,8 @@ tts:
 cloud:
 
 group: !include groups.yaml
-automation: !include automations.yaml
 script: !include scripts.yaml
+automation: !include automations.yaml
 
 zwave:
     usb_path: /dev/ttyACM0

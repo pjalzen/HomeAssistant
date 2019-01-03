@@ -1,6 +1,7 @@
--alias: Run HA Backup
-  service: hassio.addon_stdin
-    data_template:
-      addon: 7be23ff5_dropbox_sync
-      input: {"command":"upload"}
+ha_backup:
+    sequence:
+        service: hassio.addon_stdin
+        data:
+            addon: 7be23ff5_dropbox_sync
+            input: {"command":"upload"}
 

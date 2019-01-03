@@ -29,6 +29,12 @@
   - data:
       entity_id: switch.everspring_an180_plugin_onoff_module_switch_3
     service: switch.turn_on
+  - data:
+      entity_id: light.color_light_1
+    service: light.turn_on
+  - data:
+      entity_id: switch.timer
+    service: switch.turn_on
 - id: '1534049443061'
   alias: Turn lights off by midnight
   trigger:
@@ -57,6 +63,12 @@
   - data:
       entity_id: switch.everspring_an180_plugin_onoff_module_switch_3
     service: switch.turn_off
+  - data:
+      entity_id: switch.timer
+    service: switch.turn_off
+  - data:
+      entity_id: light.color_light_1
+    service: light.turn_off
 - id: '1543169877134'
   alias: Lights on in the morning
   trigger:
@@ -72,6 +84,9 @@
   - data:
       entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
     service: switch.turn_on
+  - data:
+      entity_id: switch.timer
+    service: switch.turn_on
 - id: '1543170136376'
   alias: Lights off by sunrise
   trigger:
@@ -86,6 +101,9 @@
   - data:
       entity_id: switch.everspring_an180_plugin_onoff_module_switch
     service: switch.turn_off
+  - data:
+      entity_id: switch.timer
+    service: switch.turn_off
 - id: '1543612075331'
   alias: Beamer Home
   trigger:
@@ -96,3 +114,13 @@
   condition: []
   action:
   - service: media_player.turn_on
+- id: '1546120746337'
+  alias: Run Backup 3AM
+  trigger:
+  - at: 03:00
+    platform: time
+  condition: []
+  action:
+  - alias: ''
+    data: {}
+    service: script.ha_backup
