@@ -8,6 +8,7 @@
 !*.md
 !*.py
 !custom_components
+!media_player
 !lovelace
 !python_scripts
 
