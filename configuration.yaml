@@ -19,14 +19,15 @@ panel_iframe:
     icon: mdi:wrench
     url: http://hassio.local:3218
 
-themes: !include themes.yaml
-    
+python_script:
+
 # Show links to resources in log and frontend
 #introduction:
 
 # Enables the frontend
 frontend:
-
+    themes: !include themes.yaml
+    
 # Enables configuration UI
 config:
 
