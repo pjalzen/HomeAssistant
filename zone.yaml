@@ -1,0 +1,11 @@
+#  - name: Store
+#   latitude: !secret ica_lat
+#    longitude: !secret ica_long
+#    icon: mdi:cart
+#    radius: 250
+
+#  - name: Work S
+#    latitude: !secret s_work_lat
+#    longitude: !secret s_work_long
+#    icon: mdi:code-braces
+#    radius: 300
