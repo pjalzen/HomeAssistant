@@ -3,14 +3,15 @@
 *
 
 # You can whitelist files/folders with !, these will not be ignored.
-!*.yaml
 !.gitignore
-!*.md
+!*.yaml
 !*.py
-!custom_components
-!media_player
+!*.xml
+!*.md
 !lovelace
 !python_scripts
+!custom_components
+!media_player
 
 # Ignore folders.
 .storage
