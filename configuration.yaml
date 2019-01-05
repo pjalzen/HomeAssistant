@@ -42,11 +42,19 @@ panel_iframe:
   configurator:
     title: File Editor
     icon: mdi:wrench
-    url: !secret base_url
+    url: http://hassio.local:8123
   log_viewer:
     title: Log
     icon: mdi:information-outline
     url: !secret logviewer_url
+  router:
+    title: ASUS Router
+    icon: mdi:signal
+    url: http://192.168.72.1
+  modem:
+    title: Com Hem Modem
+    icon: mdi:router-wireless
+    url: http://192.168.1.1
 
 #custom_updater:
 #  track:
@@ -89,7 +97,7 @@ verisure:
 
 media_player: !include entities/media_player.yaml
 
-bmw_connected_drive: !include enties/bmw.yaml
+bmw_connected_drive: !include entities/bmw.yaml
 
 
 # ########################################
@@ -99,9 +107,9 @@ bmw_connected_drive: !include enties/bmw.yaml
 sun:                                                # Track the sun
 python_script:
 
-google:
-  client_id: !secret google_id
-  client_secret: !secret google_secret
+#google:
+  #client_id: !secret google_id
+  #client_secret: !secret google_secret
 
 tts:
   - platform: google                                # Text to speech
