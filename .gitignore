@@ -12,6 +12,12 @@
 !python_scripts
 !custom_components
 !media_player
+!assistants
+!customize
+!entities
+!logging
+!themes
+
 
 # Ignore folders.
 .storage
