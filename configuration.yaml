@@ -1,115 +1,127 @@
 homeassistant:
-  # Name of the location where Home Assistant is running
-  name: Home
-  # Location required to calculate the time the sun rises and sets
-  latitude: 60.481591
-  longitude: 15.443260 
-  # Impacts weather/sunrise data (altitude above sea level in meters)
-  elevation: 151
-  # metric for Metric, imperial for Imperial
-  unit_system: metric
-  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  time_zone: Europe/Stockholm
-  # Customization file
-  customize: !include customize.yaml
+  name: Home                                        # Name of the location where Home Assistant is running
+  latitude: !secret lat_coord                       # Location required to calculate the time the sun rises and sets
+  longitude: !secret long_coord
+  elevation: 151                                    # Impacts weather/sunrise data (altitude above sea level in meters)
+  unit_system: metric                               # metric for Metric, imperial for Imperial
+  time_zone: !secret time_zone                      # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  customize: !include_dir_merge_named customize
+  #packages: !include_dir_named packages
+
+config:                                             # Enables configuration UI
+#hassio:
+http:
+  api_password: !secret http_password               # Secrets are defined in the file secrets.yaml
+  base_url: !secret base_url
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+updater:
+conversation:                                       # Allows you to issue voice commands from the frontend in enabled browsers
+#customizer:
+#  custom_ui: hosted
+cloud: !include assistants/cloud.yaml
+#homekit: !include assistants/homekit.yaml
+#ios: !include notify/ios_config.yaml
+
+discovery:                                          # Discover some devices automatically
+
+
+# ########################################
+# ###                GUI               ###
+# ########################################
+map:                                                # Enables a map showing the location of tracked devices
+frontend:                                           # Enables the frontend
+  javascript_version: latest 
+  themes: !include_dir_named themes
+  # extra_html_url:
+  #   - /local/custom_ui/state-card-custom-ui.html
+  # extra_html_url_es5:
+  #   - /local/custom_ui/state-card-custom-ui-es5.html
 
 panel_iframe:
   configurator:
-    title: Configurator
+    title: File Editor
     icon: mdi:wrench
-    url: http://hassio.local:3218
+    url: !secret base_url
+  log_viewer:
+    title: Log
+    icon: mdi:information-outline
+    url: !secret logviewer_url
 
+#custom_updater:
+#  track:
+#    - cards
+#    - components
+#  card_urls:
+#    - "https://github.com/kalkih/mini-media-player/blob/master/tracker.json"
+#  # show_installable: true
+
+
+# ########################################
+# ###              LOGGING             ###
+# ########################################
+recorder: !include logging/recorder.yaml
+history: !include logging/history.yaml              # Enables support for tracking state changes over time
+logbook: !include logging/logbook.yaml              # View all events in a logbook
+logger: !include logging/logger.yaml
+
+
+# ########################################
+# ###               HUBS               ###
+# ########################################
+
+zwave:
+    usb_path: /dev/ttyACM0
+
+maxcube:
+  gateways:
+    - host: !secret maxcube_ip
+
+
+# ######################################
+# ###              ENTITIES            ###
+# ########################################
+
+verisure:
+  username: !secret verisure_username
+  password: !secret verisure_password
+  
+
+media_player: !include entities/media_player.yaml
+
+bmw_connected_drive: !include enties/bmw.yaml
+
+
+# ########################################
+# ###             SERVICES             ###
+# ########################################
+
+sun:                                                # Track the sun
 python_script:
 
-# Show links to resources in log and frontend
-#introduction:
+google:
+  client_id: !secret google_id
+  client_secret: !secret google_secret
 
-# Enables the frontend
-frontend:
-    themes: !include themes.yaml
-    
-# Enables configuration UI
-config:
+tts:
+  - platform: google                                # Text to speech
 
-http:
-  # Secrets are defined in the file secrets.yaml
-  api_password: !secret http_password
-  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-  # base_url: example.duckdns.org:8123
-  # base_url: https://heltal.eu:8123
-  # ssl_certificate: /ssl/fullchain.pem
-  # ssl_key: /ssl/privkey.pem
+shell_command:
+  lovelace_gen: 'python /config/lovelace-gen.py'
+  #lovelace_gen_states: !secret lovelace_gen_states
 
-# Checks for available updates
-# Note: This component will send some information about your system to
-# the developers to assist with development of Home Assistant.
-# For more information, please see:
-# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
-updater:
-  # Optional, allows Home Assistant developers to focus on popular components.
-  # include_used_components: true
 
-# Discover some devices automatically
-discovery:
 
-# Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
 
-recorder:
-  include:
-    domains:
-      -sensor
-      -switch
-      -media_player
-
-# Enables support for tracking state changes over time
-history:
-
-# View all events in a logbook
-logbook:
-
-# Enables a map showing the location of tracked devices
-map:
-
-# Track the sun
-sun:
+# Att sortera!!!!!!!!!!!!!!
 
 # Weather prediction
 sensor:
   - platform: yr
 
-# Text to speech
-tts:
-  - platform: google
-
-# Cloud
-cloud:
-
 group: !include groups.yaml
 script: !include scripts.yaml
 automation: !include automations.yaml
-
-zwave:
-    usb_path: /dev/ttyACM0
-    
-maxcube:
-  gateways:
-    - host: 192.168.72.243
-
-bmw_connected_drive:
-  name:
-    username: pjalzen
-    password: !secret bmw_password
-    region: rest_of_world
-    
-verisure:
-  username: perjohan.alzen@gmail.com
-  password: !secret verisure_password
-  
-media_player:
-   platform: heos
-   host: 192.168.72.62
-   name: heos_altan
 
 camera:
   platform: mjpeg
