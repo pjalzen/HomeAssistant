@@ -40,21 +40,21 @@ frontend:                                           # Enables the frontend
 
 panel_iframe:
   configurator:
-    title: Configurator
+    title: IDE
     icon: mdi:wrench
-    url: http://hassio.local:8123
+    url: http://hassio.local:3218
   log_viewer:
     title: Log
     icon: mdi:information-outline
     url: !secret logviewer_url
-#  router:
-#    title: ASUS Router
-#    icon: mdi:signal
-#    url: http://192.168.72.1
-#  modem:
-#    title: Com Hem Modem
-#    icon: mdi:router-wireless
-#    url: http://192.168.1.1
+  router:
+    title: ASUS Router
+    icon: mdi:signal
+    url: http://192.168.72.1
+  modem:
+    title: Com Hem Modem
+    icon: mdi:router-wireless
+    url: http://192.168.1.1
 
 #custom_updater:
 #  track:
