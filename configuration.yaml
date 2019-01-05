@@ -12,7 +12,7 @@ config:                                             # Enables configuration UI
 #hassio:
 http:
   api_password: !secret http_password               # Secrets are defined in the file secrets.yaml
-  base_url: !secret base_url
+  #base_url: !secret base_url
   #ssl_certificate: /ssl/fullchain.pem
   #ssl_key: /ssl/privkey.pem
 updater:
@@ -40,21 +40,21 @@ frontend:                                           # Enables the frontend
 
 panel_iframe:
   configurator:
-    title: File Editor
+    title: Configurator
     icon: mdi:wrench
     url: http://hassio.local:8123
   log_viewer:
     title: Log
     icon: mdi:information-outline
     url: !secret logviewer_url
-  router:
-    title: ASUS Router
-    icon: mdi:signal
-    url: http://192.168.72.1
-  modem:
-    title: Com Hem Modem
-    icon: mdi:router-wireless
-    url: http://192.168.1.1
+#  router:
+#    title: ASUS Router
+#    icon: mdi:signal
+#    url: http://192.168.72.1
+#  modem:
+#    title: Com Hem Modem
+#    icon: mdi:router-wireless
+#    url: http://192.168.1.1
 
 #custom_updater:
 #  track:
@@ -111,8 +111,8 @@ python_script:
   #client_id: !secret google_id
   #client_secret: !secret google_secret
 
-tts:
-  - platform: google                                # Text to speech
+#tts:
+#  - platform: google                                # Text to speech
 
 #shell_command:
   #lovelace_gen: 'python /config/lovelace-gen.py'
