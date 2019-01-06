@@ -115,8 +115,8 @@ python_script:
 mqtt:
   broker: !secret mqtt_broker
   port: !secret mqtt_port
-  client-id: home-assistant
-  keep-alive: 60
+  client_id: home-assistant-raspi
+  keepalive: 60
   username: !secret mqtt_username 
   password: !secret mqtt_password 
   #discovery: true
