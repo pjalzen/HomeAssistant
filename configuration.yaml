@@ -114,10 +114,10 @@ python_script:
 
 mqtt:
   discovery: true
-  broker: m15.cloudmqtt.com
-  port: 13108
-  username: !secret mqtt_username hxcgreyz
-  password: !secret mqtt_password o3HjCZBUtwAZ
+  broker: !secret mqtt_broker
+  port: !secret mqtt_port
+  username: !secret mqtt_username 
+  password: !secret mqtt_password 
 
 #google:
   #client_id: !secret google_id
