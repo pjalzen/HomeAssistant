@@ -35,7 +35,9 @@
   - data:
       entity_id: switch.timer
     service: switch.turn_on
-    
+  - data:
+      entity_id: light.kitchen_hall
+    service: light.turn_on
 - id: '1534049443061'
   alias: Turn lights off by midnight
   trigger:
@@ -70,7 +72,9 @@
   - data:
       entity_id: light.color_light_1
     service: light.turn_off
-    
+  - data:
+      entity_id: light.kitchen_hall
+    service: light.turn_off
 - id: '1543169877134'
   alias: Lights on in the morning
   trigger:
@@ -89,7 +93,6 @@
   - data:
       entity_id: switch.timer
     service: switch.turn_on
-    
 - id: '1543170136376'
   alias: Lights off by sunrise
   trigger:
@@ -107,7 +110,6 @@
   - data:
       entity_id: switch.timer
     service: switch.turn_off
-    
 - id: '1543612075331'
   alias: Beamer Home
   trigger:
@@ -118,7 +120,6 @@
   condition: []
   action:
   - service: media_player.turn_on
-  
 - id: '1546120746337'
   alias: Run Backup 3AM
   trigger:
@@ -129,25 +130,20 @@
   - alias: ''
     data: {}
     service: script.ha_backup
-    
 - id: '1546532215998'
   alias: Set HA theme for day and night
   trigger:
-    - platform: homeassistant
-      event: start
-    - platform: state
-      entity_id: sun.sun
-      to: above_horizon
-    - platform: state
-      entity_id: sun.sun
-      to: below_horizon
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id: sun.sun
+    to: above_horizon
+  - platform: state
+    entity_id: sun.sun
+    to: below_horizon
   condition: []
   action:
-    - service: frontend.set_theme
-      data_template:
-          name: >
-            {% if states.sun.sun.state == "above_horizon" %}
-              Light - Light Red
-            {% else %}
-              Dark - Light Red
-            {% endif %}
+  - service: frontend.set_theme
+    data_template:
+      name: "{% if states.sun.sun.state == \"above_horizon\" %}\n  light-lightred\n\
+        {% else %}\n  dark-lightred\n{% endif %}\n"
