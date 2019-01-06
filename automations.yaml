@@ -30,14 +30,11 @@
       entity_id: switch.everspring_an180_plugin_onoff_module_switch_3
     service: switch.turn_on
   - data:
-      entity_id: light.color_light_1
+      entity_id: light.living_room
     service: light.turn_on
   - data:
       entity_id: switch.timer
     service: switch.turn_on
-  - data:
-      entity_id: light.kitchen_hall
-    service: light.turn_on
 - id: '1534049443061'
   alias: Turn lights off by midnight
   trigger:
@@ -70,10 +67,7 @@
       entity_id: switch.timer
     service: switch.turn_off
   - data:
-      entity_id: light.color_light_1
-    service: light.turn_off
-  - data:
-      entity_id: light.kitchen_hall
+      entity_id: light.living_room
     service: light.turn_off
 - id: '1543169877134'
   alias: Lights on in the morning
