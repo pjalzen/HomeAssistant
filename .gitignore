@@ -8,16 +8,17 @@
 !*.py
 !*.xml
 !*.md
-!lovelace
-!python_scripts
+!assistants
 !custom_components
 !media_player
-!assistants
+!sensor
 !customize
 !entities
 !logging
+!lovelace
+!packages
+!python_scripts
 !themes
-
 
 # Ignore folders.
 .storage
