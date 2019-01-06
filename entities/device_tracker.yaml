@@ -12,19 +12,16 @@
  # - platform: tile
  #   username: !secret tile_username
  #   password: !secret tile_password
-  # - platform: mqtt
-  #   devices:
-  #     pj_iphone: 'homeassistant/device_tracker/pj_iphone/state'
-  #     helena_iphone: 'homeassistant/device_tracker/helena_iphone/state'
+
+# ############################################################
 
 #- platform: owntracks
     #mqtt_topic: "owntracks/#"
       
-- platform: mqtt
-    devices:
-      perjohan_iphone: 'owntracks/perjohan/pj iphone'
+#- platform: mqtt
+#    devices:
+#      perjohan_iphone: 'owntracks/perjohan/pj iphone'
 
-#      annetherese_n4: 'location/annetherese'
 #- platform: asuswrt
 #    host: 192.168.72.1
 #    username: !secret lyra_username
