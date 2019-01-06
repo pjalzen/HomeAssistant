@@ -5,11 +5,13 @@ homeassistant:
   elevation: 151                                    # Impacts weather/sunrise data (altitude above sea level in meters)
   unit_system: metric                               # metric for Metric, imperial for Imperial
   time_zone: !secret time_zone                      # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  #customize: !include_dir_merge_named customize
-  #packages: !include_dir_named packages
-
+  customize: !include_dir_merge_named customize
+  #customize_glob: !include customglob.yaml
+  packages: !include_dir_named packages
+  #whitelist_external_dirs:
+  #  - '/config/www/motion'
 config:                                             # Enables configuration UI
-#hassio:
+hassio:
 http:
   api_password: !secret http_password               # Secrets are defined in the file secrets.yaml
   #base_url: !secret base_url
@@ -43,18 +45,18 @@ panel_iframe:
     title: IDE
     icon: mdi:wrench
     url: http://hassio.local:3218
-  log_viewer:
-    title: Log
-    icon: mdi:information-outline
-    url: !secret logviewer_url
-  router:
-    title: ASUS Router
-    icon: mdi:signal
-    url: http://192.168.72.1
-  modem:
-    title: Com Hem Modem
-    icon: mdi:router-wireless
-    url: http://192.168.1.1
+#  log_viewer:
+#    title: Log
+#    icon: mdi:information-outline
+#    url: !secret logviewer_url
+ # router:
+ #   title: ASUS Router
+ #   icon: mdi:signal
+ #   url: http://192.168.72.1
+ # modem:
+ #   title: Com Hem Modem
+ #   icon: mdi:router-wireless
+ #   url: http://192.168.1.1
 
 #custom_updater:
 #  track:
@@ -96,8 +98,10 @@ verisure:
   
 
 media_player: !include entities/media_player.yaml
-
 bmw_connected_drive: !include entities/bmw.yaml
+
+device_tracker: !include entities/device_tracker.yaml
+zone: !include zone.yaml
 
 
 # ########################################
@@ -105,7 +109,15 @@ bmw_connected_drive: !include entities/bmw.yaml
 # ########################################
 
 sun:                                                # Track the sun
+
 python_script:
+
+mqtt:
+  discovery: true
+  broker: m15.cloudmqtt.com
+  port: 13108
+  username: !secret mqtt_username hxcgreyz
+  password: !secret mqtt_password o3HjCZBUtwAZ
 
 #google:
   #client_id: !secret google_id

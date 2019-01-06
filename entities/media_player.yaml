@@ -1,3 +1,6 @@
-   platform: heos
+ - platform: heos
    host: 192.168.72.62
-   name: heos_altan
+   name: heos calle
+ - platform: heos
+   host: 192.168.72.101
+   name: heos kitchen

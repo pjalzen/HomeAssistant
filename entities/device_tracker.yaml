@@ -1,0 +1,28 @@
+ # - platform: nmap_tracker
+ #   hosts: !secret nmap_tracker_hosts
+ #   track_new_devices: True
+ #   interval_seconds: 20
+ #   consider_home: 360
+ #   home_interval: 10
+ #   exclude:
+ #     - !secret hass_host_ip
+  # - platform: bluetooth_tracker
+  #   track_new_devices: false
+  # - platform: owntracks
+ # - platform: tile
+ #   username: !secret tile_username
+ #   password: !secret tile_password
+  # - platform: mqtt
+  #   devices:
+  #     pj_iphone: 'homeassistant/device_tracker/pj_iphone/state'
+  #     helena_iphone: 'homeassistant/device_tracker/helena_iphone/state'
+
+- platform: owntracks
+#- platform: mqtt
+#    devices:
+#      paulus_oneplus: 'location/paulus'
+#      annetherese_n4: 'location/annetherese'
+- platform: asuswrt
+    host: 192.168.72.1
+    username: !secret lyra_username
+    password: !secret lyra_password
