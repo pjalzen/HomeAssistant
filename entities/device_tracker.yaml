@@ -18,7 +18,7 @@
   #     helena_iphone: 'homeassistant/device_tracker/helena_iphone/state'
 
 - platform: owntracks
-    mqtt_topic: "owntracks/#"
+    #mqtt_topic: "owntracks/#"
       
 #- platform: mqtt
 #    devices:
