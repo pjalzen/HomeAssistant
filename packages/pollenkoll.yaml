@@ -27,8 +27,8 @@ homeassistant:
 sensor:
   - platform: pollenkoll
     sensors:
-      - city: Borlange
-        state: Bjork
+      - city: Borlänge
+        state: Björk
       # - city: Borlänge
       #   state: Gråbo
       # - city: Borlänge

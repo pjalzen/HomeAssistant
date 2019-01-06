@@ -113,11 +113,14 @@ sun:                                                # Track the sun
 python_script:
 
 mqtt:
-  discovery: true
   broker: !secret mqtt_broker
   port: !secret mqtt_port
+  client-id: home-assistant
+  keep-alive: 60
   username: !secret mqtt_username 
   password: !secret mqtt_password 
+  #discovery: true
+
 
 #google:
   #client_id: !secret google_id

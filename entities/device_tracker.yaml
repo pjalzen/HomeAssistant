@@ -18,6 +18,7 @@
   #     helena_iphone: 'homeassistant/device_tracker/helena_iphone/state'
 
 - platform: owntracks
+    
 #- platform: mqtt
 #    devices:
 #      paulus_oneplus: 'location/paulus'
