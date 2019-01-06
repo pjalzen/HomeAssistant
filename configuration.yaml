@@ -25,7 +25,7 @@ cloud: !include assistants/cloud.yaml
 #homekit: !include assistants/homekit.yaml
 #ios: !include notify/ios_config.yaml
 
-discovery:                                          # Discover some devices automatically
+# discovery:                                          # Discover some devices automatically
 
 
 # ########################################
