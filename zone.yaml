@@ -2,7 +2,7 @@
   - name: Sogeti Borlänge
     latitude: 60.483214
     longitude: 15.409578
-    icon:
+    icon: mdi:office
     radius: 50
 
 
@@ -10,56 +10,51 @@
   - name: Luleå
     latitude: 65.586995
     longitude: 22.157142
-    icon:
     radius: 7000
 
 # umeå
   - name: Umeå
     latitude: 63.827666
     longitude: 20.262048
-    icon:
     radius: 5000
     
 # övik
   - name: Övik
     latitude: 63.290018
     longitude: 18.716683
-    icon:
     radius: 750
 
 # sundsvall
   - name: Sundsvall
     latitude: 62.390811
     longitude: 17.306688
-    icon:
     radius: 2000
 
 # gävle
   - name: Gävle
     latitude: 60.674902
     longitude: 17.141243
-    icon:
     radius: 500
 
 # sogeti solna
   - name: Sogeti Solna
     latitude: 59.359801
     longitude: 17.978027
-    icon:
+    icon: mdi:office-building
     radius: 100
 
 # stockholm
   - name: Stockholm
     latitude: 59.329389
     longitude: 18.068494
-    icon:
+    icon: mdi:city-variant
     radius: 3000
 
 # arlanda
   - name: Arlanda - ARN
     latitude: 59.647626
     longitude: 17.940365
-    icon:
+    icon: mdi:airport
     radius: 3000
 
 
