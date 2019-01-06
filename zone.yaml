@@ -22,7 +22,7 @@
   - name: Övik
     latitude: 63.290018
     longitude: 18.716683
-    radius: 750
+    radius: 1000
 
 # sundsvall
   - name: Sundsvall
