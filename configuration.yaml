@@ -119,7 +119,7 @@ mqtt:
   keepalive: 60
   username: !secret mqtt_username 
   password: !secret mqtt_password 
-  #discovery: true
+  discovery: true
 
 
 #google:
