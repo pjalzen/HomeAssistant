@@ -98,7 +98,9 @@ verisure:
   
 
 media_player: !include entities/media_player.yaml
-bmw_connected_drive: !include entities/bmw.yaml
+
+# BMW X3 and i3
+!include entities/bmw.yaml
 
 device_tracker: !include entities/device_tracker.yaml
 zone: !include zone.yaml

@@ -1,8 +1,11 @@
-- name: X3
+bmw_connected_drive: 
+  x3:
     username: !secret bmw_x3_username
     password: !secret bmw_x3_password
     region: rest_of_world
-- name: i3
+
+bmw_connected_drive: 
+  i3:
     username: !secret bmw_i3_username
     password: !secret bmw_i3_password
     region: rest_of_world
