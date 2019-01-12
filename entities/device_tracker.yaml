@@ -1,22 +1,10 @@
- #   track_new_devices: True
- #   interval_seconds: 20
- #   consider_home: 360
- #   home_interval: 10
- #   exclude:
- #     - !secret hass_host_ip
-  # - platform: bluetooth_tracker
-  #   track_new_devices: false
-  # - platform: owntracks
- # - platform: tile
- #   username: !secret tile_username
- #   password: !secret tile_password
-
-# ############################################################
-
 - platform: nmap_tracker
   hosts: !secret nmap_tracker_hosts
   home_interval: 10
-  
+  track_new_devices: true
+  exclude:
+    - !secret hassio_ip
+
 #- platform: owntracks
     #mqtt_topic: "owntracks/#"
       
