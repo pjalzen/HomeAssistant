@@ -1,8 +1,0 @@
-- name: X3
-    username: !secret bmw_x3_username
-    password: !secret bmw_x3_password
-    region: rest_of_world
-- name: i3
-    username: !secret bmw_i3_username
-    password: !secret bmw_i3_password
-    region: rest_of_world
