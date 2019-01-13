@@ -78,6 +78,9 @@ title: Home
 #   {% endfor %}
 views:
   - !include 00_home_view.yaml
+  - !include 10_downstairs_view.yaml
+  - !include 20_upstairs_view.yaml
+  - !include 30_basement_view.yaml
 #  - !include 00_home_view.yaml
 #  - !include 10_home_info_view.yaml
 #  - !include 20_lights_view.yaml
@@ -85,7 +88,6 @@ views:
 #  - !include 40_camera_view.yaml
 #  - !include 50_cat_view.yaml
   # - !include 60_floorplan_view.yaml
-
 #  - !include 70_isa_view.yaml
 #  - !include 80_automations_view.yaml
 #  - !include 100_settings_view.yaml
