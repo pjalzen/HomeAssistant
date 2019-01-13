@@ -1,15 +1,15 @@
-  - title: Upstairs
-    cards:
-      - type: picture-entity
-        title: "Hall \xF6verv\xE5ning"
-        entity: camera.hall_overvaning
-        camera_image: camera.hall_overvaning
-        show_info: true
-        tap_action: dialog
-      - type: entities
-        entities:
-          - switch.nodon_msp31xx_micro_smart_plug_switch
-          - switch.nodon_msp31xx_micro_smart_plug_switch_2
-          - switch.nodon_msp31xx_micro_smart_plug_switch_3
-          - switch.nodon_msp31xx_micro_smart_plug_switch_4
-          - light.calles
+title: Upstairs
+cards:
+  - type: picture-entity
+    title: "Hall \xF6verv\xE5ning"
+    entity: camera.hall_overvaning
+    camera_image: camera.hall_overvaning
+    show_info: true
+    tap_action: dialog
+  - type: entities
+    entities:
+      - switch.nodon_msp31xx_micro_smart_plug_switch
+      - switch.nodon_msp31xx_micro_smart_plug_switch_2
+      - switch.nodon_msp31xx_micro_smart_plug_switch_3
+      - switch.nodon_msp31xx_micro_smart_plug_switch_4
+      - light.calles

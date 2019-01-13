@@ -1,8 +1,8 @@
-  - title: Basement
-    cards:
-      - type: picture-entity
-        title: "Källare"
-        entity: camera.kallare
-        camera_image: camera.kallare
-        show_info: true
-        tap_action: dialog
+title: Basement
+cards:
+  - type: picture-entity
+    title: "Källare"
+    entity: camera.kallare
+    camera_image: camera.kallare
+    show_info: true
+    tap_action: dialog
