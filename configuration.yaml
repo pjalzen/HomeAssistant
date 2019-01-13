@@ -131,8 +131,8 @@ mqtt:
 #tts:
 #  - platform: google                                # Text to speech
 
-#shell_command:
-  #lovelace_gen: 'python /config/lovelace-gen.py'
+shell_command:
+  lovelace_gen: 'python /config/lovelace-gen.py'
   #lovelace_gen_states: !secret lovelace_gen_states
 
 
