@@ -24,7 +24,7 @@ def get_input_dir(inp):
     if os.path.exists(os.path.join(inp, MAIN_FILE)):
         return inp
     print("Input file main.yaml not found.", file=sys.stderr)
-    sys.exit(2);
+    sys.exit(2)
 
 def process_file(jinja, yaml, path):
     template = jinja.get_template(path)
