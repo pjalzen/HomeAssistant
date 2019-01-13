@@ -1,34 +1,34 @@
-  
-- title: Downstairs
-  cards:
-    - type: picture-entity
-      title: Vardagsrum
-      entity: camera.vardagsrum
-      camera_image: camera.vardagsrum
-      show_info: true
-      tap_action: dialog
-    - type: entities
-      title: all switches
-      show_header_toggle: true
-      entities:
-        - switch.everspring_an180_plugin_onoff_module_switch
-        - switch.nodon_msp31xx_micro_smart_plug_switch
-        - switch.nodon_msp31xx_micro_smart_plug_switch_2
-        - switch.nodon_msp31xx_micro_smart_plug_switch_3
-        - switch.nodon_msp31xx_micro_smart_plug_switch_4
-        - switch.timer
-    - type: entities
-      title: all lights
-      show_header_toggle: true
-      entities:
-        - light.calles
-        - light.calles_rum
-    - type: entities
-      title: all automations
-      show_header_toggle: true
-      entities:
-        - automation.lights_on_in_the_evening
-        - automation.just_before_sunset
-        - automation.turn_lights_off_by_midnight
-    - type: media-control
-      entity: media_player.heos_altan
+    
+  - title: Downstairs
+    cards:
+      - type: picture-entity
+        title: Vardagsrum
+        entity: camera.vardagsrum
+        camera_image: camera.vardagsrum
+        show_info: true
+        tap_action: dialog
+      - type: entities
+        title: all switches
+        show_header_toggle: true
+        entities:
+          - switch.everspring_an180_plugin_onoff_module_switch
+          - switch.nodon_msp31xx_micro_smart_plug_switch
+          - switch.nodon_msp31xx_micro_smart_plug_switch_2
+          - switch.nodon_msp31xx_micro_smart_plug_switch_3
+          - switch.nodon_msp31xx_micro_smart_plug_switch_4
+          - switch.timer
+      - type: entities
+        title: all lights
+        show_header_toggle: true
+        entities:
+          - light.calles
+          - light.calles_rum
+      - type: entities
+        title: all automations
+        show_header_toggle: true
+        entities:
+          - automation.lights_on_in_the_evening
+          - automation.just_before_sunset
+          - automation.turn_lights_off_by_midnight
+      - type: media-control
+        entity: media_player.heos_altan

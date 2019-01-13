@@ -1,15 +1,16 @@
-- title: Brunnsgatan
-  cards:
-    - type: weather-forecast
-      entity: weather.smhi_home
-    - type: entities
-      title: all devices
-      show_header_toggle: true
-      entities:
-        - device_tracker.x3_xdrive20d
-    - type: entities
-      title: all locks
-      show_header_toggle: true
-      entities:
-        - lock.x3_xdrive20d_lock
- 
+  - title: Brunnsgatan
+    icon: mdi:home 
+    cards:
+      - type: weather-forecast
+        entity: weather.smhi_home
+      - type: entities
+        title: all devices
+        show_header_toggle: true
+        entities:
+          - device_tracker.x3_xdrive20d
+      - type: entities
+        title: all locks
+        show_header_toggle: true
+        entities:
+          - lock.x3_xdrive20d_lock
+  

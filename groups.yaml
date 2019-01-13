@@ -2,12 +2,12 @@
 #    name: Home
 #    view: yes
   
-switches:
-    name: Switches and Lamps
-    view: yes
-    entities:
-      - switch.nodon_msp31xx_micro_smart_plug_switch
-      - switch.nodon_msp31xx_micro_smart_plug_switch_2
-      - switch.nodon_msp31xx_micro_smart_plug_switch_3
-      - switch.nodon_msp31xx_micro_smart_plug_switch_4
-      - light.calles
+#switches:
+#    name: Switches and Lamps
+#    view: yes
+#    entities:
+#      - switch.nodon_msp31xx_micro_smart_plug_switch
+#      - switch.nodon_msp31xx_micro_smart_plug_switch_2
+#      - switch.nodon_msp31xx_micro_smart_plug_switch_3
+#      - switch.nodon_msp31xx_micro_smart_plug_switch_4
+#      - light.calles
