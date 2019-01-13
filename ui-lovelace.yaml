@@ -4,31 +4,29 @@
 
 title: Home
 views:
-  - title: Home
+  - title: Brunnsgatan
     cards:
-      - type: picture-entity
-        title: "K\xE4llare"
-        entity: camera.kallare
-        camera_image: camera.kallare
-        show_info: true
-        tap_action: dialog
-      - type: picture-entity
-        title: "Hall \xF6verv\xE5ning"
-        entity: camera.hall_overvaning
-        camera_image: camera.hall_overvaning
-        show_info: true
-        tap_action: dialog
+      - type: weather-forecast
+        entity: weather.smhi_home
+      - type: entities
+        title: all devices
+        show_header_toggle: true
+        entities:
+          - device_tracker.x3_xdrive20d
+      - type: entities
+        title: all locks
+        show_header_toggle: true
+        entities:
+          - lock.x3_xdrive20d_lock
+    
+  - title: Downstairs
+    cards:
       - type: picture-entity
         title: Vardagsrum
         entity: camera.vardagsrum
         camera_image: camera.vardagsrum
         show_info: true
         tap_action: dialog
-      - type: entities
-        title: all devices
-        show_header_toggle: true
-        entities:
-          - device_tracker.x3_xdrive20d
       - type: entities
         title: all switches
         show_header_toggle: true
@@ -39,11 +37,6 @@ views:
           - switch.nodon_msp31xx_micro_smart_plug_switch_3
           - switch.nodon_msp31xx_micro_smart_plug_switch_4
           - switch.timer
-      - type: entities
-        title: all locks
-        show_header_toggle: true
-        entities:
-          - lock.x3_xdrive20d_lock
       - type: entities
         title: all lights
         show_header_toggle: true
@@ -59,10 +52,14 @@ views:
           - automation.turn_lights_off_by_midnight
       - type: media-control
         entity: media_player.heos_altan
-      - type: weather-forecast
-        entity: weather.smhi_home
-  - title: Switches and Lamps
+  - title: Upstairs
     cards:
+      - type: picture-entity
+        title: "Hall \xF6verv\xE5ning"
+        entity: camera.hall_overvaning
+        camera_image: camera.hall_overvaning
+        show_info: true
+        tap_action: dialog
       - type: entities
         entities:
           - switch.nodon_msp31xx_micro_smart_plug_switch
@@ -70,3 +67,11 @@ views:
           - switch.nodon_msp31xx_micro_smart_plug_switch_3
           - switch.nodon_msp31xx_micro_smart_plug_switch_4
           - light.calles
+  - title: Basement
+    cards:
+      - type: picture-entity
+        title: "Källare"
+        entity: camera.kallare
+        camera_image: camera.kallare
+        show_info: true
+        tap_action: dialog
