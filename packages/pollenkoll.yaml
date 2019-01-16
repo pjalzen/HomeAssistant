@@ -29,10 +29,10 @@ sensor:
     sensors:
       - city: Borlänge
         state: Björk
-      # - city: Borlänge
-      #   state: Gråbo
-      # - city: Borlänge
-      #   state: Gräs
+      - city: Borlänge
+        state: Gråbo
+      - city: Borlänge
+        state: Gräs
   - platform: template
     sensors:
       pollen_grabo:

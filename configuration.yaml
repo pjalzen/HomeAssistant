@@ -90,7 +90,7 @@ maxcube:
     - host: !secret maxcube_ip
 
 
-# ######################################
+# ########################################
 # ###              ENTITIES            ###
 # ########################################
 
@@ -123,7 +123,6 @@ mqtt:
   password: !secret mqtt_password 
   discovery: true
 
-
 #google:
   #client_id: !secret google_id
   #client_secret: !secret google_secret
@@ -140,9 +139,8 @@ shell_command:
 
 # Att sortera!!!!!!!!!!!!!!
 
-# Weather prediction
+
 sensor:
-  - platform: yr
   - platform: krisinformation
     name: Krisinformation Borlänge
     latitude: !secret lat_coord  
