@@ -1,16 +1,23 @@
-title: Brunnsgatan
+title: Brunnsgatan 25
 icon: mdi:home
 cards:
   - type: weather-forecast
-    entity: weather.smhi_home
+    entity: weather.smhi_home 
+
+  - type: alarm-panel
+    entity: alarm_control_panel.alarm
+
   - type: entities
     title: all devices
     show_header_toggle: true
     entities:
       - device_tracker.x3_xdrive20d
+      - device_tracker.i3s_94
+
   - type: entities
     title: all locks
     show_header_toggle: true
     entities:
       - lock.x3_xdrive20d_lock
+      - lock.i3s_94_lock
 
