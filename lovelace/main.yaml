@@ -61,10 +61,12 @@ resources:
  #   type: module
  # - url: !resource toggle-lock-entity-row/toggle-lock-entity-row.js
  #   type: js
-    
+
+  - url: /local/krisinfo-card.js
+    type: js
   - url: https://fonts.googleapis.com/css?family=Roboto+Condensed
-    type: css
-  
+    type: css 
+
 title: Home
 # excluded_entities:
 #   {% for state in states.alert %}

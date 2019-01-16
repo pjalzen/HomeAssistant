@@ -143,6 +143,11 @@ shell_command:
 # Weather prediction
 sensor:
   - platform: yr
+  - platform: krisinformation
+    name: Krisinformation Borlänge
+    latitude: !secret lat_coord  
+    longitude: !secret long_coord
+    radius: 100
 
 group: !include groups.yaml
 script: !include scripts.yaml
