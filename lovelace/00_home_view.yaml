@@ -45,8 +45,8 @@ cards:
 
   - type: entity-filter
     entities:
-      - device_tracker.device_tracker.perjohan_pj_iphone
-      - device_tracker.device_tracker.helenasiphonelocal
+      - device_tracker.perjohan_pj_iphone
+      - device_tracker.helenasiphonelocal
       - device_tracker.oneplus_6tlocal
       - device_tracker.oneplus_6local
       - device_tracker.x3_xdrive20d
