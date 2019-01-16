@@ -7,46 +7,47 @@ resources:
 - {type: css, url: 'https://fonts.googleapis.com/css?family=Roboto+Condensed'}
 title: Home
 views:
-- - cards:
-    - {entity: weather.smhi_home, type: weather-forecast}
-    - entities: [device_tracker.x3_xdrive20d]
-      show_header_toggle: true
-      title: all devices
-      type: entities
-    - entities: [lock.x3_xdrive20d_lock]
-      show_header_toggle: true
-      title: all locks
-      type: entities
-    title: Brunnsgatan
-- - cards:
-    - {camera_image: camera.vardagsrum, entity: camera.vardagsrum, show_info: true,
-      tap_action: dialog, title: Vardagsrum, type: picture-entity}
-    - entities: [switch.everspring_an180_plugin_onoff_module_switch, switch.nodon_msp31xx_micro_smart_plug_switch,
-        switch.nodon_msp31xx_micro_smart_plug_switch_2, switch.nodon_msp31xx_micro_smart_plug_switch_3,
-        switch.nodon_msp31xx_micro_smart_plug_switch_4, switch.timer]
-      show_header_toggle: true
-      title: all switches
-      type: entities
-    - entities: [light.calles, light.calles_rum]
-      show_header_toggle: true
-      title: all lights
-      type: entities
-    - entities: [automation.lights_on_in_the_evening, automation.just_before_sunset,
-        automation.turn_lights_off_by_midnight]
-      show_header_toggle: true
-      title: all automations
-      type: entities
-    - {entity: media_player.heos_altan, type: media-control}
-    title: Downstairs
-- - cards:
-    - {camera_image: camera.hall_overvaning, entity: camera.hall_overvaning, show_info: true,
-      tap_action: dialog, title: Hall övervåning, type: picture-entity}
-    - entities: [switch.nodon_msp31xx_micro_smart_plug_switch, switch.nodon_msp31xx_micro_smart_plug_switch_2,
-        switch.nodon_msp31xx_micro_smart_plug_switch_3, switch.nodon_msp31xx_micro_smart_plug_switch_4,
-        light.calles]
-      type: entities
-    title: Upstairs
-- - cards:
-    - {camera_image: camera.kallare, entity: camera.kallare, show_info: true, tap_action: dialog,
-      title: Källare, type: picture-entity}
-    title: Basement
+- cards:
+  - {entity: weather.smhi_home, type: weather-forecast}
+  - entities: [device_tracker.x3_xdrive20d, device_tracker.i3s_94]
+    show_header_toggle: true
+    title: all devices
+    type: entities
+  - entities: [lock.x3_xdrive20d_lock, lock.i3s_94_lock]
+    show_header_toggle: true
+    title: all locks
+    type: entities
+  icon: mdi:home
+  title: Brunnsgatan
+- cards:
+  - {camera_image: camera.vardagsrum, entity: camera.vardagsrum, show_info: true,
+    tap_action: dialog, title: Vardagsrum, type: picture-entity}
+  - entities: [switch.everspring_an180_plugin_onoff_module_switch, switch.nodon_msp31xx_micro_smart_plug_switch,
+      switch.nodon_msp31xx_micro_smart_plug_switch_2, switch.nodon_msp31xx_micro_smart_plug_switch_3,
+      switch.nodon_msp31xx_micro_smart_plug_switch_4, switch.timer]
+    show_header_toggle: true
+    title: all switches
+    type: entities
+  - entities: [light.calles, light.calles_rum]
+    show_header_toggle: true
+    title: all lights
+    type: entities
+  - entities: [automation.lights_on_in_the_evening, automation.just_before_sunset,
+      automation.turn_lights_off_by_midnight]
+    show_header_toggle: true
+    title: all automations
+    type: entities
+  - {entity: media_player.heos_altan, type: media-control}
+  title: Downstairs
+- cards:
+  - {camera_image: camera.hall_overvaning, entity: camera.hall_overvaning, show_info: true,
+    tap_action: dialog, title: Hall övervåning, type: picture-entity}
+  - entities: [switch.nodon_msp31xx_micro_smart_plug_switch, switch.nodon_msp31xx_micro_smart_plug_switch_2,
+      switch.nodon_msp31xx_micro_smart_plug_switch_3, switch.nodon_msp31xx_micro_smart_plug_switch_4,
+      light.calles]
+    type: entities
+  title: Upstairs
+- cards:
+  - {camera_image: camera.kallare, entity: camera.kallare, show_info: true, tap_action: dialog,
+    title: Källare, type: picture-entity}
+  title: Basement
