@@ -71,6 +71,8 @@ cards:
     entity: sensor.krisinformation
     
 
+
+
 #  - type: map
 #    aspect_ratio: 16:9
 #    default_zoom: 8

@@ -83,6 +83,7 @@ views:
   - !include 10_downstairs_view.yaml
   - !include 20_upstairs_view.yaml
   - !include 30_basement_view.yaml
+  - !include 40_car_view.yaml
 #  - !include 00_home_view.yaml
 #  - !include 10_home_info_view.yaml
 #  - !include 20_lights_view.yaml
