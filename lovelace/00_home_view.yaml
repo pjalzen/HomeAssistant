@@ -28,6 +28,14 @@ cards:
       - group.all_lights
       - group.all_switches
 
+  - type: entity-button
+    name: Turn On Lights
+    tap_action:
+      action: call-service
+      service: group.all_lights.turn_off
+      service_data:
+        entity_id: script.turn_off_lights
+    entity: script.turn_off_lights
 
 #  - type: map
 #    aspect_ratio: 16:9
