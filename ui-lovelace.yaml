@@ -9,16 +9,19 @@ title: Home
 views:
 - cards:
   - {entity: weather.smhi_home, type: weather-forecast}
-  - entities: [device_tracker.x3_xdrive20d, device_tracker.i3s_94]
-    show_header_toggle: true
-    title: all devices
+  - {entity: alarm_control_panel.brunnsgatan_alarm, type: alarm-panel}
+  - entities: [device_tracker.x3_xdrive20d, lock.x3_xdrive20d_lock]
+    title: BMW X3
     type: entities
-  - entities: [lock.x3_xdrive20d_lock, lock.i3s_94_lock]
+  - entities: [device_tracker.i3s_94, lock.i3s_94_lock]
+    title: BMW i3
+    type: entities
+  - {entity: group.all_lights, name: Lampor, type: light}
+  - entities: [group.all_lights, group.all_switches]
     show_header_toggle: true
-    title: all locks
     type: entities
   icon: mdi:home
-  title: Brunnsgatan
+  title: Brunnsgatan 25
 - cards:
   - {camera_image: camera.vardagsrum, entity: camera.vardagsrum, show_info: true,
     tap_action: dialog, title: Vardagsrum, type: picture-entity}
