@@ -18,11 +18,8 @@ cards:
       - device_tracker.i3s_94
       - lock.i3s_94_lock
 
-  - type: light
-    entity: group.all_lights
-    name: Lampor
-
   - type: entities
+    title: Lampor och Brytare
     show_header_toggle: true
     entities:
       - group.all_lights
@@ -46,6 +43,31 @@ cards:
       service_data: {}
     entity: script.lights_on
 
+  - type: entity-filter
+    entities:
+      - device_tracker.device_tracker.perjohan_pj_iphone
+      - device_tracker.device_tracker.helenasiphonelocal
+      - device_tracker.oneplus_6tlocal
+      - device_tracker.oneplus_6local
+      - device_tracker.x3_xdrive20d
+      - device_tracker.i3s_94
+    state_filter:
+      - home
+    card: 
+      type: glance
+      title: Home
+
+  - type: sensor
+    entity: sensor.hall_entre_temperature
+    name: Temperatur
+
+  - type: history-graph
+    title: Temperatur
+    entities: 
+      - sensor.hall_entre_temperature
+      - sensor.hall_overvaning_temperature
+
+    
 
 #  - type: map
 #    aspect_ratio: 16:9
