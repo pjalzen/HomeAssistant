@@ -8,6 +8,7 @@
 !*.py
 !*.xml
 !*.md
+!*.js
 !assistants
 !custom_components
 !media_player
@@ -19,6 +20,7 @@
 !packages
 !python_scripts
 !themes
+!www
 
 # Ignore folders.
 .storage
