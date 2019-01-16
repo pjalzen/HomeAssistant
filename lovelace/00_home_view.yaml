@@ -8,16 +8,15 @@ cards:
     entity: alarm_control_panel.brunnsgatan_alarm
 
   - type: entities
-    title: all devices
-    show_header_toggle: true
+    title: BMW
     entities:
       - device_tracker.x3_xdrive20d
-      - device_tracker.i3s_94
-
-  - type: entities
-    title: all locks
-    show_header_toggle: true
-    entities:
       - lock.x3_xdrive20d_lock
+      - device_tracker.i3s_94
       - lock.i3s_94_lock
 
+  - type: map
+    aspect_ratio: 16:9
+    default_zoom: 8
+    entities:
+      - device_tracker.pj
