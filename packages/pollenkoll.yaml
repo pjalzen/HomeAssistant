@@ -1,38 +1,38 @@
-homeassistant:
-  customize_glob:
-    sensor.pollen*:
-      custom_ui_state_card: state-card-custom-ui
-      templates:
-        hs_color: "if (state === 'no levels') return [0, 0];
-        else if (state === 'low levels') return [50, 70];
-        else if (state === 'low-moderate levels') return [40, 70];
-        else if (state === 'moderate levels') return [30, 70];
-        else if (state === 'moderate-high levels') return [20, 85];
-        else if (state === 'high levels') return [10, 65];
-        else if (state === 'very high levels') return [0, 85];"
+#homeassistant:
+  #customize_glob:
+  #  sensor.pollen*:
+  #    custom_ui_state_card: state-card-custom-ui
+  #    templates:
+  #      hs_color: "if (state === 'no levels') return [0, 0];
+  #      else if (state === 'low levels') return [50, 70];
+  #      else if (state === 'low-moderate levels') return [40, 70];
+  #      else if (state === 'moderate levels') return [30, 70];
+  #      else if (state === 'moderate-high levels') return [20, 85];
+  #      else if (state === 'high levels') return [10, 65];
+  #      else if (state === 'very high levels') return [0, 85];"
 
-  customize:
-    sensor.pollen_gras:
-      friendly_name: Grass
-      icon: mdi:flower
+  #customize:
+  #  sensor.pollen_gras:
+  #    friendly_name: Grass
+  #    icon: mdi:flower
 
-    sensor.pollen_grabo:
-      friendly_name: Mugwort
-      icon: mdi:flower
+  #  sensor.pollen_grabo:
+  #    friendly_name: Mugwort
+  #    icon: mdi:flower
 
-    sensor.pollen_bjork:
-      friendly_name: Birch
-      icon: mdi:leaf
+  #  sensor.pollen_bjork:
+  #    friendly_name: Birch
+  #    icon: mdi:leaf
     
 sensor:
   - platform: pollenkoll
     sensors:
       - city: Borlänge
         state: Björk
-      - city: Borlänge
-        state: Gråbo
-      - city: Borlänge
-        state: Gräs
+      #- city: Borlänge
+      #  state: Gråbo
+      #- city: Borlänge
+      #  state: Gräs
   - platform: template
     sensors:
       pollen_grabo:

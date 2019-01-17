@@ -6,7 +6,10 @@ homeassistant:
   unit_system: metric                               # metric for Metric, imperial for Imperial
   time_zone: !secret time_zone                      # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   customize: !include_dir_merge_named customize
-  #customize_glob: !include customglob.yaml
+  customize_domain:
+    automation:
+      initial_state: 'on'
+  customize_glob: !include customglob.yaml
   packages: !include_dir_named packages
   #whitelist_external_dirs:
   #  - '/config/www/motion'
@@ -153,7 +156,6 @@ sensor:
     longitude: !secret long_coord
     radius: 100
 
-group: !include groups.yaml
 script: !include scripts.yaml
 automation: !include automations.yaml
 
