@@ -3,7 +3,7 @@ title: BMW X1
 icon: mdi:car-connected
 cards:
   - type: picture-elements
-    image: /local/lovelace/bmw_layer.jpg
+    image: /local/bmw_layer.jpg
     elements:
     # lock
     - type: custom:text-element
