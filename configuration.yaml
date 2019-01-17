@@ -91,7 +91,7 @@ maxcube:
 
 hue:
   bridges:
-    - host: !secret huebridge_ip
+    - host: 192.168.72.215 #!secret huebridge_ip
       #allow_unreachable: true
       #allow_hue_groups: true
 
