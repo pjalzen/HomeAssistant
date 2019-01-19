@@ -54,10 +54,10 @@ panel_iframe:
 #    title: Log
 #    icon: mdi:information-outline
 #    url: !secret logviewer_url
- # router:
- #   title: ASUS Router
- #   icon: mdi:signal
- #   url: http://192.168.72.1
+  router:
+    title: ASUS Router
+    icon: mdi:signal
+    url: http://192.168.72.1
  # modem:
  #   title: Com Hem Modem
  #   icon: mdi:router-wireless
