@@ -39,7 +39,7 @@
       - switch
       - script
       - device_tracker
-    entities:
+    #entities:
       # - sensor.since_last_boot
       # - sensor.last_boot
       # - sensor.date__time

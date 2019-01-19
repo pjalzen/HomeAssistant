@@ -4,6 +4,7 @@
 # Any changes made to it will be overwritten the next time the script is run.
 
 resources:
+- {type: js, url: /local/krisinfo-card.js}
 - {type: css, url: 'https://fonts.googleapis.com/css?family=Roboto+Condensed'}
 title: Home
 views:
@@ -16,10 +17,34 @@ views:
   - entities: [device_tracker.i3s_94, lock.i3s_94_lock]
     title: BMW i3
     type: entities
-  - {entity: group.all_lights, name: Lampor, type: light}
   - entities: [group.all_lights, group.all_switches]
     show_header_toggle: true
+    title: Lampor och Brytare
     type: entities
+  - entity: script.lights_off
+    name: Turn Off Lights
+    tap_action:
+      action: call-service
+      service: {entity_id: script.lights_off}
+      service_data: {}
+    type: entity-button
+  - entity: script.lights_on
+    name: Turn On Lights
+    tap_action:
+      action: call-service
+      service: {entity_id: script.lights_on}
+      service_data: {}
+    type: entity-button
+  - card: {title: Home, type: glance}
+    entities: [device_tracker.perjohan_pj_iphone, device_tracker.helenasiphonelocal,
+      device_tracker.oneplus_6tlocal, device_tracker.oneplus_6local, device_tracker.x3_xdrive20d,
+      device_tracker.i3s_94]
+    state_filter: [home]
+    type: entity-filter
+  - {entity: sensor.hall_entre_temperature, name: Temperatur, type: sensor}
+  - entities: [sensor.hall_entre_temperature, sensor.hall_overvaning_temperature]
+    title: Temperatur
+    type: history-graph
   icon: mdi:home
   title: Brunnsgatan 25
 - cards:
@@ -54,3 +79,31 @@ views:
   - {camera_image: camera.kallare, entity: camera.kallare, show_info: true, tap_action: dialog,
     title: Källare, type: picture-entity}
   title: Basement
+- cards:
+  - elements:
+    - style: {color: white, left: 10%, top: 86%}
+      text: Slot
+      type: custom:text-element
+    - entity: binary_sensor.x3_xdrive20d_door_lock_state
+      style: {--paper-item-icon-color: white, left: 10%, top: 91.5%}
+      tap_action: more-info
+      type: state-icon
+    - entity: binary_sensor.x3_xdrive20d_door_lock_state
+      style: {color: white, left: 10%, top: 97.5%}
+      type: state-label
+    - color_stops: {5: '#09C7E8', 63: '#09A50C'}
+      entity: sensor.x3_xdrive20d_remaining_fuel
+      fill: rgba(54, 65, 78, 0.6)
+      font_style: {color: white, font-size: 1.1em}
+      gradient: true
+      max: 63
+      min: 0
+      name: tank
+      stroke_width: 15
+      style: {height: 4em, left: 5%, top: 6%, transform: none, width: 4em}
+      type: custom:circle-sensor-card
+      units: ' '
+    image: /local/bmw_layer.jpg
+    type: picture-elements
+  icon: mdi:car-connected
+  title: BMW X1
