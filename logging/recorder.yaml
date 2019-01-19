@@ -1,5 +1,3 @@
-include:
-  domains:
-    -sensor
-    -switch
-    -media_player
+#db_url: 
+purge_keep_days: 3
+#purge_interval: 1
