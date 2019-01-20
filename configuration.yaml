@@ -11,8 +11,8 @@ homeassistant:
       initial_state: 'on'
   customize_glob: !include customglob.yaml
   packages: !include_dir_named packages
-  #whitelist_external_dirs:
-  #  - '/config/www/motion'
+  whitelist_external_dirs:
+    - '/config/www'
 config:                                             # Enables configuration UI
 hassio:
 http:
