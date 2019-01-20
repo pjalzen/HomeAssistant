@@ -18,12 +18,14 @@ import {
             :host {
               cursor: pointer;
             }
+  
             .container {
               position: relative;
               height: 100%;
               display: flex;
               flex-direction: column;
             }
+  
             .labelContainer {
               position: absolute;
               top: 0;
@@ -48,6 +50,7 @@ import {
             #label, #name {
               margin: 1% 0;
             }
+  
             .text, #name {
               font-size: 100%;
             }
@@ -55,6 +58,7 @@ import {
             .unit {
               font-size: 75%;
             }
+  
         </style>
         <div class="container" id="container" on-click="${() => this._click()}">
           <svg viewbox="0 0 200 200" id="svg">
