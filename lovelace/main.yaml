@@ -62,7 +62,7 @@ resources:
 
   - url: /local/text-element.js?v=0
     type: js
-  - url: /local/circle-sensor-card.js?v=0
+  - url: /local/circle-sensor-card.js
     type: module
   - url: /local/krisinfo-card.js
     type: js

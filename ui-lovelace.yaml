@@ -4,6 +4,8 @@
 # Any changes made to it will be overwritten the next time the script is run.
 
 resources:
+- {type: js, url: '/local/text-element.js?v=0'}
+- {type: module, url: '/local/circle-sensor-card.js'}
 - {type: js, url: /local/krisinfo-card.js}
 - {type: css, url: 'https://fonts.googleapis.com/css?family=Roboto+Condensed'}
 title: Home
@@ -106,4 +108,4 @@ views:
     image: /local/bmw_layer.jpg
     type: picture-elements
   icon: mdi:car-connected
-  title: BMW X1
+  title: BMW X3
