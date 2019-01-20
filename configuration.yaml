@@ -36,7 +36,7 @@ cloud: !include assistants/cloud.yaml
 # ########################################
 map:                                                # Enables a map showing the location of tracked devices
 frontend:                                           # Enables the frontend
-  javascript_version: latest 
+  javascript_version: auto 
   themes: !include_dir_named themes
   # extra_html_url:
   #   - /local/custom_ui/state-card-custom-ui.html
