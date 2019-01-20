@@ -6,11 +6,11 @@
       - media_player
       #- sun
       - calendar
-      # - sensor
+      - sensor
       - group
       - switch
       - script
-      # - binary_sensor
+      - binary_sensor
       - device_tracker
     #entities:
       # - sensor.since_last_boot
