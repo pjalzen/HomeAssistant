@@ -44,14 +44,6 @@ resources:
  # - url: !resource toggle-lock-entity-row/toggle-lock-entity-row.js
  #   type: js
 
-  - url: /local/text-element.js?v=0
-    type: js
-  - url: /local/circle-sensor-card.js
-    type: module
-  - url: /local/krisinfo-card.js
-    type: js
-  - url: https://fonts.googleapis.com/css?family=Roboto+Condensed
-    type: css 
   # custom-lovelace
   - url: /local/custom-lovelace/alarm_control_panel-card/alarm_control_panel-card.js
     type: js  
@@ -76,6 +68,15 @@ resources:
   # tracker-card 
   - url: /local/tracker-card.js?v=0
     type: js
+  # other
+  - url: /local/text-element.js?v=0
+    type: js
+  - url: /local/circle-sensor-card.js
+    type: module
+  - url: /local/krisinfo-card.js
+    type: js
+  - url: https://fonts.googleapis.com/css?family=Roboto+Condensed
+    type: css 
     
 title: Home
 # excluded_entities:
