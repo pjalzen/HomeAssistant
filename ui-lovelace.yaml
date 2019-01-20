@@ -4,6 +4,17 @@
 # Any changes made to it will be overwritten the next time the script is run.
 
 resources:
+- {type: js, url: /local/custom-lovelace/alarm_control_panel-card/alarm_control_panel-card.js}
+- {type: js, url: /local/custom-lovelace/beer-card/beer-card.js}
+- {type: js, url: /local/custom-lovelace/bignumber-card/bignumber-card.js}
+- {type: js, url: /local/custom-lovelace/entity-attributes-card/entity-attributes-card.js}
+- {type: js, url: /local/custom-lovelace/gauge-card/gauge-card.js}
+- {type: js, url: /local/custom-lovelace/group-card/group-card.js}
+- {type: js, url: /local/custom-lovelace/home-setter/home-setter.js}
+- {type: js, url: /local/custom-lovelace/monster-card/monster-card.js}
+- {type: js, url: /local/custom-lovelace/plan-coordinates/plan-coordinates.js}
+- {type: js, url: /local/custom-lovelace/thermostat-card/thermostat-card.js}
+- {type: js, url: '/local/tracker-card.js?v=0'}
 - {type: js, url: '/local/text-element.js?v=0'}
 - {type: module, url: /local/circle-sensor-card.js}
 - {type: js, url: /local/krisinfo-card.js}
@@ -80,6 +91,9 @@ views:
 - cards:
   - {camera_image: camera.kallare, entity: camera.kallare, show_info: true, tap_action: dialog,
     title: Källare, type: picture-entity}
+  - title: null
+    trackers: [sensor.custom_card_tracker]
+    type: custom:tracker-card
   title: Basement
 - cards:
   - elements:
@@ -104,7 +118,7 @@ views:
       style: {height: 4em, left: 5%, top: 6%, transform: none, width: 4em}
       type: custom:circle-sensor-card
       units: ' '
-    image: /local/bmw_layer.jpg
+    image: /local/bmw-x3.jpg
     type: picture-elements
   icon: mdi:car-connected
   title: BMW X3
