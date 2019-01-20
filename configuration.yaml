@@ -50,7 +50,7 @@ panel_iframe:
     title: Editor
     icon: mdi:wrench
     url: http://hassio.local:3218
-  sqlite-web:
+  sqlite:
     title: SQLite Web
     icon: mdi:database
     url: https://hassio.local:6210
