@@ -46,7 +46,7 @@ resources:
 
   - url: /local/text-element.js?v=0
     type: js
-  - url: /local/circle-sensor-card.js
+  - url: custom-cards/circle-sensor-card.js
     type: module
   - url: /local/krisinfo-card.js
     type: js
@@ -74,7 +74,7 @@ resources:
   - url: /local/custom-lovelace/thermostat-card/thermostat-card.js
     type: js 
   # tracker-card 
-  - url: /local/tracker-card.js?v=0
+  - url: custom-cards/tracker-card.js?v=0
     type: js
     
 title: Home

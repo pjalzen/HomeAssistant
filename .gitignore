@@ -17,6 +17,7 @@
 !entities
 !logging
 !lovelace
+!lovelace/*
 !packages
 !python_scripts
 !themes
