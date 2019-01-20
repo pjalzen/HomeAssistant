@@ -21,6 +21,7 @@
 !python_scripts
 !themes
 !www
+!www/custom-lovelace
 
 # Ignore folders.
 .storage
