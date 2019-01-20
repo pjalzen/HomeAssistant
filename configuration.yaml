@@ -50,14 +50,22 @@ panel_iframe:
     title: Editor
     icon: mdi:wrench
     url: http://hassio.local:3218
-#  log_viewer:
+  sqlite-web:
+    title: SQLite Web
+    icon: mdi:database
+    url: http://hassio.local:4444
+  influxdb:
+    title: InfluxDB
+    icon: mdi:chart-areaspline
+    url: http://hassio.local:8888
+#    log_viewer:
 #    title: Log
 #    icon: mdi:information-outline
 #    url: !secret logviewer_url
-  router:
-    title: ASUS Router
-    icon: mdi:signal
-    url: http://router.asus.com
+#  router:
+#    title: ASUS Router
+#    icon: mdi:signal
+#    url: http://router.asus.com
  # modem:
  #   title: Com Hem Modem
  #   icon: mdi:router-wireless
