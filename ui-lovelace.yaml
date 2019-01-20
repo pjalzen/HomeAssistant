@@ -4,6 +4,8 @@
 # Any changes made to it will be overwritten the next time the script is run.
 
 resources:
+- {type: js, url: '/local/text-element.js?v=0'}
+- {type: module, url: /local/circle-sensor-card.js}
 - {type: js, url: /local/krisinfo-card.js}
 - {type: css, url: 'https://fonts.googleapis.com/css?family=Roboto+Condensed'}
 title: Home
@@ -91,19 +93,7 @@ views:
     - entity: binary_sensor.x3_xdrive20d_door_lock_state
       style: {color: white, left: 10%, top: 97.5%}
       type: state-label
-    - color_stops: {5: '#09C7E8', 63: '#09A50C'}
-      entity: sensor.x3_xdrive20d_remaining_fuel
-      fill: rgba(54, 65, 78, 0.6)
-      font_style: {color: white, font-size: 1.1em}
-      gradient: true
-      max: 63
-      min: 0
-      name: tank
-      stroke_width: 15
-      style: {height: 4em, left: 5%, top: 6%, transform: none, width: 4em}
-      type: custom:circle-sensor-card
-      units: ' '
     image: /local/bmw_layer.jpg
     type: picture-elements
   icon: mdi:car-connected
-  title: BMW X1
+  title: BMW X3
