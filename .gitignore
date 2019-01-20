@@ -22,6 +22,7 @@
 !python_scripts
 !themes
 !www
+!www/*.jpg
 !www/custom-lovelace
 !www/custom-lovelace/*
 
