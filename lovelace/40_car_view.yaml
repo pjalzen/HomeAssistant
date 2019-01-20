@@ -6,7 +6,7 @@ cards:
     image: /local/bmw-x3.jpg
     elements:
     # lock
-      - type: custom:text-element
+      - type: "custom:text-element"
         text: "Slot"
         style:
           top: 86%
@@ -27,7 +27,7 @@ cards:
           left: 10%
           color: white
       # remaining fuel
-      - type: custom:circle-sensor-card
+      - type: "custom:circle-sensor-card"
         entity: sensor.x3_xdrive20d_remaining_fuel
         max: 63
         min: 0
