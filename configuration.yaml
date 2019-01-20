@@ -63,10 +63,10 @@ panel_iframe:
  #   icon: mdi:router-wireless
  #   url: http://192.168.1.1
 
-#custom_updater:
-#  track:
-#    - cards
-#    - components
+custom_updater:
+  track:
+    - cards
+    - components
 #  card_urls:
 #    - "https://github.com/kalkih/mini-media-player/blob/master/tracker.json"
 #  # show_installable: true

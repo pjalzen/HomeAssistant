@@ -1,11 +1,7 @@
 resources:
- # - url: !resource plan-coordinates/plan-coordinates.js
- #   type: js
  # - url: !resource fold-entity-row/fold-entity-row.js
  #   type: js
  # - url: !resource animated-weather-card/weather-card.js
- #   type: js
- # - url: !resource monster-card/monster-card.js?v=0.2.3
  #   type: js
  # - url: !resource layout-card/layout-card.js
  #   type: js
@@ -31,23 +27,11 @@ resources:
  #   type: js
  # - url: !resource useful-markdown-card/useful-markdown-card.js
  #   type: js
- # - url: !resource gauge-card/gauge-card.js
- #   type: js
- # - url: !resource bignumber/bignumber-card.js
- #   type: js
  # - url: !resource column-card/column-card.js
- #   type: js
- # - url: !resource alarm_control_panel-card/alarm_control_panel-card.js
- #   type: js
- # - url: !resource entity-attributes-card/entity-attributes-card.js?v=0.1.1
- #   type: js
- # - url: !resource home-setter/home-setter.js?v=0.0.1
  #   type: js
  # - url: !resource tracker-card/tracker-card.js?v=0.1.5
  #   type: js
  # - url: !resource light-slider/light-slider-element.js
- #   type: js
- # - url: !resource group-card/group-card.js
  #   type: js
  # - url: !resource state-element/state-element.js
  #   type: js
@@ -68,7 +52,31 @@ resources:
     type: js
   - url: https://fonts.googleapis.com/css?family=Roboto+Condensed
     type: css 
-
+  # custom-lovelace
+  - url: /local/custom-lovelace/alarm_control_panel-card.js
+    type: js  
+  - url: /local/custom-lovelace/beer-card.js
+    type: js  
+  - url: /local/custom-lovelace/bignumber-card.js
+    type: js  
+  - url: /local/custom-lovelace/entity-attributes-card.js
+    type: js  
+  - url: /local/custom-lovelace/gauge-card.js
+    type: js  
+  - url: /local/custom-lovelace/group-card.js
+    type: js  
+  - url: /local/custom-lovelace/home-setter.js
+    type: js  
+  - url: /local/custom-lovelace/monster-card.js
+    type: js  
+  - url: /local/custom-lovelace/plan-coordinates.js
+    type: js  
+  - url: /local/custom-lovelace/thermostat-card.js
+    type: js 
+  # tracker-card 
+  - url: /local/tracker-card.js?v=0
+    type: js
+    
 title: Home
 # excluded_entities:
 #   {% for state in states.alert %}
