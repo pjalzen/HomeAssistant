@@ -51,8 +51,6 @@ resources:
  #   type: js
  # - url: !resource state-element/state-element.js
  #   type: js
- # - url: !resource text-element/text-element.js
- #   type: js
  # - url: !resource username-element/username-element.js
  #   type: js
  # - url: !resource state-attribute-element/state-attribute-element.js
@@ -62,6 +60,10 @@ resources:
  # - url: !resource toggle-lock-entity-row/toggle-lock-entity-row.js
  #   type: js
 
+  - url: /local/text-element.js?v=0
+    type: js
+  - url: /local/circle-sensor-card.js?v=0
+    type: module
   - url: /local/krisinfo-card.js
     type: js
   - url: https://fonts.googleapis.com/css?family=Roboto+Condensed
