@@ -33,20 +33,20 @@ cards:
         min: 0
         stroke_width: 15
         # stroke_color: '#03a9f4'
-      #  gradient: true
-      #  fill: rgba(54, 65, 78, 0.6)
+        gradient: true
+        fill: rgba(54, 65, 78, 0.6)
         name: tank
-      #  units: ' '
-      #  font_style:
-      #    font-size: 1.1em
-      #    color: white
+        units: ' '
+        font_style:
+          font-size: 1.1em
+          color: white
           # text-shadow: '2px 2px black'
         #color_stops:
         #  5: '#09C7E8'
         #  63: '#09A50C'
-      #  style:
-      #    top: 6%
-      #    left: 5%
-      #    width: 4em
-      #    height: 4em
-      #    transform: none
+        style:
+          top: 6%
+          left: 5%
+          width: 4em
+          height: 4em
+          transform: none
