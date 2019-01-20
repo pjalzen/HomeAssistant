@@ -41,9 +41,9 @@ cards:
           font-size: 1.1em
           color: white
           # text-shadow: '2px 2px black'
-        color_stops:
-          5: '#09C7E8'
-          63: '#09A50C'
+        #color_stops:
+        #  5: '#09C7E8'
+        #  63: '#09A50C'
         style:
           top: 6%
           left: 5%
