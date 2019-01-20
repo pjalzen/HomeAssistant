@@ -53,12 +53,12 @@ panel_iframe:
   sqlite-web:
     title: SQLite Web
     icon: mdi:database
-    url: http://hassio.local:4444
+    url: https://hassio.local:6210
   influxdb:
     title: InfluxDB
     icon: mdi:chart-areaspline
     url: http://hassio.local:8888
-#    log_viewer:
+#  log_viewer:
 #    title: Log
 #    icon: mdi:information-outline
 #    url: !secret logviewer_url
