@@ -22,6 +22,7 @@
 !themes
 !www
 !www/custom-lovelace
+!www/custom-lovelace/*
 
 # Ignore folders.
 .storage
