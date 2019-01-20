@@ -3,7 +3,7 @@ title: BMW X3
 icon: mdi:car-connected
 cards:
   - type: picture-elements
-    image: /local/bmw_layer.jpg
+    image: /local/bmw-x3.jpg
     elements:
     # lock
       - type: custom:text-element
