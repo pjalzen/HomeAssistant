@@ -47,7 +47,7 @@ lovelace:
 
 panel_iframe:
   configurator:
-    title: IDE
+    title: Editor
     icon: mdi:wrench
     url: http://hassio.local:3218
 #  log_viewer:
@@ -57,7 +57,7 @@ panel_iframe:
   router:
     title: ASUS Router
     icon: mdi:signal
-    url: http://192.168.72.1
+    url: http://router.asus.com
  # modem:
  #   title: Com Hem Modem
  #   icon: mdi:router-wireless
