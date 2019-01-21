@@ -60,10 +60,10 @@ panel_iframe:
     title: InfluxDB
     icon: mdi:chart-areaspline
     url: !secret url_influxdb
-#  log_viewer:
-#    title: Log
-#    icon: mdi:information-outline
-#    url: !secret url_logviewer
+  log_viewer:
+    title: Log
+    icon: mdi:information-outline
+    url: !secret url_logviewer
 #  router:
 #    title: ASUS Router
 #    icon: mdi:signal
