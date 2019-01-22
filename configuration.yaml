@@ -56,10 +56,10 @@ panel_iframe:
     title: SQLite Web
     icon: mdi:database
     url: !secret url_sqlite
-  influxdb:
-    title: InfluxDB
-    icon: mdi:chart-areaspline
-    url: !secret url_influxdb
+  #influxdb:
+  #  title: InfluxDB
+  #  icon: mdi:chart-areaspline
+  #  url: !secret url_influxdb
   log_viewer:
     title: Log
     icon: mdi:information-outline
