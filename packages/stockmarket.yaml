@@ -1,6 +1,6 @@
 sensor:
   - platform: alpha_vantage
-    api_key: DY5DNO61YP2GA1SM
+    api_key: !secret alpha_vantage_api_key
     symbols:
       - symbol: AMZN
         name: Amazon
