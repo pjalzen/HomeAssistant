@@ -1,0 +1,27 @@
+sensor:
+  - platform: alpha_vantage
+    api_key: YOUR_API_KEY
+    symbols:
+      - symbol: AMZN
+        name: Amazon
+      - symbol: MSFT
+        name: Micorsoft
+      - symbol: MSFT
+        name: Micorsoft
+      - symbol: NKE
+        name: Nike
+      - symbol: BOL.ST
+        name: Boliden
+
+    foreign_exchange:
+      - name: USD_EUR
+        from: USD
+        to: EUR
+
+#  - platform: yahoo_finance
+#    name: Amazon
+#    symbol: AWS
+
+#  - platform: yahoo_finance
+#    name: Microsoft
+#    symbol: MSFT
