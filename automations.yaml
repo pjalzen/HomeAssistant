@@ -1,5 +1,6 @@
 - id: '1532956645522'
   alias: Just before sunset
+  initial_state: on
   trigger:
   - event: sunset
     offset: -00:30:00
