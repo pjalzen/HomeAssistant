@@ -69,24 +69,6 @@
   - data:
       entity_id: light.living_room
     service: light.turn_off
-- id: '1543169877134'
-  alias: Lights on in the morning
-  trigger:
-  - at: 06:00
-    platform: time
-  condition:
-  - before: sunrise
-    condition: sun
-  action:
-  - data:
-      entity_id: switch.everspring_an180_plugin_onoff_module_switch
-    service: switch.turn_on
-  - data:
-      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
-    service: switch.turn_on
-  - data:
-      entity_id: switch.timer
-    service: switch.turn_on
 - id: '1543170136376'
   alias: Lights off by sunrise
   trigger:
