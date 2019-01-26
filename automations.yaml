@@ -38,6 +38,7 @@
     service: switch.turn_on
 - id: '1534049443061'
   alias: Turn lights off by midnight
+  initial_state: on
   trigger:
   - at: '23:59'
     platform: time
@@ -72,6 +73,7 @@
     service: light.turn_off
 - id: '1543170136376'
   alias: Lights off by sunrise
+  initial_state: on
   trigger:
   - event: sunrise
     offset: 00:00
@@ -89,6 +91,7 @@
     service: switch.turn_off
 - id: '1543612075331'
   alias: Beamer Home
+  initial_state: on
   trigger:
   - entity_id: device_tracker.x3_xdrive20d
     event: enter
@@ -99,6 +102,7 @@
   - service: media_player.turn_on
 - id: '1546120746337'
   alias: Run Backup 3AM
+  initial_state: on
   trigger:
   - at: 03:00
     platform: time
@@ -109,6 +113,7 @@
     service: script.ha_backup
 - id: '1546532215998'
   alias: Set HA theme for day and night
+  initial_state: on
   trigger:
   - platform: homeassistant
     event: start
@@ -125,10 +130,10 @@
       name: "{% if states.sun.sun.state == \"above_horizon\" %}\n  light-lightred\n\
         {% else %}\n  dark-lightred\n{% endif %}\n"
 
-- alias: 'Hass start'
-  trigger:
-    platform: homeassistant
-    event: start
-    action: 
-      - service: automation.turn_on
-        entity_id: groups.all_automations
+#- alias: 'Hass start'
+#  trigger:
+#    platform: homeassistant
+#    event: start
+#    action: 
+#      - service: automation.turn_on
+#        entity_id: groups.all_automations
