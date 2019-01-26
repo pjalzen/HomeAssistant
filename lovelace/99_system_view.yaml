@@ -1,0 +1,12 @@
+title: System
+cards:
+  - type: entities
+    title: all automations
+    show_header_toggle: true
+    entities:
+      - automation.set_ha_theme_for_day_and_night
+      - automation.just_before_sunset
+      - automation.lights_off_by_sunrise
+      - automation.lights_on_in_the_evening
+      - automation.turn_lights_off_by_midnight
+      - automation.run_backup_3am
