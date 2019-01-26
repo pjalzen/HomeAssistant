@@ -1,6 +1,6 @@
 class TextElement extends HTMLElement {
   setConfig(config) {
-    if (!config.text) {
+    if (!config.text) { 
       throw new Error("You need to define a 'text:' in your configuration")
     }
     this.config = config;
@@ -11,5 +11,4 @@ class TextElement extends HTMLElement {
     return 1;
   }
 }
-
 customElements.define('text-element', TextElement);

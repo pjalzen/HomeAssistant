@@ -73,8 +73,7 @@ views:
     show_header_toggle: true
     title: all lights
     type: entities
-  - entities: [automation.lights_on_in_the_evening, automation.just_before_sunset,
-      automation.turn_lights_off_by_midnight]
+  - entities: [automation.just_before_sunset, automation.turn_lights_off_by_midnight]
     show_header_toggle: true
     title: all automations
     type: entities
@@ -94,6 +93,9 @@ views:
   - title: null
     trackers: [sensor.custom_card_tracker]
     type: custom:tracker-card
+  - entities: [sensor.hall_entre_temperature, sensor.hall_overvaning_temperature]
+    title: Finance
+    type: history-graph
   title: Basement
 - cards:
   - elements:
@@ -120,5 +122,26 @@ views:
       units: ' '
     image: /local/bmw-x3.jpg
     type: picture-elements
+  - elements:
+    - style: {color: white, left: 10%, top: 86%}
+      text: Slot
+      type: custom:text-element
+    - entity: binary_sensor.i3s_94_door_lock_state
+      style: {--paper-item-icon-color: white, left: 10%, top: 91.5%}
+      tap_action: more-info
+      type: state-icon
+    - entity: binary_sensor.i3s_94_door_lock_state
+      style: {color: white, left: 10%, top: 97.5%}
+      type: state-label
+    image: /local/bmw-i3.jpg
+    type: picture-elements
   icon: mdi:car-connected
-  title: BMW X3
+  title: BMW
+- cards:
+  - entities: [automation.set_ha_theme_for_day_and_night, automation.just_before_sunset,
+      automation.lights_off_by_sunrise, automation.turn_lights_off_by_midnight, automation.run_backup_3am]
+    show_header_toggle: true
+    title: A  utomations
+    type: entities
+  icon: mdi:settings
+  title: Settings
