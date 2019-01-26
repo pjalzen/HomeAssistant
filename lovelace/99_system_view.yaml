@@ -1,4 +1,5 @@
-title: System
+title: Settings
+icon: mdi:settings
 cards:
   - type: entities
     title: all automations
