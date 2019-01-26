@@ -77,8 +77,9 @@ custom_updater:
   track:
     - cards
     - components
-#  card_urls:
-#    - "https://github.com/kalkih/mini-media-player/blob/master/tracker.json"
+  card_urls:
+    - https://raw.githubusercontent.com/custom-cards/text-element/master/text-element.js
+    - https://raw.githubusercontent.com/custom-cards/vertical-stack-in-card/master/vertical-stack-in-card.js
 #  # show_installable: true
 
 

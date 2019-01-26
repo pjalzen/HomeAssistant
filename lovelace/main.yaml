@@ -21,8 +21,6 @@ resources:
  #   type: js
  # - url: !resource button-card/button-card.js
  #   type: module
- # - url: !resource vertical-stack-in-card/vertical-stack-in-card.js?v=0.0.8
- #   type: js
  # - url: !resource slider-entity-row/slider-entity-row.js
  #   type: js
  # - url: !resource useful-markdown-card/useful-markdown-card.js
@@ -69,10 +67,12 @@ resources:
   - url: /local/tracker-card.js?v=0
     type: js
   # other
-  - url: /local/text-element.js?v=0
+  - url: /local/text-element.js
     type: js
   - url: /local/circle-sensor-card.js
     type: module
+  - url: /local/vertical-stack-in-card.js
+    type: js
   - url: /local/krisinfo-card.js
     type: js
   - url: https://fonts.googleapis.com/css?family=Roboto+Condensed
