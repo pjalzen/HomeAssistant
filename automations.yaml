@@ -123,3 +123,11 @@
     data_template:
       name: "{% if states.sun.sun.state == \"above_horizon\" %}\n  light-lightred\n\
         {% else %}\n  dark-lightred\n{% endif %}\n"
+
+- alias: 'Hass start'
+  trigger:
+    platform: homeassistant
+    event: start
+    action: 
+      - service: automation.turn_on
+        entity_id: groups.all_automations

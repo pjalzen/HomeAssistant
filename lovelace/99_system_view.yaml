@@ -2,7 +2,7 @@ title: Settings
 icon: mdi:settings
 cards:
   - type: entities
-    title: all automations
+    title: A  utomations
     show_header_toggle: true
     entities:
       - automation.set_ha_theme_for_day_and_night

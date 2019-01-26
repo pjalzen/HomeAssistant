@@ -27,7 +27,6 @@ cards:
     title: all automations
     show_header_toggle: true
     entities:
-      - automation.lights_on_in_the_evening
       - automation.just_before_sunset
       - automation.turn_lights_off_by_midnight
   - type: media-control
