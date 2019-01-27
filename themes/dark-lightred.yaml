@@ -9,7 +9,6 @@
   secondary-text-color: "#FF8888"
   text-primary-color: "#FFFFFF"
   disabled-text-color: "#5B5B77"
-  title-text-color: "FFFFFF"    # PJ
   ### Sidebar Menu ###
   sidebar-icon-color: "#7D8BA6"
   sidebar-text-color: "#F1F1F1"
@@ -41,5 +40,5 @@
   ### Table row ###
   table-row-background-color: var(--primary-background-color)
   table-row-alternative-background-color: var(--secondary-background-color)
-  table-row-color: "#FFFFFF"
+
  
