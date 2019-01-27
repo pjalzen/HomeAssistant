@@ -4,21 +4,21 @@ sensor:
     symbols:
       - symbol: AMZN
         name: Amazon
-      - symbol: MSFT
-        name: Micorsoft
-      - symbol: MSFT
-        name: Micorsoft
-      - symbol: NKE
-        name: Nike
-      - symbol: BOL.ST
-        name: Boliden
-    foreign_exchange:
-      - name: USD_EUR
-        from: USD
-        to: EUR
-      - name: EUR_SEK
-        from: EUR
-        to: SEK
+    #  - symbol: MSFT
+    #    name: Micorsoft
+    #  - symbol: MSFT
+    #    name: Micorsoft
+    #  - symbol: NKE
+    #    name: Nike
+    #  - symbol: BOL.ST
+    #    name: Boliden
+    #foreign_exchange:
+    #  - name: USD_EUR
+    #    from: USD
+    #    to: EUR
+    #  - name: EUR_SEK
+    #    from: EUR
+    #    to: SEK
 
 #  - platform: yahoo_finance
 #    name: Amazon
