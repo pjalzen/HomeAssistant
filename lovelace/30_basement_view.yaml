@@ -14,5 +14,4 @@ cards:
   - type: history-graph
     title: Finance
     entities: 
-      - sensor.hall_entre_temperature
-      - sensor.hall_overvaning_temperature
+      - sensor.amazon
