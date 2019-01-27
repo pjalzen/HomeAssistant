@@ -6,9 +6,3 @@ cards:
     camera_image: camera.kallare
     show_info: true
     tap_action: dialog
-
-  - type: history-graph
-    title: Finance
-    entities: 
-      - sensor.amazon
-      - sensor.microsoft

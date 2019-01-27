@@ -1,0 +1,8 @@
+title: Finance
+icon: mdi:finance
+cards:
+  - type: history-graph
+    title: Finance
+    entities: 
+      - sensor.amazon
+      - sensor.microsoft
