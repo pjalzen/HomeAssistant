@@ -41,4 +41,5 @@
   ### Table row ###
   table-row-background-color: var(--primary-background-color)
   table-row-alternative-background-color: var(--secondary-background-color)
+  table-row-color: "#FF8888"
  
