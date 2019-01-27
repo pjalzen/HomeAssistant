@@ -1,4 +1,5 @@
 title: Upstairs
+icon: mdi:arrow-up-thick
 cards:
   - type: picture-entity
     title: "Hall \xF6verv\xE5ning"

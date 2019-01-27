@@ -1,4 +1,5 @@
 title: Basement
+icon: mdi:arrow-down-thick
 cards:
   - type: picture-entity
     title: "Källare"

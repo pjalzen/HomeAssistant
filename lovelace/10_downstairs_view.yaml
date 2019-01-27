@@ -1,5 +1,6 @@
     
 title: Downstairs
+icon: mdi:sofa
 cards:
   - type: picture-entity
     title: Vardagsrum
