@@ -32,7 +32,6 @@
   ### Cards ###
   paper-card-background-color: "#252B36"
   paper-listbox-background-color: var(--primary-background-color)
-  paper-card-color: "#FFFFFF"
   ### Toggles ###
   paper-toggle-button-checked-button-color: "#FF6262"
   paper-toggle-button-checked-bar-color: "#FFA3A3"
