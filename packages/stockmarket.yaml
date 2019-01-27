@@ -6,8 +6,6 @@ sensor:
         name: Amazon
       - symbol: MSFT
         name: Microsoft
-    #  - symbol: MSFT
-    #    name: Micorsoft
     #  - symbol: NKE
     #    name: Nike
     #  - symbol: BOL.ST

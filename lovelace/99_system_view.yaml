@@ -5,8 +5,9 @@ cards:
     title: Automations
     show_header_toggle: false
     entities:
-      - automation.set_ha_theme_for_day_and_night
-      - automation.just_before_sunset
-      - automation.lights_off_by_sunrise
-      - automation.turn_lights_off_by_midnight
-      - automation.run_backup_3am
+      - group.all_automations
+  - type: custom:tracker-card
+    title:
+    trackers:
+      - sensor.custom_card_tracker
+      - sensor.custom_component_tracker

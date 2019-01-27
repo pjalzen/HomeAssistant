@@ -27,7 +27,9 @@ cards:
     title: all automations
     show_header_toggle: true
     entities:
-      - automation.just_before_sunset
-      - automation.turn_lights_off_by_midnight
+      - automation.lights_on_just_before_sunset
+      - automation.lights_off_by_midnight
   - type: media-control
     entity: media_player.heos_altan
+  #- type: media-control
+  #  entity: spotify
