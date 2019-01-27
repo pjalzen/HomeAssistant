@@ -1,0 +1,13 @@
+sensor:
+  - platform: trafikverket_weatherstation
+    name: Rv70 Solvarbo
+    api_key: !secret trafikverket_api_key
+    station: Solvarbo
+    monitored_conditions:
+        - air_temp
+        - road_temp
+        - humidity
+        - precipitation
+        - wind_direction
+        - wind_direction_text
+        - wind_speed
