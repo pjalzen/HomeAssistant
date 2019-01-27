@@ -28,14 +28,14 @@ lights_on:
     service: switch.turn_on
 
   # BMW ConnectedDrive
-  bmw_x3_airco:
-    sequence:
-      - service: bmw_connected_drive.activate_air_conditioning
-        data:
-          vin: !secret vin_x3
+bmw_x3_airco:
+  sequence:
+    - service: bmw_connected_drive.activate_air_conditioning
+      data:
+        vin: !secret vin_x3
 
-  bmw_i3_airco:
-    sequence:
-      - service: bmw_connected_drive.activate_air_conditioning
-        data:
-          vin: !secret vin_i3
+bmw_i3_airco:
+  sequence:
+    - service: bmw_connected_drive.activate_air_conditioning
+      data:
+        vin: !secret vin_i3

@@ -76,6 +76,7 @@ cards:
           transform: none
 
       - type: "custom:button-card"
+        entity: bmw_connected_drive
         icon: mdi:air-conditioner
         color: rgb(28, 128, 199)
         action: service
@@ -85,9 +86,6 @@ cards:
         style:
           top: 6%
           left: 90%
-          width: 4em
-          height: 4em
-          transform: none
 
 #sensor.x3_xdrive20d_remaining_range_total
 #device_tracker.x3_xdrive20d
