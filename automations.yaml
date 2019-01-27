@@ -72,7 +72,27 @@
   - data:
       entity_id: light.living_room
     service: light.turn_off
-    
+
+- id: '1543169877134'
+  alias: Lights on in the morning
+  initial_state: on
+  trigger:
+  - at: 06:00
+    platform: time
+  condition:
+  - before: sunrise
+    condition: sun
+  action:
+  - data:
+      entity_id: switch.everspring_an180_plugin_onoff_module_switch
+    service: switch.turn_on
+  - data:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
+    service: switch.turn_on
+  - data:
+      entity_id: switch.timer
+    service: switch.turn_on
+
 - id: '1543170136376'
   alias: Lights off by sunrise
   initial_state: on
@@ -92,6 +112,18 @@
       entity_id: switch.timer
     service: switch.turn_off
 
+- id: '1546120746337'
+  alias: Run Backup 3AM
+  initial_state: on
+  trigger:
+  - at: 03:00
+    platform: time
+  condition: []
+  action:
+  - alias: ''
+    data: {}
+    service: script.ha_backup
+
 - id: '1546532215998'
   alias: Set HA theme for day and night
   initial_state: on
@@ -108,8 +140,11 @@
   action:
   - service: frontend.set_theme
     data_template:
-      name: "{% if states.sun.sun.state == \"above_horizon\" %}\n  light-lightred\n\
-        {% else %}\n  dark-lightred\n{% endif %}\n"
+      name: "{% if states.sun.sun.state == \"above_horizon\" %}  
+                  light-lightred
+             {% else %}
+                  dark-lightred
+             {% endif %}"
 
 #- alias: 'Hass start'
 #  trigger:
