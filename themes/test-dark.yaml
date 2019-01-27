@@ -3,10 +3,12 @@
   secondary-background-color: "#303030"
   paper-card-background-color: "#424242"
   paper-item-icon-color: "#1ABA92"
+
   primary-text-color: "#FFFFFF"
   secondary-text-color: "rgba(255, 255, 255, 0.7)"
   disabled-text-color: "rgba(255, 255, 255, 0.5)"
   divider-color: "rgba(255, 255, 255, 0.12)"
+  
   paper-card-header-color: "#FFFFFF"
   paper-listbox-background-color: "#424242"
   paper-listbox-color: "#FFFFFF"
