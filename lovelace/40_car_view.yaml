@@ -7,7 +7,7 @@ cards:
     elements:
     # lock
       - type: "custom:text-element"
-        text: "Slot"
+        text: "Door lock"
         style:
           top: 86%
           left: 10%
@@ -21,7 +21,7 @@ cards:
           left: 10%              
           "--paper-item-icon-color": white
       - type: state-label
-        entity: binary_sensor.x3_xdrive20d_door_lock_state
+        entity: lock.x3_xdrive20d_lock
         style:
           top: 97.5%
           left: 10%
@@ -35,7 +35,7 @@ cards:
         # stroke_color: '#03a9f4'
         gradient: true
         fill: rgba(54, 65, 78, 0.6)
-        name: tank
+        name: Fuel
         units: ' '
         font_style:
           font-size: 1.1em
@@ -50,11 +50,18 @@ cards:
           width: 4em
           height: 4em
           transform: none
+#sensor.x3_xdrive20d_remaining_range_total
+#device_tracker.x3_xdrive20d
+#WBATX3100JLB94067
+#services------
+#bmw_connected_drive.update_state
+#bmw_connected_drive.activate_air_conditioning
+
   - type: picture-elements
     image: /local/bmw-i3.jpg
     elements:
       - type: "custom:text-element"
-        text: "Slot"
+        text: "Door lock"
         style:
           top: 86%
           left: 10%
