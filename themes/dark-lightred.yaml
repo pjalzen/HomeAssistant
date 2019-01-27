@@ -31,7 +31,7 @@
   label-badge-red: "#6C7B9B"
   ### Cards ###
   paper-card-background-color: "#252B36"
-  paper-card-header-color: "#FFFFFF" ##############
+  paper-card-header-color: "#FFFFFF" # Added by PJ #
   paper-listbox-background-color: var(--primary-background-color)
   ### Toggles ###
   paper-toggle-button-checked-button-color: "#FF6262"
@@ -42,4 +42,4 @@
   table-row-background-color: var(--primary-background-color)
   table-row-alternative-background-color: var(--secondary-background-color)
 
- 
+  info-font-color: "#FFFFFF" # Added by PJ #
