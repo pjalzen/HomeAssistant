@@ -36,6 +36,7 @@
   - data:
       entity_id: switch.timer
     service: switch.turn_on
+
 - id: '1534049443061'
   alias: Turn lights off by midnight
   initial_state: on
@@ -71,6 +72,7 @@
   - data:
       entity_id: light.living_room
     service: light.turn_off
+    
 - id: '1543170136376'
   alias: Lights off by sunrise
   initial_state: on
@@ -89,28 +91,7 @@
   - data:
       entity_id: switch.timer
     service: switch.turn_off
-- id: '1543612075331'
-  alias: Beamer Home
-  initial_state: on
-  trigger:
-  - entity_id: device_tracker.x3_xdrive20d
-    event: enter
-    platform: zone
-    zone: zone.home
-  condition: []
-  action:
-  - service: media_player.turn_on
-- id: '1546120746337'
-  alias: Run Backup 3AM
-  initial_state: on
-  trigger:
-  - at: 03:00
-    platform: time
-  condition: []
-  action:
-  - alias: ''
-    data: {}
-    service: script.ha_backup
+
 - id: '1546532215998'
   alias: Set HA theme for day and night
   initial_state: on

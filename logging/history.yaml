@@ -1,59 +1,23 @@
+  include:
+    domains:
+      - sun
+      - automation
+      - light
+      - switch
+      - binary_sensor
+      - device_tracker
+      - script
+    #entities:
   exclude:
     domains:
-      - automation
-      #- alert
       - camera
       - media_player
-      #- sun
       - calendar
       - sensor
       - group
-      - switch
-      - script
-      - binary_sensor
-      - device_tracker
     #entities:
       # - sensor.since_last_boot
       # - sensor.last_boot
       # - sensor.date__time
       # - sensor.date
       # - sensor.time
-      #- binary_sensor.switch_158d0001243520 # bed switch
-      #- binary_sensor.switch_158d00016c0a49 # fd mailbox reset
-      #- binary_sensor.switch_158d00019d674a # floorlamp switch
-      #- binary_sensor.switch_158d0001a5e3c4 # hallway dimmer
-      #- binary_sensor.switch_158d0001a6687f # upstairs litterbox switch
-      #- binary_sensor.switch_158d0001b86ce1 # switch
-      #- binary_sensor.switch_158d0001b8f876 # downstairs litterbox switch
-      #- binary_sensor.motion_sensor_158d000165ff1f # living room motion
-      #- binary_sensor.motion_sensor_158d0001a24ef1 # downstairs litterbox motion
-      #- binary_sensor.motion_sensor_158d0001a66256 # hallway motion
-      #- binary_sensor.motion_sensor_158d0001a66291 # upstairs litterbox motion
-  include:
-    domains:
-      - light
-      - binary_sensor
-    entities:
-      #- sensor.back_door
-      #- sensor.backyard_door
-      #- sensor.balcony_door
-      #- sensor.dining_area_window
-      #- sensor.front_door
-      #- sensor.mailbox
-      #- sensor.last_seen_motion
-      #- sensor.upstairs_hallway_movement
-      #- sensor.front_door_outdoor_movement
-      #- sensor.hallway_movement
-      #- sensor.living_room_movement
-      #- sensor.passage_movement
-      #- sensor.temperature_bedroom
-      #- sensor.temperature_passage
-      #- sensor.temperature_downstairs_bathroom
-      #- sensor.temperature_stefan
-      #- sensor.kitchen_sink
-      #- sensor.water_heater
-      - device_tracker.perjohan_pj_iphone
-      - device_tracker.oneplus_6tlocal
-      - device_tracker.x3_xdrive20d
-      - device_tracker.i3s_94
-      #- switch.roomba      

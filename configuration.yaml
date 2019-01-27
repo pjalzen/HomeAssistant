@@ -74,6 +74,7 @@ panel_iframe:
  #   url: !secret url_modem
 
 custom_updater:
+  show_installable: true
   track:
     - cards
     - components
@@ -81,7 +82,6 @@ custom_updater:
     - https://raw.githubusercontent.com/custom-cards/text-element/master/text-element.js
     - https://raw.githubusercontent.com/custom-cards/vertical-stack-in-card/master/vertical-stack-in-card.js
     - https://raw.githubusercontent.com/kuuji/button-card/master/tracker.json
-#  # show_installable: true
 
 
 # ########################################
