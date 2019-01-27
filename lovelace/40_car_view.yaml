@@ -36,7 +36,7 @@ cards:
         gradient: true
         fill: rgba(54, 65, 78, 0.6)
         name: Fuel
-        units: 'l'
+        units: ' l '
         font_style:
           font-size: 1.1em
           color: white
@@ -59,8 +59,8 @@ cards:
         # stroke_color: '#03a9f4'
         gradient: true
         fill: rgba(54, 65, 78, 0.6)
-        name: Fuel
-        units: ' '
+        name: Range
+        units: ' km '
         font_style:
           font-size: 1.1em
           color: white
@@ -70,7 +70,7 @@ cards:
         #  63: '#09A50C'
         style:
           top: 6%
-          left: 15%
+          left: 25%
           width: 4em
           height: 4em
           transform: none
