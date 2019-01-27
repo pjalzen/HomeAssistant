@@ -35,8 +35,8 @@ cards:
         # stroke_color: '#03a9f4'
         gradient: true
         fill: rgba(54, 65, 78, 0.6)
-        name: Fuel
-        units: ' l '
+        name: Fuel (l)
+        units: ' '
         font_style:
           font-size: 1.1em
           color: white
@@ -59,8 +59,8 @@ cards:
         # stroke_color: '#03a9f4'
         gradient: true
         fill: rgba(54, 65, 78, 0.6)
-        name: Range
-        units: ' km '
+        name: Range (km)
+        units: ' '
         font_style:
           font-size: 1.1em
           color: white
@@ -70,14 +70,27 @@ cards:
         #  63: '#09A50C'
         style:
           top: 6%
-          left: 25%
+          left: 20%
+          width: 4em
+          height: 4em
+          transform: none
+
+      - type: "custom:button-card"
+        icon: mdi:air-conditioner
+        color: rgb(28, 128, 199)
+        action: service
+        service: bmw_connected_drive.activate_air_conditioning
+          data:
+            vin: !secret vin_x3
+        style:
+          top: 6%
+          left: 90%
           width: 4em
           height: 4em
           transform: none
 
 #sensor.x3_xdrive20d_remaining_range_total
 #device_tracker.x3_xdrive20d
-#WBATX3100JLB94067
 #services------
 #bmw_connected_drive.update_state
 #bmw_connected_drive.activate_air_conditioning
