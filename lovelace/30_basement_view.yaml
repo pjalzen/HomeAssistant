@@ -15,3 +15,4 @@ cards:
     title: Finance
     entities: 
       - sensor.amazon
+      - sensor.microsoft
