@@ -7,7 +7,7 @@ cards:
     elements:
     # lock
       - type: "custom:text-element"
-        text: "Door lock"
+        text: "Doors"
         style:
           top: 86%
           left: 10%
@@ -29,7 +29,31 @@ cards:
       # remaining fuel
       - type: "custom:circle-sensor-card"
         entity: sensor.x3_xdrive20d_remaining_fuel
-        max: 63
+        max: 60
+        min: 0
+        stroke_width: 15
+        # stroke_color: '#03a9f4'
+        gradient: true
+        fill: rgba(54, 65, 78, 0.6)
+        name: Fuel
+        units: 'l'
+        font_style:
+          font-size: 1.1em
+          color: white
+          # text-shadow: '2px 2px black'
+        #color_stops:
+        #  5: '#09C7E8'
+        #  63: '#09A50C'
+        style:
+          top: 6%
+          left: 5%
+          width: 4em
+          height: 4em
+          transform: none
+        # remaining range
+      - type: "custom:circle-sensor-card"
+        entity: sensor.x3_xdrive20d_remaining_range_total
+        max: 1000
         min: 0
         stroke_width: 15
         # stroke_color: '#03a9f4'
@@ -46,10 +70,11 @@ cards:
         #  63: '#09A50C'
         style:
           top: 6%
-          left: 5%
+          left: 15%
           width: 4em
           height: 4em
           transform: none
+
 #sensor.x3_xdrive20d_remaining_range_total
 #device_tracker.x3_xdrive20d
 #WBATX3100JLB94067
