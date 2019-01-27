@@ -5,7 +5,12 @@ cards:
     title: Automations
     show_header_toggle: false
     entities:
-      - group.all_automations
+      - automation.lights_on_in_the_morning
+      - automation.lights_off_by_sunrise
+      - automation.lights_on_just_before_sunset
+      - automation.lights_off_by_midnight
+      - automation.set_theme_by_daylight
+      - automation.run_backup_3am
   - type: custom:tracker-card
     title:
     trackers:
