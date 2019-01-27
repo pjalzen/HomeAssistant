@@ -4,8 +4,8 @@ sensor:
     symbols:
       - symbol: AMZN
         name: Amazon
-    #  - symbol: MSFT
-    #    name: Micorsoft
+      - symbol: MSFT
+        name: Micorsoft
     #  - symbol: MSFT
     #    name: Micorsoft
     #  - symbol: NKE

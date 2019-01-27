@@ -123,6 +123,10 @@ verisure:
 media_player: !include entities/media_player.yaml
 bmw_connected_drive: !include entities/bmw.yaml 
 
+camera:
+  platform: mjpeg
+  mjpeg_url: !secret dlink_camera_url
+
 device_tracker: !include entities/device_tracker.yaml
 zone: !include zone.yaml
 
@@ -156,21 +160,9 @@ shell_command:
   #lovelace_gen_states: !secret lovelace_gen_states
 
 
-
-
-# Att sortera!!!!!!!!!!!!!!
-
-
-sensor:
-  - platform: krisinformation
-    name: Krisinformation Borlänge
-    latitude: !secret lat_coord  
-    longitude: !secret long_coord
-    radius: 100
+# ########################################
+# ###      SCRIPTS & AUTOMATIONS       ###
+# ########################################
 
 script: !include scripts.yaml
 automation: !include automations.yaml
-
-camera:
-  platform: mjpeg
-  mjpeg_url: !secret dlink_camera_url
