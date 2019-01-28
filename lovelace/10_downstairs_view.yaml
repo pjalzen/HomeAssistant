@@ -42,7 +42,7 @@ cards:
     color_type: icon
     color: rgb(255, 255, 153)
     icon: mdi:white-balance-incandescent
-    size: 25%
+    size: 60px
     name: Altanslinga
     action: 
       data:
@@ -55,7 +55,7 @@ cards:
     color_type: icon
     color: rgb(255, 255, 153)
     icon: mdi:lightbulb
-    size: 25%
+    size: 50%
     name: Matsal öster
     action: 
       data:
