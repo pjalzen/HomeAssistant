@@ -26,6 +26,7 @@ cards:
     entity: switch.nodon_msp31xx_micro_smart_plug_switch_2
     show_state: false
     color_type: icon
+    color: rgb(255, 255, 153)
     icon: mdi:lightbulb-outline
     size: 25%
     name: TV-bänk
@@ -39,6 +40,7 @@ cards:
     entity: switch.nodon_msp31xx_micro_smart_plug_switch
     show_state: false
     color_type: icon
+    color: rgb(255, 255, 153)
     icon: mdi:white-balance-incandescent
     size: 25%
     name: Altanslinga
@@ -51,6 +53,7 @@ cards:
     entity: switch.nodon_msp31xx_micro_smart_plug_switch_3
     show_state: false
     color_type: icon
+    color: rgb(255, 255, 153)
     icon: mdi:lightbulb
     size: 25%
     name: Matsal öster
@@ -63,6 +66,7 @@ cards:
     entity: switch.nodon_msp31xx_micro_smart_plug_switch_4
     show_state: false
     color_type: icon
+    color: rgb(255, 255, 153)
     icon: mdi:lightbulb
     size: 25%
     name: Matsal norr
@@ -75,6 +79,7 @@ cards:
     entity: switch.everspring_an180_plugin_onoff_module_switch_2
     show_state: false
     color_type: icon
+    color: rgb(255, 255, 153)
     icon: mdi:sofa
     size: 25%
     name: Golvlampa
