@@ -25,7 +25,7 @@ cards:
     name: TV-bänk
     action: service
     service:
-      action: switch.toggle
+      action: toggle
       data:
         entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
 
