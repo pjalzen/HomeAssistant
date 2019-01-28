@@ -12,12 +12,6 @@ cards:
       - switch.nodon_msp31xx_micro_smart_plug_switch_3
       - switch.nodon_msp31xx_micro_smart_plug_switch_4
       - switch.timer
-  - type: entities
-    title: all lights
-    show_header_toggle: true
-    entities:
-      - light.calles
-      - light.calles_rum
   - type: media-control
     entity: media_player.heos_altan
   #- type: media-control
@@ -37,9 +31,17 @@ cards:
   - type: light
     entity: light.living_room 
     name: Colored Lights
-  - type: light
-    entity: switch.switch.nodon_msp31xx_micro_smart_plug_switch
-    name: Altanslinga 
+
+  - type: "custom:button:card"
+    entity: switch.nodon_msp31xx_micro_smart_plug_switch
+    show_state: true
+    icon: mdi:tv
+    name: TV-bänk
+    action: service
+    service:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
+      action: switch.toggle
+
   - type: light
     entity: switch.switch.nodon_msp31xx_micro_smart_plug_switch_2
     name: TV-bänk
