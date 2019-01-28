@@ -7,3 +7,4 @@ cards:
       - sensor.amazon
       - sensor.microsoft
       - sensor.nike
+    hours_to_show: 48
