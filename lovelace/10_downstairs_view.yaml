@@ -34,3 +34,14 @@ cards:
     entity: media_player.heos_altan
   #- type: media-control
   #  entity: spotify
+
+  - type: thermostat
+    entity: climate.hallen_nere_termostat_1
+  - type: thermostat
+    entity: climate.matsalen_norra_fonstret
+  - type: thermostat
+    entity: climate.matsalen_ostra_fonstret
+  - type: thermostat
+    entity: climate.vardagsrum_norra_fonstret
+  - type: thermostat
+    entity: climate.vardagsrum_vastra_fonstret
