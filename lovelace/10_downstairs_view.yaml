@@ -23,11 +23,10 @@ cards:
     show_state: true
     icon: mdi:light
     name: TV-bänk
-    action: service
-    service:
-      action: toggle
+    action: 
       data:
         entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
+      service: switch.toggle
 
 
   - type: entities
