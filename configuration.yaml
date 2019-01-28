@@ -40,10 +40,7 @@ map:                                                # Enables a map showing the 
 frontend:                                           # Enables the frontend
   javascript_version: auto 
   themes: !include_dir_named themes
-  # extra_html_url:
-  #   - /local/custom_ui/state-card-custom-ui.html
-  # extra_html_url_es5:
-  #   - /local/custom_ui/state-card-custom-ui-es5.html
+
 lovelace:
   mode: yaml
 
@@ -56,22 +53,10 @@ panel_iframe:
     title: SQLite Web
     icon: mdi:database
     url: !secret url_sqlite
-  #influxdb:
-  #  title: InfluxDB
-  #  icon: mdi:chart-areaspline
-  #  url: !secret url_influxdb
   log_viewer:
     title: Log
     icon: mdi:information-outline
     url: !secret url_logviewer
-#  router:
-#    title: ASUS Router
-#    icon: mdi:signal
-#    url: !secret url_router
- # modem:
- #   title: Com Hem Modem
- #   icon: mdi:router-wireless
- #   url: !secret url_modem
 
 custom_updater:
   show_installable: true

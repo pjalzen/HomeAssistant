@@ -6,10 +6,8 @@ sensor:
         name: Amazon
       - symbol: MSFT
         name: Microsoft
-    #  - symbol: NKE
-    #    name: Nike
-    #  - symbol: BOL.ST
-    #    name: Boliden
+      - symbol: NKE
+        name: Nike
     #foreign_exchange:
     #  - name: USD_EUR
     #    from: USD

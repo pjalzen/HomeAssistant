@@ -6,3 +6,4 @@ cards:
     entities: 
       - sensor.amazon
       - sensor.microsoft
+      - sensor.nike

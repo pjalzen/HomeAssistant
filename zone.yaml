@@ -63,9 +63,14 @@
     icon: mdi:golf
     radius: 800
 
+# rammbron
+  - name: Rammbron
+    latitude: 57.768235
+    longitude: 14.403383
+    radius: 100
+
 #les fontaine
 #amsterdam
-#lekeryd
 #jönköping
 #ica maxi
 #norra backa
