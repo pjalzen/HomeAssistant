@@ -21,13 +21,42 @@ cards:
   - type: "custom:button-card"
     entity: switch.nodon_msp31xx_micro_smart_plug_switch
     show_state: true
-    icon: mdi:light
+    icon: mdi:lightbulb-outline
     name: TV-bänk
     action: 
       data:
         entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
       service: switch.toggle
 
+  - type: "custom:button-card"
+    entity: switch.nodon_msp31xx_micro_smart_plug_switch_2
+    show_state: true
+    icon: mdi:white-balance-incandescent
+    name: Altanslinga
+    action: 
+      data:
+        entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_2
+      service: switch.toggle
+
+  - type: "custom:button-card"
+    entity: switch.nodon_msp31xx_micro_smart_plug_switch_3
+    show_state: true
+    icon: mdi:lightbulb
+    name: Matsal-öster
+    action: 
+      data:
+        entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_3
+      service: switch.toggle
+
+  - type: "custom:button-card"
+    entity: switch.nodon_msp31xx_micro_smart_plug_switch_4
+    show_state: true
+    icon: mdi:lightbulb
+    name: Matsal-norr
+    action: 
+      data:
+        entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_4
+      service: switch.toggle
 
   - type: entities
     title: all switches
@@ -39,8 +68,8 @@ cards:
       - switch.nodon_msp31xx_micro_smart_plug_switch_3
       - switch.nodon_msp31xx_micro_smart_plug_switch_4
       - switch.timer
-  - type: media-control
-    entity: media_player.heos_altan
+  #- type: media-control
+  #  entity: media_player.heos_altan
   #- type: media-control
   #  entity: spotify
 
