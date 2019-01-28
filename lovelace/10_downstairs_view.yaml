@@ -24,17 +24,21 @@ cards:
 
   - type: "custom:button-card"
     entity: switch.nodon_msp31xx_micro_smart_plug_switch_2
-    show_state: true
+    show_state: false
+    color_type: card
     icon: mdi:lightbulb-outline
     name: TV-bänk
     action: 
       data:
         entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_2
       service: switch.toggle
+    size: 100%
+
 
   - type: "custom:button-card"
     entity: switch.nodon_msp31xx_micro_smart_plug_switch
-    show_state: true
+    show_state: false
+    color_type: card
     icon: mdi:white-balance-incandescent
     name: Altanslinga
     action: 
@@ -44,7 +48,8 @@ cards:
 
   - type: "custom:button-card"
     entity: switch.nodon_msp31xx_micro_smart_plug_switch_3
-    show_state: true
+    show_state: false
+    color_type: card
     icon: mdi:lightbulb
     name: Matsal öster
     action: 
@@ -54,7 +59,8 @@ cards:
 
   - type: "custom:button-card"
     entity: switch.nodon_msp31xx_micro_smart_plug_switch_4
-    show_state: true
+    show_state: false
+    color_type: card
     icon: mdi:lightbulb
     name: Matsal norr
     action: 
@@ -64,7 +70,8 @@ cards:
 
   - type: "custom:button-card"
     entity: switch.everspring_an180_plugin_onoff_module_switch_2
-    show_state: true
+    show_state: false
+    color_type: card
     icon: mdi:sofa
     name: Golvlampa
     action: 
