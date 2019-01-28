@@ -57,6 +57,10 @@ panel_iframe:
     title: Log
     icon: mdi:information-outline
     url: !secret url_logviewer
+  mdiindex:
+    title: MDI Icon Index
+    icon: mdi:vector-square
+    url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html
 
 custom_updater:
   show_installable: true
@@ -64,8 +68,8 @@ custom_updater:
     - cards
     - components
   card_urls:
-    - https://raw.githubusercontent.com/custom-cards/text-element/master/text-element.js
-    - https://raw.githubusercontent.com/custom-cards/vertical-stack-in-card/master/vertical-stack-in-card.js
+    #- https://raw.githubusercontent.com/custom-cards/text-element/master/text-element.js
+    #- https://raw.githubusercontent.com/custom-cards/vertical-stack-in-card/master/vertical-stack-in-card.js
     - https://raw.githubusercontent.com/kuuji/button-card/master/tracker.json
 
 

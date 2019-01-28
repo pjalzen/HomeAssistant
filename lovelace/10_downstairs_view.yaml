@@ -35,7 +35,7 @@ cards:
   - type: "custom:button-card"
     entity: switch.nodon_msp31xx_micro_smart_plug_switch
     show_state: true
-    icon: mdi:tv
+    icon: mdi:light
     name: TV-bänk
     action: service
     service:
