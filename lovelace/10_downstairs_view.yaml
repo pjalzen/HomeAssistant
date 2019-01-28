@@ -4,45 +4,49 @@ icon: mdi:sofa
 cards:
   - type: thermostat
     entity: climate.hallen_nere_termostat_1
+    name: Hallen entré
   - type: thermostat
     entity: climate.matsalen_norra_fonstret
+    name: Matsal norr
   - type: thermostat
     entity: climate.matsalen_ostra_fonstret
+    name: Matsal öster
   - type: thermostat
     entity: climate.vardagsrum_norra_fonstret
+    name: Vardagsrum norr
   - type: thermostat
     entity: climate.vardagsrum_vastra_fonstret
+    name: Vardagsrum väster
 
   - type: light
     entity: light.living_room 
     name: Colored Lights
 
-
-  - type: "custom:button-card"
-    entity: switch.nodon_msp31xx_micro_smart_plug_switch
-    show_state: true
-    icon: mdi:lightbulb-outline
-    name: TV-bänk
-    action: 
-      data:
-        entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
-      service: switch.toggle
-
   - type: "custom:button-card"
     entity: switch.nodon_msp31xx_micro_smart_plug_switch_2
     show_state: true
-    icon: mdi:white-balance-incandescent
-    name: Altanslinga
+    icon: mdi:lightbulb-outline
+    name: TV-bänk
     action: 
       data:
         entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_2
       service: switch.toggle
 
   - type: "custom:button-card"
+    entity: switch.nodon_msp31xx_micro_smart_plug_switch
+    show_state: true
+    icon: mdi:white-balance-incandescent
+    name: Altanslinga
+    action: 
+      data:
+        entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
+      service: switch.toggle
+
+  - type: "custom:button-card"
     entity: switch.nodon_msp31xx_micro_smart_plug_switch_3
     show_state: true
     icon: mdi:lightbulb
-    name: Matsal-öster
+    name: Matsal öster
     action: 
       data:
         entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_3
@@ -52,22 +56,33 @@ cards:
     entity: switch.nodon_msp31xx_micro_smart_plug_switch_4
     show_state: true
     icon: mdi:lightbulb
-    name: Matsal-norr
+    name: Matsal norr
     action: 
       data:
         entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_4
       service: switch.toggle
 
-  - type: entities
-    title: all switches
-    show_header_toggle: true
-    entities:
-      - switch.everspring_an180_plugin_onoff_module_switch
-      - switch.nodon_msp31xx_micro_smart_plug_switch
-      - switch.nodon_msp31xx_micro_smart_plug_switch_2
-      - switch.nodon_msp31xx_micro_smart_plug_switch_3
-      - switch.nodon_msp31xx_micro_smart_plug_switch_4
-      - switch.timer
+  - type: "custom:button-card"
+    entity: switch.everspring_an180_plugin_onoff_module_switch_2
+    show_state: true
+    icon: mdi:sofa
+    name: Golvlampa
+    action: 
+      data:
+        entity_id: switch.everspring_an180_plugin_onoff_module_switch_2
+      service: switch.toggle
+      
+      
+  #- type: entities
+  #  title: all switches
+  #  show_header_toggle: true
+  #  entities:
+  #    - switch.everspring_an180_plugin_onoff_module_switch
+  #    - switch.nodon_msp31xx_micro_smart_plug_switch
+  #    - switch.nodon_msp31xx_micro_smart_plug_switch_2
+  #    - switch.nodon_msp31xx_micro_smart_plug_switch_3
+  #    - switch.nodon_msp31xx_micro_smart_plug_switch_4
+  #    - switch.timer
   #- type: media-control
   #  entity: media_player.heos_altan
   #- type: media-control
