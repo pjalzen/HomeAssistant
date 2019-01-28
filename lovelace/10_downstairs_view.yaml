@@ -2,21 +2,6 @@
 title: Downstairs
 icon: mdi:sofa
 cards:
-  - type: entities
-    title: all switches
-    show_header_toggle: true
-    entities:
-      - switch.everspring_an180_plugin_onoff_module_switch
-      - switch.nodon_msp31xx_micro_smart_plug_switch
-      - switch.nodon_msp31xx_micro_smart_plug_switch_2
-      - switch.nodon_msp31xx_micro_smart_plug_switch_3
-      - switch.nodon_msp31xx_micro_smart_plug_switch_4
-      - switch.timer
-  - type: media-control
-    entity: media_player.heos_altan
-  #- type: media-control
-  #  entity: spotify
-
   - type: thermostat
     entity: climate.hallen_nere_termostat_1
   - type: thermostat
@@ -32,6 +17,7 @@ cards:
     entity: light.living_room 
     name: Colored Lights
 
+
   - type: "custom:button-card"
     entity: switch.nodon_msp31xx_micro_smart_plug_switch
     show_state: true
@@ -39,9 +25,25 @@ cards:
     name: TV-bänk
     action: service
     service:
-      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
       action: switch.toggle
+      data:
+        entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
 
-  - type: light
-    entity: switch.switch.nodon_msp31xx_micro_smart_plug_switch_2
-    name: TV-bänk
+
+  - type: entities
+    title: all switches
+    show_header_toggle: true
+    entities:
+      - switch.everspring_an180_plugin_onoff_module_switch
+      - switch.nodon_msp31xx_micro_smart_plug_switch
+      - switch.nodon_msp31xx_micro_smart_plug_switch_2
+      - switch.nodon_msp31xx_micro_smart_plug_switch_3
+      - switch.nodon_msp31xx_micro_smart_plug_switch_4
+      - switch.timer
+  - type: media-control
+    entity: media_player.heos_altan
+  #- type: media-control
+  #  entity: spotify
+
+
+
