@@ -43,7 +43,7 @@ resources:
  #   type: js
 
   # custom-lovelace
-  - url: /local/custom-lovelace/alarm_control_panel-card/alarm_control_panel-card.js?v=1
+  - url: /local/custom-lovelace/alarm_control_panel-card/alarm_control_panel-card.js?v=0
     type: js  
   - url: /local/custom-lovelace/beer-card/beer-card.js?v=1
     type: js  
