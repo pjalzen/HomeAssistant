@@ -1,0 +1,8 @@
+title: Pool
+icon: mdi:pool
+cards:
+  - type: history-graph
+    title: Temperatur
+    entities: 
+      - sensor.amazon
+    hours_to_show: 48
