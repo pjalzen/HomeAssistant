@@ -28,7 +28,7 @@ cards:
     color_type: icon
     color: rgb(255, 255, 153)
     icon: mdi:lightbulb-outline
-    size: 25%
+    size: 60px
     name: TV-bänk
     action: 
       data:
@@ -55,7 +55,7 @@ cards:
     color_type: icon
     color: rgb(255, 255, 153)
     icon: mdi:lightbulb
-    size: 50%
+    size: 60px
     name: Matsal öster
     action: 
       data:
@@ -68,7 +68,7 @@ cards:
     color_type: icon
     color: rgb(255, 255, 153)
     icon: mdi:lightbulb
-    size: 25%
+    size: 60px
     name: Matsal norr
     action: 
       data:
@@ -81,7 +81,7 @@ cards:
     color_type: icon
     color: rgb(255, 255, 153)
     icon: mdi:sofa
-    size: 25%
+    size: 60px
     name: Golvlampa
     action: 
       data:
