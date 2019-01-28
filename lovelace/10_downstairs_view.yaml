@@ -2,12 +2,6 @@
 title: Downstairs
 icon: mdi:sofa
 cards:
-  - type: picture-entity
-    title: Vardagsrum
-    entity: camera.vardagsrum
-    camera_image: camera.vardagsrum
-    show_info: true
-    tap_action: dialog
   - type: entities
     title: all switches
     show_header_toggle: true
@@ -24,12 +18,6 @@ cards:
     entities:
       - light.calles
       - light.calles_rum
-  - type: entities
-    title: all automations
-    show_header_toggle: true
-    entities:
-      - automation.lights_on_just_before_sunset
-      - automation.lights_off_by_midnight
   - type: media-control
     entity: media_player.heos_altan
   #- type: media-control
@@ -45,3 +33,13 @@ cards:
     entity: climate.vardagsrum_norra_fonstret
   - type: thermostat
     entity: climate.vardagsrum_vastra_fonstret
+
+  - type: light
+    entity: light.living_room 
+    name: Colored Lights
+  - type: light
+    entity: switch.switch.nodon_msp31xx_micro_smart_plug_switch
+    name: Altanslinga 
+  - type: light
+    entity: switch.switch.nodon_msp31xx_micro_smart_plug_switch_2
+    name: TV-bänk
