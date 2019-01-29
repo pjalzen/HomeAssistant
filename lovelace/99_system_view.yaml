@@ -11,6 +11,28 @@ cards:
       - automation.lights_off_by_midnight
       - automation.set_theme_by_daylight
       - automation.run_backup_3am
+  - type: entities
+    title: Switches
+    show_header_toggle: false
+    entities:
+      - switch.nodon_msp31xx_micro_smart_plug_switch
+      - switch.nodon_msp31xx_micro_smart_plug_switch_2
+      - switch.nodon_msp31xx_micro_smart_plug_switch_3
+      - switch.nodon_msp31xx_micro_smart_plug_switch_4
+      - switch.everspring_an180_plugin_onoff_module_switch
+      - switch.everspring_an180_plugin_onoff_module_switch_2
+      - switch.everspring_an180_plugin_onoff_module_switch_3
+      - switch.timer
+  - type: entities
+    title: Lamps
+    show_header_toggle: false
+    entities:
+      - light.color_light_1
+      - light.hue_play_1
+      - light.hue_play_2
+      - light.calles
+      - light.dimmable_light_1
+      - light.hue_lightstrip_plus_1
   - type: custom:tracker-card
     title:
     trackers:
