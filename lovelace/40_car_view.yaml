@@ -78,17 +78,17 @@ cards:
           height: 4em
           transform: none
 
-      #- type: "custom:button-card"
-      #  entity: bmw_connected_drive
-      #  icon: mdi:air-conditioner
-      #  color: rgb(28, 128, 199)
-      #  action: service
-      #  service: bmw_connected_drive.activate_air_conditioning
-      #    data:
-      #      vin: !secret vin_x3
-      #  style:
-      #    top: 6%
-      #    left: 90%
+      - type: "custom:button-card"
+        entity: bmw_connected_drive
+        icon: mdi:air-conditioner
+        color: rgb(28, 128, 199)
+        action: 
+          service: bmw_connected_drive.activate_air_conditioning
+          data:
+            vin: !secret vin_x3
+        style:
+          top: 6%
+          left: 90%
 
 #sensor.x3_xdrive20d_remaining_range_total
 #device_tracker.x3_xdrive20d
