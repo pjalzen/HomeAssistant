@@ -10,38 +10,35 @@
     condition: time
   action:
   - data:
-      entity_id: groups.all_switches
-    service: switch.turn_on
-  - data:
       entity_id: light.living_room
     service: light.turn_on
   - data:
       entity_id: light.hallway_upstairs
     service: light.turn_on
-  #- data:
-  #    entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
-  #  service: switch.turn_on
-  #- data:
-  #    entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_2
-  #  service: switch.turn_on
-  #- data:
-  #    entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_3
-  #  service: switch.turn_on
-  #- data:
-  #    entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_4
-  #  service: switch.turn_on
-  #- data:
-  #    entity_id: switch.everspring_an180_plugin_onoff_module_switch
-  #  service: switch.turn_on
-  #- data:
-  #    entity_id: switch.everspring_an180_plugin_onoff_module_switch_2
-  #  service: switch.turn_on
-  #- data:
-  #    entity_id: switch.everspring_an180_plugin_onoff_module_switch_3
-  #  service: switch.turn_on
-  #- data:
-  #    entity_id: switch.timer
-  #  service: switch.turn_on
+  - data:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
+    service: switch.turn_on
+  - data:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_2
+    service: switch.turn_on
+  - data:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_3
+    service: switch.turn_on
+  - data:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_4
+    service: switch.turn_on
+  - data:
+      entity_id: switch.everspring_an180_plugin_onoff_module_switch
+    service: switch.turn_on
+  - data:
+      entity_id: switch.everspring_an180_plugin_onoff_module_switch_2
+    service: switch.turn_on
+  - data:
+      entity_id: switch.everspring_an180_plugin_onoff_module_switch_3
+    service: switch.turn_on
+  - data:
+      entity_id: switch.timer
+    service: switch.turn_on
 
 - id: '1534049443061'
   alias: Lights off - by midnight
@@ -52,38 +49,35 @@
   condition: []
   action:
   - data:
-      entity_id: groups.all_switches
-    service: switch.turn_off    
-  - data:
       entity_id: light.living_room
     service: light.turn_off
   - data:
       entity_id: light.hallway_upstairs
     service: light.turn_off
-  #- data:
-  #    entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
-  #  service: switch.turn_off
-  #- data:
-  #    entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_2
-  #  service: switch.turn_off
-  #- data:
-  #    entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_3
-  #  service: switch.turn_off
-  #- data:
-  #    entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_4
-  #  service: switch.turn_off
-  #- data:
-  #    entity_id: switch.everspring_an180_plugin_onoff_module_switch
-  #  service: switch.turn_off
-  #- data:
-  #    entity_id: switch.everspring_an180_plugin_onoff_module_switch_2
-  #  service: switch.turn_off
-  #- data:
-  #    entity_id: switch.everspring_an180_plugin_onoff_module_switch_3
-  #  service: switch.turn_off
-  #- data:
-  #    entity_id: switch.timer
-  #  service: switch.turn_off
+  - data:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
+    service: switch.turn_off
+  - data:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_2
+    service: switch.turn_off
+  - data:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_3
+    service: switch.turn_off
+  - data:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_4
+    service: switch.turn_off
+  - data:
+      entity_id: switch.everspring_an180_plugin_onoff_module_switch
+    service: switch.turn_off
+  - data:
+      entity_id: switch.everspring_an180_plugin_onoff_module_switch_2
+    service: switch.turn_off
+  - data:
+      entity_id: switch.everspring_an180_plugin_onoff_module_switch_3
+    service: switch.turn_off
+  - data:
+      entity_id: switch.timer
+    service: switch.turn_off
 
 - id: '1543169877134'
   alias: Lights on - in the morning
@@ -164,11 +158,7 @@
         {% else %}  
             {{ "dark-lightred"}}
         {% endif %}
-    #  name: "{% if states.sun.sun.state == \"above_horizon\" %}  
-    #              light-lightred
-    #         {% else %}
-    #              dark-lightred
-    #         {% endif %}"
+
 
 #- alias: 'Hass start'
 #  trigger:
