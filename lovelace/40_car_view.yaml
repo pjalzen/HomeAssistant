@@ -2,117 +2,119 @@
 title: BMW
 icon: mdi:car-connected
 cards:
-  - type: picture-elements
-    image: /local/bmw-x3.jpg
-    elements:
-    # lock
-      - type: "custom:text-element"
-        text: "Doors"
-        style:
-          top: 86%
-          left: 10%
-          color: white
-          # background-color: rgba(54, 65, 78, 0.8)
-      - type: state-icon
-        entity: binary_sensor.x3_xdrive20d_door_lock_state
-        tap_action: more-info
-        style:
-          top: 91.5%
-          left: 10%              
-          "--paper-item-icon-color": white
-      - type: state-label
-        entity: lock.x3_xdrive20d_lock
-        style:
-          top: 97.5%
-          left: 10%
-          color: white
-      # remaining fuel
-      - type: "custom:circle-sensor-card"
-        entity: sensor.x3_xdrive20d_remaining_fuel
-        max: 60
-        min: 0
-        stroke_width: 15
-        # stroke_color: '#03a9f4'
-        gradient: true
-        fill: rgba(54, 65, 78, 0.6)
-        name: Fuel
-        units: ' '
-        font_style:
-          font-size: 1.1em
-          color: white
-          # text-shadow: '2px 2px black'
-        #color_stops:
-        #  5: '#09C7E8'
-        #  63: '#09A50C'
-        style:
-          top: 6%
-          left: 5%
-          width: 4em
-          height: 4em
-          transform: none
-        # remaining range
-      - type: "custom:circle-sensor-card"
-        entity: sensor.x3_xdrive20d_remaining_range_total
-        max: 1000
-        min: 0
-        stroke_width: 15
-        # stroke_color: '#03a9f4'
-        gradient: true
-        fill: rgba(54, 65, 78, 0.6)
-        name: Range
-        units: ' '
-        font_style:
-          font-size: 1.1em
-          color: white
-          # text-shadow: '2px 2px black'
-        #color_stops:
-        #  5: '#09C7E8'
-        #  63: '#09A50C'
-        style:
-          top: 6%
-          left: 20%
-          width: 4em
-          height: 4em
-          transform: none
+  - type: horizontal-stack
+    cards:
+      - type: picture-elements
+        image: /local/bmw-x3.jpg
+        elements:
+        # lock
+          - type: "custom:text-element"
+            text: "Doors"
+            style:
+              top: 86%
+              left: 10%
+              color: white
+              # background-color: rgba(54, 65, 78, 0.8)
+          - type: state-icon
+            entity: binary_sensor.x3_xdrive20d_door_lock_state
+            tap_action: more-info
+            style:
+              top: 91.5%
+              left: 10%              
+              "--paper-item-icon-color": white
+          - type: state-label
+            entity: lock.x3_xdrive20d_lock
+            style:
+              top: 97.5%
+              left: 10%
+              color: white
+          # remaining fuel
+          - type: "custom:circle-sensor-card"
+            entity: sensor.x3_xdrive20d_remaining_fuel
+            max: 60
+            min: 0
+            stroke_width: 15
+            # stroke_color: '#03a9f4'
+            gradient: true
+            fill: rgba(54, 65, 78, 0.6)
+            name: Fuel
+            units: ' '
+            font_style:
+              font-size: 1.1em
+              color: white
+              # text-shadow: '2px 2px black'
+            #color_stops:
+            #  5: '#09C7E8'
+            #  63: '#09A50C'
+            style:
+              top: 6%
+              left: 5%
+              width: 4em
+              height: 4em
+              transform: none
+            # remaining range
+          - type: "custom:circle-sensor-card"
+            entity: sensor.x3_xdrive20d_remaining_range_total
+            max: 1000
+            min: 0
+            stroke_width: 15
+            # stroke_color: '#03a9f4'
+            gradient: true
+            fill: rgba(54, 65, 78, 0.6)
+            name: Range
+            units: ' '
+            font_style:
+              font-size: 1.1em
+              color: white
+              # text-shadow: '2px 2px black'
+            #color_stops:
+            #  5: '#09C7E8'
+            #  63: '#09A50C'
+            style:
+              top: 6%
+              left: 20%
+              width: 4em
+              height: 4em
+              transform: none
 
-      #- type: "custom:button-card"
-      #  entity: bmw_connected_drive
-      #  icon: mdi:air-conditioner
-      #  color: rgb(28, 128, 199)
-      #  action: service
-      #  service: bmw_connected_drive.activate_air_conditioning
-      #    data:
-      #      vin: !secret vin_x3
-      #  style:
-      #    top: 6%
-      #    left: 90%
+          #- type: "custom:button-card"
+          #  entity: bmw_connected_drive
+          #  icon: mdi:air-conditioner
+          #  color: rgb(28, 128, 199)
+          #  action: service
+          #  service: bmw_connected_drive.activate_air_conditioning
+          #    data:
+          #      vin: !secret vin_x3
+          #  style:
+          #    top: 6%
+          #    left: 90%
 
-#sensor.x3_xdrive20d_remaining_range_total
-#device_tracker.x3_xdrive20d
-#services------
-#bmw_connected_drive.update_state
-#bmw_connected_drive.activate_air_conditioning
+    #sensor.x3_xdrive20d_remaining_range_total
+    #device_tracker.x3_xdrive20d
+    #services------
+    #bmw_connected_drive.update_state
+    #bmw_connected_drive.activate_air_conditioning
 
-  - type: picture-elements
-    image: /local/bmw-i3.jpg
-    elements:
-      - type: "custom:text-element"
-        text: "Door lock"
-        style:
-          top: 86%
-          left: 10%
-          color: white
-          # background-color: rgba(54, 65, 78, 0.8)
-      - type: state-icon
-        entity: binary_sensor.i3s_94_door_lock_state
-        tap_action: more-info
-        style:
-          top: 91.5%
-          left: 10%              
-          "--paper-item-icon-color": white
-      - type: state-label
-        entity: binary_sensor.i3s_94_door_lock_state
-        style:
-          top: 97.5%
-          left: 10%
-          color: white
+      - type: picture-elements
+        image: /local/bmw-i3.jpg
+        elements:
+          - type: "custom:text-element"
+            text: "Door lock"
+            style:
+              top: 86%
+              left: 10%
+              color: white
+              # background-color: rgba(54, 65, 78, 0.8)
+          - type: state-icon
+            entity: binary_sensor.i3s_94_door_lock_state
+            tap_action: more-info
+            style:
+              top: 91.5%
+              left: 10%              
+              "--paper-item-icon-color": white
+          - type: state-label
+            entity: binary_sensor.i3s_94_door_lock_state
+            style:
+              top: 97.5%
+              left: 10%
+              color: white
