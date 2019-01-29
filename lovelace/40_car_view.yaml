@@ -79,7 +79,7 @@ cards:
           transform: none
 
       - type: "custom:button-card"
-        entity: binary_sensor.bmw_connected_drive
+        entity: bmw_connected_drive.
         icon: mdi:air-conditioner
         color: rgb(28, 128, 199)
         action: 
