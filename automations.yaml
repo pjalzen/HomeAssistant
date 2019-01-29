@@ -158,8 +158,11 @@
         {% else %}  
             {{ "dark-lightred"}}
         {% endif %}
-
-
+  - service: notify.pushbullet_pj
+    data:
+      title: 'Background Theme Set'
+      message: 'Home Assistant'
+      
 #- alias: 'Hass start'
 #  trigger:
 #    platform: homeassistant

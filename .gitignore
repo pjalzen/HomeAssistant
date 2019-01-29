@@ -18,6 +18,7 @@
 !logging
 !lovelace
 !lovelace/*
+!notify
 !packages
 !python_scripts
 !themes

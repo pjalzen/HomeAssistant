@@ -1,0 +1,14 @@
+  - name: pushbullet_pj
+    platform: pushbullet
+    api_key: !secret pushbullet_key
+
+  - name: All
+    platform: group
+    services:
+      - service: perjohan_pj_iphone
+      - service: perjohansipad2local
+
+  - name: pushover_pj
+    platform: pushover
+    api_key: !secret pushover_api_key
+    user_key: !secret pushover_user_key
