@@ -6,6 +6,9 @@ cards:
     cards:
       - type: picture-elements
         image: /local/bmw-x3.jpg
+        style:
+          width: 100%
+          lenght: 100%
         elements:
         # lock
           - type: "custom:text-element"
@@ -97,6 +100,9 @@ cards:
 
       - type: picture-elements
         image: /local/bmw-i3.jpg
+        style:
+          width: 100%
+          lenght: 100%
         elements:
           - type: "custom:text-element"
             text: "Door lock"
