@@ -1,0 +1,10 @@
+automation:
+  - alias: PJ entered zone
+    trigger:
+      platform: state
+      entity_id: devic_tracker.perjohan_pj_iphone
+    action:
+      service: notify.pushbullet_pj
+      data:
+        title: 'PJ entered zone'
+        message: "PJ is in {{ states('devic_tracker.perjohan_pj_iphone') }}"
