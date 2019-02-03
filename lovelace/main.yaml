@@ -21,8 +21,7 @@ resources:
  #   type: js
  # - url: !resource button-card/button-card.js
  #   type: module
- # - url: !resource slider-entity-row/slider-entity-row.js
- #   type: js
+
  # - url: !resource useful-markdown-card/useful-markdown-card.js
  #   type: js
  # - url: !resource column-card/column-card.js
@@ -77,7 +76,9 @@ resources:
     type: js
   - url: /local/button-card.js?v=0
     type: module
-  - url: https://fonts.googleapis.com/css?family=Roboto+Condensed
+  - url: !resource slider-entity-row/slider-entity-row.js
+    type: js
+   - url: https://fonts.googleapis.com/css?family=Roboto+Condensed
     type: css 
     
 title: Home
