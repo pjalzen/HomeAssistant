@@ -27,7 +27,7 @@ resources:
  #   type: js
  # - url: !resource column-card/column-card.js
  #   type: js
- # - url: !resource tracker-card/tracker-card.js?v=0.1.5
+ # - url: !resource tracker-card/tracker-card.js?v=0.3.0
  #   type: js
  # - url: !resource light-slider/light-slider-element.js
  #   type: js
