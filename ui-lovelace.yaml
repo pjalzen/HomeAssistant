@@ -4,22 +4,22 @@
 # Any changes made to it will be overwritten the next time the script is run.
 
 resources:
-- {type: js, url: /local/custom-lovelace/alarm_control_panel-card/alarm_control_panel-card.js}
-- {type: js, url: /local/custom-lovelace/beer-card/beer-card.js}
-- {type: js, url: /local/custom-lovelace/bignumber-card/bignumber-card.js}
-- {type: js, url: /local/custom-lovelace/entity-attributes-card/entity-attributes-card.js}
-- {type: js, url: /local/custom-lovelace/gauge-card/gauge-card.js}
-- {type: js, url: /local/custom-lovelace/group-card/group-card.js}
-- {type: js, url: /local/custom-lovelace/home-setter/home-setter.js}
-- {type: js, url: /local/custom-lovelace/monster-card/monster-card.js}
-- {type: js, url: /local/custom-lovelace/plan-coordinates/plan-coordinates.js}
-- {type: js, url: /local/custom-lovelace/thermostat-card/thermostat-card.js}
+- {type: js, url: '/local/custom-lovelace/alarm_control_panel-card/alarm_control_panel-card.js?v=0.4.0'}
+- {type: js, url: '/local/custom-lovelace/beer-card/beer-card.js?v=0.2.3'}
+- {type: js, url: '/local/custom-lovelace/bignumber-card/bignumber-card.js?v=0.0.1'}
+- {type: js, url: '/local/custom-lovelace/entity-attributes-card/entity-attributes-card.js?v=0.1.1'}
+- {type: js, url: '/local/custom-lovelace/gauge-card/gauge-card.js?v=0.2.0'}
+- {type: js, url: '/local/custom-lovelace/group-card/group-card.js?v=0.0.2'}
+- {type: js, url: '/local/custom-lovelace/home-setter/home-setter.js?v=0.0.1'}
+- {type: js, url: '/local/custom-lovelace/monster-card/monster-card.js?v=0.2.3'}
+- {type: js, url: '/local/custom-lovelace/plan-coordinates/plan-coordinates.js?v=0.1.0'}
+- {type: js, url: '/local/custom-lovelace/thermostat-card/thermostat-card.js?v=0.1.1'}
 - {type: js, url: '/local/tracker-card.js?v=0'}
-- {type: js, url: /local/text-element.js}
-- {type: module, url: /local/circle-sensor-card.js}
-- {type: js, url: /local/vertical-stack-in-card.js}
-- {type: js, url: /local/krisinfo-card.js}
-- {type: module, url: /local/button-card.js}
+- {type: js, url: '/local/text-element.js?v=0.0.2'}
+- {type: module, url: '/local/circle-sensor-card.js?v=1.2.0'}
+- {type: js, url: '/local/vertical-stack-in-card.js?v=0.1.0'}
+- {type: js, url: '/local/krisinfo-card.js?v=0.0.4'}
+- {type: module, url: '/local/button-card.js?v=0'}
 - {type: css, url: 'https://fonts.googleapis.com/css?family=Roboto+Condensed'}
 title: Home
 views:
@@ -63,52 +63,73 @@ views:
   icon: mdi:home
   title: Brunnsgatan 25
 - cards:
-  - {entity: climate.hallen_nere_termostat_1, name: Hallen entré, type: thermostat}
-  - {entity: climate.matsalen_norra_fonstret, name: Matsal norr, type: thermostat}
-  - {entity: climate.matsalen_ostra_fonstret, name: Matsal öster, type: thermostat}
-  - {entity: climate.vardagsrum_norra_fonstret, name: Vardagsrum norr, type: thermostat}
-  - {entity: climate.vardagsrum_vastra_fonstret, name: Vardagsrum väster, type: thermostat}
-  - {entity: light.living_room, name: Colored Lights, type: light}
-  - action:
-      data: {entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_2}
-      service: switch.toggle
-    entity: switch.nodon_msp31xx_micro_smart_plug_switch_2
-    icon: mdi:lightbulb-outline
-    name: TV-bänk
-    show_state: true
-    type: custom:button-card
-  - action:
-      data: {entity_id: switch.nodon_msp31xx_micro_smart_plug_switch}
-      service: switch.toggle
-    entity: switch.nodon_msp31xx_micro_smart_plug_switch
-    icon: mdi:white-balance-incandescent
-    name: Altanslinga
-    show_state: true
-    type: custom:button-card
-  - action:
-      data: {entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_3}
-      service: switch.toggle
-    entity: switch.nodon_msp31xx_micro_smart_plug_switch_3
-    icon: mdi:lightbulb
-    name: Matsal öster
-    show_state: true
-    type: custom:button-card
-  - action:
-      data: {entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_4}
-      service: switch.toggle
-    entity: switch.nodon_msp31xx_micro_smart_plug_switch_4
-    icon: mdi:lightbulb
-    name: Matsal norr
-    show_state: true
-    type: custom:button-card
-  - action:
-      data: {entity_id: switch.everspring_an180_plugin_onoff_module_switch_2}
-      service: switch.toggle
-    entity: switch.everspring_an180_plugin_onoff_module_switch_2
-    icon: mdi:sofa
-    name: Golvlampa
-    show_state: true
-    type: custom:button-card
+  - cards:
+    - {entity: light.living_room, name: Colored Lights, type: light}
+    - action:
+        data: {entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_2}
+        service: switch.toggle
+      color: rgb(255, 255, 153)
+      color_type: icon
+      entity: switch.nodon_msp31xx_micro_smart_plug_switch_2
+      icon: mdi:lightbulb-outline
+      name: TV-bänk
+      show_state: false
+      size: 60px
+      type: custom:button-card
+    - action:
+        data: {entity_id: switch.nodon_msp31xx_micro_smart_plug_switch}
+        service: switch.toggle
+      color: rgb(255, 255, 153)
+      color_type: icon
+      entity: switch.nodon_msp31xx_micro_smart_plug_switch
+      icon: mdi:white-balance-incandescent
+      name: Altanslinga
+      show_state: false
+      size: 60px
+      type: custom:button-card
+    - action:
+        data: {entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_3}
+        service: switch.toggle
+      color: rgb(255, 255, 153)
+      color_type: icon
+      entity: switch.nodon_msp31xx_micro_smart_plug_switch_3
+      icon: mdi:lightbulb
+      name: Matsal öster
+      show_state: false
+      size: 60px
+      type: custom:button-card
+    - action:
+        data: {entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_4}
+        service: switch.toggle
+      color: rgb(255, 255, 153)
+      color_type: icon
+      entity: switch.nodon_msp31xx_micro_smart_plug_switch_4
+      icon: mdi:lightbulb
+      name: Matsal norr
+      show_state: false
+      size: 60px
+      type: custom:button-card
+    - action:
+        data: {entity_id: switch.everspring_an180_plugin_onoff_module_switch_2}
+        service: switch.toggle
+      color: rgb(255, 255, 153)
+      color_type: icon
+      entity: switch.everspring_an180_plugin_onoff_module_switch_2
+      icon: mdi:sofa
+      name: Golvlampa
+      show_state: false
+      size: 60px
+      type: custom:button-card
+    type: vertical-stack
+  - cards:
+    - {entity: climate.hallen_nere_termostat_1, name: Hallen entré, type: thermostat}
+    - {entity: climate.matsalen_norra_fonstret, name: Matsal norr, type: thermostat}
+    - {entity: climate.matsalen_ostra_fonstret, name: Matsal öster, type: thermostat}
+    type: vertical-stack
+  - cards:
+    - {entity: climate.vardagsrum_norra_fonstret, name: Vardagsrum norr, type: thermostat}
+    - {entity: climate.vardagsrum_vastra_fonstret, name: Vardagsrum väster, type: thermostat}
+    type: vertical-stack
   icon: mdi:sofa
   title: Downstairs
 - cards:
@@ -168,6 +189,11 @@ views:
       type: custom:circle-sensor-card
       units: ' '
     image: /local/bmw-x3.jpg
+    style: {lenght: 100%, width: 100%}
+    tap_action:
+      action: null
+      service: bmw_connected_drive.activate_air_conditioning
+      service_data: {vin: WBATX3100JLB94067}
     type: picture-elements
   - elements:
     - style: {color: white, left: 10%, top: 86%}
@@ -181,6 +207,7 @@ views:
       style: {color: white, left: 10%, top: 97.5%}
       type: state-label
     image: /local/bmw-i3.jpg
+    style: {lenght: 100%, width: 100%}
     type: picture-elements
   icon: mdi:car-connected
   title: BMW
@@ -192,11 +219,30 @@ views:
   icon: mdi:finance
   title: Finance
 - cards:
+  - entities: [sensor.amazon]
+    hours_to_show: 48
+    title: Temperatur
+    type: history-graph
+  icon: mdi:pool
+  title: Pool
+- cards:
   - entities: [automation.lights_on_in_the_morning, automation.lights_off_by_sunrise,
       automation.lights_on_just_before_sunset, automation.lights_off_by_midnight,
       automation.set_theme_by_daylight, automation.run_backup_3am]
     show_header_toggle: false
     title: Automations
+    type: entities
+  - entities: [switch.nodon_msp31xx_micro_smart_plug_switch, switch.nodon_msp31xx_micro_smart_plug_switch_2,
+      switch.nodon_msp31xx_micro_smart_plug_switch_3, switch.nodon_msp31xx_micro_smart_plug_switch_4,
+      switch.everspring_an180_plugin_onoff_module_switch, switch.everspring_an180_plugin_onoff_module_switch_2,
+      switch.everspring_an180_plugin_onoff_module_switch_3, switch.timer]
+    show_header_toggle: false
+    title: Switches
+    type: entities
+  - entities: [light.color_light_1, light.hue_play_1, light.hue_play_2, light.calles,
+      light.dimmable_light_1, light.hue_lightstrip_plus_1]
+    show_header_toggle: false
+    title: Lamps
     type: entities
   - title: null
     trackers: [sensor.custom_card_tracker, sensor.custom_component_tracker]
