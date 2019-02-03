@@ -5,6 +5,10 @@ automation:
     event_data:
       action: call_service
   action:
-    service_template: '{{ trigger.event.data.service }}'
-    data_template:
-      entity_id: '{{ trigger.event.data.entity_id }}'
+    - service_template: '{{ trigger.event.data.service }}'
+      data_template:
+        entity_id: '{{ trigger.event.data.entity_id }}'
+    - service: notify.pushbullet_pj
+      data:
+        title: 'IFTTT'
+        message: "IFTTT trigged"
