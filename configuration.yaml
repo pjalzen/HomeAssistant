@@ -17,7 +17,7 @@ config:                                             # Enables configuration UI
 hassio:
 http:
   api_password: !secret http_password               # Secrets are defined in the file secrets.yaml
-  #base_url: !secret base_url
+  base_url: !secret base_url
   #ssl_certificate: /ssl/fullchain.pem
   #ssl_key: /ssl/privkey.pem
   #trusted_networks: 
@@ -136,6 +136,9 @@ mqtt:
   username: !secret mqtt_username 
   password: !secret mqtt_password 
   discovery: true
+
+ifttt:
+  key: !secret ifttt_api_key
 
 #google:
   #client_id: !secret google_id
