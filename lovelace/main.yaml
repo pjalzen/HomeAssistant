@@ -63,7 +63,7 @@ resources:
   - url: /local/custom-lovelace/thermostat-card/thermostat-card.js?v=0.1.1
     type: js 
   # tracker-card 
-  - url: /local/tracker-card.js?v=0
+  - url: /local/tracker-card.js?v=0.3.0
     type: js
   # other
   - url: /local/text-element.js?v=0.0.2
@@ -78,7 +78,7 @@ resources:
     type: module
   - url: /local/row/slider-entity-row.js
     type: js
-   - url: https://fonts.googleapis.com/css?family=Roboto+Condensed
+  - url: https://fonts.googleapis.com/css?family=Roboto+Condensed
     type: css 
     
 title: Home
