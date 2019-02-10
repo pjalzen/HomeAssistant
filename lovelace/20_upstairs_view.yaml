@@ -1,33 +1,39 @@
 title: Upstairs
 icon: mdi:arrow-up-thick
 cards:
-  - type: picture-entity
-    title: "Hall \xF6verv\xE5ning"
-    entity: camera.hall_overvaning
-    camera_image: camera.hall_overvaning
-    show_info: true
-    tap_action: dialog
-  - type: entities
-    entities:
-      - switch.nodon_msp31xx_micro_smart_plug_switch
-      - switch.nodon_msp31xx_micro_smart_plug_switch_2
-      - switch.nodon_msp31xx_micro_smart_plug_switch_3
-      - switch.nodon_msp31xx_micro_smart_plug_switch_4
-      - light.calles
+  - type: vertical-stack
+    cards:
+      - type: entities
+        entities:
+          - switch.everspring_an180_plugin_onoff_module_switch
+          - light.calles
 
-  - type: thermostat
-    entity: climate.calles_rum_radiator_thermostat_1
-  - type: thermostat
-    entity: climate.emmas_rum_norra_fonstret
-  - type: thermostat
-    entity: climate.emmas_rum_ostra_fonstret
-  - type: thermostat
-    entity: climate.hallen_uppe_termostat_1
-  - type: thermostat
-    entity: climate.kontoret_termostat_1      
-  - type: thermostat
-    entity: climate.sovrummet_norra_fonstret
-  - type: thermostat
-    entity: climate.sovrummet_vastra_fonstret
-  - type: thermostat
-    entity: climate.trapp_uppe_termostat_1
+  - type: vertical-stack
+    cards:
+      - type: thermostat
+        entity: climate.sovrummet_vastra_fonstret
+      - type: thermostat
+        entity: climate.sovrummet_norra_fonstret
+      - type: thermostat
+        entity: climate.emmas_rum_norra_fonstret
+      - type: thermostat
+        entity: climate.emmas_rum_ostra_fonstret
+
+  - type: vertical-stack
+    cards:
+      - type: thermostat
+        entity: climate.trapp_uppe_termostat_1
+      - type: thermostat
+        entity: climate.kontoret_termostat_1      
+      - type: thermostat
+        entity: climate.hallen_uppe_termostat_1
+      - type: thermostat
+        entity: climate.calles_rum_radiator_thermostat_1
+
+
+#      - type: picture-entity
+#        title: "Hall \xF6verv\xE5ning"
+#        entity: camera.hall_overvaning
+#        camera_image: camera.hall_overvaning
+#        show_info: true
+#        tap_action: dialog
