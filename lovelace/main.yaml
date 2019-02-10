@@ -26,7 +26,7 @@ resources:
  #   type: js
  # - url: !resource column-card/column-card.js
  #   type: js
- # - url: !resource tracker-card/tracker-card.js?v=0.1.5
+ # - url: !resource tracker-card/tracker-card.js?v=0.3.0
  #   type: js
  # - url: !resource light-slider/light-slider-element.js
  #   type: js
@@ -70,7 +70,7 @@ resources:
     type: js
   - url: /local/circle-sensor-card.js?v=1.2.0
     type: module
-  - url: /local/vertical-stack-in-card.js?v=0.1.0
+  - url: /local/vertical-stack-in-card.js?v=v0.1.1
     type: js
   - url: /local/krisinfo-card.js?v=0.0.4
     type: js
