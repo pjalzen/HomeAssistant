@@ -49,10 +49,10 @@ panel_iframe:
     title: Editor
     icon: mdi:wrench
     url: !secret url_configurator
-  sqlite:
-    title: SQLite Web
-    icon: mdi:database
-    url: !secret url_sqlite
+  #sqlite:
+  #  title: SQLite Web
+  #  icon: mdi:database
+  #  url: !secret url_sqlite
   log_viewer:
     title: Log
     icon: mdi:information-outline
