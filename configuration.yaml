@@ -150,7 +150,7 @@ ifttt:
 #  - platform: google                                # Text to speech
 
 shell_command:
-  - lovelace_gen: 'python /config/lovelace-gen.py > /config/lovelace-gen.log'
+  lovelace_gen: 'python /config/lovelace-gen.py > /config/lovelace-gen.log'
   #lovelace_gen_states: !secret lovelace_gen_states
   
 
