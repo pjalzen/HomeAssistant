@@ -7,7 +7,6 @@ cards:
         entities:
           - switch.everspring_an180_plugin_onoff_module_switch
           - light.calles
-
   - type: vertical-stack
     cards:
       - type: thermostat
@@ -18,7 +17,6 @@ cards:
         entity: climate.emmas_rum_norra_fonstret
       - type: thermostat
         entity: climate.emmas_rum_ostra_fonstret
-
   - type: vertical-stack
     cards:
       - type: thermostat
