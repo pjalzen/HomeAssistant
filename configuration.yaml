@@ -72,6 +72,8 @@ custom_updater:
     #- https://raw.githubusercontent.com/custom-cards/vertical-stack-in-card/master/vertical-stack-in-card.js
     - https://raw.githubusercontent.com/kuuji/button-card/master/tracker.json
 
+system_health:
+
 
 # ########################################
 # ###              LOGGING             ###
