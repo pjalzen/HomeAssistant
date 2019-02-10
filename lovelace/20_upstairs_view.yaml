@@ -3,10 +3,22 @@ icon: mdi:arrow-up-thick
 cards:
   - type: vertical-stack
     cards:
-      type: entities
-      entities:
-        - switch.everspring_an180_plugin_onoff_module_switch
-        - light.calles
+      - type: light
+        entity: light.calles 
+        name: Calles Hue Light
+      - type: "custom:button-card"
+        entity: switch.everspring_an180_plugin_onoff_module_switch
+        show_state: false
+        color_type: icon
+        color: rgb(255, 255, 153)
+        icon: mdi:lightbulb-outline
+        size: 60px
+        name: Bibliotek
+        action: 
+          data:
+            entity_id: switch.everspring_an180_plugin_onoff_module_switch
+          service: switch.toggle
+
   - type: vertical-stack
     cards:
       - type: thermostat
@@ -17,6 +29,7 @@ cards:
         entity: climate.emmas_rum_norra_fonstret
       - type: thermostat
         entity: climate.emmas_rum_ostra_fonstret
+
   - type: vertical-stack
     cards:
       - type: thermostat
