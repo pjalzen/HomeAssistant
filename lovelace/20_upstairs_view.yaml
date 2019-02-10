@@ -3,10 +3,10 @@ icon: mdi:arrow-up-thick
 cards:
   - type: vertical-stack
     cards:
-      - type: entities
-        entities:
-          - switch.everspring_an180_plugin_onoff_module_switch
-          - light.calles
+      type: entities
+      entities:
+        - switch.everspring_an180_plugin_onoff_module_switch
+        - light.calles
   - type: vertical-stack
     cards:
       - type: thermostat
