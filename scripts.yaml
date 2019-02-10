@@ -39,3 +39,16 @@ bmw_i3_airco:
     - service: bmw_connected_drive.activate_air_conditioning
       data:
         vin: !secret vin_i3
+
+
+mariadb_run_cmd:
+    sequence:
+      - service: mysql_utility.run_commands
+        data_template:
+          host : "homeassistant"
+          username : "hass"
+          password : "hass_pwd"
+          database : "core-mariadb"
+          action1 : "delete * from events"
+          action2 : "delete * from states"
+#          action3 :
