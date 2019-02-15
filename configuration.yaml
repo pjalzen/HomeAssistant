@@ -61,6 +61,10 @@ panel_iframe:
     title: MDI Icon Index
     icon: mdi:vector-square
     url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html
+  terminal:
+    title: Terminal
+    icon: mdi:console
+    url: !secret url_terminal
 
 custom_updater:
   show_installable: true
