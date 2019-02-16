@@ -1,19 +1,19 @@
-  include:
-    domains:
-      - sun
-      - light
-      - switch
-      - automation
-      - binary_sensor
-      - script
-      - device_tracker
+  #include:
+  #  domains:
+  #    - sun
+  #    - light
+  #    - switch
+  #    - automation
+  #    - binary_sensor
+  #    - script
+  #    - device_tracker
     #entities:
-  exclude:
-    domains:
-      - alert
-      - camera
-      - media_player
-      - calendar
-      - sensor
-      - group
+  #exclude:
+  #  domains:
+  #    - alert
+  #    - camera
+  #    - media_player
+  #    - calendar
+  #    - sensor
+  #    - group
     #entities:
