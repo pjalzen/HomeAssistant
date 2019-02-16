@@ -14,12 +14,13 @@ resources:
 - {type: js, url: '/local/custom-lovelace/monster-card/monster-card.js?v=0.2.3'}
 - {type: js, url: '/local/custom-lovelace/plan-coordinates/plan-coordinates.js?v=0.1.0'}
 - {type: js, url: '/local/custom-lovelace/thermostat-card/thermostat-card.js?v=0.1.1'}
-- {type: js, url: '/local/tracker-card.js?v=0'}
+- {type: js, url: '/local/tracker-card.js?v=0.3.0'}
 - {type: js, url: '/local/text-element.js?v=0.0.2'}
 - {type: module, url: '/local/circle-sensor-card.js?v=1.2.0'}
-- {type: js, url: '/local/vertical-stack-in-card.js?v=0.1.0'}
+- {type: js, url: '/local/vertical-stack-in-card.js?v=v0.1.1'}
 - {type: js, url: '/local/krisinfo-card.js?v=0.0.4'}
 - {type: module, url: '/local/button-card.js?v=0'}
+- {type: js, url: /local/row/slider-entity-row.js}
 - {type: css, url: 'https://fonts.googleapis.com/css?family=Roboto+Condensed'}
 title: Home
 views:
@@ -133,20 +134,32 @@ views:
   icon: mdi:sofa
   title: Downstairs
 - cards:
-  - {camera_image: camera.hall_overvaning, entity: camera.hall_overvaning, show_info: true,
-    tap_action: dialog, title: Hall övervåning, type: picture-entity}
-  - entities: [switch.nodon_msp31xx_micro_smart_plug_switch, switch.nodon_msp31xx_micro_smart_plug_switch_2,
-      switch.nodon_msp31xx_micro_smart_plug_switch_3, switch.nodon_msp31xx_micro_smart_plug_switch_4,
-      light.calles]
-    type: entities
-  - {entity: climate.calles_rum_radiator_thermostat_1, type: thermostat}
-  - {entity: climate.emmas_rum_norra_fonstret, type: thermostat}
-  - {entity: climate.emmas_rum_ostra_fonstret, type: thermostat}
-  - {entity: climate.hallen_uppe_termostat_1, type: thermostat}
-  - {entity: climate.kontoret_termostat_1, type: thermostat}
-  - {entity: climate.sovrummet_norra_fonstret, type: thermostat}
-  - {entity: climate.sovrummet_vastra_fonstret, type: thermostat}
-  - {entity: climate.trapp_uppe_termostat_1, type: thermostat}
+  - cards:
+    - {entity: light.calles, name: Calles Hue Light, type: light}
+    - action:
+        data: {entity_id: switch.everspring_an180_plugin_onoff_module_switch}
+        service: switch.toggle
+      color: rgb(255, 255, 153)
+      color_type: icon
+      entity: switch.everspring_an180_plugin_onoff_module_switch
+      icon: mdi:lightbulb-outline
+      name: Bibliotek
+      show_state: false
+      size: 60px
+      type: custom:button-card
+    type: vertical-stack
+  - cards:
+    - {entity: climate.sovrummet_vastra_fonstret, type: thermostat}
+    - {entity: climate.sovrummet_norra_fonstret, type: thermostat}
+    - {entity: climate.emmas_rum_norra_fonstret, type: thermostat}
+    - {entity: climate.emmas_rum_ostra_fonstret, type: thermostat}
+    type: vertical-stack
+  - cards:
+    - {entity: climate.trapp_uppe_termostat_1, type: thermostat}
+    - {entity: climate.kontoret_termostat_1, type: thermostat}
+    - {entity: climate.hallen_uppe_termostat_1, type: thermostat}
+    - {entity: climate.calles_rum_radiator_thermostat_1, type: thermostat}
+    type: vertical-stack
   icon: mdi:arrow-up-thick
   title: Upstairs
 - cards:
