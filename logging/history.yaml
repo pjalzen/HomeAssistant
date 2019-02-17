@@ -1,20 +1,26 @@
   include:
     domains:
+      - zone
       - sun
-      - automation
+      - weather
       - light
       - switch
+      - automation
       - binary_sensor
-      - device_tracker
       - script
+      - device_tracker
+      - lock
     #entities:
   exclude:
     domains:
+      - alert
       - camera
       - media_player
       - calendar
       - sensor
-      - group
+      - group 
+      - zwave
+      - climate
     #entities:
       # - sensor.since_last_boot
       # - sensor.last_boot

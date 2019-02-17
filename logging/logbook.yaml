@@ -1,12 +1,15 @@
   include:
     domains:
+      - zone
       - sun
+      - weather
       - light
       - switch
       - automation
       - binary_sensor
       - script
       - device_tracker
+      - lock
     #entities:
   exclude:
     domains:
@@ -16,4 +19,6 @@
       - calendar
       - sensor
       - group 
+      - zwave
+      - climate
     #entities:
