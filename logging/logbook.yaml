@@ -15,5 +15,5 @@
       - media_player
       - calendar
       - sensor
-      - group
+      - group 
     #entities:
