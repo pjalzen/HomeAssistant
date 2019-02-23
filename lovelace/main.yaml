@@ -26,7 +26,7 @@ resources:
  #   type: js
  # - url: !resource column-card/column-card.js
  #   type: js
- # - url: !resource tracker-card/tracker-card.js?v=0.3.2
+ # - url: !resource tracker-card/tracker-card.js?v=1.2.3
  #   type: js
  # - url: !resource light-slider/light-slider-element.js
  #   type: js
@@ -63,7 +63,7 @@ resources:
   - url: /local/custom-lovelace/thermostat-card/thermostat-card.js?v=0.1.1
     type: js 
   # tracker-card 
-  - url: /local/tracker-card.js?v=0.3.2
+  - url: /local/tracker-card.js?v=1.2.3
     type: js
   # other
   - url: /local/text-element.js?v=0.0.2
