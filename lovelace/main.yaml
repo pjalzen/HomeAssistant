@@ -63,7 +63,7 @@ resources:
   - url: /customcards/custom-lovelace/thermostat-card/thermostat-card.js
     type: js 
   # tracker-card 
-  - url: /customcards/tracker-card.js?v=1.2.3
+  - url: /customcards/tracker-card.js?track=true
     type: js
   # other
   - url: /local/text-element.js?v=0.0.2
