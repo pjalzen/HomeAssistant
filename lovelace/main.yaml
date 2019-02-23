@@ -74,7 +74,7 @@ resources:
     type: js
   - url: /customcards/krisinfo-card.js
     type: js
-  - url: /customcards/button-card.js
+  - url: /local/button-card.js
     type: module
   - url: /customcards/slider-entity-row.js
     type: js
