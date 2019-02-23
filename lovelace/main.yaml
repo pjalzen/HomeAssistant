@@ -66,17 +66,17 @@ resources:
   - url: /customcards/tracker-card.js
     type: js
   # other
-  - url: /local/text-element.js?v=0.0.2
+  - url: /customcards/text-element.js
     type: js
-  - url: /local/circle-sensor-card.js?v=1.2.0
+  - url: /customcards/circle-sensor-card.js
     type: module
-  - url: /local/vertical-stack-in-card.js?v=v0.1.1
+  - url: /customcards/vertical-stack-in-card.js
     type: js
-  - url: /local/krisinfo-card.js?v=0.0.4
+  - url: /customcards/krisinfo-card.js
     type: js
-  - url: /local/button-card.js?v=0
+  - url: /customcards/button-card.js
     type: module
-  - url: /local/row/slider-entity-row.js
+  - url: /customcards/slider-entity-row.js
     type: js
   - url: https://fonts.googleapis.com/css?family=Roboto+Condensed
     type: css 
