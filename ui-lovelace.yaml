@@ -4,23 +4,23 @@
 # Any changes made to it will be overwritten the next time the script is run.
 
 resources:
-- {type: js, url: '/local/custom-lovelace/alarm_control_panel-card/alarm_control_panel-card.js?v=0.4.0'}
-- {type: js, url: '/local/custom-lovelace/beer-card/beer-card.js?v=0.2.3'}
-- {type: js, url: '/local/custom-lovelace/bignumber-card/bignumber-card.js?v=0.0.1'}
-- {type: js, url: '/local/custom-lovelace/entity-attributes-card/entity-attributes-card.js?v=0.1.1'}
-- {type: js, url: '/local/custom-lovelace/gauge-card/gauge-card.js?v=0.2.0'}
-- {type: js, url: '/local/custom-lovelace/group-card/group-card.js?v=0.0.2'}
-- {type: js, url: '/local/custom-lovelace/home-setter/home-setter.js?v=0.0.1'}
-- {type: js, url: '/local/custom-lovelace/monster-card/monster-card.js?v=0.2.3'}
-- {type: js, url: '/local/custom-lovelace/plan-coordinates/plan-coordinates.js?v=0.1.0'}
-- {type: js, url: '/local/custom-lovelace/thermostat-card/thermostat-card.js?v=0.1.1'}
-- {type: js, url: '/local/tracker-card.js?v=0.3.0'}
-- {type: js, url: '/local/text-element.js?v=0.0.2'}
-- {type: module, url: '/local/circle-sensor-card.js?v=1.2.0'}
-- {type: js, url: '/local/vertical-stack-in-card.js?v=v0.1.1'}
-- {type: js, url: '/local/krisinfo-card.js?v=0.0.4'}
-- {type: module, url: '/local/button-card.js?v=0'}
-- {type: js, url: /local/row/slider-entity-row.js}
+- {type: js, url: /customcards/custom-lovelace/alarm_control_panel-card/alarm_control_panel-card.js}
+- {type: js, url: /customcards/custom-lovelace/beer-card/beer-card.js}
+- {type: js, url: /customcards/custom-lovelace/bignumber-card/bignumber-card.js}
+- {type: js, url: /customcards/custom-lovelace/entity-attributes-card/entity-attributes-card.js}
+- {type: js, url: /customcards/custom-lovelace/gauge-card/gauge-card.js}
+- {type: js, url: /customcards/custom-lovelace/group-card/group-card.js}
+- {type: js, url: /customcards/custom-lovelace/home-setter/home-setter.js}
+- {type: js, url: /customcards/custom-lovelace/monster-card/monster-card.js}
+- {type: js, url: /customcards/custom-lovelace/plan-coordinates/plan-coordinates.js}
+- {type: js, url: /customcards/custom-lovelace/thermostat-card/thermostat-card.js}
+- {type: js, url: /customcards/tracker-card.js}
+- {type: js, url: /customcards/text-element.js}
+- {type: module, url: /customcards/circle-sensor-card.js}
+- {type: js, url: /customcards/vertical-stack-in-card.js}
+- {type: js, url: /customcards/krisinfo-card.js}
+- {type: module, url: /local/button-card.js}
+- {type: js, url: /customcards/slider-entity-row.js}
 - {type: css, url: 'https://fonts.googleapis.com/css?family=Roboto+Condensed'}
 title: Home
 views:
