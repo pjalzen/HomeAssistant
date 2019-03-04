@@ -68,7 +68,7 @@ panel_iframe:
 
 custom_updater:
   mode: storage
-  show_installable: true
+  #show_installable: true
   track:
     - cards
     - components
