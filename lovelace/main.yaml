@@ -65,8 +65,6 @@ resources:
   # tracker-card 
   - url: /customcards/github/custom-cards/tracker-card.js?track=true
     type: module
-  #- url: /customcards/tracker-card.js
-  #  type: js
   # other
   - url: /customcards/text-element.js
     type: js
@@ -76,7 +74,7 @@ resources:
     type: js
   - url: /customcards/krisinfo-card.js
     type: js
-  - url: /customcards/button-card.js
+  - url: /customcards/github/custom-cards/button-card.js?track=true
     type: module
   - url: /customcards/slider-entity-row.js
     type: js

@@ -240,8 +240,4 @@
   }
 
   customElements.define('button-card', ButtonCard);
-<<<<<<< HEAD
 })(window.LitElement || Object.getPrototypeOf(customElements.get("home-assistant-main")), customElements.get('mwc-button') || customElements.get('paper-button'));
-=======
-})(window.LitElement || Object.getPrototypeOf(customElements.get("home-assistant-main")), customElements.get('mwc-button') || customElements.get('paper-button'));
->>>>>>> 4072d77eb18519f30a466a4c46074d060d39d219
