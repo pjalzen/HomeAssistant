@@ -67,8 +67,8 @@ panel_iframe:
     url: !secret url_terminal
 
 custom_updater:
-  mode: storage
-  #show_installable: true
+  #mode: storage
+  show_installable: true
   track:
     - cards
     - components
