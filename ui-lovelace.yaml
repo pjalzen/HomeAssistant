@@ -14,12 +14,12 @@ resources:
 - {type: js, url: /customcards/custom-lovelace/monster-card/monster-card.js}
 - {type: js, url: /customcards/custom-lovelace/plan-coordinates/plan-coordinates.js}
 - {type: js, url: /customcards/custom-lovelace/thermostat-card/thermostat-card.js}
-- {type: js, url: /customcards/tracker-card.js}
+- {type: module, url: '/customcards/github/custom-cards/tracker-card.js?track=true'}
 - {type: js, url: /customcards/text-element.js}
 - {type: module, url: /customcards/circle-sensor-card.js}
 - {type: js, url: /customcards/vertical-stack-in-card.js}
 - {type: js, url: /customcards/krisinfo-card.js}
-- {type: module, url: /local/button-card.js}
+- {type: module, url: '/customcards/github/custom-cards/button-card.js?track=true'}
 - {type: js, url: /customcards/slider-entity-row.js}
 - {type: css, url: 'https://fonts.googleapis.com/css?family=Roboto+Condensed'}
 title: Home
