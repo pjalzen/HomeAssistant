@@ -4,7 +4,7 @@ sensor:
     state_as_string: false  #(default, optional, show states as strings as per STATES above)
     sensors:
       - city: Borlänge
-        days_to_track: 3 (0-3, optional)
+        days_to_track: 3    #(0-3, optional)
         allergens:
           - Al
           - Alm
@@ -15,4 +15,5 @@ sensor:
           - Gräs
           - Hassel
           - Sälg
+
           

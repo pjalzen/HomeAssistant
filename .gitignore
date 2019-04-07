@@ -13,6 +13,7 @@
 !*.png
 !assistants
 !custom_components
+!custom_components/pollenniva
 !custom_components/*
 !media_player
 !sensor
