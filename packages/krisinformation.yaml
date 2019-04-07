@@ -1,6 +1,6 @@
-sensor:
-  - platform: krisinformation
-    name: Krisinformation Borlänge
-    latitude: !secret lat_coord  
-    longitude: !secret long_coord
-    radius: 100
+#sensor:
+#  - platform: krisinformation
+#    name: Krisinformation Borlänge
+#    latitude: !secret lat_coord  
+#    longitude: !secret long_coord
+#    radius: 100
