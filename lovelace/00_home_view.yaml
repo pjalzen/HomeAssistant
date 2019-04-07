@@ -20,7 +20,7 @@ cards:
 
   - type: custom:pollenkoll-card
     title: false
-    city: borlänge
+    city: borlange
     allergens:
       - al
       - alm
