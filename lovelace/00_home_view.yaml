@@ -18,6 +18,18 @@ cards:
       - device_tracker.i3s_94
       - lock.i3s_94_lock
 
+  - type: custom:pollenkoll-card
+    title: false
+    city: borlänge
+    allergens:
+      - al
+      - alm
+      - björk
+      - ek
+      - gråbo
+      - gräs
+      - hassel
+
   - type: entities
     title: Lampor och Brytare
     show_header_toggle: true

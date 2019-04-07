@@ -66,6 +66,8 @@ resources:
   - url: /customcards/github/custom-cards/tracker-card.js?track=true
     type: module
   # other
+  - url: /local/pollenkoll-card.js
+    type: js
   - url: /customcards/text-element.js
     type: js
   - url: /customcards/circle-sensor-card.js

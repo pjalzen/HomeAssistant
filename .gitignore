@@ -9,8 +9,11 @@
 !*.xml
 !*.md
 !*.js
+!*.svg
+!*.png
 !assistants
 !custom_components
+!custom_components/*
 !media_player
 !sensor
 !customize
@@ -26,6 +29,7 @@
 !www/*.jpg
 !www/custom-lovelace
 !www/custom-lovelace/*
+!www/pollen_img
 
 # Ignore folders.
 .storage
