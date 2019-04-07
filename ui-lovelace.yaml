@@ -123,13 +123,13 @@ views:
       type: custom:button-card
     type: vertical-stack
   - cards:
-    - {entity: climate.hallen_nere_termostat_1, name: Hallen entré, type: thermostat}
-    - {entity: climate.matsalen_norra_fonstret, name: Matsal norr, type: thermostat}
-    - {entity: climate.matsalen_ostra_fonstret, name: Matsal öster, type: thermostat}
+    - {entity: climate.entre_fonster_soder, name: Hallen entré, type: thermostat}
+    - {entity: climate.matsal_fonster_norr, name: Matsal norr, type: thermostat}
+    - {entity: climate.matsal_fonster_oster, name: Matsal öster, type: thermostat}
     type: vertical-stack
   - cards:
-    - {entity: climate.vardagsrum_norra_fonstret, name: Vardagsrum norr, type: thermostat}
-    - {entity: climate.vardagsrum_vastra_fonstret, name: Vardagsrum väster, type: thermostat}
+    - {entity: climate.vardagsrum_fonster_norr, name: Vardagsrum norr, type: thermostat}
+    - {entity: climate.vardagsrum_fonster_vaster, name: Vardagsrum väster, type: thermostat}
     type: vertical-stack
   icon: mdi:sofa
   title: Downstairs
@@ -149,16 +149,16 @@ views:
       type: custom:button-card
     type: vertical-stack
   - cards:
-    - {entity: climate.sovrummet_vastra_fonstret, type: thermostat}
-    - {entity: climate.sovrummet_norra_fonstret, type: thermostat}
-    - {entity: climate.emmas_rum_norra_fonstret, type: thermostat}
-    - {entity: climate.emmas_rum_ostra_fonstret, type: thermostat}
+    - {entity: climate.sovrum_fonster_vaster, name: Sovrum väster, type: thermostat}
+    - {entity: climate.sovrum_fonster_norr, name: Sovrum norr, type: thermostat}
+    - {entity: climate.emma_fonster_norr, name: Emmas rum norr, type: thermostat}
+    - {entity: climate.emma_fonster_oster, name: Emmas rum öster, type: thermostat}
     type: vertical-stack
   - cards:
-    - {entity: climate.trapp_uppe_termostat_1, type: thermostat}
-    - {entity: climate.kontoret_termostat_1, type: thermostat}
-    - {entity: climate.hallen_uppe_termostat_1, type: thermostat}
-    - {entity: climate.calles_rum_radiator_thermostat_1, type: thermostat}
+    - {entity: climate.kontoret_fonster_soder, name: Kontoret, type: thermostat}
+    - {entity: climate.hall_uppe_trapp, name: Hall uppe trapp, type: thermostat}
+    - {entity: climate.hall_uppe_utanfor_garderob, name: Hall uppe, type: thermostat}
+    - {entity: climate.calle_fonster_oster, name: Calles rum öster, type: thermostat}
     type: vertical-stack
   icon: mdi:arrow-up-thick
   title: Upstairs
