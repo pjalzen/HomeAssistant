@@ -23,6 +23,7 @@ cards:
     minimal: true
     city: borlange
     show_state: false
+    compact: true
     allergens:
       - al
       - alm
