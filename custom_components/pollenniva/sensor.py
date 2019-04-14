@@ -7,11 +7,11 @@ Example configuration
 
 sensor:
   - platform: pollenniva
-    scan_interval: 4 (default, optional)
-    state_as_string: false (default, optional, show states as strings as per STATES below)
+    scan_interval: 4 # (default, optional)
+    state_as_string: false # (default, optional, show states as strings as per STATES below)
     sensors:
       - city: Stockholm
-        days_to_track: 3 (0-3, optional)
+        days_to_track: 3 # (0-4, optional)
         allergens:
           - Gräs
           - Hassel
@@ -66,15 +66,13 @@ SENSOR_OPTIONS = {
 SENSOR_ICONS = {
     'Al': 'mdi:leaf',
     'Alm': 'mdi:leaf',
-    'Ambrosia': 'mdi:leaf',
     'Asp': 'mdi:leaf',
     'Björk': 'mdi:leaf',
-    'Bok': 'mdi:leaf',
     'Ek': 'mdi:leaf',
     'Gråbo': 'mdi:flower',
     'Gräs': 'mdi:flower',
     'Hassel': 'mdi:leaf',
-    'Sälg / Vide': 'mdi:leaf',
+    'Sälg': 'mdi:leaf',
     'default': 'mdi:leaf'
 }
 
