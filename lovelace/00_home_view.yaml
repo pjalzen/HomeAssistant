@@ -19,7 +19,7 @@ cards:
       - lock.i3s_94_lock
 
   - type: custom:pollenkoll-card
-    title: false
+    title: Pollen Borlänge
     minimal: true
     city: borlange
     allergens:
@@ -27,10 +27,17 @@ cards:
       - alm
       - björk
       - ek
+
+  - type: custom:pollenkoll-card
+    title: false
+    minimal: true
+    city: borlange
+    allergens:
       - gråbo
       - gräs
       - hassel
-
+      - sälg
+      
   #- type: entities
   #  title: Lampor och Brytare
   #  show_header_toggle: true
