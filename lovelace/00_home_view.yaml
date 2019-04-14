@@ -16,27 +16,6 @@ cards:
 
   - type: vertical-stack
     cards:
-      - type: custom:pollenkoll-card
-        title: true
-        minimal: false
-        city: borlange
-        show_state: false
-        compact: true
-        allergens:
-          - al
-          - alm
-          - ambrosia
-          - björk
-          - bok
-          - ek
-          - gråbo
-          - gräs
-          - hassel
-          - Sälg / vide
-
-
-  - type: vertical-stack
-    cards:
       - type: alarm-panel
         entity: alarm_control_panel.brunnsgatan_alarm
 
@@ -69,6 +48,26 @@ cards:
           - lock.i3s_94_lock
 
 
+
+  - type: vertical-stack
+    cards:
+      - type: custom:pollenkoll-card
+        title: true
+        minimal: false
+        city: borlange
+        show_state: false
+        compact: true
+        allergens:
+          - al
+          - alm
+          - ambrosia
+          - björk
+          - bok
+          - ek
+          - gråbo
+          - gräs
+          - hassel
+          - Sälg / vide
 
 
 
