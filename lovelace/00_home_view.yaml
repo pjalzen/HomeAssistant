@@ -38,7 +38,7 @@ cards:
       - gråbo
       - gräs
       - hassel
-      - sälg / vide
+      #- sälg / vide
       
       
   #- type: entities
