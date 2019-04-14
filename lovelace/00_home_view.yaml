@@ -36,6 +36,12 @@ cards:
       - gråbo
       - gräs
       - hassel
+      
+  - type: custom:pollenkoll-card
+    title: false
+    minimal: true
+    city: borlange
+    allergens:
       - "Sälg / Vide"
       
   #- type: entities
