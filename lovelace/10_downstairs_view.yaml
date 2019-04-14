@@ -84,6 +84,7 @@ cards:
       - type: thermostat
         entity: climate.matsal_fonster_oster
         name: Matsal öster
+  
   - type: vertical-stack
     cards:
       - type: thermostat

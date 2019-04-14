@@ -30,7 +30,13 @@ cards:
           - hassel
           - Sälg / vide
 
+      - type: sensor
+        entity: sensor.hall_entre_temperature
+        name: Temperatur entré
+        graph: line
+        detail: 2
 
+        
   - type: vertical-stack
     cards:
       - type: entities
@@ -60,11 +66,7 @@ cards:
           type: glance
           title: Home
 
-      - type: sensor
-        entity: sensor.hall_entre_temperature
-        name: Temperatur entré
-        graph: line
-        detail: 2
+
 
 
   #- type: custom:krisinfo-card
