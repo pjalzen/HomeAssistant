@@ -26,7 +26,6 @@ cards:
       - al
       - alm
       - björk
-      - bok
 
   - type: custom:pollenkoll-card
     title: false
@@ -43,7 +42,7 @@ cards:
     minimal: true
     city: borlange
     allergens:
-      - Sälg / Vide
+      - 'Sälg / Vide'
 
   - type: custom:pollenkoll-card
     title: false
@@ -51,6 +50,7 @@ cards:
     city: borlange
     allergens:
       - Ambrosia
+      - bok
       
       
   #- type: entities
