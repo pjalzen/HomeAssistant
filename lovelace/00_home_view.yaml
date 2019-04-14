@@ -42,7 +42,7 @@ cards:
     minimal: true
     city: borlange
     allergens:
-      - 'Sälg / Vide'
+      - Sälg / Vide
 
   - type: custom:pollenkoll-card
     title: false
