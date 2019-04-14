@@ -19,7 +19,7 @@ cards:
       - lock.i3s_94_lock
 
   - type: custom:pollenkoll-card
-    title: Pollen Borlänge
+    title: true
     minimal: true
     city: borlange
     allergens:
