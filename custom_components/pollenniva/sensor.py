@@ -68,11 +68,12 @@ SENSOR_ICONS = {
     'Alm': 'mdi:leaf',
     'Asp': 'mdi:leaf',
     'Björk': 'mdi:leaf',
+    'Bok': 'mdi:leaf',
     'Ek': 'mdi:leaf',
     'Gråbo': 'mdi:flower',
     'Gräs': 'mdi:flower',
     'Hassel': 'mdi:leaf',
-    'Sälg': 'mdi:leaf',
+    'Sälg / Vide': 'mdi:leaf',
     'default': 'mdi:leaf'
 }
 
