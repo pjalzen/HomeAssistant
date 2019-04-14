@@ -1,52 +1,79 @@
 title: Brunnsgatan 25
 icon: mdi:home
 cards:
-  - type: weather-forecast
-    entity: weather.smhi_home 
+  - type: vertical-stack
+    cards:
+      - type: weather-forecast
+        entity: weather.smhi_home 
 
-  - type: alarm-panel
-    entity: alarm_control_panel.brunnsgatan_alarm
+      - type: alarm-panel
+        entity: alarm_control_panel.brunnsgatan_alarm
 
-  - type: entities
-    title: BMW X3
-    entities:
-      - device_tracker.x3_xdrive20d
-      - lock.x3_xdrive20d_lock
-  - type: entities
-    title: BMW i3
-    entities:
-      - device_tracker.i3s_94
-      - lock.i3s_94_lock
 
-  - type: custom:pollenkoll-card
-    title: true
-    minimal: false
-    city: borlange
-    show_state: false
-    compact: true
-    allergens:
-      - al
-      - alm
-      - ambrosia
-      - björk
-      - bok
-      - ek
-      - gråbo
-      - gräs
-      - hassel
-      - Sälg / vide
+  - type: vertical-stack
+    cards:
+      - type: custom:pollenkoll-card
+        title: true
+        minimal: false
+        city: borlange
+        show_state: false
+        compact: true
+        allergens:
+          - al
+          - alm
+          - ambrosia
+          - björk
+          - bok
+          - ek
+          - gråbo
+          - gräs
+          - hassel
+          - Sälg / vide
 
-  #- type: custom:pollenkoll-card
-  #  title: false
-  #  minimal: true
-  #  city: borlange
-  #  allergens:
-  #    - ek
-  #    - gråbo
-  #    - gräs
-  #    - hassel
-  #    - Sälg / vide
-      
+
+  - type: vertical-stack
+    cards:
+      - type: entities
+        show_header_toggle: false
+        title: BMW X3
+        entities:
+          - device_tracker.x3_xdrive20d
+          - lock.x3_xdrive20d_lock
+      - type: entities
+        title: BMW i3
+        show_header_toggle: false
+        entities:
+          - device_tracker.i3s_94
+          - lock.i3s_94_lock
+
+      - type: entity-filter
+        entities:
+          - device_tracker.perjohan_pj_iphone
+          - device_tracker.helenasiphonelocal
+          - device_tracker.oneplus_6tlocal
+          - device_tracker.oneplus_6local
+          - device_tracker.x3_xdrive20d
+          - device_tracker.i3s_94
+        state_filter:
+          - home
+        card: 
+          type: glance
+          title: Home
+
+      - type: sensor
+        entity: sensor.hall_entre_temperature
+        name: Temperatur entré
+        graph: line
+        detail: 2
+
+
+  #- type: custom:krisinfo-card
+  #  entity: sensor.krisinformation
+    
+
+
+
+    
       
   #- type: entities
   #  title: Lampor och Brytare
@@ -73,29 +100,7 @@ cards:
   #    service_data: {}
   #  entity: script.lights_on
 
-  - type: entity-filter
-    entities:
-      - device_tracker.perjohan_pj_iphone
-      - device_tracker.helenasiphonelocal
-      - device_tracker.oneplus_6tlocal
-      - device_tracker.oneplus_6local
-      - device_tracker.x3_xdrive20d
-      - device_tracker.i3s_94
-    state_filter:
-      - home
-    card: 
-      type: glance
-      title: Home
 
-  - type: sensor
-    entity: sensor.hall_entre_temperature
-    name: Temperatur
-
-
-
-  #- type: custom:krisinfo-card
-  #  entity: sensor.krisinformation
-    
 
 
 
