@@ -20,7 +20,7 @@ cards:
 
   - type: custom:pollenkoll-card
     title: true
-    minimal: true
+    minimal: false
     city: borlange
     show_state: false
     compact: true
