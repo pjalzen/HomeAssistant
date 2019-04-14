@@ -6,8 +6,12 @@ cards:
       - type: weather-forecast
         entity: weather.smhi_home 
 
-      - type: alarm-panel
-        entity: alarm_control_panel.brunnsgatan_alarm
+      - type: sensor
+        entity: sensor.hall_entre_temperature
+        name: Temperatur entré
+        graph: line
+        detail: 2
+        hours_to_show: 24
 
 
   - type: vertical-stack
@@ -30,27 +34,11 @@ cards:
           - hassel
           - Sälg / vide
 
-      - type: sensor
-        entity: sensor.hall_entre_temperature
-        name: Temperatur entré
-        graph: line
-        detail: 2
 
-        
   - type: vertical-stack
     cards:
-      - type: entities
-        show_header_toggle: false
-        title: BMW X3
-        entities:
-          - device_tracker.x3_xdrive20d
-          - lock.x3_xdrive20d_lock
-      - type: entities
-        title: BMW i3
-        show_header_toggle: false
-        entities:
-          - device_tracker.i3s_94
-          - lock.i3s_94_lock
+      - type: alarm-panel
+        entity: alarm_control_panel.brunnsgatan_alarm
 
       - type: entity-filter
         entities:
@@ -65,6 +53,21 @@ cards:
         card: 
           type: glance
           title: Home
+
+      - type: entities
+        show_header_toggle: false
+        title: BMW X3
+        entities:
+          - device_tracker.x3_xdrive20d
+          - lock.x3_xdrive20d_lock
+
+      - type: entities
+        title: BMW i3
+        show_header_toggle: false
+        entities:
+          - device_tracker.i3s_94
+          - lock.i3s_94_lock
+
 
 
 
