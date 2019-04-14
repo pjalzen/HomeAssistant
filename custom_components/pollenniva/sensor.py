@@ -66,6 +66,7 @@ SENSOR_OPTIONS = {
 SENSOR_ICONS = {
     'Al': 'mdi:leaf',
     'Alm': 'mdi:leaf',
+    'Ambrosia': 'mdi:leaf',
     'Asp': 'mdi:leaf',
     'Björk': 'mdi:leaf',
     'Bok': 'mdi:leaf',
