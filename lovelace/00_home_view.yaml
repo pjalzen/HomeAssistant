@@ -25,8 +25,8 @@ cards:
     allergens:
       - al
       - alm
-      - ambrosia
       - björk
+      - bok
 
   - type: custom:pollenkoll-card
     title: false
@@ -43,7 +43,15 @@ cards:
     minimal: true
     city: borlange
     allergens:
-      - 'sälg / vide'
+      - Sälg / Vide
+
+  - type: custom:pollenkoll-card
+    title: false
+    minimal: true
+    city: borlange
+    allergens:
+      - Ambrosia
+      
       
   #- type: entities
   #  title: Lampor och Brytare
