@@ -28,17 +28,22 @@ cards:
       - ambrosia
       - björk
       - bok
-
-  - type: custom:pollenkoll-card
-    title: false
-    minimal: true
-    city: borlange
-    allergens:
       - ek
       - gråbo
       - gräs
       - hassel
       - Sälg / vide
+
+  #- type: custom:pollenkoll-card
+  #  title: false
+  #  minimal: true
+  #  city: borlange
+  #  allergens:
+  #    - ek
+  #    - gråbo
+  #    - gräs
+  #    - hassel
+  #    - Sälg / vide
       
       
   #- type: entities
@@ -84,11 +89,7 @@ cards:
     entity: sensor.hall_entre_temperature
     name: Temperatur
 
-  - type: history-graph
-    title: Temperatur
-    entities: 
-      - sensor.hall_entre_temperature
-      - sensor.hall_overvaning_temperature
+
 
   #- type: custom:krisinfo-card
   #  entity: sensor.krisinformation
