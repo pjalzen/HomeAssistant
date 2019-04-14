@@ -15,6 +15,7 @@ resources:
 - {type: js, url: /customcards/custom-lovelace/plan-coordinates/plan-coordinates.js}
 - {type: js, url: /customcards/custom-lovelace/thermostat-card/thermostat-card.js}
 - {type: module, url: '/customcards/github/custom-cards/tracker-card.js?track=true'}
+- {type: js, url: /local/pollenkoll-card.js}
 - {type: js, url: /customcards/text-element.js}
 - {type: module, url: /customcards/circle-sensor-card.js}
 - {type: js, url: /customcards/vertical-stack-in-card.js}
@@ -33,24 +34,11 @@ views:
   - entities: [device_tracker.i3s_94, lock.i3s_94_lock]
     title: BMW i3
     type: entities
-  - entities: [group.all_lights, group.all_switches]
-    show_header_toggle: true
-    title: Lampor och Brytare
-    type: entities
-  - entity: script.lights_off
-    name: Turn Off Lights
-    tap_action:
-      action: call-service
-      service: {entity_id: script.lights_off}
-      service_data: {}
-    type: entity-button
-  - entity: script.lights_on
-    name: Turn On Lights
-    tap_action:
-      action: call-service
-      service: {entity_id: script.lights_on}
-      service_data: {}
-    type: entity-button
+  - allergens: [al, alm, björk, ek, gråbo, gräs, hassel]
+    city: borlange
+    minimal: true
+    title: false
+    type: custom:pollenkoll-card
   - card: {title: Home, type: glance}
     entities: [device_tracker.perjohan_pj_iphone, device_tracker.helenasiphonelocal,
       device_tracker.oneplus_6tlocal, device_tracker.oneplus_6local, device_tracker.x3_xdrive20d,
