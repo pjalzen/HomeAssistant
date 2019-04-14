@@ -25,14 +25,15 @@ cards:
     allergens:
       - al
       - alm
+      - asp
       - björk
-      - ek
 
   - type: custom:pollenkoll-card
     title: false
     minimal: true
     city: borlange
     allergens:
+      - ek
       - gråbo
       - gräs
       - hassel
@@ -42,7 +43,7 @@ cards:
     minimal: true
     city: borlange
     allergens:
-      - "Sälg / Vide"
+      - vide
       
   #- type: entities
   #  title: Lampor och Brytare
