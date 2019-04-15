@@ -11,12 +11,6 @@ cards:
         name: Temperatur entré
         graph: line
 
-      - type: history-graph
-        title: 'Temperatur entré'
-        refresh_interval: 10
-        entities:
-          - sensor.hall_entre_temperature
-
       - type: map
         aspect_ratio: 16:9
         default_zoom: 8
