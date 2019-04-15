@@ -38,3 +38,14 @@ cards:
     trackers:
       - sensor.custom_card_tracker
       - sensor.custom_component_tracker
+
+  - type: gauge
+    name: CPU Usuage
+    unit: '%'
+    entity: sensor.processor_use
+
+  
+  - type: gauge
+    name: Disk Usuage
+    unit: '%'
+    entity: sensor.disk_use_percent_home
