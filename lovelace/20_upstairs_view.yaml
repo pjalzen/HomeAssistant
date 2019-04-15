@@ -46,7 +46,7 @@ cards:
         name: Hall uppe
       - type: thermostat
         entity: climate.calle_fonster_oster
-        name: Calles rum öster
+        name: Calles rum 
 
 #      - type: picture-entity
 #        title: "Hall \xF6verv\xE5ning"
