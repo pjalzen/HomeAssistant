@@ -38,19 +38,22 @@ cards:
           type: glance
           title: Home
 
-      - type: entities
-        show_header_toggle: false
-        title: BMW X3
-        entities:
-          - device_tracker.x3_xdrive20d
-          - lock.x3_xdrive20d_lock
+      - type: media-control
+        entity: media_player.spotify
 
-      - type: entities
-        title: BMW i3
-        show_header_toggle: false
-        entities:
-          - device_tracker.i3s_94
-          - lock.i3s_94_lock
+      #- type: entities
+      #  show_header_toggle: false
+      #  title: BMW X3
+      #  entities:
+      #    - device_tracker.x3_xdrive20d
+      #    - lock.x3_xdrive20d_lock
+
+      #- type: entities
+      #  title: BMW i3
+      #  show_header_toggle: false
+      #  entities:
+      #    - device_tracker.i3s_94
+      #    - lock.i3s_94_lock
 
 
   - type: vertical-stack
