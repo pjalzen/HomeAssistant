@@ -17,6 +17,12 @@ cards:
         entities:
           - sensor.hall_entre_temperature
 
+      - type: map
+        aspect_ratio: 16:9
+        default_zoom: 8
+        entities:
+          - device_tracker.perjohan_pj_iphone
+          - zone.home
 
 
   - type: vertical-stack
@@ -51,7 +57,6 @@ cards:
         entities:
           - device_tracker.i3s_94
           - lock.i3s_94_lock
-
 
 
   - type: vertical-stack
