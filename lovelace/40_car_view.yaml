@@ -130,7 +130,7 @@ cards:
         # remaining range
       - type: "custom:circle-sensor-card"
         entity: sensor.i3s_94_remaining_range_total
-        max: sensor.i3s_94_max_range_electric
+        max: 202
         min: 0
         stroke_width: 15
         # stroke_color: '#03a9f4'
