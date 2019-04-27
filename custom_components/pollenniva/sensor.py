@@ -35,9 +35,12 @@ from homeassistant.components.rest.sensor import RestData
 from homeassistant.const import (CONF_NAME)
 from dateutil import parser
 from datetime import datetime
+from .const import VERSION
 
 _LOGGER = logging.getLogger(__name__)
 _ENDPOINT = 'https://pollenkoll.se/wp-content/themes/pollenkoll/api/get_all.json'
+
+VERSION = '1.0.0'
 
 STATES = {
     "i.h.": 0,
@@ -46,11 +49,11 @@ STATES = {
     "M": 3,
     "M-H": 4,
     "H": 5,
-    "H-H+": 6
+    "H-H+": 6,
+    "H+": 7
 }
 
 DEFAULT_NAME = 'Pollennivå'
-DEFAULT_INTERVAL = 4
 DEFAULT_STATE_AS_STRING = False
 DEFAULT_VERIFY_SSL = True
 CONF_SENSORS = 'sensors'
@@ -78,12 +81,11 @@ SENSOR_ICONS = {
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
-    vol.Optional(CONF_INTERVAL, default=DEFAULT_INTERVAL): cv.string,
     vol.Optional(CONF_STATE_AS_STRING, default=DEFAULT_STATE_AS_STRING): cv.boolean,
     vol.Required(CONF_SENSORS, default=[]): vol.Optional(cv.ensure_list, [vol.In(SENSOR_OPTIONS)]),
 })
 
-SCAN_INTERVAL = timedelta(hours=DEFAULT_INTERVAL)
+SCAN_INTERVAL = timedelta(hours=4)
 
 
 def setup_platform(hass, config, add_devices, discovery_info=None):

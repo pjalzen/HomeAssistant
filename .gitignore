@@ -6,6 +6,7 @@
 !.gitignore
 !*.yaml
 !*.py
+!*.json
 !*.xml
 !*.md
 !*.js
