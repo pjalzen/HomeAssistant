@@ -26,29 +26,34 @@ resources:
 title: Home
 views:
 - cards:
-  - {entity: weather.smhi_home, type: weather-forecast}
-  - {entity: alarm_control_panel.brunnsgatan_alarm, type: alarm-panel}
-  - entities: [device_tracker.x3_xdrive20d, lock.x3_xdrive20d_lock]
-    title: BMW X3
-    type: entities
-  - entities: [device_tracker.i3s_94, lock.i3s_94_lock]
-    title: BMW i3
-    type: entities
-  - allergens: [al, alm, björk, ek, gråbo, gräs, hassel]
-    city: borlange
-    minimal: true
-    title: false
-    type: custom:pollenkoll-card
-  - card: {title: Home, type: glance}
-    entities: [device_tracker.perjohan_pj_iphone, device_tracker.helenasiphonelocal,
-      device_tracker.oneplus_6tlocal, device_tracker.oneplus_6local, device_tracker.x3_xdrive20d,
-      device_tracker.i3s_94]
-    state_filter: [home]
-    type: entity-filter
-  - {entity: sensor.hall_entre_temperature, name: Temperatur, type: sensor}
-  - entities: [sensor.hall_entre_temperature, sensor.hall_overvaning_temperature]
-    title: Temperatur
-    type: history-graph
+  - cards:
+    - {entity: weather.smhi_home, type: weather-forecast}
+    - {entity: sensor.hall_entre_temperature, graph: line, name: Temperatur entré,
+      type: sensor}
+    - aspect_ratio: 969
+      default_zoom: 8
+      entities: [device_tracker.perjohan_pj_iphone, zone.home]
+      type: map
+    type: vertical-stack
+  - cards:
+    - {entity: alarm_control_panel.brunnsgatan_alarm, type: alarm-panel}
+    - card: {title: Home, type: glance}
+      entities: [device_tracker.perjohan_pj_iphone, device_tracker.helenasiphonelocal,
+        device_tracker.oneplus_6tlocal, device_tracker.oneplus_6local, device_tracker.x3_xdrive20d,
+        device_tracker.i3s_94]
+      state_filter: [home]
+      type: entity-filter
+    - {entity: media_player.spotify, type: media-control}
+    type: vertical-stack
+  - cards:
+    - allergens: [al, alm, ambrosia, björk, bok, ek, gråbo, gräs, hassel, Sälg / vide]
+      city: borlange
+      compact: true
+      minimal: false
+      show_state: false
+      title: true
+      type: custom:pollenkoll-card
+    type: vertical-stack
   icon: mdi:home
   title: Brunnsgatan 25
 - cards:
@@ -146,7 +151,7 @@ views:
     - {entity: climate.kontoret_fonster_soder, name: Kontoret, type: thermostat}
     - {entity: climate.hall_uppe_trapp, name: Hall uppe trapp, type: thermostat}
     - {entity: climate.hall_uppe_utanfor_garderob, name: Hall uppe, type: thermostat}
-    - {entity: climate.calle_fonster_oster, name: Calles rum öster, type: thermostat}
+    - {entity: climate.calle_fonster_oster, name: Calles rum, type: thermostat}
     type: vertical-stack
   icon: mdi:arrow-up-thick
   title: Upstairs
@@ -207,6 +212,17 @@ views:
     - entity: binary_sensor.i3s_94_door_lock_state
       style: {color: white, left: 10%, top: 97.5%}
       type: state-label
+    - entity: sensor.i3s_94_remaining_range_total
+      fill: rgba(54, 65, 78, 0.6)
+      font_style: {color: white, font-size: 1.1em}
+      gradient: true
+      max: 202
+      min: 0
+      name: Range
+      stroke_width: 15
+      style: {height: 4em, left: 20%, top: 6%, transform: none, width: 4em}
+      type: custom:circle-sensor-card
+      units: ' '
     image: /local/bmw-i3.jpg
     style: {lenght: 100%, width: 100%}
     type: picture-elements
@@ -248,5 +264,7 @@ views:
   - title: null
     trackers: [sensor.custom_card_tracker, sensor.custom_component_tracker]
     type: custom:tracker-card
+  - {entity: sensor.processor_use, name: CPU Usage, type: gauge, unit: '%'}
+  - {entity: sensor.disk_use_percent_home, name: Disk Usage, type: gauge, unit: '%'}
   icon: mdi:settings
   title: Settings
