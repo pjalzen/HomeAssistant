@@ -60,6 +60,7 @@ cards:
     cards:
       - type: custom:krisinfo-card
         entity: sensor.krisinformation
+        
       - type: custom:pollenkoll-card
         title: true
         minimal: false
