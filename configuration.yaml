@@ -45,18 +45,18 @@ lovelace:
   mode: yaml
 
 panel_iframe:
-  configurator:
-    title: Editor
-    icon: mdi:wrench
-    url: !secret url_configurator
+  #configurator:
+  #  title: Editor
+  #  icon: mdi:wrench
+  #  url: !secret url_configurator
   #sqlite:
   #  title: SQLite Web
   #  icon: mdi:database
   #  url: !secret url_sqlite
-  log_viewer:
-    title: Log
-    icon: mdi:information-outline
-    url: !secret url_logviewer
+  #log_viewer:
+  #  title: Log
+  #  icon: mdi:information-outline
+  #  url: !secret url_logviewer
   mdiindex:
     title: MDI Icon Index
     icon: mdi:vector-square
