@@ -42,28 +42,28 @@ resources:
  #   type: js
 
   # custom-lovelace
-  - url: /customcards/custom-lovelace/alarm_control_panel-card/alarm_control_panel-card.js
+  - url: /local/custom-lovelace/alarm_control_panel-card/alarm_control_panel-card.js
     type: js  
-  - url: /customcards/custom-lovelace/beer-card/beer-card.js
+  - url: /local/custom-lovelace/beer-card/beer-card.js
     type: js  
-  - url: /customcards/custom-lovelace/bignumber-card/bignumber-card.js
+  - url: /local/custom-lovelace/bignumber-card/bignumber-card.js
     type: js  
-  - url: /customcards/custom-lovelace/entity-attributes-card/entity-attributes-card.js
+  - url: /local/custom-lovelace/entity-attributes-card/entity-attributes-card.js
     type: js  
-  - url: /customcards/custom-lovelace/gauge-card/gauge-card.js
+  - url: /local/custom-lovelace/gauge-card/gauge-card.js
     type: js  
-  - url: /customcards/custom-lovelace/group-card/group-card.js
+  - url: /local/custom-lovelace/group-card/group-card.js
     type: js  
-  - url: /customcards/custom-lovelace/home-setter/home-setter.js
+  - url: /local/custom-lovelace/home-setter/home-setter.js
     type: js  
-  - url: /customcards/custom-lovelace/monster-card/monster-card.js
+  - url: /local/custom-lovelace/monster-card/monster-card.js
     type: js  
-  - url: /customcards/custom-lovelace/plan-coordinates/plan-coordinates.js
+  - url: /local/custom-lovelace/plan-coordinates/plan-coordinates.js
     type: js  
-  - url: /customcards/custom-lovelace/thermostat-card/thermostat-card.js
+  - url: /local/custom-lovelace/thermostat-card/thermostat-card.js
     type: js 
   # tracker-card 
-  - url: /customcards/github/custom-cards/tracker-card.js?track=true
+  - url: /local/tracker-card.js?track=true
     type: module
   # other
   - url: /local/card-tools.js?track=true
