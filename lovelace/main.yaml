@@ -66,21 +66,21 @@ resources:
   - url: /customcards/github/custom-cards/tracker-card.js?track=true
     type: module
   # other
-  - url: /customcards/github/thomasloven/card-tools.js?track=true
+  - url: /local/custom-lovelace/card-tools.js?track=true
     type: js
   - url: /local/pollenkoll-card.js
     type: js
-  - url: /customcards/text-element.js
+  - url: /local/text-element.js
     type: js
-  - url: /customcards/circle-sensor-card.js
+  - url: /local/circle-sensor-card.js
     type: module
-  - url: /customcards/vertical-stack-in-card.js
+  - url: /local/vertical-stack-in-card.js
     type: js
-  - url: /customcards/krisinfo-card.js
+  - url: /local/krisinfo-card.js
     type: js
-  - url: /customcards/github/custom-cards/button-card.js?track=true
+  - url: /local/button-card.js?track=true
     type: module
-  - url: /customcards/slider-entity-row.js
+  - url: /local/slider-entity-row.js
     type: js
   - url: https://fonts.googleapis.com/css?family=Roboto+Condensed
     type: css 
