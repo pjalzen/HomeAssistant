@@ -31,6 +31,7 @@
 !www/*.jpg
 !www/custom-lovelace
 !www/custom-lovelace/*
+!www/lovelace-card-tools
 !www/pollen_img
 
 # Ignore folders.
