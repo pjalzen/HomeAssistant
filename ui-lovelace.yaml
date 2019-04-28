@@ -15,6 +15,7 @@ resources:
 - {type: js, url: /customcards/custom-lovelace/plan-coordinates/plan-coordinates.js}
 - {type: js, url: /customcards/custom-lovelace/thermostat-card/thermostat-card.js}
 - {type: module, url: '/customcards/github/custom-cards/tracker-card.js?track=true'}
+- {type: js, url: /local/card-tools.js}
 - {type: js, url: /local/pollenkoll-card.js}
 - {type: js, url: /customcards/text-element.js}
 - {type: module, url: /customcards/circle-sensor-card.js}
@@ -46,6 +47,7 @@ views:
     - {entity: media_player.spotify, type: media-control}
     type: vertical-stack
   - cards:
+    - {entity: sensor.krisinformation, type: 'custom:krisinfo-card'}
     - allergens: [al, alm, ambrosia, björk, bok, ek, gråbo, gräs, hassel, Sälg / vide]
       city: borlange
       compact: true
