@@ -63,10 +63,10 @@ resources:
   - url: /local/custom-lovelace/thermostat-card/thermostat-card.js
     type: js 
   # tracker-card 
-  - url: /local/tracker-card.js?track=true
+  - url: /local/tracker-card.js
     type: module
   # other
-  - url: /local/card-tools.js?track=true
+  - url: /local/card-tools.js
     type: js
   - url: /local/pollenkoll-card.js
     type: js
@@ -78,7 +78,7 @@ resources:
     type: js
   - url: /local/krisinfo-card.js
     type: js
-  - url: /local/button-card.js?track=true
+  - url: /local/button-card.js
     type: module
   - url: /local/slider-entity-row.js
     type: js
