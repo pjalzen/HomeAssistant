@@ -9,10 +9,17 @@ customElements.whenDefined('card-tools').then(() => {
       if (!config.city) {
         throw new Error('Please define city');
       }
+      if (config.threshold && (typeof(config.threshold) != 'number')) {
+        throw new Error('Threshold must be a number')
+      }
       this.config = config;
     }
   
     render(){
+      if(this.sensors.length < 1) {
+        console.log("No sensor data (above threshold or at all), not rendering card.")
+        return;
+      }
       return cardTools.LitHtml
       `
       ${this.config.minimal == false || this.config.minimal == null
@@ -205,7 +212,19 @@ customElements.whenDefined('card-tools').then(() => {
       </style>
       `
     }
+    _tryParseInt(str,defaultValue) {
+      var retValue = defaultValue;
+      if(str !== null) {
+          if(str.length > 0) {
+              if (!isNaN(str)) {
+                  retValue = parseInt(str);
+              }
+          }
+      }
+      return retValue;
+    }
     set hass(hass) {
+      
       this._hass = hass;
       var sensors = [];
   
@@ -224,31 +243,35 @@ customElements.whenDefined('card-tools').then(() => {
         var dict = {};
         dict.allergen_locale = (allergens[i].charAt(0).toUpperCase() + allergens[i].slice(1));
         var allergen = allergens[i].replace(' / ', '_').toLowerCase();
-  
+        
         var allergenReplace = allergen.replace('å', 'a')
         var allergenReplace2 = allergenReplace.replace('ä', 'a')
         var allergenReplaced = allergenReplace2.replace('ö', 'o')
-  
+        
         dict.allergens = allergenReplaced
         dict.day1 = hass.states[`sensor.pollenniva_${city}_${allergenReplaced}_day_0`],
         dict.day2 = hass.states[`sensor.pollenniva_${city}_${allergenReplaced}_day_1`],
         dict.day3 = hass.states[`sensor.pollenniva_${city}_${allergenReplaced}_day_2`]
-  
-        sensors.push(dict)
-      }
-  
-      for (let i = 0; i < sensors.length; i++) {
-        const element = sensors[i];
-        if (element.day1.state == "unknown" || element.day2.state == "unknown" || element.day3.state == "unknown") {
+
+        if (dict.day1.state == "unknown" || dict.day2.state == "unknown" || dict.day3.state == "unknown") {
           var log_text = `A sensor for "${element.allergen_locale}" is returning unknown, you should probably check your config for that sensor in the custom component.`;
           console.log(log_text)
+        }
+
+        if (this.config.threshold != null) {
+          if (this._tryParseInt(dict.day1.state, 0) >= this.config.threshold || this._tryParseInt(dict.day2.state, 0) >= this.config.threshold || this._tryParseInt(dict.day3.state, 0) >= this.config.threshold) {
+            sensors.push(dict)
+          }
+        }
+        else {
+          sensors.push(dict)
         }
       }
   
       this.sensors = sensors;
       this.requestUpdate();
     }
-  
+
   
   
     // @TODO: This requires more intelligent logic
