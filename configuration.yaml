@@ -26,7 +26,7 @@ updater:
 conversation:                                       # Allows you to issue voice commands from the frontend in enabled browsers
 #customizer:
 #  custom_ui: hosted
-cloud: !include assistants/cloud.yaml
+#cloud: !include assistants/cloud.yaml
 #homekit: !include assistants/homekit.yaml
 #ios: !include notify/ios_config.yaml
 
