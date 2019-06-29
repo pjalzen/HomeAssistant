@@ -1,4 +1,15 @@
 sensor:
+  - platform: avanza_stock
+    stock: 811105
+    monitored_conditions:
+      #change
+      #changePercent
+      #name
+      - highestPrice
+      - tickerSymbol
+      - totalValueTraded
+      - totalVolumeTraded
+      
   - platform: alpha_vantage
     api_key: !secret alpha_vantage_api_key
     symbols:
