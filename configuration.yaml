@@ -33,7 +33,7 @@ conversation:                                       # Allows you to issue voice 
 #discovery:                                          # Discover some devices automatically
 
 hacs:
-  token: 97c5d1ebf771bda7d9fe5690f15209dd69b21f78
+  token: !secret hacs_token
 
 # ########################################
 # ###                GUI               ###
@@ -68,16 +68,16 @@ panel_iframe:
     icon: mdi:console
     url: !secret url_terminal
 
-custom_updater:
-  #mode: storage
-  #show_installable: true
-  track:
-    - cards
-    - components
-  card_urls:
-    #- https://raw.githubusercontent.com/custom-cards/text-element/master/text-element.js
-    #- https://raw.githubusercontent.com/custom-cards/vertical-stack-in-card/master/vertical-stack-in-card.js
-    - https://raw.githubusercontent.com/kuuji/button-card/master/tracker.json
+#custom_updater:
+#  #mode: storage
+#  #show_installable: true
+#  track:
+#    - cards
+#    - components
+#  card_urls:
+#    #- https://raw.githubusercontent.com/custom-cards/text-element/master/text-element.js
+#    #- https://raw.githubusercontent.com/custom-cards/vertical-stack-in-card/master/vertical-stack-in-card.js
+#    - https://raw.githubusercontent.com/kuuji/button-card/master/tracker.json
 
 system_health:
 
