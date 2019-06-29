@@ -1,6 +1,7 @@
 sensor:
   - platform: avanza_stock
     stock: 811105
+    name: Toadman Interactive
     monitored_conditions:
       #change
       #changePercent
@@ -9,7 +10,7 @@ sensor:
       - tickerSymbol
       - totalValueTraded
       - totalVolumeTraded
-      
+
   - platform: alpha_vantage
     api_key: !secret alpha_vantage_api_key
     symbols:

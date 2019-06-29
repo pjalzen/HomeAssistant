@@ -32,6 +32,8 @@ conversation:                                       # Allows you to issue voice 
 
 #discovery:                                          # Discover some devices automatically
 
+hacs:
+  token: 97c5d1ebf771bda7d9fe5690f15209dd69b21f78
 
 # ########################################
 # ###                GUI               ###
