@@ -23,6 +23,8 @@ http:
   #trusted_networks: 
   #  - !secret ip_trusted_network
 updater:
+  include_used_components: true
+  
 conversation:                                       # Allows you to issue voice commands from the frontend in enabled browsers
 #customizer:
 #  custom_ui: hosted
@@ -37,7 +39,8 @@ hacs:
 
 # ########################################
 # ###                GUI               ###
-# ########################################
+# ########################################Carnoustie147
+
 map:                                                # Enables a map showing the location of tracked devices
 frontend:                                           # Enables the frontend
   javascript_version: auto 
