@@ -12,10 +12,16 @@
 !*.js
 !*.svg
 !*.png
+!*.txt
+!*.gz
+!*.css
 !assistants
 !custom_components
 !custom_components/pollenniva
 !custom_components/*
+!custom_components/hacs/*
+!custom_components/hacs/frontend/*
+!custom_components/hacs/frontend/elements/*
 !media_player
 !sensor
 !customize
