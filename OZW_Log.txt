@@ -1,0 +1,312 @@
+
+2019-07-03 23:32:51.863 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:51.863 Info, Node007,     Previous value was 0.000kWh, received 16550 seconds ago.
+2019-07-03 23:32:51.863 Detail, Node007, Refreshed Value: old value=0.000, new value=0.000, type=decimal
+2019-07-03 23:32:51.863 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:51.863 Detail, Node007, Refreshed Value: old value=16550, new value=16550, type=int
+2019-07-03 23:32:51.863 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:51.864 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:51.876 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:51.888 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:51.900 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.055 Detail, Node007,   Received: 0x01, 0x17, 0x00, 0x04, 0x00, 0x07, 0x0f, 0x32, 0x02, 0x21, 0x64, 0x00, 0x00, 0x0c, 0x9f, 0x40, 0xa7, 0x00, 0x00, 0x00, 0x00, 0x00, 0xbb, 0x00, 0x5e
+2019-07-03 23:32:52.056 Detail, 
+2019-07-03 23:32:52.056 Detail, Node007, Refreshed Value: old value=false, new value=false, type=bool
+2019-07-03 23:32:52.056 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.056 Info, Node007, Received Meter report from node 7: Energy=3.231kWh
+2019-07-03 23:32:52.056 Detail, Node007, Refreshed Value: old value=3.231, new value=3.231, type=decimal
+2019-07-03 23:32:52.056 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.056 Info, Node007,     Previous value was 0.000kWh, received 16551 seconds ago.
+2019-07-03 23:32:52.056 Detail, Node007, Refreshed Value: old value=0.000, new value=0.000, type=decimal
+2019-07-03 23:32:52.056 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.056 Detail, Node007, Refreshed Value: old value=16550, new value=16551, type=int
+2019-07-03 23:32:52.056 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.056 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.082 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.094 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.106 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.119 Detail, Node007,   Received: 0x01, 0x17, 0x00, 0x04, 0x00, 0x07, 0x0f, 0x32, 0x02, 0x21, 0x64, 0x00, 0x00, 0x0c, 0x9f, 0x40, 0xa7, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb9, 0x00, 0x5c
+2019-07-03 23:32:52.119 Detail, 
+2019-07-03 23:32:52.119 Detail, Node007, Refreshed Value: old value=false, new value=false, type=bool
+2019-07-03 23:32:52.119 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.119 Info, Node007, Received Meter report from node 7: Energy=3.231kWh
+2019-07-03 23:32:52.119 Detail, Node007, Refreshed Value: old value=3.231, new value=3.231, type=decimal
+2019-07-03 23:32:52.119 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.119 Info, Node007,     Previous value was 0.000kWh, received 16551 seconds ago.
+2019-07-03 23:32:52.119 Detail, Node007, Refreshed Value: old value=0.000, new value=0.000, type=decimal
+2019-07-03 23:32:52.119 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.119 Detail, Node007, Refreshed Value: old value=16551, new value=16551, type=int
+2019-07-03 23:32:52.119 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.120 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.132 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.145 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.157 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.306 Detail, Node007,   Received: 0x01, 0x17, 0x00, 0x04, 0x00, 0x07, 0x0f, 0x32, 0x02, 0x21, 0x64, 0x00, 0x00, 0x0c, 0x9f, 0x40, 0xa7, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb9, 0x00, 0x5c
+2019-07-03 23:32:52.306 Detail, 
+2019-07-03 23:32:52.306 Detail, Node007, Refreshed Value: old value=false, new value=false, type=bool
+2019-07-03 23:32:52.306 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.307 Info, Node007, Received Meter report from node 7: Energy=3.231kWh
+2019-07-03 23:32:52.307 Detail, Node007, Refreshed Value: old value=3.231, new value=3.231, type=decimal
+2019-07-03 23:32:52.307 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.307 Info, Node007,     Previous value was 0.000kWh, received 16551 seconds ago.
+2019-07-03 23:32:52.307 Detail, Node007, Refreshed Value: old value=0.000, new value=0.000, type=decimal
+2019-07-03 23:32:52.307 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.307 Detail, Node007, Refreshed Value: old value=16551, new value=16551, type=int
+2019-07-03 23:32:52.307 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.307 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.326 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.339 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.353 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.366 Detail, Node007,   Received: 0x01, 0x17, 0x00, 0x04, 0x00, 0x07, 0x0f, 0x32, 0x02, 0x21, 0x64, 0x00, 0x00, 0x0c, 0x9f, 0x40, 0xa7, 0x00, 0x00, 0x00, 0x00, 0x00, 0xbb, 0x00, 0x5e
+2019-07-03 23:32:52.366 Detail, 
+2019-07-03 23:32:52.366 Detail, Node007, Refreshed Value: old value=false, new value=false, type=bool
+2019-07-03 23:32:52.366 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.366 Info, Node007, Received Meter report from node 7: Energy=3.231kWh
+2019-07-03 23:32:52.366 Detail, Node007, Refreshed Value: old value=3.231, new value=3.231, type=decimal
+2019-07-03 23:32:52.366 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.366 Info, Node007,     Previous value was 0.000kWh, received 16551 seconds ago.
+2019-07-03 23:32:52.366 Detail, Node007, Refreshed Value: old value=0.000, new value=0.000, type=decimal
+2019-07-03 23:32:52.366 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.366 Detail, Node007, Refreshed Value: old value=16551, new value=16551, type=int
+2019-07-03 23:32:52.366 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.367 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.379 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.391 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.403 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.415 Detail, Node007,   Received: 0x01, 0x17, 0x00, 0x04, 0x00, 0x07, 0x0f, 0x32, 0x02, 0x21, 0x64, 0x00, 0x00, 0x0c, 0x9f, 0x40, 0xa7, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb9, 0x00, 0x5c
+2019-07-03 23:32:52.416 Detail, 
+2019-07-03 23:32:52.416 Detail, Node007, Refreshed Value: old value=false, new value=false, type=bool
+2019-07-03 23:32:52.416 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.416 Info, Node007, Received Meter report from node 7: Energy=3.231kWh
+2019-07-03 23:32:52.416 Detail, Node007, Refreshed Value: old value=3.231, new value=3.231, type=decimal
+2019-07-03 23:32:52.416 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.416 Info, Node007,     Previous value was 0.000kWh, received 16551 seconds ago.
+2019-07-03 23:32:52.416 Detail, Node007, Refreshed Value: old value=0.000, new value=0.000, type=decimal
+2019-07-03 23:32:52.416 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.416 Detail, Node007, Refreshed Value: old value=16551, new value=16551, type=int
+2019-07-03 23:32:52.416 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.416 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.428 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.440 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.458 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.554 Detail, Node007,   Received: 0x01, 0x17, 0x00, 0x04, 0x00, 0x07, 0x0f, 0x32, 0x02, 0x21, 0x64, 0x00, 0x00, 0x0c, 0x9f, 0x40, 0xa7, 0x00, 0x00, 0x00, 0x00, 0x00, 0xbb, 0x00, 0x5e
+2019-07-03 23:32:52.554 Detail, 
+2019-07-03 23:32:52.555 Detail, Node007, Refreshed Value: old value=false, new value=false, type=bool
+2019-07-03 23:32:52.555 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.555 Info, Node007, Received Meter report from node 7: Energy=3.231kWh
+2019-07-03 23:32:52.555 Detail, Node007, Refreshed Value: old value=3.231, new value=3.231, type=decimal
+2019-07-03 23:32:52.555 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.555 Info, Node007,     Previous value was 0.000kWh, received 16551 seconds ago.
+2019-07-03 23:32:52.555 Detail, Node007, Refreshed Value: old value=0.000, new value=0.000, type=decimal
+2019-07-03 23:32:52.555 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.555 Detail, Node007, Refreshed Value: old value=16551, new value=16551, type=int
+2019-07-03 23:32:52.555 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.555 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.583 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.597 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.610 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.623 Detail, Node007,   Received: 0x01, 0x17, 0x00, 0x04, 0x00, 0x07, 0x0f, 0x32, 0x02, 0x21, 0x64, 0x00, 0x00, 0x0c, 0x9f, 0x40, 0xa7, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb9, 0x00, 0x5c
+2019-07-03 23:32:52.623 Detail, 
+2019-07-03 23:32:52.623 Detail, Node007, Refreshed Value: old value=false, new value=false, type=bool
+2019-07-03 23:32:52.623 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.623 Info, Node007, Received Meter report from node 7: Energy=3.231kWh
+2019-07-03 23:32:52.623 Detail, Node007, Refreshed Value: old value=3.231, new value=3.231, type=decimal
+2019-07-03 23:32:52.623 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.623 Info, Node007,     Previous value was 0.000kWh, received 16551 seconds ago.
+2019-07-03 23:32:52.623 Detail, Node007, Refreshed Value: old value=0.000, new value=0.000, type=decimal
+2019-07-03 23:32:52.623 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.623 Detail, Node007, Refreshed Value: old value=16551, new value=16551, type=int
+2019-07-03 23:32:52.623 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.623 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.635 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.648 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.660 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.805 Detail, Node007,   Received: 0x01, 0x17, 0x00, 0x04, 0x00, 0x07, 0x0f, 0x32, 0x02, 0x21, 0x64, 0x00, 0x00, 0x0c, 0x9f, 0x40, 0xa7, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb9, 0x00, 0x5c
+2019-07-03 23:32:52.805 Detail, 
+2019-07-03 23:32:52.805 Detail, Node007, Refreshed Value: old value=false, new value=false, type=bool
+2019-07-03 23:32:52.805 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.805 Info, Node007, Received Meter report from node 7: Energy=3.231kWh
+2019-07-03 23:32:52.805 Detail, Node007, Refreshed Value: old value=3.231, new value=3.231, type=decimal
+2019-07-03 23:32:52.805 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.805 Info, Node007,     Previous value was 0.000kWh, received 16551 seconds ago.
+2019-07-03 23:32:52.805 Detail, Node007, Refreshed Value: old value=0.000, new value=0.000, type=decimal
+2019-07-03 23:32:52.805 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.805 Detail, Node007, Refreshed Value: old value=16551, new value=16551, type=int
+2019-07-03 23:32:52.805 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.805 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.821 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.835 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.849 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.863 Detail, Node007,   Received: 0x01, 0x17, 0x00, 0x04, 0x00, 0x07, 0x0f, 0x32, 0x02, 0x21, 0x64, 0x00, 0x00, 0x0c, 0x9f, 0x40, 0xa7, 0x00, 0x00, 0x00, 0x00, 0x00, 0xbb, 0x00, 0x5e
+2019-07-03 23:32:52.863 Detail, 
+2019-07-03 23:32:52.863 Detail, Node007, Refreshed Value: old value=false, new value=false, type=bool
+2019-07-03 23:32:52.863 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.863 Info, Node007, Received Meter report from node 7: Energy=3.231kWh
+2019-07-03 23:32:52.863 Detail, Node007, Refreshed Value: old value=3.231, new value=3.231, type=decimal
+2019-07-03 23:32:52.863 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.863 Info, Node007,     Previous value was 0.000kWh, received 16551 seconds ago.
+2019-07-03 23:32:52.863 Detail, Node007, Refreshed Value: old value=0.000, new value=0.000, type=decimal
+2019-07-03 23:32:52.863 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.863 Detail, Node007, Refreshed Value: old value=16551, new value=16551, type=int
+2019-07-03 23:32:52.863 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:52.863 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.877 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.891 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:52.904 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.046 Detail, Node007,   Received: 0x01, 0x17, 0x00, 0x04, 0x00, 0x07, 0x0f, 0x32, 0x02, 0x21, 0x64, 0x00, 0x00, 0x0c, 0x9f, 0x40, 0xa8, 0x00, 0x00, 0x00, 0x00, 0x00, 0xbb, 0x00, 0x51
+2019-07-03 23:32:53.046 Detail, 
+2019-07-03 23:32:53.046 Detail, Node007, Refreshed Value: old value=false, new value=false, type=bool
+2019-07-03 23:32:53.046 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.046 Info, Node007, Received Meter report from node 7: Energy=3.231kWh
+2019-07-03 23:32:53.046 Detail, Node007, Refreshed Value: old value=3.231, new value=3.231, type=decimal
+2019-07-03 23:32:53.046 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.046 Info, Node007,     Previous value was 0.000kWh, received 16552 seconds ago.
+2019-07-03 23:32:53.046 Detail, Node007, Refreshed Value: old value=0.000, new value=0.000, type=decimal
+2019-07-03 23:32:53.046 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.046 Detail, Node007, Refreshed Value: old value=16551, new value=16552, type=int
+2019-07-03 23:32:53.046 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.046 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.073 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.088 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.103 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.121 Detail, Node007,   Received: 0x01, 0x17, 0x00, 0x04, 0x00, 0x07, 0x0f, 0x32, 0x02, 0x21, 0x64, 0x00, 0x00, 0x0c, 0x9f, 0x40, 0xa8, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb9, 0x00, 0x53
+2019-07-03 23:32:53.121 Detail, 
+2019-07-03 23:32:53.121 Detail, Node007, Refreshed Value: old value=false, new value=false, type=bool
+2019-07-03 23:32:53.121 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.121 Info, Node007, Received Meter report from node 7: Energy=3.231kWh
+2019-07-03 23:32:53.121 Detail, Node007, Refreshed Value: old value=3.231, new value=3.231, type=decimal
+2019-07-03 23:32:53.121 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.121 Info, Node007,     Previous value was 0.000kWh, received 16552 seconds ago.
+2019-07-03 23:32:53.121 Detail, Node007, Refreshed Value: old value=0.000, new value=0.000, type=decimal
+2019-07-03 23:32:53.121 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.121 Detail, Node007, Refreshed Value: old value=16552, new value=16552, type=int
+2019-07-03 23:32:53.121 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.122 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.134 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.146 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.158 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.306 Detail, Node007,   Received: 0x01, 0x17, 0x00, 0x04, 0x00, 0x07, 0x0f, 0x32, 0x02, 0x21, 0x64, 0x00, 0x00, 0x0c, 0x9f, 0x40, 0xa8, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb9, 0x00, 0x53
+2019-07-03 23:32:53.306 Detail, 
+2019-07-03 23:32:53.306 Detail, Node007, Refreshed Value: old value=false, new value=false, type=bool
+2019-07-03 23:32:53.306 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.306 Info, Node007, Received Meter report from node 7: Energy=3.231kWh
+2019-07-03 23:32:53.306 Detail, Node007, Refreshed Value: old value=3.231, new value=3.231, type=decimal
+2019-07-03 23:32:53.306 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.306 Info, Node007,     Previous value was 0.000kWh, received 16552 seconds ago.
+2019-07-03 23:32:53.306 Detail, Node007, Refreshed Value: old value=0.000, new value=0.000, type=decimal
+2019-07-03 23:32:53.306 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.306 Detail, Node007, Refreshed Value: old value=16552, new value=16552, type=int
+2019-07-03 23:32:53.306 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.307 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.319 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.332 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.344 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.356 Detail, Node007,   Received: 0x01, 0x17, 0x00, 0x04, 0x00, 0x07, 0x0f, 0x32, 0x02, 0x21, 0x64, 0x00, 0x00, 0x0c, 0x9f, 0x40, 0xa8, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb9, 0x00, 0x53
+2019-07-03 23:32:53.356 Detail, 
+2019-07-03 23:32:53.356 Detail, Node007, Refreshed Value: old value=false, new value=false, type=bool
+2019-07-03 23:32:53.357 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.357 Info, Node007, Received Meter report from node 7: Energy=3.231kWh
+2019-07-03 23:32:53.357 Detail, Node007, Refreshed Value: old value=3.231, new value=3.231, type=decimal
+2019-07-03 23:32:53.357 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.357 Info, Node007,     Previous value was 0.000kWh, received 16552 seconds ago.
+2019-07-03 23:32:53.357 Detail, Node007, Refreshed Value: old value=0.000, new value=0.000, type=decimal
+2019-07-03 23:32:53.357 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.357 Detail, Node007, Refreshed Value: old value=16552, new value=16552, type=int
+2019-07-03 23:32:53.357 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.357 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.369 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.381 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.393 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.554 Detail, Node007,   Received: 0x01, 0x17, 0x00, 0x04, 0x00, 0x07, 0x0f, 0x32, 0x02, 0x21, 0x64, 0x00, 0x00, 0x0c, 0x9f, 0x40, 0xa8, 0x00, 0x00, 0x00, 0x00, 0x00, 0xbb, 0x00, 0x51
+2019-07-03 23:32:53.555 Detail, 
+2019-07-03 23:32:53.555 Detail, Node007, Refreshed Value: old value=false, new value=false, type=bool
+2019-07-03 23:32:53.555 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.555 Info, Node007, Received Meter report from node 7: Energy=3.231kWh
+2019-07-03 23:32:53.555 Detail, Node007, Refreshed Value: old value=3.231, new value=3.231, type=decimal
+2019-07-03 23:32:53.555 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.555 Info, Node007,     Previous value was 0.000kWh, received 16552 seconds ago.
+2019-07-03 23:32:53.555 Detail, Node007, Refreshed Value: old value=0.000, new value=0.000, type=decimal
+2019-07-03 23:32:53.555 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.555 Detail, Node007, Refreshed Value: old value=16552, new value=16552, type=int
+2019-07-03 23:32:53.555 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.556 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.575 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.587 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.600 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.612 Detail, Node007,   Received: 0x01, 0x17, 0x00, 0x04, 0x00, 0x07, 0x0f, 0x32, 0x02, 0x21, 0x64, 0x00, 0x00, 0x0c, 0x9f, 0x40, 0xa8, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb9, 0x00, 0x53
+2019-07-03 23:32:53.612 Detail, 
+2019-07-03 23:32:53.612 Detail, Node007, Refreshed Value: old value=false, new value=false, type=bool
+2019-07-03 23:32:53.612 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.612 Info, Node007, Received Meter report from node 7: Energy=3.231kWh
+2019-07-03 23:32:53.612 Detail, Node007, Refreshed Value: old value=3.231, new value=3.231, type=decimal
+2019-07-03 23:32:53.612 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.612 Info, Node007,     Previous value was 0.000kWh, received 16552 seconds ago.
+2019-07-03 23:32:53.613 Detail, Node007, Refreshed Value: old value=0.000, new value=0.000, type=decimal
+2019-07-03 23:32:53.613 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.613 Detail, Node007, Refreshed Value: old value=16552, new value=16552, type=int
+2019-07-03 23:32:53.613 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.613 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.625 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.637 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.648 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.804 Detail, Node007,   Received: 0x01, 0x17, 0x00, 0x04, 0x00, 0x07, 0x0f, 0x32, 0x02, 0x21, 0x64, 0x00, 0x00, 0x0c, 0x9f, 0x40, 0xa8, 0x00, 0x00, 0x00, 0x00, 0x00, 0xbb, 0x00, 0x51
+2019-07-03 23:32:53.805 Detail, 
+2019-07-03 23:32:53.805 Detail, Node007, Refreshed Value: old value=false, new value=false, type=bool
+2019-07-03 23:32:53.805 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.805 Info, Node007, Received Meter report from node 7: Energy=3.231kWh
+2019-07-03 23:32:53.805 Detail, Node007, Refreshed Value: old value=3.231, new value=3.231, type=decimal
+2019-07-03 23:32:53.805 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.805 Info, Node007,     Previous value was 0.000kWh, received 16552 seconds ago.
+2019-07-03 23:32:53.805 Detail, Node007, Refreshed Value: old value=0.000, new value=0.000, type=decimal
+2019-07-03 23:32:53.805 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.805 Detail, Node007, Refreshed Value: old value=16552, new value=16552, type=int
+2019-07-03 23:32:53.805 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.806 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.830 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.848 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.860 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.873 Detail, Node007,   Received: 0x01, 0x17, 0x00, 0x04, 0x00, 0x07, 0x0f, 0x32, 0x02, 0x21, 0x64, 0x00, 0x00, 0x0c, 0x9f, 0x40, 0xa8, 0x00, 0x00, 0x00, 0x00, 0x00, 0xbb, 0x00, 0x51
+2019-07-03 23:32:53.873 Detail, 
+2019-07-03 23:32:53.873 Detail, Node007, Refreshed Value: old value=false, new value=false, type=bool
+2019-07-03 23:32:53.873 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.873 Info, Node007, Received Meter report from node 7: Energy=3.231kWh
+2019-07-03 23:32:53.873 Detail, Node007, Refreshed Value: old value=3.231, new value=3.231, type=decimal
+2019-07-03 23:32:53.873 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.873 Info, Node007,     Previous value was 0.000kWh, received 16552 seconds ago.
+2019-07-03 23:32:53.873 Detail, Node007, Refreshed Value: old value=0.000, new value=0.000, type=decimal
+2019-07-03 23:32:53.873 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.873 Detail, Node007, Refreshed Value: old value=16552, new value=16552, type=int
+2019-07-03 23:32:53.873 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:53.873 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.886 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.897 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:53.909 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:54.055 Detail, Node007,   Received: 0x01, 0x17, 0x00, 0x04, 0x00, 0x07, 0x0f, 0x32, 0x02, 0x21, 0x64, 0x00, 0x00, 0x0c, 0x9f, 0x40, 0xa9, 0x00, 0x00, 0x00, 0x00, 0x00, 0xbb, 0x00, 0x50
+2019-07-03 23:32:54.055 Detail, 
+2019-07-03 23:32:54.055 Detail, Node007, Refreshed Value: old value=false, new value=false, type=bool
+2019-07-03 23:32:54.055 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:54.055 Info, Node007, Received Meter report from node 7: Energy=3.231kWh
+2019-07-03 23:32:54.055 Detail, Node007, Refreshed Value: old value=3.231, new value=3.231, type=decimal
+2019-07-03 23:32:54.055 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:54.055 Info, Node007,     Previous value was 0.000kWh, received 16553 seconds ago.
+2019-07-03 23:32:54.055 Detail, Node007, Refreshed Value: old value=0.000, new value=0.000, type=decimal
+2019-07-03 23:32:54.055 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:54.055 Detail, Node007, Refreshed Value: old value=16552, new value=16553, type=int
+2019-07-03 23:32:54.055 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:54.055 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:54.074 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:54.087 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:54.106 Detail, Node007, Notification: ValueChanged
+2019-07-03 23:32:54.120 Detail, Node007,   Received: 0x01, 0x17, 0x00, 0x04, 0x00, 0x07, 0x0f, 0x32, 0x02, 0x21, 0x64, 0x00, 0x00, 0x0c, 0x9f, 0x40, 0xa9, 0x00, 0x00, 0x00, 0x00, 0x00, 0xbb, 0x00, 0x50
+2019-07-03 23:32:54.120 Detail, 
+2019-07-03 23:32:54.120 Detail, Node007, Refreshed Value: old value=false, new value=false, type=bool
+2019-07-03 23:32:54.120 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:54.120 Info, Node007, Received Meter report from node 7: Energy=3.231kWh
+2019-07-03 23:32:54.120 Detail, Node007, Refreshed Value: old value=3.231, new value=3.231, type=decimal
+2019-07-03 23:32:54.120 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:54.120 Info, Node007,     Previous value was 0.000kWh, received 16553 seconds ago.
+2019-07-03 23:32:54.120 Detail, Node007, Refreshed Value: old value=0.000, new value=0.000, type=decimal
+2019-07-03 23:32:54.120 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:54.120 Detail, Node007, Refreshed Value: old value=16553, new value=16553, type=int
+2019-07-03 23:32:54.120 Detail, Node007, Changes to this value are not verified
+2019-07-03 23:32:54.121 Detail, Node007, Notification: ValueChanged
