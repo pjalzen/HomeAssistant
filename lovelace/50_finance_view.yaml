@@ -11,8 +11,21 @@ cards:
 
   - type: custom:mini-graph-card
     entities:
-    - sensor.toadman_interactive
+    - sensor.amazon
+    
+  - type: custom:mini-graph-card
+    entities:
+    - sensor.capgemini 
 
   - type: custom:mini-graph-card
     entities:
+    - sensor.microsoft 
+    
+  - type: custom:mini-graph-card
+    entities:
     - sensor.sandvik
+
+  - type: custom:mini-graph-card
+    entities:
+    - sensor.toadman_interactive
+
