@@ -1,14 +1,4 @@
 title: Home
-# excluded_entities:
-#   {% for state in states.alert %}
-#   - {{ states.alert[state].entity_id }}
-#   {% endfor %}
-#   {% for state in states.automation %}
-#   - {{ states.automation[state].entity_id }}
-#   {% endfor %}
-#   {% for state in states.zwave %}
-#   - {{ states.zwave[state].entity_id }}
-#   {% endfor %}
 
 resources:
   # custom-lovelace
