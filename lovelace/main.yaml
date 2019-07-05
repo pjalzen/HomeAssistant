@@ -4,8 +4,6 @@ resources:
   # custom-lovelace
   - url: /local/custom-lovelace/alarm_control_panel-card/alarm_control_panel-card.js
     type: js  
-  - url: /local/custom-lovelace/beer-card/beer-card.js
-    type: js  
   - url: /local/custom-lovelace/bignumber-card/bignumber-card.js
     type: js  
   - url: /local/custom-lovelace/entity-attributes-card/entity-attributes-card.js
@@ -13,12 +11,6 @@ resources:
   - url: /local/custom-lovelace/gauge-card/gauge-card.js
     type: js  
   - url: /local/custom-lovelace/group-card/group-card.js
-    type: js  
-  - url: /local/custom-lovelace/home-setter/home-setter.js
-    type: js  
-  - url: /local/custom-lovelace/monster-card/monster-card.js
-    type: js  
-  - url: /local/custom-lovelace/plan-coordinates/plan-coordinates.js
     type: js  
   - url: /local/custom-lovelace/thermostat-card/thermostat-card.js
     type: js 
@@ -42,9 +34,16 @@ resources:
     type: module
   - url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
     type: js
-    
-  - url: /local/slider-entity-row.js
-    type: js
+  - url: /community_plugin/compact-custom-header/compact-custom-header.js
+    type: module
+  - url: /community_plugin/lovelace-slider-entity-row/slider-entity-row.js
+    type: module
+  - url: /community_plugin/weather-card/weather-card.js
+    type: module
+  - url: /community_plugin/mini-graph-card/mini-graph-card.js
+    type: module
+
+  # other
   - url: https://fonts.googleapis.com/css?family=Roboto+Condensed
     type: css 
     
