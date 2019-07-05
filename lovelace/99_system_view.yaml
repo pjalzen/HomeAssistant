@@ -33,11 +33,6 @@ cards:
       - light.calles
       - light.dimmable_light_1
       - light.hue_lightstrip_plus_1
-  - type: custom:tracker-card
-    title:
-    trackers:
-      - sensor.custom_card_tracker
-      - sensor.custom_component_tracker
 
   - type: gauge
     name: CPU Usage
