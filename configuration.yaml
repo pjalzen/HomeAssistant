@@ -50,37 +50,14 @@ lovelace:
   mode: yaml
 
 panel_iframe:
-  #configurator:
-  #  title: Editor
-  #  icon: mdi:wrench
-  #  url: !secret url_configurator
   #sqlite:
   #  title: SQLite Web
   #  icon: mdi:database
   #  url: !secret url_sqlite
-  #log_viewer:
-  #  title: Log
-  #  icon: mdi:information-outline
-  #  url: !secret url_logviewer
   mdiindex:
     title: MDI Icon Index
     icon: mdi:vector-square
     url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html
-  #terminal:
-  #  title: Terminal
-  #  icon: mdi:console
-  #  url: !secret url_terminal
-
-#custom_updater:
-#  #mode: storage
-#  #show_installable: true
-#  track:
-#    - cards
-#    - components
-#  card_urls:
-#    #- https://raw.githubusercontent.com/custom-cards/text-element/master/text-element.js
-#    #- https://raw.githubusercontent.com/custom-cards/vertical-stack-in-card/master/vertical-stack-in-card.js
-#    - https://raw.githubusercontent.com/kuuji/button-card/master/tracker.json
 
 system_health:
 
