@@ -70,19 +70,21 @@ resources:
     type: js
   - url: /local/pollenkoll-card.js
     type: js
-  - url: /local/text-element.js
-    type: js
-  - url: /local/circle-sensor-card.js
-    type: module
-  - url: /local/vertical-stack-in-card.js
-    type: js
 
+    
+  - url: /community_plugin/text-element/text-element.js
+    type: js
+  - url: /community_plugin/circle-sensor-card/circle-sensor-card.js
+    type: module
   - url: /community_plugin/krisinfo-card/krisinfo-card.js
     type: js
   - url: /community_plugin/simple-thermostat/simple-thermostat.js
     type: module
   - url: /community_plugin/button-card/button-card.js
     type: module
+  - url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
+    type: js
+
     
   - url: /local/slider-entity-row.js
     type: js
