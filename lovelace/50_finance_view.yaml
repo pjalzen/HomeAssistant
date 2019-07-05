@@ -35,7 +35,7 @@ cards:
 
   - type: custom:mini-graph-card
     entities:
-    - sensor.stora_enso52695269
+    - sensor.stora_enso
 
   - type: custom:mini-graph-card
     entities:
@@ -44,4 +44,5 @@ cards:
   - type: custom:mini-graph-card
     entities:
     - sensor.volvo
+    hours_to_show: 2400
 
