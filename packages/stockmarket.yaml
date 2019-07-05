@@ -84,16 +84,86 @@ sensor:
       - priceOneYearAgo
       - priceSixMonthsAgo
       - priceThreeMonthsAgo
+  - platform: avanza_stock
+    stock: 45189
+    name: Husqvarna
+    monitored_conditions:
+      #change
+      #changePercent
+      #name
+      - highestPrice
+      - tickerSymbol
+      - totalValueTraded
+      - totalVolumeTraded
+      - priceAtStartOfYear
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+  - platform: avanza_stock
+    stock: 952055
+    name: Jumia Technologies
+    monitored_conditions:
+      #change
+      #changePercent
+      #name
+      - highestPrice
+      - tickerSymbol
+      - totalValueTraded
+      - totalVolumeTraded
+      - priceAtStartOfYear
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+  - platform: avanza_stock
+    stock: 5422
+    name: Stora Enso
+    monitored_conditions:
+      #change
+      #changePercent
+      #name
+      - highestPrice
+      - tickerSymbol
+      - totalValueTraded
+      - totalVolumeTraded
+      - priceAtStartOfYear
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+  - platform: avanza_stock
+    stock: 5269
+    name: Volvo
+    monitored_conditions:
+      #change
+      #changePercent
+      #name
+      - highestPrice
+      - tickerSymbol
+      - totalValueTraded
+      - totalVolumeTraded
+      - priceAtStartOfYear
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
 
-  - platform: alpha_vantage
-    api_key: !secret alpha_vantage_api_key
-    symbols:
-      - symbol: AMZN
-        name: Amazon
-      - symbol: MSFT
-        name: Microsoft
-      - symbol: NKE
-        name: Nike
+
+
+#  - platform: alpha_vantage
+#    api_key: !secret alpha_vantage_api_key
+#    symbols:
+#      - symbol: AMZN
+#        name: Amazon
+#      - symbol: MSFT
+#        name: Microsoft
+#      - symbol: NKE
+#        name: Nike
     #foreign_exchange:
     #  - name: USD_EUR
     #    from: USD

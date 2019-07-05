@@ -19,6 +19,14 @@ cards:
 
   - type: custom:mini-graph-card
     entities:
+    - sensor.husqvarna
+
+  - type: custom:mini-graph-card
+    entities:
+    - sensor.jumia_technologies
+
+  - type: custom:mini-graph-card
+    entities:
     - sensor.microsoft 
     
   - type: custom:mini-graph-card
@@ -27,5 +35,13 @@ cards:
 
   - type: custom:mini-graph-card
     entities:
+    - sensor.stora_enso52695269
+
+  - type: custom:mini-graph-card
+    entities:
     - sensor.toadman_interactive
+
+  - type: custom:mini-graph-card
+    entities:
+    - sensor.volvo
 
