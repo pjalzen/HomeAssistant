@@ -1,10 +1,18 @@
 title: Finance
 icon: mdi:finance
 cards:
-  - type: history-graph
-    title: Finance
-    entities: 
-      - sensor.amazon
-      - sensor.microsoft
-      - sensor.nike
-    hours_to_show: 48
+  #- type: history-graph
+  #  title: Finance
+  #  entities: 
+  #    - sensor.toadman_interactive
+  #    - sensor.microsoft
+  #    - sensor.nike
+  #  hours_to_show: 48
+
+  - type: custom:mini-graph-card
+    entities:
+    - sensor.toadman_interactive
+
+  - type: custom:mini-graph-card
+    entities:
+    - sensor.sandvik

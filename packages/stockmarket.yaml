@@ -10,6 +10,80 @@ sensor:
       - tickerSymbol
       - totalValueTraded
       - totalVolumeTraded
+      - priceAtStartOfYear
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+  - platform: avanza_stock
+    stock: 3986
+    name: Amazon
+    monitored_conditions:
+      #change
+      #changePercent
+      #name
+      - highestPrice
+      - tickerSymbol
+      - totalValueTraded
+      - totalVolumeTraded
+      - priceAtStartOfYear
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+  - platform: avanza_stock
+    stock: 745885
+    name: Capgemini
+    monitored_conditions:
+      #change
+      #changePercent
+      #name
+      - highestPrice
+      - tickerSymbol
+      - totalValueTraded
+      - totalVolumeTraded
+      - priceAtStartOfYear
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+  - platform: avanza_stock
+    stock: 5471
+    name: Sandvik
+    monitored_conditions:
+      #change
+      #changePercent
+      #name
+      - highestPrice
+      - tickerSymbol
+      - totalValueTraded
+      - totalVolumeTraded
+      - priceAtStartOfYear
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+  - platform: avanza_stock
+    stock: 3873
+    name: Microsoft
+    monitored_conditions:
+      #change
+      #changePercent
+      #name
+      - highestPrice
+      - tickerSymbol
+      - totalValueTraded
+      - totalVolumeTraded
+      - priceAtStartOfYear
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
 
   - platform: alpha_vantage
     api_key: !secret alpha_vantage_api_key
