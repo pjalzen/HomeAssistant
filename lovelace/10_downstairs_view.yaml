@@ -8,7 +8,7 @@ cards:
         entity: light.living_room 
         name: Colored Lights
 
-      - type: "custom:button-card"
+      - type: custom:button-card
         entity: switch.nodon_msp31xx_micro_smart_plug_switch_2
         show_state: false
         color_type: icon

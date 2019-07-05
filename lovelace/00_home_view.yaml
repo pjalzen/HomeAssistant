@@ -59,7 +59,7 @@ cards:
   - type: vertical-stack
     cards:
       - type: custom:krisinfo-card
-        entity: sensor.krisinformation
+        entity: sensor.krisinformation_sverige
         
       - type: custom:pollenkoll-card
         title: true
