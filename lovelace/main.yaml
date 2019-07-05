@@ -72,20 +72,20 @@ resources:
     type: js
 
     
-  - url: /community_plugin/text-element/text-element.js
+  - url: /community/text-element/text-element.js
     type: js
-  - url: /community_plugin/circle-sensor-card/circle-sensor-card.js
+  - url: /community/circle-sensor-card/circle-sensor-card.js
     type: module
-  - url: /community_plugin/krisinfo-card/krisinfo-card.js
+  - url: /community/krisinfo-card/krisinfo-card.js
     type: js
-  - url: /community_plugin/simple-thermostat/simple-thermostat.js
+  - url: /community/simple-thermostat/simple-thermostat.js
     type: module
-  - url: /community_plugin/button-card/button-card.js
+  - url: /community/button-card/button-card.js
     type: module
-  - url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
+  - url: /community/vertical-stack-in-card/vertical-stack-in-card.js
     type: js
 
-    
+
   - url: /local/slider-entity-row.js
     type: js
   - url: https://fonts.googleapis.com/css?family=Roboto+Condensed

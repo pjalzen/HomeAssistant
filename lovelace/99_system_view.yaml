@@ -39,7 +39,6 @@ cards:
     unit: '%'
     entity: sensor.processor_use
 
-  
   - type: gauge
     name: Disk Usage
     unit: '%'
