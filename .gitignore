@@ -26,9 +26,9 @@
 !sensor
 !customize
 !entities
+!esphome
 !logging
 !lovelace
-!lovelace/*
 !notify
 !packages
 !python_scripts
