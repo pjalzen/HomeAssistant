@@ -35,6 +35,8 @@
 !themes
 !www
 !www/*.jpg
+!www/community
+!www/community/*
 !www/custom-lovelace
 !www/custom-lovelace/*
 !www/lovelace-card-tools
