@@ -1,3 +1,15 @@
+title: Home
+# excluded_entities:
+#   {% for state in states.alert %}
+#   - {{ states.alert[state].entity_id }}
+#   {% endfor %}
+#   {% for state in states.automation %}
+#   - {{ states.automation[state].entity_id }}
+#   {% endfor %}
+#   {% for state in states.zwave %}
+#   - {{ states.zwave[state].entity_id }}
+#   {% endfor %}
+
 resources:
   # custom-lovelace
   - url: /local/custom-lovelace/alarm_control_panel-card/alarm_control_panel-card.js
@@ -40,24 +52,12 @@ resources:
     type: module
   - url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
     type: js
-
     
   - url: /local/slider-entity-row.js
     type: js
   - url: https://fonts.googleapis.com/css?family=Roboto+Condensed
     type: css 
     
-title: Home
-# excluded_entities:
-#   {% for state in states.alert %}
-#   - {{ states.alert[state].entity_id }}
-#   {% endfor %}
-#   {% for state in states.automation %}
-#   - {{ states.automation[state].entity_id }}
-#   {% endfor %}
-#   {% for state in states.zwave %}
-#   - {{ states.zwave[state].entity_id }}
-#   {% endfor %}
 views:
   - !include 00_home_view.yaml
   - !include 10_downstairs_view.yaml
