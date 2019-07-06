@@ -11,38 +11,41 @@ cards:
 
   - type: custom:mini-graph-card
     entities:
-    - sensor.amazon
+      - sensor.amazon
     
   - type: custom:mini-graph-card
     entities:
-    - sensor.capgemini 
+      - sensor.capgemini 
 
   - type: custom:mini-graph-card
     entities:
-    - sensor.husqvarna
+      - sensor.husqvarna
 
   - type: custom:mini-graph-card
     entities:
-    - sensor.jumia_technologies
+      - sensor.jumia_technologies
 
   - type: custom:mini-graph-card
     entities:
-    - sensor.microsoft 
+      - sensor.microsoft 
     
   - type: custom:mini-graph-card
     entities:
-    - sensor.sandvik
+      - sensor.sandvik
 
   - type: custom:mini-graph-card
     entities:
-    - sensor.stora_enso
+      - sensor.stora_enso
 
   - type: custom:mini-graph-card
     entities:
-    - sensor.toadman_interactive
+      - sensor.toadman_interactive
 
   - type: custom:mini-graph-card
     entities:
-    - sensor.volvo
-    hours_to_show: 2400
-
+      - sensor.volvo
+    color_thresholds: 
+      - value: 156.5
+        color: red
+      - value: 156.5
+        color: blue 

@@ -1,8 +1,6 @@
 title: Pool
 icon: mdi:pool
 cards:
-  - type: history-graph
-    title: Temperatur
-    entities: 
-      - sensor.amazon
-    hours_to_show: 48
+  - type: custom:mini-graph-card
+    entities:
+      - sensor.rv70_solvarbo_wind_speed
