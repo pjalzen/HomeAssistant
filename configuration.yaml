@@ -68,7 +68,7 @@ system_health:
 #recorder: !include logging/recorder.yaml
 #history: !include logging/history.yaml              # Enables support for tracking state changes over time
 #logbook: !include logging/logbook.yaml              # View all events in a logbook
-logger: !include logging/logger.yaml
+#logger: !include logging/logger.yaml
 
 
 # ########################################
