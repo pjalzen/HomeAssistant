@@ -1,10 +1,10 @@
 """Blueprint for HacsRepositoryIntegration."""
-# pylint: disable=too-many-instance-attributes,invalid-name,broad-except
+# pylint: disable=too-many-instance-attributes,invalid-name,broad-except,access-member-before-definition
 import logging
 import json
 
-from .blueprints import HacsRepositoryBase
-from .exceptions import HacsRequirement
+from .hacsrepositorybase import HacsRepositoryBase
+from ..hacsbase.exceptions import HacsRequirement
 
 _LOGGER = logging.getLogger("custom_components.hacs.repository")
 
@@ -26,6 +26,16 @@ class HacsRepositoryIntegration(HacsRepositoryBase):
         self.manifest_content = None
         self.domain = None
         self.name = repository_name.split("/")[-1]
+
+    @property
+    def config_flow(self):
+        """Return bool if integration has config_flow."""
+        if self.manifest_content is None:
+            return self.manifest_content.get("config_flow", False)
+        return False
+
+    async def reload_config_flows(self):
+        """Reload config flows in HA."""
 
     async def update(self):
         """Run update tasks."""

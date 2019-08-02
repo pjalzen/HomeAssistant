@@ -6,18 +6,17 @@ import logging
 import pathlib
 import os
 import shutil
-from packaging.version import Version
-from homeassistant.const import __version__ as HAVERSION
-from .aiogithub import AIOGitHubException
-from .hacsbase import HacsBase
-from .exceptions import (
+from distutils.version import LooseVersion
+from ..aiogithub.exceptions import AIOGitHubException
+from ..hacsbase import HacsBase
+from ..hacsbase.exceptions import (
     HacsRepositoryInfo,
     HacsUserScrewupException,
     HacsBaseException,
     HacsBlacklistException,
 )
-from .handler.download import async_download_file, async_save_file
-from .const import VERSION, NOT_SUPPORTED_HA_VERSION
+from ..handler.download import async_download_file, async_save_file
+from ..hacsbase.const import VERSION, NOT_SUPPORTED_HA_VERSION
 
 _LOGGER = logging.getLogger("custom_components.hacs.repository")
 
@@ -114,6 +113,24 @@ class HacsRepositoryBase(HacsBase):
         elif self.last_release_tag is not None:
             return "tags/{}".format(self.last_release_tag)
         return self.repository.default_branch
+
+    @property
+    def can_install(self):
+        """Return bool if repository can be installed."""
+        if self.homeassistant_version is not None:
+            if self.version_or_commit == "version":
+                if LooseVersion(self.store.ha_version) < LooseVersion(self.homeassistant_version):
+                    return False
+        return True
+
+    @property
+    def version_or_commit(self):
+        """Does the repositoriy use releases or commits?"""
+        if self.last_release_tag is not None:
+            version_or_commit = "version"
+        else:
+            version_or_commit = "commit"
+        return version_or_commit
 
     async def setup_repository(self):
         """
@@ -255,19 +272,15 @@ class HacsRepositoryBase(HacsBase):
             # Run update
             await self.update()  # pylint: disable=no-member
 
-            if (
-                self.homeassistant_version is not None
-                and self.last_release_tag is not None
-            ):
-                if Version(HAVERSION[0:6]) < Version(str(self.homeassistant_version)):
-                    message = NOT_SUPPORTED_HA_VERSION.format(
-                        HAVERSION,
-                        self.last_release_tag,
-                        self.name,
-                        str(self.homeassistant_version),
-                    )
-                    _LOGGER.error(message)
-                    return False
+            if not self.can_install:
+                message = NOT_SUPPORTED_HA_VERSION.format(
+                    self.ha_version,
+                    self.last_release_tag,
+                    self.name,
+                    str(self.homeassistant_version),
+                )
+                _LOGGER.error(message)
+                return False
 
             # Check local directory
             await self.check_local_directory()
@@ -296,24 +309,19 @@ class HacsRepositoryBase(HacsBase):
                 (datetime.now() - start_time).seconds,
             )
 
-        # Dynamic version bump
-        if self.repository_name == "custom-components/hacs":
-            _LOGGER.info("Setting version for HACS.")
-            const = "{}/const.py".format(self.local_path)
-            with open(const) as f:
-                newText = f.read().replace(
-                    'VERSION = "DEV"', 'VERSION = "{}"'.format(self.version_installed)
-                )
-            with open(const, "w") as f:
-                f.write(newText)
+        if self.repository_type == "integration":
+            if self.config_flow:
+                await self.reload_config_flows()
 
     async def remove(self):
         """Run remove tasks."""
         _LOGGER.debug("(%s) - Starting removal", self.repository_name)
 
         if self.repository_id in self.store.repositories:
-            if not self.installed:
-                del self.store.repositories[self.repository_id]
+            del self.store.repositories[self.repository_id]
+        for repository in self.store.frontend:
+            if repository.repository_id == self.repository_id:
+                self.store.frontend.remove(repository)
 
     async def uninstall(self):
         """Run uninstall tasks."""
@@ -381,6 +389,7 @@ class HacsRepositoryBase(HacsBase):
 
     async def set_additional_info(self):
         """Add additional info (from info.md)."""
+        from ..handler.template import render_template
         if self.repository is None:
             raise HacsRepositoryInfo("GitHub repository object is missing")
         elif self.ref is None:
@@ -397,7 +406,7 @@ class HacsRepositoryBase(HacsBase):
         if info is None:
             self.additional_info = ""
         else:
-            self.additional_info = info.content
+            self.additional_info = render_template(info.content, self)
 
     async def set_repository(self):
         """Set the AIOGitHub repository object."""

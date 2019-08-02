@@ -1,12 +1,19 @@
-"""HACS Data store."""
+"""Data handler for HACS."""
 import os
 import json
+from homeassistant.const import __version__ as HAVERSION
 from .const import STORENAME, VERSION
-from .hacslogger import HacsLogger
-from .blueprints import HacsRepositoryAppDaemon, HacsRepositoryIntegration, HacsRepositoryPlugin, HacsRepositoryPythonScripts, HacsRepositoryThemes
+from ..handler.logger import HacsLogger
+from ..repositories.repositoryinformationview import RepositoryInformationView
+from ..repositories.hacsrepositoryappdaemon import HacsRepositoryAppDaemon
+from ..repositories.hacsrepositoryintegration import HacsRepositoryIntegration
+from ..repositories.hacsrepositorybaseplugin import HacsRepositoryPlugin
+from ..repositories.hacsrepositorypythonscript import HacsRepositoryPythonScripts
+from ..repositories.hacsrepositorytheme import HacsRepositoryThemes
+from ..repositories.repositoryinformationview import RepositoryInformationView
 
-class HacsDataStore:
-    """HacsDataStore class."""
+class HacsData:
+    """HacsData class."""
 
     def __init__(self, config_dir):
         """Initialize."""
@@ -14,8 +21,10 @@ class HacsDataStore:
         self.repositories = {}
         self.logger = HacsLogger()
         self.config_dir = config_dir
+        self.ha_version = HAVERSION
         self.schema = None
         self.endpoints = {}
+        self.frontend = []
         self.task_running = False
 
     @property
@@ -135,5 +144,6 @@ class HacsDataStore:
                     repositories[repo_id].selected_tag = repository.get("selected_tag")
                     if repo_id == "172733314":
                         repositories[repo_id].version_installed = VERSION
+                    self.frontend.append(RepositoryInformationView(repositories[repo_id]))
 
                 self.repositories = repositories

@@ -1,5 +1,7 @@
 """RepositoryInformationView, used for the frontend."""
 # pylint: disable=missing-docstring
+from distutils.version import LooseVersion
+from homeassistant.const import __version__ as HAVERSION
 from .repositoryinformation import RepositoryInformation
 
 class RepositoryInformationView(RepositoryInformation):

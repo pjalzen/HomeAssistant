@@ -1,23 +1,24 @@
-"""Blueprint for HacsBase."""
-# pylint: disable=too-few-public-methods,unused-argument
+"""Initialize the HACS base."""
+"""# pylint: disable=too-few-public-methods,unused-argument"""
 
 import uuid
 import json
-import os
 from datetime import timedelta
 from homeassistant.helpers.event import async_track_time_interval, async_call_later
-from .aiogithub import AIOGitHubException, AIOGitHubRatelimit
+from ..aiogithub.exceptions import AIOGitHubException, AIOGitHubRatelimit
 from .const import ELEMENT_TYPES
-from .hacslogger import HacsLogger
+from ..handler.logger import HacsLogger
 
 class HacsBase:
     """The base class of HACS, nested thoughout the project."""
 
     const = None
-    dev = False
+    hacsconst = None
     migration = None
     storage = None
     hacs = None
+    ha_version = None
+    config = None
     logger = HacsLogger()
     data = {"hacs": {}}
     data["task_running"] = True
@@ -32,25 +33,31 @@ class HacsBase:
 
     url_path = {}
     for endpoint in [
-        "api",
-        "error",
-        "overview",
-        "static",
-        "store",
-        "settings",
-        "repository",
+            "api",
+            "admin",
+            "admin-api",
+            "base",
+            "error",
+            "overview",
+            "static",
+            "store",
+            "settings",
+            "repository",
     ]:
         url_path[endpoint] = "/community_{}-{}".format(
             str(uuid.uuid4()), str(uuid.uuid4())
         )
+    token = "{}-{}".format(str(uuid.uuid4()), str(uuid.uuid4()))
+    hacsweb = "/hacsweb/{}".format(token)
+    hacsapi = "/hacsapi/{}".format(token)
 
     async def startup_tasks(self, notarealargument=None):
         """Run startup_tasks."""
-        from .hacsrepositoryintegration import HacsRepositoryIntegration
-
         self.store.task_running = True
 
         self.logger.info("Runing startup tasks.")
+
+        self.logger.debug(self.token, "token")
 
         # Store enpoints
         self.data["hacs"]["endpoints"] = self.url_path
@@ -88,13 +95,12 @@ class HacsBase:
     async def register_new_repository(self, element_type, repo, repositoryobject=None):
         """Register a new repository."""
         from .exceptions import HacsBaseException, HacsRequirement
-        from .blueprints import (
-            HacsRepositoryAppDaemon,
-            HacsRepositoryIntegration,
-            HacsRepositoryPlugin,
-            HacsRepositoryPythonScripts,
-            HacsRepositoryThemes,
-        )
+        from ..repositories.repositoryinformationview import RepositoryInformationView
+        from ..repositories.hacsrepositoryappdaemon import HacsRepositoryAppDaemon
+        from ..repositories.hacsrepositoryintegration import HacsRepositoryIntegration
+        from ..repositories.hacsrepositorybaseplugin import HacsRepositoryPlugin
+        from ..repositories.hacsrepositorypythonscript import HacsRepositoryPythonScripts
+        from ..repositories.hacsrepositorytheme import HacsRepositoryThemes
 
         if await self.is_known_repository(repo):
             return
@@ -135,6 +141,7 @@ class HacsBase:
 
         if setup_result:
             self.store.repositories[repository.repository_id] = repository
+            self.store.frontend.append(RepositoryInformationView(repository))
 
         else:
             if repo not in self.blacklist:
@@ -199,7 +206,7 @@ class HacsBase:
                     except AIOGitHubException as exception:
                         self.logger.error("{} - {}".format(repository.repository_name, exception))
         self.store.task_running = False
-        await self.storage.set()
+        self.store.write()
 
     async def get_repositories(self):
         """Get defined repositories."""
@@ -220,26 +227,32 @@ class HacsBase:
             if item not in self.blacklist:
                 self.blacklist.append(item)
 
+        # Remove blacklisted repositories
+        for repository in self.blacklist:
+            self.logger.debug(repository, "blacklist")
+            if await self.is_known_repository(repository):
+                repository = await self.get_repository_by_name(repository)
+                await repository.remove()
+
         # Get org repositories
-        if not self.dev:
-            repositories["integration"] = await self.aiogithub.get_org_repos(
-                "custom-components"
+        repositories["integration"] = await self.aiogithub.get_org_repos(
+            "custom-components"
+        )
+        repositories["plugin"] = await self.aiogithub.get_org_repos("custom-cards")
+
+        # Additional default repositories
+        for repository_type in ELEMENT_TYPES:
+            self.logger.info("Fetching updated repository list", repository_type)
+            default_repositories = await self.hacs_github.get_contents(
+                "repositories/{}".format(repository_type), "data"
             )
-            repositories["plugin"] = await self.aiogithub.get_org_repos("custom-cards")
+            for repository in json.loads(default_repositories.content):
+                if repository not in self._default_repositories:
+                    self._default_repositories.append(repository)
 
-            # Additional default repositories
-            for repository_type in ELEMENT_TYPES:
-                self.logger.info("Fetching updated repository list", repository_type)
-                default_repositories = await self.hacs_github.get_contents(
-                    "repositories/{}".format(repository_type), "data"
-                )
-                for repository in json.loads(default_repositories.content):
-                    if repository not in self._default_repositories:
-                        self._default_repositories.append(repository)
-
-                    if not await self.is_known_repository(repository):
-                        result = await self.aiogithub.get_repo(repository)
-                        repositories[repository_type].append(result)
+                if not await self.is_known_repository(repository):
+                    result = await self.aiogithub.get_repo(repository)
+                    repositories[repository_type].append(result)
 
         return (
             repositories["appdaemon"],
@@ -291,3 +304,10 @@ class HacsBase:
             if repository.repository_name == repository_full_name:
                 return True
         return False
+
+    async def get_repository_by_name(self, repository_name):
+        """Return a repository by it's name."""
+        for repository in self.store.repositories:
+            repository = self.store.repositories[repository]
+            if repository.repository_name == repository_name:
+                return repository
