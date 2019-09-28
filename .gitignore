@@ -15,11 +15,14 @@
 !*.txt
 !*.gz
 !*.css
+!*.json
 !assistants
 !custom_components
 !custom_components/pollenniva
 !custom_components/*
+!custom_components/nhl_api/*
 !custom_components/hacs/*
+!custom_components/hacs/repositories/*
 !custom_components/hacs/frontend/*
 !custom_components/hacs/frontend/elements/*
 !media_player
