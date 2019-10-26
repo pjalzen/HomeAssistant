@@ -36,7 +36,7 @@ cards:
   - type: vertical-stack
     cards:
       - type: thermostat
-        entity: climate.kontoret_syd
+        entity: climate.kontor_syd
         name: Kontoret
       - type: thermostat
         entity: climate.hall_trapp
