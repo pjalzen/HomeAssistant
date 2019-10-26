@@ -76,22 +76,22 @@ cards:
   - type: vertical-stack
     cards:
       - type: thermostat
-        entity: climate.entre_fonster_soder
+        entity: climate.entre_syd
         name: Hallen entré
       - type: thermostat
-        entity: climate.matsal_fonster_norr
+        entity: climate.matsal_norr
         name: Matsal norr
       - type: thermostat
-        entity: climate.matsal_fonster_oster
+        entity: climate.matsal_oster
         name: Matsal öster
   
   - type: vertical-stack
     cards:
       - type: thermostat
-        entity: climate.vardagsrum_fonster_norr
+        entity: climate.vardagsrum_norr
         name: Vardagsrum norr
       - type: thermostat
-        entity: climate.vardagsrum_fonster_vaster
+        entity: climate.vardagsrum_vaster
         name: Vardagsrum väster
 
 
