@@ -22,30 +22,30 @@ cards:
   - type: vertical-stack
     cards:
       - type: thermostat
-        entity: climate.sovrum_fonster_vaster
+        entity: climate.sovrum_vaster
         name: Sovrum väster
       - type: thermostat
-        entity: climate.sovrum_fonster_norr
+        entity: climate.sovrum_norr
         name: Sovrum norr
       - type: thermostat
-        entity: climate.emma_fonster_norr
+        entity: climate.emma_norr
         name: Emmas rum norr 
       - type: thermostat
-        entity: climate.emma_fonster_oster
+        entity: climate.emma_oster
         name: Emmas rum öster
   - type: vertical-stack
     cards:
       - type: thermostat
-        entity: climate.kontoret_fonster_soder
+        entity: climate.kontoret_syd
         name: Kontoret
       - type: thermostat
-        entity: climate.hall_uppe_trapp
+        entity: climate.hall_trapp
         name: Hall uppe trapp
       - type: thermostat
-        entity: climate.hall_uppe_utanfor_garderob
+        entity: climate.hall_calle
         name: Hall uppe
       - type: thermostat
-        entity: climate.calle_fonster_oster
+        entity: climate.calle_oster
         name: Calles rum 
 
 #      - type: picture-entity
