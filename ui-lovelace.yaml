@@ -46,11 +46,19 @@ resources:
   type: module
 - url: /community_plugin/mini-graph-card/mini-graph-card.js
   type: module
+<<<<<<< HEAD
 # - url: /community_plugin/spotify-card/spotify-card.js
 #   type: module
+=======
+<<<<<<< HEAD
+=======
+- url: /community_plugin/spotify-card/spotify-card.js
+  type: module
+>>>>>>> 9ea9a44716e7c3e73248823adaec157c5d0807f1
 - type: module
   url: >-
     https://cdn.jsdelivr.net/gh/custom-cards/spotify-card@1.8/dist/spotify-card.umd.js
+>>>>>>> eb7e960723bb5b559d6ae89d69f8a97333b7a283
 
   # other
 - url: https://fonts.googleapis.com/css?family=Roboto+Condensed
@@ -120,6 +128,10 @@ views:
     - type: custom:krisinfo-card
       entity: sensor.krisinformation_sverige
 
+    - type: 'custom:spotify-card'
+      client_id: 17474af888f4429096919799b61fc080
+        #limit: <optional number of playlists to retrieve (default 10)>
+        #device: <optional name of a device to pre-select>        
 #      - type: custom:pollenkoll-card
 #        title: true
 #        minimal: false
