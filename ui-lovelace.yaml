@@ -46,8 +46,6 @@ resources:
   type: module
 - url: /community_plugin/mini-graph-card/mini-graph-card.js
   type: module
-- url: /community_plugin/spotify-card/spotify-card.js
-  type: module
 
   # other
 - url: https://fonts.googleapis.com/css?family=Roboto+Condensed
@@ -117,6 +115,10 @@ views:
     - type: custom:krisinfo-card
       entity: sensor.krisinformation_sverige
 
+    - type: 'custom:spotify-card'
+      client_id: 17474af888f4429096919799b61fc080
+        #limit: <optional number of playlists to retrieve (default 10)>
+        #device: <optional name of a device to pre-select>        
 #      - type: custom:pollenkoll-card
 #        title: true
 #        minimal: false
