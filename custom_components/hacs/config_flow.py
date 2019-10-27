@@ -99,7 +99,7 @@ class HacsFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         try:
             session = aiohttp_client.async_get_clientsession(self.hass)
             client = AIOGitHub(token, session)
-            await client.get_repo("custom-components/hacs")
+            await client.get_repo("hacs/org")
             return True
         except (AIOGitHubException, AIOGitHubAuthentication):
             pass
@@ -132,5 +132,11 @@ class HacsOptionsFlowHandler(config_entries.OptionsFlow):
                 default=self.config_entry.options.get("release_limit", 5),
             )
         ] = int
+        data_schema[
+            vol.Optional(
+                "experimental",
+                default=self.config_entry.options.get("experimental", False),
+            )
+        ] = bool
 
         return self.async_show_form(step_id="user", data_schema=vol.Schema(data_schema))
