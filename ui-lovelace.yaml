@@ -48,6 +48,9 @@ resources:
   type: module
 - url: /community_plugin/spotify-card/spotify-card.js
   type: module
+- type: module
+  url: >-
+    https://cdn.jsdelivr.net/gh/custom-cards/spotify-card@1.8/dist/spotify-card.umd.js
 
   # other
 - url: https://fonts.googleapis.com/css?family=Roboto+Condensed
