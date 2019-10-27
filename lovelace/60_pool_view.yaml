@@ -5,4 +5,5 @@ cards:
     entities:
       - sensor.rv70_solvarbo_wind_speed
     hours_to_show: 24
+    points_per_hour: 12
     line_color: blue
