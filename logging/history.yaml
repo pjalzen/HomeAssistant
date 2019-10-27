@@ -1,26 +1,32 @@
   include:
-    domains:
-      - zone
-      - sun
-      - weather
-      - light
-      - switch
-      - automation
-      - binary_sensor
-      - script
-      - device_tracker
-      - lock
-    #entities:
-  exclude:
-    domains:
-      - alert
-      - camera
-      - media_player
-      - calendar
-      - sensor
-      - group 
-      - zwave
-      - climate
+  entities:
+    - sensor.capgemini
+    - sensor.rv70_solvarbo_wind_speed
+  
+  
+ # include:
+ #   domains:
+ #     - zone
+ #     - sun
+ #     - weather
+      # - light
+      # - switch
+      # - automation
+      # - binary_sensor
+      # - script
+      # - device_tracker
+      # - lock
+  #   #entities:
+  # exclude:
+  #   domains:
+  #     - alert
+  #     - camera
+  #     - media_player
+  #     - calendar
+  #     - sensor
+  #     - group 
+  #     - zwave
+  #     - climate
     #entities:
       # - sensor.since_last_boot
       # - sensor.last_boot
