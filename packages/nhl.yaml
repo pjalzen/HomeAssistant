@@ -1,0 +1,11 @@
+sensor:
+  - platform: nhl_api
+    team_id: 21
+    name: Avalance
+    #scan_interval: [(Optional) SCAN INTERVAL IN SECONDS - DEFAULT: 5]
+  - platform: nhl_api
+    team_id: 23
+    name: Canucks 
+  - platform: nhl_api
+    team_id: 18
+    name: Predators
