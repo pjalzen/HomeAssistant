@@ -253,22 +253,22 @@ views:
   - type: vertical-stack
     cards:
     - type: thermostat
-      entity: climate.entre_fonster_soder
+      entity: climate.entre_syd
       name: Hallen entré
     - type: thermostat
-      entity: climate.matsal_fonster_norr
+      entity: climate.matsal_norr
       name: Matsal norr
     - type: thermostat
-      entity: climate.matsal_fonster_oster
+      entity: climate.matsal_oster
       name: Matsal öster
 
   - type: vertical-stack
     cards:
     - type: thermostat
-      entity: climate.vardagsrum_fonster_norr
+      entity: climate.vardagsrum_norr
       name: Vardagsrum norr
     - type: thermostat
-      entity: climate.vardagsrum_fonster_vaster
+      entity: climate.vardagsrum_vaster
       name: Vardagsrum väster
 
 
@@ -314,30 +314,30 @@ views:
   - type: vertical-stack
     cards:
     - type: thermostat
-      entity: climate.sovrum_fonster_vaster
+      entity: climate.sovrum_vaster
       name: Sovrum väster
     - type: thermostat
-      entity: climate.sovrum_fonster_norr
+      entity: climate.sovrum_norr
       name: Sovrum norr
     - type: thermostat
-      entity: climate.emma_fonster_norr
+      entity: climate.emma_norr
       name: Emmas rum norr
     - type: thermostat
-      entity: climate.emma_fonster_oster
+      entity: climate.emma_oster
       name: Emmas rum öster
   - type: vertical-stack
     cards:
     - type: thermostat
-      entity: climate.kontoret_fonster_soder
+      entity: climate.kontor_syd
       name: Kontoret
     - type: thermostat
-      entity: climate.hall_uppe_trapp
+      entity: climate.hall_trapp
       name: Hall uppe trapp
     - type: thermostat
-      entity: climate.hall_uppe_utanfor_garderob
+      entity: climate.hall_calle
       name: Hall uppe
     - type: thermostat
-      entity: climate.calle_fonster_oster
+      entity: climate.calle_oster
       name: Calles rum
 
 #      - type: picture-entity
@@ -553,16 +553,17 @@ views:
   - type: custom:mini-graph-card
     entities:
     - sensor.volvo
-    hours_to_show: 2400
-
+    color_thresholds:
+    - value: 156.5
+      color: red
+    - value: 156.5
+      color: blue
 - title: Pool
   icon: mdi:pool
   cards:
-  - type: history-graph
-    title: Temperatur
+  - type: custom:mini-graph-card
     entities:
-    - sensor.amazon
-    hours_to_show: 48
+    - sensor.rv70_solvarbo_wind_speed
 - title: Settings
   icon: mdi:settings
   cards:
