@@ -115,67 +115,24 @@ views:
     - type: custom:krisinfo-card
       entity: sensor.krisinformation_sverige
 
-    - type: custom:pollenkoll-card
-      title: true
-      minimal: false
-      city: borlange
-      show_state: false
-      compact: true
-      allergens:
-      - al
-      - alm
-      - ambrosia
-      - björk
-      - bok
-      - ek
-      - gråbo
-      - gräs
-      - hassel
-      - Sälg / vide
+#      - type: custom:pollenkoll-card
+#        title: true
+#        minimal: false
+#        city: borlange
+#        show_state: false
+#        compact: true
+#        allergens:
+#          - al
+#          - alm
+#          - ambrosia
+#          - björk
+#          - bok
+#          - ek
+#          - gråbo
+#          - gräs
+#          - hassel
+#          - Sälg / vide
 
-
-
-  #- type: custom:krisinfo-card
-  #  entity: sensor.krisinformation
-
-
-
-    
-      
-  #- type: entities
-  #  title: Lampor och Brytare
-  #  show_header_toggle: true
-  #  entities:
-  #    - group.all_lights
-  #    - group.all_switches
-
-  #- type: entity-button
-  #  name: Turn Off Lights
-  #  tap_action:
-  #    action: call-service
-  #    service: 
-  #      entity_id: script.lights_off
-  #    service_data: {}
-  #  entity: script.lights_off
-
-  #- type: entity-button
-  #  name: Turn On Lights
-  #  tap_action:
-  #    action: call-service
-  #    service: 
-  #      entity_id: script.lights_on
-  #    service_data: {}
-  #  entity: script.lights_on
-
-
-
-
-
-#  - type: map
-#    aspect_ratio: 16:9
-#    default_zoom: 8
-#    entities:
-#      - device_tracker.pj
 - title: Downstairs
   icon: mdi:sofa
   cards:
@@ -564,6 +521,12 @@ views:
   - type: custom:mini-graph-card
     entities:
     - sensor.rv70_solvarbo_wind_speed
+    hours_to_show: 24
+    points_per_hour: 12
+    line_color: blue
+    line_width: 2
+    show:
+      points: false
 - title: Settings
   icon: mdi:settings
   cards:
