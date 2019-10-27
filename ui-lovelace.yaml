@@ -560,7 +560,7 @@ views:
     - light.hue_play_1
     - light.hue_play_2
     - light.calles
-    - light.dimmable_light_1
+    - light.color_temperature_light_dining
     - light.hue_lightstrip_plus_1
 
   - type: gauge
