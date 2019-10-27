@@ -6,4 +6,6 @@ cards:
       - sensor.rv70_solvarbo_wind_speed
     hours_to_show: 24
     points_per_hour: 12
+    show_points: false
     line_color: blue
+    line_width: 2 
