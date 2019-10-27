@@ -60,7 +60,11 @@ cards:
     cards:
       - type: custom:krisinfo-card
         entity: sensor.krisinformation_sverige
-        
+    cards:
+      - type: 'custom:spotify-card'
+        client_id: 17474af888f4429096919799b61fc080
+        #limit: <optional number of playlists to retrieve (default 10)>
+        #device: <optional name of a device to pre-select>        
 #      - type: custom:pollenkoll-card
 #        title: true
 #        minimal: false
