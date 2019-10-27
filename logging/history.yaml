@@ -1,8 +1,8 @@
   include:
-  entities:
-    - sensor.capgemini
-    - sensor.rv70_solvarbo_wind_speed
-  
+    entities:
+      - sensor.capgemini
+      - sensor.rv70_solvarbo_wind_speed
+    
   
  # include:
  #   domains:
