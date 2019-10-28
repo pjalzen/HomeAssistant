@@ -9,4 +9,5 @@ cards:
     line_color: blue
     line_width: 2 
     show:
-      points: false
+      - points: false
+      - labels: true
