@@ -1,3 +1,22 @@
+# *********************************
+# Stock sensors
+# -------------
+# Boliden
+# Ericsson
+# Amazon
+# Volvo
+# Microsoft
+# Husqvarna
+# Starbucks
+# Salesforce
+# Capgemini
+# Sandvik
+# SSAB
+# Stora Enso
+# Jumia Technologies
+# Toadman Interactive
+# *********************************
+
 sensor:
   - platform: avanza_stock
     stock: 811105
@@ -138,6 +157,91 @@ sensor:
   - platform: avanza_stock
     stock: 5269
     name: Volvo
+    monitored_conditions:
+      #change
+      #changePercent
+      #name
+      - highestPrice
+      - tickerSymbol
+      - totalValueTraded
+      - totalVolumeTraded
+      - priceAtStartOfYear
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+  - platform: avanza_stock
+    stock: 5240
+    name: Ericsson
+    monitored_conditions:
+      #change
+      #changePercent
+      #name
+      - highestPrice
+      - tickerSymbol
+      - totalValueTraded
+      - totalVolumeTraded
+      - priceAtStartOfYear
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+  - platform: avanza_stock
+    stock: 5564
+    name: Boliden
+    monitored_conditions:
+      #change
+      #changePercent
+      #name
+      - highestPrice
+      - tickerSymbol
+      - totalValueTraded
+      - totalVolumeTraded
+      - priceAtStartOfYear
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+  - platform: avanza_stock
+    stock: 5261
+    name: SSAB
+    monitored_conditions:
+      #change
+      #changePercent
+      #name
+      - highestPrice
+      - tickerSymbol
+      - totalValueTraded
+      - totalVolumeTraded
+      - priceAtStartOfYear
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+  - platform: avanza_stock
+    stock: 194763
+    name: Salesforce
+    monitored_conditions:
+      #change
+      #changePercent
+      #name
+      - highestPrice
+      - tickerSymbol
+      - totalValueTraded
+      - totalVolumeTraded
+      - priceAtStartOfYear
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+  - platform: avanza_stock
+    stock: 4456
+    name: Starbucks
     monitored_conditions:
       #change
       #changePercent
