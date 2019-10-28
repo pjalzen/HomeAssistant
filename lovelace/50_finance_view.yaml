@@ -12,40 +12,98 @@ cards:
   - type: custom:mini-graph-card
     entities:
       - sensor.amazon
-    
+    hours_to_show: 12
+    points_per_hour: 60
+    line_color: blue
+    line_width: 2 
+    show:
+      points: false
+      labels: true
+
   - type: custom:mini-graph-card
     entities:
       - sensor.capgemini 
+    hours_to_show: 12
+    points_per_hour: 60
+    line_color: blue
+    line_width: 2 
+    show:
+      points: false
+      labels: true
 
   - type: custom:mini-graph-card
     entities:
       - sensor.husqvarna
+    hours_to_show: 12
+    points_per_hour: 60
+    line_color: blue
+    line_width: 2 
+    show:
+      points: false
+      labels: true
 
   - type: custom:mini-graph-card
     entities:
       - sensor.jumia_technologies
+    hours_to_show: 12
+    points_per_hour: 60
+    line_color: blue
+    line_width: 2 
+    show:
+      points: false
+      labels: true
 
   - type: custom:mini-graph-card
     entities:
       - sensor.microsoft 
-    
+    hours_to_show: 12
+    points_per_hour: 60
+    line_color: blue
+    line_width: 2 
+    show:
+      points: false
+      labels: true
+
   - type: custom:mini-graph-card
     entities:
       - sensor.sandvik
+    hours_to_show: 12
+    points_per_hour: 60
+    line_color: blue
+    line_width: 2 
+    show:
+      points: false
+      labels: true
 
   - type: custom:mini-graph-card
     entities:
       - sensor.stora_enso
+    hours_to_show: 12
+    points_per_hour: 60
+    line_color: blue
+    line_width: 2 
+    show:
+      points: false
+      labels: true
 
   - type: custom:mini-graph-card
     entities:
       - sensor.toadman_interactive
+    hours_to_show: 12
+    points_per_hour: 60
+    line_color: blue
+    line_width: 2 
+    show:
+      points: false
+      labels: true
 
   - type: custom:mini-graph-card
     entities:
       - sensor.volvo
-    color_thresholds: 
-      - value: 156.5
-        color: red
-      - value: 156.5
-        color: blue 
+    hours_to_show: 12
+    points_per_hour: 60
+    line_color: blue
+    line_width: 2 
+    show:
+      points: false
+      labels: true
