@@ -12,7 +12,7 @@ cards:
   - type: custom:mini-graph-card
     entities:
       - sensor.amazon
-    hours_to_show: 12
+    hours_to_show: 24
     points_per_hour: 60
     line_color: blue
     line_width: 2 
@@ -23,7 +23,7 @@ cards:
   - type: custom:mini-graph-card
     entities:
       - sensor.capgemini 
-    hours_to_show: 12
+    hours_to_show: 24
     points_per_hour: 60
     line_color: blue
     line_width: 2 
@@ -34,7 +34,7 @@ cards:
   - type: custom:mini-graph-card
     entities:
       - sensor.husqvarna
-    hours_to_show: 12
+    hours_to_show: 24
     points_per_hour: 60
     line_color: blue
     line_width: 2 
@@ -45,7 +45,7 @@ cards:
   - type: custom:mini-graph-card
     entities:
       - sensor.jumia_technologies
-    hours_to_show: 12
+    hours_to_show: 24
     points_per_hour: 60
     line_color: blue
     line_width: 2 
@@ -56,7 +56,7 @@ cards:
   - type: custom:mini-graph-card
     entities:
       - sensor.microsoft 
-    hours_to_show: 12
+    hours_to_show: 24
     points_per_hour: 60
     line_color: blue
     line_width: 2 
@@ -67,7 +67,7 @@ cards:
   - type: custom:mini-graph-card
     entities:
       - sensor.sandvik
-    hours_to_show: 12
+    hours_to_show: 24
     points_per_hour: 60
     line_color: blue
     line_width: 2 
@@ -78,7 +78,7 @@ cards:
   - type: custom:mini-graph-card
     entities:
       - sensor.stora_enso
-    hours_to_show: 12
+    hours_to_show: 24
     points_per_hour: 60
     line_color: blue
     line_width: 2 
@@ -89,7 +89,7 @@ cards:
   - type: custom:mini-graph-card
     entities:
       - sensor.toadman_interactive
-    hours_to_show: 12
+    hours_to_show: 24
     points_per_hour: 60
     line_color: blue
     line_width: 2 
@@ -100,7 +100,7 @@ cards:
   - type: custom:mini-graph-card
     entities:
       - sensor.volvo
-    hours_to_show: 12
+    hours_to_show: 24
     points_per_hour: 60
     line_color: blue
     line_width: 2 
