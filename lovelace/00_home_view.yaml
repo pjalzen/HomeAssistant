@@ -6,17 +6,27 @@ cards:
       - type: weather-forecast
         entity: weather.smhi_home 
 
-      - type: sensor
-        entity: sensor.hall_entre_temperature
-        name: Temperatur entré
-        graph: line
+      - type: custom:krisinfo-card
+        entity: sensor.krisinformation_sverige
 
-      - type: map
-        aspect_ratio: 16:9
-        default_zoom: 8
+      - type: entities
+        show_header_toggle: false
         entities:
-          - device_tracker.perjohan_pj_iphone
-          - zone.home
+          - entity: sensor.avalanche
+          - entity: sensor.away_team
+          - entity: sensor.home_team
+          
+      # - type: sensor
+      #   entity: sensor.hall_entre_temperature
+      #   name: Temperatur entré
+      #   graph: line
+
+      #- type: map
+      #  aspect_ratio: 16:9
+      #  default_zoom: 8
+      #  entities:
+      #    - device_tracker.perjohan_pj_iphone
+      #    - zone.home
 
 
   - type: vertical-stack
@@ -38,12 +48,7 @@ cards:
           type: glance
           title: Home
 
-      - type: entities
-        show_header_toggle: false
-        entities:
-          - entity: sensor.avalanche
-          - entity: sensor.away_team
-          - entity: sensor.home_team
+
 
       #- type: entities
       #  show_header_toggle: false
@@ -62,8 +67,7 @@ cards:
 
   - type: vertical-stack
     cards:
-      - type: custom:krisinfo-card
-        entity: sensor.krisinformation_sverige
+
 
       - type: 'custom:spotify-card'
         client_id: 17474af888f4429096919799b61fc080
