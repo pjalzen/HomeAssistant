@@ -1,20 +1,18 @@
-sensor:
-  - platform: pollenniva
-    scan_interval: 4        #(default, optional)
-    state_as_string: false  #(default, optional, show states as strings as per STATES above)
-    sensors:
-      - city: Borlänge
-        days_to_track: 4    #(0-3, optional)
-        allergens:
-          - Al
-          - Alm
-          - Ambrosia
-          - Björk
-          - Bok
-          - Ek
-          - Gråbo
-          - Gräs
-          - Hassel
-          - Sälg / Vide
-
-          
+# sensor:
+#   - platform: pollenniva
+#     scan_interval: 4 #(default, optional)
+#     state_as_string: false #(default, optional, show states as strings as per STATES above)
+#     sensors:
+#       - city: Borlänge
+#         days_to_track: 4 #(0-3, optional)
+#         allergens:
+#           - Al
+#           - Alm
+#           - Ambrosia
+#           - Björk
+#           - Bok
+#           - Ek
+#           - Gråbo
+#           - Gräs
+#           - Hassel
+#           - Sälg / Vide
