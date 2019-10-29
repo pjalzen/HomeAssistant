@@ -1,7 +1,7 @@
 sensor:
   - platform: nhl_api
     team_id: 21
-    name: Avalance
+    name: Avalanche
     #scan_interval: [(Optional) SCAN INTERVAL IN SECONDS - DEFAULT: 5]
   - platform: nhl_api
     team_id: 23
@@ -9,3 +9,14 @@ sensor:
   - platform: nhl_api
     team_id: 18
     name: Predators
+
+  - platform: template
+    sensors:
+      away_team:
+        friendly_name_template: '{{ states.sensor.avalanche.attributes.away_name }}'
+        value_template: '{{ states.sensor.avalanche.attributes.away_score }}'
+        entity_picture_template: '{{ states.sensor.avalanche.attributes.away_logo }}'
+      home_team:
+        friendly_name_template: '{{ states.sensor.avalanche.attributes.home_name }}'
+        value_template: '{{ states.sensor.avalanche.attributes.home_score }}'
+        entity_picture_template: '{{ states.sensor.avalanche.attributes.home_logo }}'

@@ -38,8 +38,12 @@ cards:
           type: glance
           title: Home
 
-      - type: media-control
-        entity: media_player.spotify
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - entity: sensor.avalanche
+          - entity: sensor.away_team
+          - entity: sensor.home_team
 
       #- type: entities
       #  show_header_toggle: false
@@ -63,6 +67,10 @@ cards:
 
       - type: 'custom:spotify-card'
         client_id: 17474af888f4429096919799b61fc080
+
+      - type: media-control
+        entity: media_player.spotify
+
         #limit: <optional number of playlists to retrieve (default 10)>
         #device: <optional name of a device to pre-select>        
 #      - type: custom:pollenkoll-card
