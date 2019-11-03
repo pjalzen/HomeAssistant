@@ -1,0 +1,23 @@
+esphome:
+  name: office
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: "Sveas rike"
+  password: "Erik2001"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Office Fallback Hotspot"
+    password: "dT4vhwDWUNrU"
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
