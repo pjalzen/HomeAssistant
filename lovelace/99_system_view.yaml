@@ -31,7 +31,7 @@ cards:
       - light.hue_play_1
       - light.hue_play_2
       - light.calles
-      - light.color_temperature_light_dining
+      - light.dining_room
       - light.hue_lightstrip_plus_1
 
   - type: gauge
