@@ -70,7 +70,7 @@ cards:
 
 
       - type: 'custom:spotify-card'
-        client_id: !secret spotify_token
+        #client_id: !secret spotify_token
 
       - type: media-control
         entity: media_player.spotify
