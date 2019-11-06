@@ -44,7 +44,7 @@ hacs:
 
 # ########################################
 # ###                GUI               ###
-# ########################################Carnoustie147
+# ########################################
 
 map:                                                # Enables a map showing the location of tracked devices
 frontend:                                           # Enables the frontend
