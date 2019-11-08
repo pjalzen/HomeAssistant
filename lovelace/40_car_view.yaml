@@ -35,7 +35,7 @@ cards:
           left: 10%
           color: white
       # remaining fuel
-      - type: custom:circle-sensor-card
+      - type: "custom:circle-sensor-card"
         entity: sensor.x3_xdrive20d_remaining_fuel
         max: 60
         min: 0
@@ -59,7 +59,7 @@ cards:
           height: 4em
           transform: none
         # remaining range
-      - type: custom:circle-sensor-card
+      - type: "custom:circle-sensor-card"
         entity: sensor.x3_xdrive20d_remaining_range_total
         max: 1000
         min: 0
