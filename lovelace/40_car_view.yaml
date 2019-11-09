@@ -107,8 +107,9 @@ cards:
       width: 100%
       lenght: 100%
     elements:
+      # Doors
       - type: "custom:text-element"
-        text: "Door lock"
+        text: "Doors"
         style:
           top: 86%
           left: 10%
@@ -127,7 +128,31 @@ cards:
           top: 97.5%
           left: 10%
           color: white
-        # remaining range
+      
+      # Windows
+      - type: "custom:text-element"
+        text: "Windows"
+        style:
+          top: 86%
+          left: 20%
+          color: white
+          # background-color: rgba(54, 65, 78, 0.8)
+      - type: state-icon
+        entity: binary_sensor.i3s_94_windows
+        tap_action: more-info
+        style:
+          top: 91.5%
+          left: 20%              
+          "--paper-item-icon-color": white
+      - type: state-label
+        entity: binary_sensor.i3s_94_windows
+        style:
+          top: 97.5%
+          left: 20%
+          color: white
+            
+      
+      # remaining range
       - type: "custom:circle-sensor-card"
         entity: sensor.i3s_94_remaining_range_total
         max: 202
@@ -141,10 +166,6 @@ cards:
         font_style:
           font-size: 1.1em
           color: white
-          # text-shadow: '2px 2px black'
-        #color_stops:
-        #  5: '#09C7E8'
-        #  63: '#09A50C'
         style:
           top: 6%
           left: 20%
