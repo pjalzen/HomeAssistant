@@ -15,6 +15,8 @@
       - sensor.salesforce
       - sensor.jumia_technologies
       - sensor.toadman_interactive
+      - sun.sun
+      - weather.smhi_home
   
   
  # include:
