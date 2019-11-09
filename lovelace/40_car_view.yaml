@@ -9,7 +9,7 @@ cards:
           - device_tracker.i3s_94
           - device_tracker.x3_xdrive20d
         dark_mode: true
-        
+
   - type: vertical-stack
     cards:
         ################
@@ -255,6 +255,7 @@ cards:
         ################
         # BMW i3
         ################
+  
   - type: vertical-stack
     cards:
 
