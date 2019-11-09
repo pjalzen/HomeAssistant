@@ -192,13 +192,13 @@ cards:
             tap_action: more-info
             style:
               top: 88%
-              left: 70%              
+              left: 80%              
               "--paper-item-icon-color": white
           - type: state-label
             entity: device_tracker.x3_xdrive20d
             style:
               top: 96%
-              left: 70%
+              left: 80%
               color: white          
               font-size: 0.8em
 
