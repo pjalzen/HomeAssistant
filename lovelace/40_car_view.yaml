@@ -36,7 +36,7 @@ cards:
           - type: state-label
             entity: lock.x3_xdrive20d_lock
             style:
-              top: 97.5%
+              top: 96%
               left: 10%
               color: white
               font-size: 0.8em
@@ -59,7 +59,7 @@ cards:
           - type: state-label
             entity: binary_sensor.x3_xdrive20d_windows
             style:
-              top: 97.5%
+              top: 96%
               left: 20%
               color: white
               font-size: 0.8em
@@ -82,7 +82,7 @@ cards:
           - type: state-label
             entity: binary_sensor.x3_xdrive20d_lids
             style:
-              top: 97.5%
+              top: 96%
               left: 30%
               color: white
               font-size: 0.8em
@@ -105,7 +105,7 @@ cards:
           - type: state-label
             entity: sensor.x3_xdrive20d_mileage
             style:
-              top: 97.5%
+              top: 96%
               left: 40%
               color: white
               font-size: 0.8em
@@ -128,7 +128,7 @@ cards:
           - type: state-label
             entity: binary_sensor.x3_xdrive20d_lights_parking
             style:
-              top: 97.5%
+              top: 96%
               left: 50%
               color: white          
               font-size: 0.8em
@@ -151,7 +151,7 @@ cards:
           - type: state-label
             entity: binary_sensor.x3_xdrive20d_check_control_messages
             style:
-              top: 97.5%
+              top: 96%
               left: 60%
               color: white          
               font-size: 0.8em
@@ -174,7 +174,7 @@ cards:
           - type: state-label
             entity: binary_sensor.x3_xdrive20d_condition_based_services
             style:
-              top: 97.5%
+              top: 96%
               left: 70%
               color: white          
               font-size: 0.8em
@@ -255,7 +255,7 @@ cards:
           - type: state-label
             entity: binary_sensor.i3s_94_door_lock_state
             style:
-              top: 97.5%
+              top: 96%
               left: 10%
               color: white
               font-size: 0.8em
@@ -278,7 +278,7 @@ cards:
           - type: state-label
             entity: binary_sensor.i3s_94_windows
             style:
-              top: 97.5%
+              top: 96%
               left: 20%
               color: white
               font-size: 0.8em
@@ -301,7 +301,7 @@ cards:
           - type: state-label
             entity: binary_sensor.i3s_94_lids
             style:
-              top: 97.5%
+              top: 96%
               left: 30%
               color: white
               font-size: 0.8em
@@ -324,7 +324,7 @@ cards:
           - type: state-label
             entity: binary_sensor.i3s_94_charging_status
             style:
-              top: 97.5%
+              top: 96%
               left: 40%
               color: white
               font-size: 0.8em
@@ -347,7 +347,7 @@ cards:
           - type: state-label
             entity: binary_sensor.i3s_94_lights_parking
             style:
-              top: 97.5%
+              top: 96%
               left: 50%
               color: white          
               font-size: 0.8em
@@ -370,7 +370,7 @@ cards:
           - type: state-label
             entity: binary_sensor.i3s_94_check_control_messages
             style:
-              top: 97.5%
+              top: 96%
               left: 60%
               color: white          
               font-size: 0.8em
@@ -393,7 +393,7 @@ cards:
           - type: state-label
             entity: binary_sensor.i3s_94_condition_based_services
             style:
-              top: 97.5%
+              top: 96%
               left: 70%
               color: white          
               font-size: 0.8em
