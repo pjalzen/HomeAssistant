@@ -6,8 +6,10 @@ cards:
     cards:
       - type: map
         entities:
-          - device_tracker.i3s_94
-          - device_tracker.x3_xdrive20d
+          - device_tracker.i3s_94:
+            name: i3
+          - device_tracker.x3_xdrive20d:
+            name: X3
         dark_mode: true
 
   - type: vertical-stack
