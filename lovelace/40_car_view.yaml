@@ -72,7 +72,6 @@ cards:
         font_style:
           font-size: 1.1em
           color: white
-          font-size: 10px
           # text-shadow: '2px 2px black'
         #color_stops:
         #  5: '#09C7E8'
