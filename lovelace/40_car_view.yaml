@@ -2,253 +2,261 @@
 title: BMW
 icon: mdi:car-connected
 cards:
-  - type: vertical-stack
+  - type: custom:layout-card
+    layout: horizontal
+    column_num: 1
+    max_columns: 1
+    max_width: [100%]    
+
     cards:
-        ################
-        # BMW X3
-        ################
-      - type: picture-elements
-        image: /local/bmw-x3.jpg
-        # style:
-        #   width: 100%
-        #   lenght: 100%
-        # tap_action:
-        #   action: 
-        #   service: bmw_connected_drive.activate_air_conditioning
-        #   service_data:
-        #     vin: !secret vin_x3    
-        elements:
-        # lock
-          - type: "custom:text-element"
-            text: "Doors"
-            style:
-              top: 80%
-              left: 10%
-              color: white
-              font-size: 0.8em
-          - type: state-icon
-            entity: binary_sensor.x3_xdrive20d_door_lock_state
-            tap_action: more-info
-            style:
-              top: 88%
-              left: 10%              
-              "--paper-item-icon-color": white
-          - type: state-label
-            entity: lock.x3_xdrive20d_lock
-            style:
-              top: 96%
-              left: 10%
-              color: white
-              font-size: 0.8em
 
-          # Windows
-          - type: "custom:text-element"
-            text: "Windows"
-            style:
-              top: 80%
-              left: 20%
-              color: white
-              font-size: 0.8em
-          - type: state-icon
-            entity: binary_sensor.x3_xdrive20d_windows
-            tap_action: more-info
-            style:
-              top: 88%
-              left: 20%              
-              "--paper-item-icon-color": white
-          - type: state-label
-            entity: binary_sensor.x3_xdrive20d_windows
-            style:
-              top: 96%
-              left: 20%
-              color: white
-              font-size: 0.8em
+    - type: horizontal-stack
+      cards:
+          ################
+          # BMW X3
+          ################
+        - type: picture-elements
+          image: /local/bmw-x3.jpg
+          # style:
+          #   width: 100%
+          #   lenght: 100%
+          # tap_action:
+          #   action: 
+          #   service: bmw_connected_drive.activate_air_conditioning
+          #   service_data:
+          #     vin: !secret vin_x3    
+          elements:
+          # lock
+            - type: "custom:text-element"
+              text: "Lock"
+              style:
+                top: 80%
+                left: 10%
+                color: white
+                font-size: 0.8em
+            - type: state-icon
+              entity: binary_sensor.x3_xdrive20d_door_lock_state
+              tap_action: more-info
+              style:
+                top: 88%
+                left: 10%              
+                "--paper-item-icon-color": white
+            - type: state-label
+              entity: lock.x3_xdrive20d_lock
+              style:
+                top: 96%
+                left: 10%
+                color: white
+                font-size: 0.8em
 
-          # Lids
-          - type: "custom:text-element"
-            text: "Lock"
-            style:
-              top: 80%
-              left: 30%
-              color: white
-              font-size: 0.8em
-          - type: state-icon
-            entity: binary_sensor.x3_xdrive20d_lids
-            tap_action: more-info
-            style:
-              top: 88%
-              left: 30%              
-              "--paper-item-icon-color": white
-          - type: state-label
-            entity: binary_sensor.x3_xdrive20d_lids
-            style:
-              top: 96%
-              left: 30%
-              color: white
-              font-size: 0.8em
+            # Windows
+            - type: "custom:text-element"
+              text: "Windows"
+              style:
+                top: 80%
+                left: 20%
+                color: white
+                font-size: 0.8em
+            - type: state-icon
+              entity: binary_sensor.x3_xdrive20d_windows
+              tap_action: more-info
+              style:
+                top: 88%
+                left: 20%              
+                "--paper-item-icon-color": white
+            - type: state-label
+              entity: binary_sensor.x3_xdrive20d_windows
+              style:
+                top: 96%
+                left: 20%
+                color: white
+                font-size: 0.8em
 
-          # Milage
-          - type: "custom:text-element"
-            text: "Milage"
-            style:
-              top: 80%
-              left: 40%
-              color: white
-              font-size: 0.8em
-          - type: state-icon
-            entity: sensor.x3_xdrive20d_mileage
-            tap_action: more-info
-            style:
-              top: 88%
-              left: 40%              
-              "--paper-item-icon-color": white
-          - type: state-label
-            entity: sensor.x3_xdrive20d_mileage
-            style:
-              top: 96%
-              left: 40%
-              color: white
-              font-size: 0.8em
-              
-          # Parking lights
-          - type: "custom:text-element"
-            text: "Lights"
-            style:
-              top: 80%
-              left: 50%
-              color: white
-              font-size: 0.8em
-          - type: state-icon
-            entity: binary_sensor.x3_xdrive20d_lights_parking
-            tap_action: more-info
-            style:
-              top: 88%
-              left: 50%              
-              "--paper-item-icon-color": white
-          - type: state-label
-            entity: binary_sensor.x3_xdrive20d_lights_parking
-            style:
-              top: 96%
-              left: 50%
-              color: white          
-              font-size: 0.8em
+            # Lids
+            - type: "custom:text-element"
+              text: "Doors"
+              style:
+                top: 80%
+                left: 30%
+                color: white
+                font-size: 0.8em
+            - type: state-icon
+              entity: binary_sensor.x3_xdrive20d_lids
+              tap_action: more-info
+              style:
+                top: 88%
+                left: 30%              
+                "--paper-item-icon-color": white
+            - type: state-label
+              entity: binary_sensor.x3_xdrive20d_lids
+              style:
+                top: 96%
+                left: 30%
+                color: white
+                font-size: 0.8em
 
-          # Tyre
-          - type: "custom:text-element"
-            text: "Tyre"
-            style:
-              top: 80%
-              left: 60%
-              color: white
-              font-size: 0.8em
-          - type: state-icon
-            entity: binary_sensor.x3_xdrive20d_check_control_messages
-            tap_action: more-info
-            style:
-              top: 88%
-              left: 60%              
-              "--paper-item-icon-color": white
-          - type: state-label
-            entity: binary_sensor.x3_xdrive20d_check_control_messages
-            style:
-              top: 96%
-              left: 60%
-              color: white          
-              font-size: 0.8em
+            # Milage
+            - type: "custom:text-element"
+              text: "Milage"
+              style:
+                top: 80%
+                left: 40%
+                color: white
+                font-size: 0.8em
+            - type: state-icon
+              entity: sensor.x3_xdrive20d_mileage
+              tap_action: more-info
+              style:
+                top: 88%
+                left: 40%              
+                "--paper-item-icon-color": white
+            - type: state-label
+              entity: sensor.x3_xdrive20d_mileage
+              style:
+                top: 96%
+                left: 40%
+                color: white
+                font-size: 0.8em
+                
+            # Parking lights
+            - type: "custom:text-element"
+              text: "Lights"
+              style:
+                top: 80%
+                left: 50%
+                color: white
+                font-size: 0.8em
+            - type: state-icon
+              entity: binary_sensor.x3_xdrive20d_lights_parking
+              tap_action: more-info
+              style:
+                top: 88%
+                left: 50%              
+                "--paper-item-icon-color": white
+            - type: state-label
+              entity: binary_sensor.x3_xdrive20d_lights_parking
+              style:
+                top: 96%
+                left: 50%
+                color: white          
+                font-size: 0.8em
 
-          # Service
-          - type: "custom:text-element"
-            text: "Service"
-            style:
-              top: 80%
-              left: 70%
-              color: white
-              font-size: 0.8em
-          - type: state-icon
-            entity: binary_sensor.x3_xdrive20d_condition_based_services
-            tap_action: more-info
-            style:
-              top: 88%
-              left: 70%              
-              "--paper-item-icon-color": white
-          - type: state-label
-            entity: binary_sensor.x3_xdrive20d_condition_based_services
-            style:
-              top: 96%
-              left: 70%
-              color: white          
-              font-size: 0.8em
+            # Tyre
+            - type: "custom:text-element"
+              text: "Tyre"
+              style:
+                top: 80%
+                left: 60%
+                color: white
+                font-size: 0.8em
+            - type: state-icon
+              entity: binary_sensor.x3_xdrive20d_check_control_messages
+              tap_action: more-info
+              style:
+                top: 88%
+                left: 60%              
+                "--paper-item-icon-color": white
+            - type: state-label
+              entity: binary_sensor.x3_xdrive20d_check_control_messages
+              style:
+                top: 96%
+                left: 60%
+                color: white          
+                font-size: 0.8em
 
-          # Position
-          - type: "custom:text-element"
-            text: "GPS"
-            style:
-              top: 80%
-              left: 80%
-              color: white
-              font-size: 0.8em
-          - type: state-icon
-            entity: device_tracker.x3_xdrive20d
-            tap_action: more-info
-            style:
-              top: 88%
-              left: 80%              
-              "--paper-item-icon-color": white
-          - type: state-label
-            entity: device_tracker.x3_xdrive20d
-            style:
-              top: 96%
-              left: 80%
-              color: white          
-              font-size: 0.8em
+            # Service
+            - type: "custom:text-element"
+              text: "Service"
+              style:
+                top: 80%
+                left: 70%
+                color: white
+                font-size: 0.8em
+            - type: state-icon
+              entity: binary_sensor.x3_xdrive20d_condition_based_services
+              tap_action: more-info
+              style:
+                top: 88%
+                left: 70%              
+                "--paper-item-icon-color": white
+            - type: state-label
+              entity: binary_sensor.x3_xdrive20d_condition_based_services
+              style:
+                top: 96%
+                left: 70%
+                color: white          
+                font-size: 0.8em
 
-          # remaining fuel
-          - type: "custom:circle-sensor-card"
-            entity: sensor.x3_xdrive20d_remaining_fuel
-            max: 60
-            min: 0
-            stroke_width: 15
-            # stroke_color: '#03a9f4'
-            gradient: true
-            fill: rgba(54, 65, 78, 0.6)
-            name: Fuel
-            units: ' l'
-            font_style:
-              font-size: 0.8em
-              color: white
-            style:
-              top: 6%
-              left: 5%
-              width: 4em
-              height: 4em
-              transform: none
+            # Position
+            - type: "custom:text-element"
+              text: "GPS"
+              style:
+                top: 80%
+                left: 80%
+                color: white
+                font-size: 0.8em
+            - type: state-icon
+              entity: device_tracker.x3_xdrive20d
+              tap_action: more-info
+              style:
+                top: 88%
+                left: 80%              
+                "--paper-item-icon-color": white
+            - type: state-label
+              entity: device_tracker.x3_xdrive20d
+              style:
+                top: 96%
+                left: 80%
+                color: white          
+                font-size: 0.8em
 
-          # remaining range
-          - type: "custom:circle-sensor-card"
-            entity: sensor.x3_xdrive20d_remaining_range_total
-            max: 1000
-            min: 0
-            stroke_width: 15
-            gradient: true
-            fill: rgba(54, 65, 78, 0.6)
-            name: Range
-            units: ' km'
-            font_style:
-              font-size: 0.8em
-              color: white
-            style:
-              top: 6%
-              left: 20%
-              width: 4em
-              height: 4em
-              transform: none
+            # remaining fuel
+            - type: "custom:circle-sensor-card"
+              entity: sensor.x3_xdrive20d_remaining_fuel
+              max: 60
+              min: 0
+              stroke_width: 15
+              # stroke_color: '#03a9f4'
+              gradient: true
+              fill: rgba(54, 65, 78, 0.6)
+              name: Fuel
+              units: ' l'
+              font_style:
+                font-size: 0.8em
+                color: white
+              style:
+                top: 6%
+                left: 5%
+                width: 4em
+                height: 4em
+                transform: none
+
+            # remaining range
+            - type: "custom:circle-sensor-card"
+              entity: sensor.x3_xdrive20d_remaining_range_total
+              max: 1000
+              min: 0
+              stroke_width: 15
+              gradient: true
+              fill: rgba(54, 65, 78, 0.6)
+              name: Range
+              units: ' km'
+              font_style:
+                font-size: 0.8em
+                color: white
+              style:
+                top: 6%
+                left: 20%
+                width: 4em
+                height: 4em
+                transform: none
 
 
-        ################
-        # BMW i3
-        ################
-  - type: vertical-stack
-    cards:
+          ################
+          # BMW i3
+          ################
+    - type: horizontal-stack
+      cards:
 
       - type: picture-elements
         image: /local/bmw-i3.jpg
@@ -256,9 +264,9 @@ cards:
         #   width: 100%
         #   lenght: 100%
         elements:
-          # Doors
+          # Lock
           - type: "custom:text-element"
-            text: "Doors"
+            text: "Lock"
             style:
               top: 80%
               left: 10%
@@ -304,7 +312,7 @@ cards:
 
           # Lids
           - type: "custom:text-element"
-            text: "Lock"
+            text: "Doors"
             style:
               top: 80%
               left: 30%
