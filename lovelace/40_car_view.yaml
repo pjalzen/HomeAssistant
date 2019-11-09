@@ -485,3 +485,26 @@ cards:
               width: 4em
               height: 4em
               transform: none
+
+          # Position
+          - type: "custom:text-element"
+            text: "GPS"
+            style:
+              top: 80%
+              left: 80%
+              color: white
+              font-size: 0.8em
+          - type: state-icon
+            entity: device_tracker.i3s_94
+            tap_action: more-info
+            style:
+              top: 88%
+              left: 80%              
+              "--paper-item-icon-color": white
+          - type: state-label
+            entity: device_tracker.i3s_94
+            style:
+              top: 96%
+              left: 80%
+              color: white          
+              font-size: 0.8em
