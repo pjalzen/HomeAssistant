@@ -150,8 +150,74 @@ cards:
           top: 97.5%
           left: 20%
           color: white
-            
-      
+
+      # Lids
+      - type: "custom:text-element"
+        text: "Windows"
+        style:
+          top: 86%
+          left: 30%
+          color: white
+          # background-color: rgba(54, 65, 78, 0.8)
+      - type: state-icon
+        entity: binary_sensor.i3s_94_lids
+        tap_action: more-info
+        style:
+          top: 91.5%
+          left: 30%              
+          "--paper-item-icon-color": white
+      - type: state-label
+        entity: binary_sensor.i3s_94_lids
+        style:
+          top: 97.5%
+          left: 30%
+          color: white
+
+      # Charging status
+      - type: "custom:text-element"
+        text: "Windows"
+        style:
+          top: 86%
+          left: 40%
+          color: white
+          # background-color: rgba(54, 65, 78, 0.8)
+      - type: state-icon
+        entity: binary_sensor.i3s_94_charging_status
+        tap_action: more-info
+        style:
+          top: 91.5%
+          left: 40%              
+          "--paper-item-icon-color": white
+      - type: state-label
+        entity: binary_sensor.i3s_94_charging_status
+        style:
+          top: 97.5%
+          left: 40%
+          color: white
+          
+      # Parking lights
+      - type: "custom:text-element"
+        text: "Windows"
+        style:
+          top: 86%
+          left: 50%
+          color: white
+          # background-color: rgba(54, 65, 78, 0.8)
+      - type: state-icon
+        entity: binary_sensor.i3s_94_lights_parking
+        tap_action: more-info
+        style:
+          top: 91.5%
+          left: 50%              
+          "--paper-item-icon-color": white
+      - type: state-label
+        entity: binary_sensor.i3s_94_lights_parking
+        style:
+          top: 97.5%
+          left: 50%
+          color: white          
+
+
       # remaining range
       - type: "custom:circle-sensor-card"
         entity: sensor.i3s_94_remaining_range_total
