@@ -9,14 +9,14 @@ cards:
         ################
       - type: picture-elements
         image: /local/bmw-x3.jpg
-        style:
-          width: 100%
-          lenght: 100%
-        tap_action:
-          action: 
-          service: bmw_connected_drive.activate_air_conditioning
-          service_data:
-            vin: !secret vin_x3    
+        # style:
+        #   width: 100%
+        #   lenght: 100%
+        # tap_action:
+        #   action: 
+        #   service: bmw_connected_drive.activate_air_conditioning
+        #   service_data:
+        #     vin: !secret vin_x3    
         elements:
         # lock
           - type: "custom:text-element"
@@ -216,18 +216,14 @@ cards:
             font_style:
               font-size: 0.8em
               color: white
-              # text-shadow: '2px 2px black'
-            #color_stops:
-            #  5: '#09C7E8'
-            #  63: '#09A50C'
             style:
               top: 6%
               left: 5%
               width: 4em
               height: 4em
               transform: none
-            # remaining range
 
+          # remaining range
           - type: "custom:circle-sensor-card"
             entity: sensor.x3_xdrive20d_remaining_range_total
             max: 1000
@@ -251,15 +247,14 @@ cards:
         ################
         # BMW i3
         ################
-
   - type: vertical-stack
     cards:
 
       - type: picture-elements
         image: /local/bmw-i3.jpg
-        style:
-          width: 100%
-          lenght: 100%
+        # style:
+        #   width: 100%
+        #   lenght: 100%
         elements:
           # Doors
           - type: "custom:text-element"
