@@ -179,6 +179,29 @@ cards:
               color: white          
               font-size: 0.8em
 
+          # Position
+          - type: "custom:text-element"
+            text: "GPS"
+            style:
+              top: 80%
+              left: 80%
+              color: white
+              font-size: 0.8em
+          - type: state-icon
+            entity: device_tracker.x3_xdrive20d
+            tap_action: more-info
+            style:
+              top: 88%
+              left: 70%              
+              "--paper-item-icon-color": white
+          - type: state-label
+            entity: device_tracker.x3_xdrive20d
+            style:
+              top: 96%
+              left: 70%
+              color: white          
+              font-size: 0.8em
+
           # remaining fuel
           - type: "custom:circle-sensor-card"
             entity: sensor.x3_xdrive20d_remaining_fuel
@@ -204,6 +227,7 @@ cards:
               height: 4em
               transform: none
             # remaining range
+
           - type: "custom:circle-sensor-card"
             entity: sensor.x3_xdrive20d_remaining_range_total
             max: 1000
