@@ -129,6 +129,8 @@ mqtt:
 ifttt:
   key: !secret ifttt_api_key
 
+alexa:
+
 #google:
   #client_id: !secret google_id
   #client_secret: !secret google_secret
