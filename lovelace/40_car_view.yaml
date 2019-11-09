@@ -311,3 +311,28 @@ cards:
           width: 4em
           height: 4em
           transform: none
+
+      # remaining charging time
+      - type: "custom:circle-sensor-card"
+        entity: sensor.i3s_94_charging_time_remaining
+        max: 120
+        min: 0
+        stroke_width: 15
+        # stroke_color: '#03a9f4'
+        gradient: true
+        fill: rgba(54, 65, 78, 0.6)
+        name: Char. time
+        units: ' '
+        font_style:
+          font-size: 0.8em
+          color: white
+        style:
+          top: 6%
+          left: 35%
+          width: 4em
+          height: 4em
+          transform: none
+
+
+
+          
