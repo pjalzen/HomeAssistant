@@ -280,7 +280,7 @@ cards:
         gradient: true
         fill: rgba(54, 65, 78, 0.6)
         name: Charged
-        units: ' '
+        units: ' %'
         font_style:
           font-size: 0.8em
           color: white
@@ -301,7 +301,7 @@ cards:
         gradient: true
         fill: rgba(54, 65, 78, 0.6)
         name: Range
-        units: ' '
+        units: ' km'
         font_style:
           font-size: 0.8em
           color: white
