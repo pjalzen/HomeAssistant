@@ -114,7 +114,7 @@ cards:
           top: 86%
           left: 10%
           color: white
-          font-size: 8 
+          font-size: 8px
           # background-color: rgba(54, 65, 78, 0.8)
       - type: state-icon
         entity: binary_sensor.i3s_94_door_lock_state
@@ -154,7 +154,7 @@ cards:
 
       # Lids
       - type: "custom:text-element"
-        text: "Windows"
+        text: "Lock"
         style:
           top: 86%
           left: 30%
@@ -176,7 +176,7 @@ cards:
 
       # Charging status
       - type: "custom:text-element"
-        text: "Windows"
+        text: "Charging"
         style:
           top: 86%
           left: 40%
@@ -198,7 +198,7 @@ cards:
           
       # Parking lights
       - type: "custom:text-element"
-        text: "Windows"
+        text: "Lights"
         style:
           top: 86%
           left: 50%
