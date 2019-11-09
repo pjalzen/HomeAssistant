@@ -2,11 +2,11 @@
 title: BMW
 icon: mdi:car-connected
 cards:
-    ################
-    # BMW X3
-    ################
   - type: horisontal-stack
     cards:
+        ################
+        # BMW X3
+        ################
       - type: picture-elements
         image: /local/bmw-x3.jpg
         style:
@@ -224,11 +224,9 @@ cards:
               transform: none
 
 
-    ################
-    # BMW i3
-    ################
-    - type: horisontal-stack
-      cards:
+          ################
+          # BMW i3
+          ################
         - type: picture-elements
           image: /local/bmw-i3.jpg
           style:
