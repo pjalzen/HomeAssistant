@@ -20,7 +20,7 @@ cards:
           top: 86%
           left: 10%
           color: white
-          # background-color: rgba(54, 65, 78, 0.8)
+          font-size: 0.8em
       - type: state-icon
         entity: binary_sensor.x3_xdrive20d_door_lock_state
         tap_action: more-info
@@ -46,7 +46,7 @@ cards:
         name: Fuel
         units: ' '
         font_style:
-          font-size: 1.1em
+          font-size: 0.8em
           color: white
           # text-shadow: '2px 2px black'
         #color_stops:
@@ -70,7 +70,7 @@ cards:
         name: Range
         units: ' '
         font_style:
-          font-size: 1.1em
+          font-size: 0.8em
           color: white
           # text-shadow: '2px 2px black'
         #color_stops:
@@ -114,7 +114,7 @@ cards:
           top: 86%
           left: 10%
           color: white
-          font-size: 10px
+          font-size: 0.8em
       - type: state-icon
         entity: binary_sensor.i3s_94_door_lock_state
         tap_action: more-info
@@ -128,7 +128,7 @@ cards:
           top: 97.5%
           left: 10%
           color: white
-          font-size: 10px
+          font-size: 0.8em
       
       # Windows
       - type: "custom:text-element"
@@ -137,7 +137,7 @@ cards:
           top: 86%
           left: 20%
           color: white
-          font-size: 10px
+          font-size: 0.8em
       - type: state-icon
         entity: binary_sensor.i3s_94_windows
         tap_action: more-info
@@ -151,7 +151,7 @@ cards:
           top: 97.5%
           left: 20%
           color: white
-          font-size: 10px
+          font-size: 0.8em
 
       # Lids
       - type: "custom:text-element"
@@ -160,7 +160,7 @@ cards:
           top: 86%
           left: 30%
           color: white
-          font-size: 10px
+          font-size: 0.8em
       - type: state-icon
         entity: binary_sensor.i3s_94_lids
         tap_action: more-info
@@ -174,7 +174,7 @@ cards:
           top: 97.5%
           left: 30%
           color: white
-          font-size: 10px
+          font-size: 0.8em
 
       # Charging status
       - type: "custom:text-element"
@@ -183,7 +183,7 @@ cards:
           top: 86%
           left: 40%
           color: white
-          font-size: 10px
+          font-size: 0.8em
       - type: state-icon
         entity: binary_sensor.i3s_94_charging_status
         tap_action: more-info
@@ -197,7 +197,7 @@ cards:
           top: 97.5%
           left: 40%
           color: white
-          font-size: 10px
+          font-size: 0.8em
           
       # Parking lights
       - type: "custom:text-element"
@@ -206,7 +206,7 @@ cards:
           top: 86%
           left: 50%
           color: white
-          font-size: 10px
+          font-size: 0.8em
       - type: state-icon
         entity: binary_sensor.i3s_94_lights_parking
         tap_action: more-info
@@ -220,7 +220,7 @@ cards:
           top: 97.5%
           left: 50%
           color: white          
-          font-size: 10px
+          font-size: 0.8em
 
 
       # remaining range
@@ -235,7 +235,7 @@ cards:
         name: Range
         units: ' '
         font_style:
-          font-size: 1.1em
+          font-size: 0.8em
           color: white
         style:
           top: 6%
