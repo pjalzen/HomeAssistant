@@ -19,3 +19,4 @@ include:
     - sensor.toadman_interactive
     - sun.sun
     - weather.smhi_home
+    - light.color_light_1
