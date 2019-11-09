@@ -3,7 +3,7 @@ title: BMW
 icon: mdi:car-connected
 cards:
 
-  - type: horizontal-stack
+  - type: vertical-stack
     cards:
       - type: picture-elements
         ################
@@ -501,7 +501,7 @@ cards:
               color: white          
               font-size: 0.8em
 
-  - type: horizontal-stack
+  - type: vertical-stack
     cards:
       - type: map
         entities:
