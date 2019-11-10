@@ -5,12 +5,13 @@ cards:
     title: Automations
     show_header_toggle: false
     entities:
-      - automation.lights_on_in_the_morning
-      - automation.lights_off_by_sunrise
-      - automation.lights_on_just_before_sunset
-      - automation.lights_off_by_midnight
+      # - automation.lights_on_in_the_morning
+      # - automation.lights_off_by_sunrise
+      # - automation.lights_on_just_before_sunset
+      # - automation.lights_off_by_midnight
       - automation.set_theme_by_daylight
       - automation.run_backup_3am
+      - automation.restart_ha_4am
   - type: entities
     title: Switches
     show_header_toggle: false
