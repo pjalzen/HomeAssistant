@@ -12,6 +12,13 @@ cards:
       - automation.set_theme_by_daylight
       - automation.run_backup_3am
       - automation.restart_ha_4am
+      
+  - type: entities
+    title: Bettery level
+    show_header_toggle: false
+    entities:
+      - sensor.philio_technology_corp_psr04_smart_color_button
+
   - type: entities
     title: Switches
     show_header_toggle: false
