@@ -14,7 +14,7 @@ cards:
       - automation.restart_ha_4am
 
   - type: entities
-    title: Bettery level
+    title: Battery level
     show_header_toggle: false
     entities:
       - sensor.philio_technology_corp_psr04_smart_color_button
