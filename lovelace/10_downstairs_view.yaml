@@ -82,7 +82,7 @@ cards:
         entity: climate.matsal_norr
         name: Matsal norr
       - type: thermostat
-        entity: climate.matsal_oster
+        entity: climate.matsal_ost
         name: Matsal öster
   
   - type: vertical-stack
@@ -91,7 +91,7 @@ cards:
         entity: climate.vardagsrum_norr
         name: Vardagsrum norr
       - type: thermostat
-        entity: climate.vardagsrum_vaster
+        entity: climate.vardagsrum_vast
         name: Vardagsrum väster
 
 

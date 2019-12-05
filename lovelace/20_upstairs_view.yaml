@@ -42,10 +42,10 @@ cards:
         entity: climate.hall_trapp
         name: Hall uppe trapp
       - type: thermostat
-        entity: climate.hall_calle
+        entity: climate.hall_garderob
         name: Hall uppe
       - type: thermostat
-        entity: climate.calle_oster
+        entity: climate.calle_ost
         name: Calles rum 
 
 #      - type: picture-entity
