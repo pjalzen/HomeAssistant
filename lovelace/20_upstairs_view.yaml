@@ -39,10 +39,10 @@ cards:
         entity: climate.kontor_syd
         name: Kontoret
       - type: thermostat
-        entity: climate.hall_trapp
+        entity: climate.hall_uppe_trapp
         name: Hall uppe trapp
       - type: thermostat
-        entity: climate.hall_garderob
+        entity: climate.hall_uppe_garderob
         name: Hall uppe
       - type: thermostat
         entity: climate.calle_ost
