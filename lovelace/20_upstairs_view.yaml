@@ -22,7 +22,7 @@ cards:
   - type: vertical-stack
     cards:
       - type: thermostat
-        entity: climate.sovrum_vaster
+        entity: climate.sovrum_vast
         name: Sovrum väster
       - type: thermostat
         entity: climate.sovrum_norr
@@ -31,7 +31,7 @@ cards:
         entity: climate.emma_norr
         name: Emmas rum norr 
       - type: thermostat
-        entity: climate.emma_oster
+        entity: climate.emma_ost
         name: Emmas rum öster
   - type: vertical-stack
     cards:
