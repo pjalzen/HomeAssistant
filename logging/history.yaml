@@ -18,6 +18,7 @@
       - sun.sun
       - weather.smhi_home
       - light.color_light_1
+      - switch.shelly_shsw_1_942187
   
   
  # include:
