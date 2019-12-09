@@ -31,6 +31,8 @@ cards:
       - switch.everspring_an180_plugin_onoff_module_switch_2
       - switch.everspring_an180_plugin_onoff_module_switch_3
       - switch.timer
+      - switch.shelly_shsw_1_942187
+      - switch.qubino_goap_zmnhdd1_flush_dimmer_switch
   - type: entities
     title: Lamps
     show_header_toggle: false
