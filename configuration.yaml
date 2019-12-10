@@ -118,7 +118,6 @@ zone: !include zone.yaml
 sun:                                                # Track the sun
 sensor:
   - platform: moon
-sensor:
   - platform: time_date
     display_options:
       - 'time'
