@@ -116,7 +116,8 @@ zone: !include zone.yaml
 # ########################################
 
 sun:                                                # Track the sun
-
+sensor:
+  - platform: moon
 sensor:
   - platform: time_date
     display_options:
@@ -127,7 +128,7 @@ sensor:
       - 'time_date'
       - 'time_utc'
       - 'beat'
-      
+
 notify: !include notify/notify.yaml
 python_script:
 

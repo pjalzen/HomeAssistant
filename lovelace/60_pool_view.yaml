@@ -3,8 +3,28 @@ icon: mdi:pool
 cards:
   - type: custom:mini-graph-card
     entities:
-      - sensor.rv70_solvarbo_wind_speed
-    hours_to_show: 24
+      - sensor.yr_temperature
+    hours_to_show: 48
+    points_per_hour: 12
+    line_color: blue
+    line_width: 2 
+    show:
+      points: false
+      labels: true
+  - type: custom:mini-graph-card
+    entities:
+      - sensor.yr_wind_speed
+    hours_to_show: 48
+    points_per_hour: 12
+    line_color: blue
+    line_width: 2 
+    show:
+      points: false
+      labels: true
+  - type: custom:mini-graph-card
+    entities:
+      - sensor.yr_cloudiness
+    hours_to_show: 48
     points_per_hour: 12
     line_color: blue
     line_width: 2 
@@ -13,13 +33,15 @@ cards:
       labels: true
   - type: entities
     entities:
-      - entity: sensor.date_time
+      - entity: sensor.date
       - entity: sensor.time
+      - entity: sensor.nextsunrise
+      - entity: sensor.nextsunset
+      - entity: sensor.moon 
       - entity: sensor.yr_temperature
+        name: Temperatur
       - entity: sensor.yr_wind_speed
       - entity: sensor.yr_cloudiness
-      #- entity: sensor.sunrise
-      #- entity: sensor.sunset
-      - entity: sensor.moon 
+
       
 

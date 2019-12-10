@@ -2,7 +2,9 @@ db_url: !secret recorder_db_url
 purge_keep_days: 7
 include:
   entities:
-    - sensor.rv70_solvarbo_wind_speed
+    - sensor.yr_temperature
+    - sensor.yr_wind_speed
+    - sensor.yr_cloudiness
     - sensor.amazon
     - sensor.boliden
     - sensor.capgemini
@@ -17,7 +19,3 @@ include:
     - sensor.salesforce
     - sensor.jumia_technologies
     - sensor.toadman_interactive
-    - sun.sun
-    - weather.smhi_home
-    - light.color_light_1
-    - switch.shelly_shsw_1_942187
