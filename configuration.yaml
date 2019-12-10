@@ -91,6 +91,11 @@ hue:
       
 shelly:
 
+tuya:
+  username: !secret tuya_usr
+  password: !secret tuya_pwd
+  country_code: !secret tuya_country_code
+
 
 # ########################################
 # ###              ENTITIES            ###
@@ -117,7 +122,7 @@ zone: !include zone.yaml
 
 sun:                                                # Track the sun
 sensor:
-  - platform: moon
+  #- platform: moon
   - platform: time_date
     display_options:
       - 'time'
