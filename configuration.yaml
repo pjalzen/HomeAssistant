@@ -116,6 +116,7 @@ zone: !include zone.yaml
 # ########################################
 
 sun:                                                # Track the sun
+
 notify: !include notify/notify.yaml
 python_script:
 

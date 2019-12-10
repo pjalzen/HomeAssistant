@@ -15,8 +15,8 @@ cards:
     entities:
       - entity: sensor.date
       - entity: sensor.time 
-      - entity: sensor.sunrise
-      - entity: sensor.sunset
+      #- entity: sensor.sunrise
+      #- entity: sensor.sunset
       - entity: sensor.moon 
       
 
