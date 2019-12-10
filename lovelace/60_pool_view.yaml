@@ -13,7 +13,7 @@ cards:
       labels: true
   - type: entities
     entities:
-      - entity: sensor.date
+      - entity: sensor.date_time
       - entity: sensor.time
       - entity: sensor.yr_temperature
       - entity: sensor.yr_wind_speed
