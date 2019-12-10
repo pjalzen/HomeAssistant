@@ -11,3 +11,12 @@ cards:
     show:
       points: false
       labels: true
+  - type: entities
+    entities:
+      - entity: sensor.date
+      - entity: sensor.time 
+      - entity: sensor.sunrise
+      - entity: sensor.sunset
+      - entity: sensor.moon 
+      
+
