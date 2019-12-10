@@ -16,7 +16,7 @@ cards:
       - entity: sensor.yr_temperature
       - entity: sensor.yr_wind_speed
       - entity: sensor.yr_precipitation
-      - entity: time 
+      #- entity: time
       #- entity: sensor.sunrise
       #- entity: sensor.sunset
       - entity: sensor.moon 
