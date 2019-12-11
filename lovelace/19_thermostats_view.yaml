@@ -40,6 +40,9 @@ cards:
 
   - type: vertical-stack
     cards:
+      - type: thermostat
+        entity: climate.calle_ost
+        name: Calles rum 
       - type: horizontal-stack
         cards:
           - type: thermostat
@@ -56,9 +59,7 @@ cards:
           - type: thermostat
             entity: climate.emma_ost
             name: Emmas rum öster
-      - type: thermostat
-        entity: climate.calle_ost
-        name: Calles rum 
+
 
       
 
