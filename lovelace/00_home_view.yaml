@@ -12,19 +12,20 @@ cards:
             entities:
               - sensor.yr_temperature
             name: Temperature
-            font_size: 75%
+            font_size: 75
             hours_to_show: 48
             points_per_hour: 12
             line_color: blue
             line_width: 2 
             show:
-              icon: false
               points: false
               labels: true
           - type: custom:mini-graph-card
             entities:
               - sensor.yr_wind_speed
             name: Wind speed
+            icon: mdi:weather-windy
+            font_size: 75
             hours_to_show: 48
             points_per_hour: 12
             line_color: blue
@@ -36,6 +37,8 @@ cards:
             entities:
               - sensor.yr_cloudiness
             name: Cloudiness
+            icon: mdi:cloud
+            font_size: 75
             hours_to_show: 48
             points_per_hour: 12
             line_color: blue
