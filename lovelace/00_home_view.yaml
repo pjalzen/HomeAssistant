@@ -126,11 +126,6 @@ cards:
           - entity: sensor.col_home_team
 
           - type: divider
-            # style:
-            #   height: 1px
-            #   width: 80%
-            #   margin-left: auto
-            #   margin-right: auto
 
           - entity: sensor.canucks
             name: Canucks game
@@ -138,11 +133,6 @@ cards:
           - entity: sensor.van_home_team
 
           - type: divider
-            style:
-              height: 1px
-              width: 80%
-              margin-left: auto
-              margin-right: auto
 
           - entity: sensor.predators
             name: Predators game
