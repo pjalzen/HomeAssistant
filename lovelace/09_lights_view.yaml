@@ -40,7 +40,7 @@ cards:
         entities:
           - switch.everspring_an180_plugin_onoff_module_switch
           - switch.timer
-     - type: entities
+      - type: entities
         title: Office
         entities:
           - switch.21200481dc4f2271416f
