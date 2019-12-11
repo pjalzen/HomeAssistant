@@ -79,6 +79,18 @@ cards:
               points: false
               labels: true
 
+
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.omx_stockholm_30
+        hours_to_show: 24
+        points_per_hour: 60
+        line_color: blue
+        line_width: 8
+        show:
+          points: false
+          labels: true
+
       # - type: alarm-panel
       #   entity: alarm_control_panel.brunnsgatan_alarm
 
