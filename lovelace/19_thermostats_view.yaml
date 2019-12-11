@@ -14,16 +14,15 @@ cards:
             name: Vardagsrum norr
           - type: thermostat
             entity: climate.vardagsrum_vast
-            name: Vardagsrum väster
-  
-  - type: vertical-stack
-    cards:
-      - type: thermostat
-        entity: climate.matsal_norr
-        name: Matsal norr
-      - type: thermostat
-        entity: climate.matsal_ost
-        name: Matsal öster
+            name: Vardagsrum väster 
+      - type: horizontal-stack
+        cards:
+          - type: thermostat
+            entity: climate.matsal_norr
+            name: Matsal norr
+          - type: thermostat
+            entity: climate.matsal_ost
+            name: Matsal öster
 
   - type: vertical-stack
     cards:
