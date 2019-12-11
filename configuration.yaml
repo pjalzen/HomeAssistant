@@ -149,9 +149,9 @@ ifttt:
 
 alexa:
 
-#google:
-  #client_id: !secret google_id
-  #client_secret: !secret google_secret
+google:
+  client_id: !secret google_id
+  client_secret: !secret google_secret
 
 #tts:
 #  - platform: google                                # Text to speech
