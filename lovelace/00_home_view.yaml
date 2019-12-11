@@ -16,7 +16,7 @@ cards:
             hours_to_show: 48
             points_per_hour: 12
             line_color: blue
-            line_width: 2 
+            line_width: 8 
             show:
               points: false
               labels: true
@@ -29,7 +29,7 @@ cards:
             hours_to_show: 48
             points_per_hour: 12
             line_color: '#e74c3c'
-            line_width: 2 
+            line_width: 8 
             show:
               points: false
               labels: true
@@ -42,7 +42,7 @@ cards:
             hours_to_show: 48
             points_per_hour: 12
             line_color: '#f39c12'
-            line_width: 2 
+            line_width: 8 
             show:
               points: false
               labels: true
