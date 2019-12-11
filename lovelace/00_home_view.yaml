@@ -6,16 +6,47 @@ cards:
       - type: weather-forecast
         entity: weather.smhi_home 
 
-      - type: custom:krisinfo-card
-        entity: sensor.krisinformation_sverige
-
       - type: entities
-        show_header_toggle: false
         entities:
-          - entity: sensor.avalanche
-          - entity: sensor.away_team
-          - entity: sensor.home_team
-          
+          - entity: sensor.date
+          - entity: sensor.time
+          - entity: sensor.nextdawn
+          - entity: sensor.nextsunrise
+          - entity: sensor.nextsunset
+          - entity: sensor.nextdusk
+          - entity: sensor.moon 
+
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.yr_temperature
+        hours_to_show: 48
+        points_per_hour: 12
+        line_color: blue
+        line_width: 2 
+        show:
+          points: false
+          labels: true
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.yr_wind_speed
+        hours_to_show: 48
+        points_per_hour: 12
+        line_color: blue
+        line_width: 2 
+        show:
+          points: false
+          labels: true
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.yr_cloudiness
+        hours_to_show: 48
+        points_per_hour: 12
+        line_color: blue
+        line_width: 2 
+        show:
+          points: false
+          labels: true
+
       # - type: sensor
       #   entity: sensor.hall_entre_temperature
       #   name: Temperatur entré
@@ -34,21 +65,22 @@ cards:
       - type: alarm-panel
         entity: alarm_control_panel.brunnsgatan_alarm
 
-      - type: entity-filter
-        entities:
-          - device_tracker.perjohan_pj_iphone
-          - device_tracker.helenasiphonelocal
-          - device_tracker.oneplus_6tlocal
-          - device_tracker.oneplus_6local
-          - device_tracker.x3_xdrive20d
-          - device_tracker.i3s_94
-        state_filter:
-          - home
-        card: 
-          type: glance
-          title: Home
+      - type: custom:krisinfo-card
+        entity: sensor.krisinformation_sverige
 
-
+      # - type: entity-filter
+      #   entities:
+      #     - device_tracker.perjohan_pj_iphone
+      #     - device_tracker.helenasiphonelocal
+      #     - device_tracker.oneplus_6tlocal
+      #     - device_tracker.oneplus_6local
+      #     - device_tracker.x3_xdrive20d
+      #     - device_tracker.i3s_94
+      #   state_filter:
+      #     - home
+      #   card: 
+      #     type: glance
+      #     title: Home
 
       #- type: entities
       #  show_header_toggle: false
@@ -68,12 +100,18 @@ cards:
   - type: vertical-stack
     cards:
 
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - entity: sensor.avalanche
+          - entity: sensor.away_team
+          - entity: sensor.home_team
 
-      - type: "custom:spotify-card"
-        client_id: !secret spotify_token
+      # - type: "custom:spotify-card"
+      #   client_id: !secret spotify_token
 
-      - type: media-control
-        entity: media_player.spotify
+      # - type: media-control
+      #   entity: media_player.spotify
 
         #limit: <optional number of playlists to retrieve (default 10)>
         #device: <optional name of a device to pre-select>        

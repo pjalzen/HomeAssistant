@@ -1,45 +1,8 @@
 title: Pool
 icon: mdi:pool
 cards:
-  - type: custom:mini-graph-card
-    entities:
-      - sensor.yr_temperature
-    hours_to_show: 48
-    points_per_hour: 12
-    line_color: blue
-    line_width: 2 
-    show:
-      points: false
-      labels: true
-  - type: custom:mini-graph-card
-    entities:
-      - sensor.yr_wind_speed
-    hours_to_show: 48
-    points_per_hour: 12
-    line_color: blue
-    line_width: 2 
-    show:
-      points: false
-      labels: true
-  - type: custom:mini-graph-card
-    entities:
-      - sensor.yr_cloudiness
-    hours_to_show: 48
-    points_per_hour: 12
-    line_color: blue
-    line_width: 2 
-    show:
-      points: false
-      labels: true
-  - type: entities
-    entities:
-      - entity: sensor.date
-      - entity: sensor.time
-      - entity: sensor.nextdawn
-      - entity: sensor.nextsunrise
-      - entity: sensor.nextsunset
-      - entity: sensor.nextdusk
-      - entity: sensor.moon 
+
+
       # - entity: sensor.yr_temperature
       #   name: Temperatur
       # - entity: sensor.yr_wind_speed
