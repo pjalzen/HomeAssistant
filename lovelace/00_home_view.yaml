@@ -3,6 +3,34 @@ icon: mdi:home
 cards:
   - type: vertical-stack
     cards:
+
+      - type: entities
+        title: 
+        entities:
+          - entity: sensor.date
+          - entity: sensor.time
+          - entity: sensor.nextdawn
+          - entity: sensor.nextsunrise
+          - entity: sensor.nextsunset
+          - entity: sensor.nextdusk
+          - entity: sensor.moon 
+
+
+      # - type: sensor
+      #   entity: sensor.hall_entre_temperature
+      #   name: Temperatur entré
+      #   graph: line
+
+      #- type: map
+      #  aspect_ratio: 16:9
+      #  default_zoom: 8
+      #  entities:
+      #    - device_tracker.perjohan_pj_iphone
+      #    - zone.home
+
+
+  - type: vertical-stack
+    cards:
       - type: weather-forecast
         entity: weather.smhi_home 
 
@@ -49,26 +77,10 @@ cards:
               points: false
               labels: true
 
-      # - type: sensor
-      #   entity: sensor.hall_entre_temperature
-      #   name: Temperatur entré
-      #   graph: line
-
-      #- type: map
-      #  aspect_ratio: 16:9
-      #  default_zoom: 8
-      #  entities:
-      #    - device_tracker.perjohan_pj_iphone
-      #    - zone.home
+      # - type: alarm-panel
+      #   entity: alarm_control_panel.brunnsgatan_alarm
 
 
-  - type: vertical-stack
-    cards:
-      - type: alarm-panel
-        entity: alarm_control_panel.brunnsgatan_alarm
-
-      - type: custom:krisinfo-card
-        entity: sensor.krisinformation_sverige
 
       # - type: entity-filter
       #   entities:
@@ -102,16 +114,8 @@ cards:
   - type: vertical-stack
     cards:
 
-      - type: entities
-        title: 
-        entities:
-          - entity: sensor.date
-          - entity: sensor.time
-          - entity: sensor.nextdawn
-          - entity: sensor.nextsunrise
-          - entity: sensor.nextsunset
-          - entity: sensor.nextdusk
-          - entity: sensor.moon 
+      - type: custom:krisinfo-card
+        entity: sensor.krisinformation_sverige
 
       - type: entities
         title: NHL
