@@ -20,6 +20,7 @@ cards:
             show:
               points: false
               labels: true
+            smoothing: true
           - type: custom:mini-graph-card
             entities:
               - sensor.yr_wind_speed
@@ -33,6 +34,7 @@ cards:
             show:
               points: false
               labels: true
+            smoothing: true
           - type: custom:mini-graph-card
             entities:
               - sensor.yr_cloudiness
@@ -46,6 +48,7 @@ cards:
             show:
               points: false
               labels: true
+            smoothing: true
 
       # - type: sensor
       #   entity: sensor.hall_entre_temperature
