@@ -152,8 +152,8 @@ cards:
           - entity: sensor.nsh_home_team
 
       - type: custom:calendar-card
-        title: Family Calendar
-        progressbar: true
+        title: "Family Calendar"
+        progressBar: true
         entities:
           - calendar.familjekalender_for_brunnsgatan_25
           - calendar.helgdagar_i_sverige

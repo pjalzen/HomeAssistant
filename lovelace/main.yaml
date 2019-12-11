@@ -42,7 +42,9 @@ resources:
     type: module
   - url: /community_plugin/mini-graph-card/mini-graph-card.js
     type: module
-
+  - url: /community_plugin/calendar-card/calendar-card.js
+    type: js
+    
   - type: module
     url: >-
       https://cdn.jsdelivr.net/gh/custom-cards/spotify-card@1.8/dist/spotify-card.umd.js
