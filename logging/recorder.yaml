@@ -19,4 +19,4 @@ include:
     - sensor.salesforce
     - sensor.jumia_technologies
     - sensor.toadman_interactive
-    - semsor.omx_stockholm_30
+    - sensor.omx_stockholm_30
