@@ -40,3 +40,10 @@
     ignore_availability: true
     name: Week Numbers
     track: true
+
+- cal_id: dptshm7mhkh4gcmbs1r7k9djcc@group.calendar.google.com
+  entities:
+  - device_id: familjekalender_for_brunnsgatan_25
+    ignore_availability: true
+    name: "Familjekalender f\xF6r Brunnsgatan 25"
+    track: true
