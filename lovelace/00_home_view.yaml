@@ -4,8 +4,10 @@ cards:
   - type: vertical-stack
     cards:
 
+      - type: custom:krisinfo-card
+        entity: sensor.krisinformation_sverige
+
       - type: entities
-        title: 
         entities:
           - entity: sensor.date
           - entity: sensor.time
@@ -113,9 +115,6 @@ cards:
 
   - type: vertical-stack
     cards:
-
-      - type: custom:krisinfo-card
-        entity: sensor.krisinformation_sverige
 
       - type: entities
         title: NHL
