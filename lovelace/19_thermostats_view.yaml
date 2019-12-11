@@ -7,12 +7,14 @@ cards:
       - type: thermostat
         entity: climate.entre_syd
         name: Hallen entré
-      - type: thermostat
-        entity: climate.vardagsrum_norr
-        name: Vardagsrum norr
-      - type: thermostat
-        entity: climate.vardagsrum_vast
-        name: Vardagsrum väster
+      - type: horizontal-stack
+        cards:
+          - type: thermostat
+            entity: climate.vardagsrum_norr
+            name: Vardagsrum norr
+          - type: thermostat
+            entity: climate.vardagsrum_vast
+            name: Vardagsrum väster
   
   - type: vertical-stack
     cards:
@@ -43,6 +45,7 @@ cards:
       - type: thermostat
         entity: climate.sovrum_norr
         name: Sovrum norr
+
   - type: vertical-stack
     cards:
       - type: thermostat
