@@ -151,6 +151,13 @@ cards:
           - entity: sensor.nsh_away_team
           - entity: sensor.nsh_home_team
 
+      - type: custom:calendar-card
+        title: Family Calendar
+        progressbar: true
+        entities:
+          - calendar.familjekalender_for_brunnsgatan_25
+          - calendar.helgdagar_i_sverige
+
       # - type: "custom:spotify-card"
       #   client_id: !secret spotify_token
 
