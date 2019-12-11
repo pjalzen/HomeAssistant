@@ -14,3 +14,15 @@ sensor:
         friendly_name: "Next Sun Set"
         value_template: "{{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom('%-H:%M') }}"
         icon_template: mdi:weather-sunset-down
+
+      nextdawn:
+        friendly_name: "Next Dawn"
+        value_template: "{{ as_timestamp(states.sun.sun.attributes.next_dawn) | timestamp_custom('%-H:%M') }}"
+        icon_template: mdi:weather-sunset-up
+
+      nextdusk:
+        friendly_name: "Next Dusk"
+        value_template: "{{ as_timestamp(states.sun.sun.attributes.next_dusk) | timestamp_custom('%-H:%M') }}"
+        icon_template: mdi:weather-sunset-down
+        
+  - platform: moon

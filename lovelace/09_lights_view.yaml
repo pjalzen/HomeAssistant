@@ -1,0 +1,21 @@
+title: Lights
+icon: mdi:lightbulb-on
+cards:
+  - type: vertical-stack
+    cards:
+      - type: light
+        entity: light.living_room 
+        name: Colored Lights
+
+      - type: custom:button-card
+        entity: switch.nodon_msp31xx_micro_smart_plug_switch_2
+        show_state: false
+        color_type: icon
+        color: rgb(255, 255, 153)
+        icon: mdi:lightbulb-outline
+        size: 60px
+        name: TV-bänk
+        action: 
+          data:
+            entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_2
+          service: switch.toggle

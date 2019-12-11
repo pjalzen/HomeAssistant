@@ -37,6 +37,8 @@ cards:
       - entity: sensor.time
       - entity: sensor.nextsunrise
       - entity: sensor.nextsunset
+      - entity: sensor.nextdusk
+      - entity: sensor.nextdawn
       - entity: sensor.moon 
       - entity: sensor.yr_temperature
         name: Temperatur
