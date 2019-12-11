@@ -3,6 +3,15 @@ icon: mdi:lightbulb-on
 cards:
   - type: vertical-stack
     cards:
+
+      - type: entities
+        entities:
+          - light.color_light_1
+          - type: custom:slider-entity-row
+            entity: light.color_temperature_light_dining
+
+
+
       - type: light
         entity: light.living_room 
         name: Colored Lights
