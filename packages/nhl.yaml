@@ -12,11 +12,27 @@ sensor:
 
   - platform: template
     sensors:
-      away_team:
+      col_away_team:
         friendly_name_template: '{{ states.sensor.avalanche.attributes.away_name }}'
         value_template: '{{ states.sensor.avalanche.attributes.away_score }}'
         entity_picture_template: '{{ states.sensor.avalanche.attributes.away_logo }}'
-      home_team:
+      col_home_team:
         friendly_name_template: '{{ states.sensor.avalanche.attributes.home_name }}'
         value_template: '{{ states.sensor.avalanche.attributes.home_score }}'
         entity_picture_template: '{{ states.sensor.avalanche.attributes.home_logo }}'
+      van_away_team:
+        friendly_name_template: '{{ states.sensor.canucks.attributes.away_name }}'
+        value_template: '{{ states.sensor.canucks.attributes.away_score }}'
+        entity_picture_template: '{{ states.sensor.canucks.attributes.away_logo }}'
+      van_home_team:
+        friendly_name_template: '{{ states.sensor.canucks.attributes.home_name }}'
+        value_template: '{{ states.sensor.canucks.attributes.home_score }}'
+        entity_picture_template: '{{ states.sensor.canucks.attributes.home_logo }}'
+      nsh_away_team:
+        friendly_name_template: '{{ states.sensor.predators.attributes.away_name }}'
+        value_template: '{{ states.sensor.predators.attributes.away_score }}'
+        entity_picture_template: '{{ states.sensor.predators.attributes.away_logo }}'
+      nsh_home_team:
+        friendly_name_template: '{{ states.sensor.predators.attributes.home_name }}'
+        value_template: '{{ states.sensor.predators.attributes.home_score }}'
+        entity_picture_template: '{{ states.sensor.predators.attributes.home_logo }}'
