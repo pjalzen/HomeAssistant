@@ -91,10 +91,10 @@ hue:
       
 shelly:
 
-# tuya:
-#   username: !secret tuya_usr
-#   password: !secret tuya_pwd
-#   country_code: !secret tuya_country_code
+tuya:
+  username: !secret tuya_usr
+  password: !secret tuya_pwd
+  country_code: !secret tuya_country_code
 
 
 # ########################################
