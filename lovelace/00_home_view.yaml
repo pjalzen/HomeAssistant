@@ -36,17 +36,10 @@ cards:
           - type: custom:button-card
             name: Go to bed
             icon: mdi:sleep
-            action: 
-              data:
-                entity_id: scene.go_to_bed
-              service: turn_off
+
           - type: custom:button-card
             name: Go to bed
             icon: mdi:sleep
-            action: 
-              data:
-                entity_id: scene.go_to_bed
-              service: turn_off
 
 
   - type: vertical-stack
@@ -108,37 +101,6 @@ cards:
         show:
           points: false
           labels: true
-
-
-
-
-      # - type: entity-filter
-      #   entities:
-      #     - device_tracker.perjohan_pj_iphone
-      #     - device_tracker.helenasiphonelocal
-      #     - device_tracker.oneplus_6tlocal
-      #     - device_tracker.oneplus_6local
-      #     - device_tracker.x3_xdrive20d
-      #     - device_tracker.i3s_94
-      #   state_filter:
-      #     - home
-      #   card: 
-      #     type: glance
-      #     title: Home
-
-      #- type: entities
-      #  show_header_toggle: false
-      #  title: BMW X3
-      #  entities:
-      #    - device_tracker.x3_xdrive20d
-      #    - lock.x3_xdrive20d_lock
-
-      #- type: entities
-      #  title: BMW i3
-      #  show_header_toggle: false
-      #  entities:
-      #    - device_tracker.i3s_94
-      #    - lock.i3s_94_lock
 
 
   - type: vertical-stack
