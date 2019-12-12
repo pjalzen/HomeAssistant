@@ -14,7 +14,7 @@
       friendly_name: Color temperature light Dining
       max_mireds: 500
       min_mireds: 153
-      state: 'on'
+      state: 'off'
       supported_features: 43
     light.hue_lightstrip_plus_1:
       effect_list:
