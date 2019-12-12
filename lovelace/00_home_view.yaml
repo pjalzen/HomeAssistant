@@ -31,7 +31,10 @@ cards:
             color: card
             action: service
             service: 
-              action: scene.turn_on
+              domain: scene
+              action: turn_on
+              data:
+                entity_id: scene.go_to_bed
 
           - type: custom:button-card
             name: Go to bed
