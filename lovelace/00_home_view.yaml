@@ -19,6 +19,7 @@ cards:
 
       - type: custom:button-card
         name: Scences
+        color-type: label-card
         show_icon: false
         
       - type: horizontal-stack
@@ -26,10 +27,8 @@ cards:
           - type: custom:button-card
             name: Go to bed
             icon: mdi:sleep
-            action: 
-              data:
-                entity_id: scene.go_to_bed
-              service: turn_off
+            entity: scene.go_to_bed
+
           - type: custom:button-card
             name: Go to bed
             icon: mdi:sleep
