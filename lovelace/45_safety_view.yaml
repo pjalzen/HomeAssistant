@@ -1,0 +1,8 @@
+title: Safety
+icon: mdi:verified
+cards:
+
+  - type: vertical-stack
+    cards:
+       - type: alarm-panel
+         entity: alarm_control_panel.brunnsgatan_alarm

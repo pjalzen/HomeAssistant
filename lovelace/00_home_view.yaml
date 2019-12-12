@@ -17,18 +17,29 @@ cards:
           - entity: sensor.nextdusk
           - entity: sensor.moon 
 
-
-      # - type: sensor
-      #   entity: sensor.hall_entre_temperature
-      #   name: Temperatur entré
-      #   graph: line
-
-      #- type: map
-      #  aspect_ratio: 16:9
-      #  default_zoom: 8
-      #  entities:
-      #    - device_tracker.perjohan_pj_iphone
-      #    - zone.home
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            name: Go to bed
+            icon: mdi:sleep
+            action: 
+              data:
+                entity_id: scene.go_to_bed
+              service: turn_off
+          - type: custom:button-card
+            name: Go to bed
+            icon: mdi:sleep
+            action: 
+              data:
+                entity_id: scene.go_to_bed
+              service: turn_off
+          - type: custom:button-card
+            name: Go to bed
+            icon: mdi:sleep
+            action: 
+              data:
+                entity_id: scene.go_to_bed
+              service: turn_off
 
 
   - type: vertical-stack
@@ -91,8 +102,6 @@ cards:
           points: false
           labels: true
 
-      # - type: alarm-panel
-      #   entity: alarm_control_panel.brunnsgatan_alarm
 
 
 

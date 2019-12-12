@@ -61,6 +61,7 @@ views:
   #- !include 20_upstairs_view.yaml
   #- !include 30_basement_view.yaml
   - !include 40_car_view.yaml
+  - !include 45_safety_view.yaml
   - !include 50_finance_view.yaml
   - !include 60_pool_view.yaml
   - !include 99_system_view.yaml
