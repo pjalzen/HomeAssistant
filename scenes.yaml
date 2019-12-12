@@ -1,0 +1,251 @@
+- id: '1576138760915'
+  name: Go to bed
+  entities:
+    light.color_light_1:
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Tradfri by TV
+      state: 'off'
+      supported_features: 61
+    light.color_temperature_light_dining:
+      friendly_name: Color temperature light Dining
+      max_mireds: 500
+      min_mireds: 153
+      state: unavailable
+      supported_features: 43
+    light.hue_lightstrip_plus_1:
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Hue lightstrip Office
+      max_mireds: 500
+      min_mireds: 153
+      state: 'off'
+      supported_features: 63
+    light.hue_play_1:
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Hue play 1
+      max_mireds: 500
+      min_mireds: 153
+      state: 'off'
+      supported_features: 63
+    light.hue_play_2:
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Hue play 2
+      max_mireds: 500
+      min_mireds: 153
+      state: 'off'
+      supported_features: 63
+    switch.everspring_an180_plugin_onoff_module_switch:
+      friendly_name: Nexa Switch - Upstairs Library
+      node_id: 8
+      state: 'off'
+      value_id: '72057594176946176'
+      value_index: 0
+      value_instance: 1
+    switch.everspring_an180_plugin_onoff_module_switch_2:
+      friendly_name: Nexa Switch - Downstairs Sofa
+      node_id: 9
+      state: 'off'
+      value_id: '72057594193723392'
+      value_index: 0
+      value_instance: 1
+    switch.everspring_an180_plugin_onoff_module_switch_3:
+      friendly_name: Nexa Switch - Downstairs Entrance
+      node_id: 10
+      state: 'off'
+      value_id: '72057594210500608'
+      value_index: 0
+      value_instance: 1
+    switch.nodon_msp31xx_micro_smart_plug_switch_2:
+      friendly_name: Smart Switch - Beige
+      node_id: 5
+      power_consumption: 0
+      state: 'off'
+      value_id: '72057594126614528'
+      value_index: 0
+      value_instance: 1
+    switch.nodon_msp31xx_micro_smart_plug_switch_4:
+      friendly_name: Smart Switch - White
+      node_id: 7
+      power_consumption: 0
+      state: 'off'
+      value_id: '72057594160168960'
+      value_index: 0
+      value_instance: 1
+    zwave.everspring_an180_plugin_onoff_module:
+      application_version: '1.03'
+      averageRequestRTT: 184
+      averageResponseRTT: 153
+      capabilities:
+      - beaming
+      - listening
+      - routing
+      - zwave_plus
+      friendly_name: Everspring AN180 Plug-in ON/OFF Module
+      is_awake: true
+      is_failed: false
+      is_info_received: true
+      is_ready: true
+      is_zwave_plus: true
+      lastRequestRTT: 175
+      lastResponseRTT: 187
+      manufacturer_name: Everspring
+      max_baud_rate: 40000
+      node_id: 8
+      node_name: Everspring AN180 Plug-in ON/OFF Module
+      product_name: AN180 Plug-in ON/OFF Module
+      query_stage: Complete
+      receivedCnt: 2
+      receivedDups: 0
+      receivedTS: '2019-12-12 09:20:11:809 '
+      receivedUnsolicited: 0
+      retries: 26
+      sentCnt: 35
+      sentFailed: 0
+      sentTS: '2019-12-12 09:20:12:147 '
+      state: ready
+    zwave.everspring_an180_plugin_onoff_module_2:
+      application_version: '1.03'
+      averageRequestRTT: 329
+      averageResponseRTT: 1601
+      capabilities:
+      - beaming
+      - listening
+      - routing
+      - zwave_plus
+      friendly_name: Everspring AN180 Plug-in ON/OFF Module
+      is_awake: true
+      is_failed: false
+      is_info_received: true
+      is_ready: true
+      is_zwave_plus: true
+      lastRequestRTT: 417
+      lastResponseRTT: 2368
+      manufacturer_name: Everspring
+      max_baud_rate: 40000
+      neighbors:
+      - 10
+      - 12
+      - 5
+      node_id: 9
+      node_name: Everspring AN180 Plug-in ON/OFF Module
+      product_name: AN180 Plug-in ON/OFF Module
+      query_stage: Complete
+      receivedCnt: 5
+      receivedDups: 0
+      receivedTS: '2019-12-12 09:20:22:198 '
+      receivedUnsolicited: 0
+      retries: 10
+      sentCnt: 19
+      sentFailed: 0
+      sentTS: '2019-12-12 09:20:19:831 '
+      state: ready
+    zwave.everspring_an180_plugin_onoff_module_3:
+      application_version: '1.03'
+      averageRequestRTT: 54
+      averageResponseRTT: 56
+      capabilities:
+      - beaming
+      - listening
+      - routing
+      - zwave_plus
+      friendly_name: Everspring AN180 Plug-in ON/OFF Module
+      is_awake: true
+      is_failed: false
+      is_info_received: true
+      is_ready: true
+      is_zwave_plus: true
+      lastRequestRTT: 26
+      lastResponseRTT: 41
+      manufacturer_name: Everspring
+      max_baud_rate: 40000
+      neighbors:
+      - 1
+      - 9
+      node_id: 10
+      node_name: Everspring AN180 Plug-in ON/OFF Module
+      product_name: AN180 Plug-in ON/OFF Module
+      query_stage: Complete
+      receivedCnt: 6
+      receivedDups: 1
+      receivedTS: '2019-12-12 09:20:32:660 '
+      receivedUnsolicited: 0
+      retries: 7
+      sentCnt: 16
+      sentFailed: 0
+      sentTS: '2019-12-12 09:20:32:618 '
+      state: ready
+    zwave.nodon_msp31xx_micro_smart_plug_2:
+      application_version: '1.55'
+      averageRequestRTT: 259
+      averageResponseRTT: 274
+      capabilities:
+      - beaming
+      - listening
+      - routing
+      - zwave_plus
+      friendly_name: NodOn MSP-3-1-XX Micro Smart Plug
+      is_awake: true
+      is_failed: false
+      is_info_received: true
+      is_ready: true
+      is_zwave_plus: true
+      lastRequestRTT: 267
+      lastResponseRTT: 377
+      manufacturer_name: NodOn
+      max_baud_rate: 40000
+      neighbors:
+      - 9
+      node_id: 5
+      node_name: NodOn MSP-3-1-XX Micro Smart Plug
+      product_name: MSP-3-1-XX Micro Smart Plug
+      query_stage: Complete
+      receivedCnt: 94
+      receivedDups: 18
+      receivedTS: '2019-12-12 09:32:23:212 '
+      receivedUnsolicited: 18
+      retries: 6
+      sentCnt: 56
+      sentFailed: 4
+      sentTS: '2019-12-12 09:18:39:258 '
+      state: ready
+    zwave.nodon_msp31xx_micro_smart_plug_4:
+      application_version: '1.55'
+      averageRequestRTT: 49
+      averageResponseRTT: 49
+      capabilities:
+      - beaming
+      - listening
+      - routing
+      - zwave_plus
+      friendly_name: NodOn MSP-3-1-XX Micro Smart Plug
+      is_awake: true
+      is_failed: false
+      is_info_received: true
+      is_ready: true
+      is_zwave_plus: true
+      lastRequestRTT: 29
+      lastResponseRTT: 49
+      manufacturer_name: NodOn
+      max_baud_rate: 40000
+      neighbors:
+      - 6
+      node_id: 7
+      node_name: NodOn MSP-3-1-XX Micro Smart Plug
+      product_name: MSP-3-1-XX Micro Smart Plug
+      query_stage: Complete
+      receivedCnt: 7001
+      receivedDups: 3638
+      receivedTS: '2019-12-12 09:40:29:238 '
+      receivedUnsolicited: 6961
+      retries: 25
+      sentCnt: 46
+      sentFailed: 0
+      sentTS: '2019-12-12 09:20:04:796 '
+      state: ready
