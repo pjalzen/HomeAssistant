@@ -16,3 +16,13 @@ cards:
         #   service: camera.snapshot
         #   service_data:
         #     entity_id: camera.mjpeg_camera
+
+      - type: picture-entity
+        entity: camera.vardagsrum
+        camera_view: live
+      - type: picture-entity
+        entity: camera.hall_overvaning
+        camera_view: live
+      - type: picture-entity
+        entity: camera.kallare
+        camera_view: live
