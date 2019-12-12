@@ -18,11 +18,10 @@ cards:
           - entity: sensor.moon 
 
       - type: custom:button-card
-        name: Scences
+        name: SET SCENES
         color_type: label-card
         color: '#ff6262'
         show_icon: false
-        aspect_ratio: 4/1
         
       - type: horizontal-stack
         cards:
