@@ -2,32 +2,6 @@ title: Lights
 icon: mdi:lightbulb-on
 cards:
 
-      - type: horizontal-stack
-        cards:
-          - type: custom:button-card
-            name: Go to bed
-            icon: mdi:sleep
-            action: 
-              data:
-                entity_id: scene.go_to_bed
-              service: turn_off
-          - type: custom:button-card
-            name: Go to bed
-            icon: mdi:sleep
-            action: 
-              data:
-                entity_id: scene.go_to_bed
-              service: turn_off
-          - type: custom:button-card
-            name: Go to bed
-            icon: mdi:sleep
-            action: 
-              data:
-                entity_id: scene.go_to_bed
-              service: turn_off
-
-
-
   - type: vertical-stack
     cards:
 
