@@ -169,3 +169,4 @@ mobile_app:
 
 script: !include scripts.yaml
 automation: !include automations.yaml
+scene: !include scenes.yaml
