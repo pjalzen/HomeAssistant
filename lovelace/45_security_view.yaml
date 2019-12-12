@@ -6,13 +6,13 @@ cards:
        - type: alarm-panel
          entity: alarm_control_panel.brunnsgatan_alarm
 
-  # - type: vertical-stack
-  #   cards:
-  #     - type: picture-entity
-  #       entity: camera.mjpeg_camera
-  #       camera_view: live
-  #       tap_action:
-  #         action: call-service
-  #         service: camera.snapshot
-  #         service_data:
-  #           entity_id: camera.mjpeg_camera
+  - type: vertical-stack
+    cards:
+      - type: picture-entity
+        entity: camera.mjpeg_camera
+        camera_view: live
+        # tap_action:
+        #   action: call-service
+        #   service: camera.snapshot
+        #   service_data:
+        #     entity_id: camera.mjpeg_camera
