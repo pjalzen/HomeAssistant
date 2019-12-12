@@ -9,10 +9,12 @@
       state: 'off'
       supported_features: 61
     light.color_temperature_light_dining:
+      brightness: 153
+      color_temp: 250
       friendly_name: Color temperature light Dining
       max_mireds: 500
       min_mireds: 153
-      state: 'off'
+      state: 'on'
       supported_features: 43
     light.hue_lightstrip_plus_1:
       effect_list:
@@ -112,8 +114,8 @@
       state: ready
     zwave.everspring_an180_plugin_onoff_module_2:
       application_version: '1.03'
-      averageRequestRTT: 329
-      averageResponseRTT: 1601
+      averageRequestRTT: 148
+      averageResponseRTT: 723
       capabilities:
       - beaming
       - listening
@@ -125,8 +127,8 @@
       is_info_received: true
       is_ready: true
       is_zwave_plus: true
-      lastRequestRTT: 417
-      lastResponseRTT: 2368
+      lastRequestRTT: 71
+      lastResponseRTT: 347
       manufacturer_name: Everspring
       max_baud_rate: 40000
       neighbors:
@@ -137,14 +139,14 @@
       node_name: Everspring AN180 Plug-in ON/OFF Module
       product_name: AN180 Plug-in ON/OFF Module
       query_stage: Complete
-      receivedCnt: 5
-      receivedDups: 0
-      receivedTS: '2019-12-12 09:20:22:198 '
-      receivedUnsolicited: 0
+      receivedCnt: 15
+      receivedDups: 1
+      receivedTS: '2019-12-12 13:13:01:991 '
+      receivedUnsolicited: 7
       retries: 10
-      sentCnt: 19
+      sentCnt: 25
       sentFailed: 0
-      sentTS: '2019-12-12 09:20:19:831 '
+      sentTS: '2019-12-12 13:12:58:888 '
       state: ready
     zwave.everspring_an180_plugin_onoff_module_3:
       application_version: '1.03'
@@ -183,8 +185,8 @@
       state: ready
     zwave.nodon_msp31xx_micro_smart_plug_2:
       application_version: '1.55'
-      averageRequestRTT: 259
-      averageResponseRTT: 274
+      averageRequestRTT: 213
+      averageResponseRTT: 128
       capabilities:
       - beaming
       - listening
@@ -196,8 +198,8 @@
       is_info_received: true
       is_ready: true
       is_zwave_plus: true
-      lastRequestRTT: 267
-      lastResponseRTT: 377
+      lastRequestRTT: 38
+      lastResponseRTT: 52
       manufacturer_name: NodOn
       max_baud_rate: 40000
       neighbors:
@@ -206,14 +208,14 @@
       node_name: NodOn MSP-3-1-XX Micro Smart Plug
       product_name: MSP-3-1-XX Micro Smart Plug
       query_stage: Complete
-      receivedCnt: 94
-      receivedDups: 18
-      receivedTS: '2019-12-12 09:32:23:212 '
-      receivedUnsolicited: 18
+      receivedCnt: 192
+      receivedDups: 23
+      receivedTS: '2019-12-12 13:12:59:556 '
+      receivedUnsolicited: 112
       retries: 6
-      sentCnt: 56
-      sentFailed: 4
-      sentTS: '2019-12-12 09:18:39:258 '
+      sentCnt: 62
+      sentFailed: 5
+      sentTS: '2019-12-12 13:12:59:504 '
       state: ready
     zwave.nodon_msp31xx_micro_smart_plug_4:
       application_version: '1.55'
@@ -240,10 +242,10 @@
       node_name: NodOn MSP-3-1-XX Micro Smart Plug
       product_name: MSP-3-1-XX Micro Smart Plug
       query_stage: Complete
-      receivedCnt: 7001
-      receivedDups: 3638
-      receivedTS: '2019-12-12 09:40:29:238 '
-      receivedUnsolicited: 6961
+      receivedCnt: 49310
+      receivedDups: 20311
+      receivedTS: '2019-12-12 13:14:05:085 '
+      receivedUnsolicited: 49270
       retries: 25
       sentCnt: 46
       sentFailed: 0
