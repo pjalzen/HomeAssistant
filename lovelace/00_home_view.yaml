@@ -36,12 +36,24 @@ cards:
                 entity_id: scene.go_to_bed
 
           - type: custom:button-card
-            name: Go to bed
-            icon: mdi:sleep
+            name: Lights on
+            icon: mdi:lightbulb-on
+            tap_action:
+              action: call-service
+              service: light.turn_on
+              service_data:
+                - entity_id: group.all_lights
+                - entity_id: group.all_switches
 
           - type: custom:button-card
-            name: Go to bed
-            icon: mdi:sleep
+            name: Lights off
+            icon: mdi:lightbulb-off
+            tap_action:
+              action: call-service
+              service: light.turn_off
+              service_data:
+                - entity_id: group.all_lights
+                - entity_id: group.all_switches
 
 
   - type: vertical-stack
