@@ -29,12 +29,8 @@ cards:
             icon: mdi:sleep
             entity: scene.go_to_bed
             color: card
-            action: call-service
-            service: 
-              domain: scene
-              action: turn_on
-              data:
-                entity_id: scene.go_to_bed
+            tap_action: call-service
+            service: scene.turn_on
 
           - type: custom:button-card
             name: Go to bed

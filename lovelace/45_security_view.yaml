@@ -16,4 +16,4 @@ cards:
           service: camera.snapshot
           service_data:
             entity_id: camera.mjpeg_camera
-            filename: '/shared/camera-{{ now().strftime("%Y-%m-%d-%H%M%S") }}.jpg'
+            #filename: '/shared/camera-{{ now().strftime("%Y-%m-%d-%H%M%S") }}.jpg'
