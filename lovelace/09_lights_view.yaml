@@ -39,68 +39,71 @@ cards:
           data:
             entity_id: scene.go_to_bed
           service: turn_off
-          
-  - type: vertical-stack
-    cards:
-      - type: entities
-        title: Entrance & Hallway
-        entities:
-          - switch.qubino_goap_zmnhdd1_flush_dimmer_switch
-          - switch.everspring_an180_plugin_onoff_module_switch_3
 
-      - type: entities
-        title: Living room
-        entities:
-          - type: custom:slider-entity-row
-            entity: light.color_light_1
-            toggle: true
-          - type: custom:slider-entity-row
-            entity: light.hue_play_1
-            toggle: true
-          - type: custom:slider-entity-row
-            entity: light.hue_play_2
-            toggle: true
-          - switch.nodon_msp31xx_micro_smart_plug_switch_2
-          - switch.everspring_an180_plugin_onoff_module_switch_2
-
-      - type: entities
-        title: Dining room
-        entities:
-          - type: custom:slider-entity-row
-            entity: light.color_temperature_light_dining
-            toggle: true
-          - switch.nodon_msp31xx_micro_smart_plug_switch_3
-          - switch.nodon_msp31xx_micro_smart_plug_switch_4
-
-  - type: vertical-stack
+  - type: horizontal-stack
     cards:
-      - type: entities
-        title: Library & Hallway
-        entities:
-          - switch.everspring_an180_plugin_onoff_module_switch
-          - switch.timer
-      - type: entities
-        title: Office
-        entities:
-          - switch.21200481dc4f2271416f
-          - type: custom:slider-entity-row
-            entity: light.hue_lightstrip_plus_1
-            toggle: true
-      - type: entities
-        title: Calle
-        entities:
-          - light.calles
- 
-  - type: vertical-stack
-    cards:
-      - type: entities
-        title: Veranda
-        entities:
-          - switch.nodon_msp31xx_micro_smart_plug_switch
-      - type: entities
-        title: Outdoor
-        entities:
-          - switch.shelly_shsw_1_942187
+        
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: Entrance & Hallway
+            entities:
+              - switch.qubino_goap_zmnhdd1_flush_dimmer_switch
+              - switch.everspring_an180_plugin_onoff_module_switch_3
+
+          - type: entities
+            title: Living room
+            entities:
+              - type: custom:slider-entity-row
+                entity: light.color_light_1
+                toggle: true
+              - type: custom:slider-entity-row
+                entity: light.hue_play_1
+                toggle: true
+              - type: custom:slider-entity-row
+                entity: light.hue_play_2
+                toggle: true
+              - switch.nodon_msp31xx_micro_smart_plug_switch_2
+              - switch.everspring_an180_plugin_onoff_module_switch_2
+
+          - type: entities
+            title: Dining room
+            entities:
+              - type: custom:slider-entity-row
+                entity: light.color_temperature_light_dining
+                toggle: true
+              - switch.nodon_msp31xx_micro_smart_plug_switch_3
+              - switch.nodon_msp31xx_micro_smart_plug_switch_4
+
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: Library & Hallway
+            entities:
+              - switch.everspring_an180_plugin_onoff_module_switch
+              - switch.timer
+          - type: entities
+            title: Office
+            entities:
+              - switch.21200481dc4f2271416f
+              - type: custom:slider-entity-row
+                entity: light.hue_lightstrip_plus_1
+                toggle: true
+          - type: entities
+            title: Calle
+            entities:
+              - light.calles
+    
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: Veranda
+            entities:
+              - switch.nodon_msp31xx_micro_smart_plug_switch
+          - type: entities
+            title: Outdoor
+            entities:
+              - switch.shelly_shsw_1_942187
 
 
 
