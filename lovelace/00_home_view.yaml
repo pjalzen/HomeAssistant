@@ -24,14 +24,14 @@ cards:
         
       - type: horizontal-stack
         cards:
-          - type: glance
+          - type: custom:button-card
             name: Go to bed
-            #icon: mdi:sleep
-            #color: card
-            entities:
-              - entity: scene.go_to_bed
-                tap_action: call-service
-                service: scene.turn_on
+            icon: mdi:sleep
+            color: '#ff6262'
+            action:
+              - service: scene.turn_on
+                data_template:
+                  entity_id: scene.go_to_bed
 
           - type: custom:button-card
             name: Go to bed
