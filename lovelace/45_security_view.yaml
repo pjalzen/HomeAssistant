@@ -1,7 +1,6 @@
-title: Safety
-icon: mdi:verified
+title: Security
+icon: mdi:security-home
 cards:
-
   - type: vertical-stack
     cards:
        - type: alarm-panel

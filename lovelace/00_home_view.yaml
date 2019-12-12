@@ -17,6 +17,10 @@ cards:
           - entity: sensor.nextdusk
           - entity: sensor.moon 
 
+      - type: custom:button-card
+        name: Scences
+        show_icon: false
+        
       - type: horizontal-stack
         cards:
           - type: custom:button-card
