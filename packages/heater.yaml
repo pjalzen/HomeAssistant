@@ -1,0 +1,4 @@
+climate:
+  platform: mill
+  username: !secret mill_usr
+  password: !secret mill_pwd

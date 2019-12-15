@@ -4,6 +4,10 @@ icon: mdi:radiator
 cards:
   - type: vertical-stack
     cards:
+
+      # - type: entity
+      #   entity: mill.
+
       - type: thermostat
         entity: climate.entre_syd
         name: Hallen entré
