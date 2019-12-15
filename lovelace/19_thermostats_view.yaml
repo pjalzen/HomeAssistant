@@ -5,8 +5,8 @@ cards:
   - type: vertical-stack
     cards:
 
-      # - type: entity
-      #   entity: mill.
+      - type: entity
+        entity: climate.millheat
 
       - type: thermostat
         entity: climate.entre_syd
