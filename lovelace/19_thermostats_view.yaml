@@ -7,6 +7,7 @@ cards:
 
       - type: entities
         title: Heater
+        show_header_toggle: false
         entities: 
           - entity: climate.millheat
 

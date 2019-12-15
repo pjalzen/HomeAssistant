@@ -20,29 +20,15 @@ cards:
       - sensor.philio_technology_corp_psr04_smart_color_button
 
   - type: entities
-    title: Switches
+    title: Host
     show_header_toggle: false
     entities:
-      - switch.nodon_msp31xx_micro_smart_plug_switch
-      - switch.nodon_msp31xx_micro_smart_plug_switch_2
-      - switch.nodon_msp31xx_micro_smart_plug_switch_3
-      - switch.nodon_msp31xx_micro_smart_plug_switch_4
-      - switch.everspring_an180_plugin_onoff_module_switch
-      - switch.everspring_an180_plugin_onoff_module_switch_2
-      - switch.everspring_an180_plugin_onoff_module_switch_3
-      - switch.timer
-      - switch.shelly_shsw_1_942187
-      - switch.qubino_goap_zmnhdd1_flush_dimmer_switch
-  - type: entities
-    title: Lamps
-    show_header_toggle: false
-    entities:
-      - light.color_light_1
-      - light.hue_play_1
-      - light.hue_play_2
-      - light.calles
-      - light.dining_room
-      - light.hue_lightstrip_plus_1
+      - sensor.hacs
+      - sensor.ipv4_address
+      - sensor.last_boot
+      - sensor.last_update_trigger
+      - binary_sensor.updater
+
 
   - type: gauge
     name: CPU Usage
