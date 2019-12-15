@@ -18,7 +18,7 @@ cards:
           - entity: sensor.moon 
 
       - type: custom:button-card
-        name: SET SCENES
+        name: SCENES
         color_type: label-card
         color: '#ff6262'
         show_icon: false

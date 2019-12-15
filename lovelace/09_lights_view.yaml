@@ -62,11 +62,16 @@ cards:
         title: Veranda
         entities:
           - switch.nodon_msp31xx_micro_smart_plug_switch
+
       - type: entities
         title: Outdoor
         entities:
           - switch.shelly_shsw_1_942187
 
+      - type: entities
+        title: Basement
+        entities:
+          - light.hue_lightstrip_outdoor_1
 
 
       # - type: custom:button-card

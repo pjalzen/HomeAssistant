@@ -40,3 +40,11 @@ bmw_i3_airco:
       data:
         vin: !secret vin_i3
 
+go_sleep:
+  sequence:
+    - service: alarm_control_panel.alarm_arm_home
+      data:
+        entity_id: alarm_control_panel.brunnsgatan_alarm
+        code: !secret verisure_code
+    - service: scene.turn_on
+      entity_id: scene.go_to_bed
