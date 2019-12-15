@@ -6,7 +6,9 @@ cards:
     cards:
 
       - type: entities
-        entity: climate.millheat
+        title: Heater
+        entities: 
+          - entity: climate.millheat
 
       - type: thermostat
         entity: climate.entre_syd
