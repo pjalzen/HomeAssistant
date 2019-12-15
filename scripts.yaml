@@ -47,4 +47,5 @@ go_sleep:
         entity_id: alarm_control_panel.brunnsgatan_alarm
         code: !secret verisure_code
     - service: scene.turn_on
-      entity_id: scene.go_to_bed
+      data:
+        entity_id: scene.go_to_bed
