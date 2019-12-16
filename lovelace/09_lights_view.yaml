@@ -8,7 +8,9 @@ cards:
       - type: entities
         title: Entrance & Hallway
         entities:
-          - switch.qubino_goap_zmnhdd1_flush_dimmer_switch
+          - type: custom:slider-entity-row
+            entity: switch.qubino_goap_zmnhdd1_flush_dimmer_switch
+            toggle: true
           - switch.everspring_an180_plugin_onoff_module_switch_3
 
       - type: entities
