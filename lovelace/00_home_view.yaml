@@ -4,19 +4,6 @@ cards:
   - type: vertical-stack
     cards:
 
-      - type: custom:krisinfo-card
-        entity: sensor.krisinformation_sverige
-
-      - type: entities
-        entities:
-          - entity: sensor.date
-          - entity: sensor.time
-          - entity: sensor.nextdawn
-          - entity: sensor.nextsunrise
-          - entity: sensor.nextsunset
-          - entity: sensor.nextdusk
-          - entity: sensor.moon 
-
       - type: custom:button-card
         name: SCENES
         color_type: label-card
@@ -57,6 +44,19 @@ cards:
               service_data:
                 - entity_id: group.all_lights
                 - entity_id: group.all_switches
+
+      - type: custom:krisinfo-card
+        entity: sensor.krisinformation_sverige
+
+      - type: entities
+        entities:
+          - entity: sensor.date
+          - entity: sensor.time
+          - entity: sensor.nextdawn
+          - entity: sensor.nextsunrise
+          - entity: sensor.nextsunset
+          - entity: sensor.nextdusk
+          - entity: sensor.moon 
 
 
   - type: vertical-stack
