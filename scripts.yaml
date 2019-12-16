@@ -35,7 +35,9 @@ bmw_i3_airco:
     data:
       vin: WBY7Z6106JVD92039
 go_sleep:
+  alias: Go to bed
   sequence:
+<<<<<<< HEAD
   - data:
       code: 204301
       entity_id: alarm_control_panel.brunnsgatan_alarm
@@ -43,3 +45,11 @@ go_sleep:
   - data: {}
     entity_id: scene.go_to_bed
     service: scene.turn_on
+=======
+    - service: alarm_control_panel.alarm_arm_home
+      data:
+        entity_id: alarm_control_panel.brunnsgatan_alarm
+        code: !secret verisure_code
+    - service: scene.turn_on
+      entity_id: scene.go_to_bed
+>>>>>>> 7ab4b9f5d8f2988c5778fff36c53cc91e352d289
