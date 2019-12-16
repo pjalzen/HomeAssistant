@@ -6,6 +6,7 @@ ha_backup:
       addon: 7be23ff5_dropbox_sync
       input:
         command: upload
+
 lights_off:
   alias: TurnOffLightsAndSwitches
   sequence:
@@ -15,6 +16,7 @@ lights_off:
   - data:
       entity_id: group.all_switches
     service: switch.turn_off
+
 lights_on:
   alias: TurnOnLightsAndSwitches
   sequence:
@@ -24,22 +26,28 @@ lights_on:
   - data:
       entity_id: group.all_switches
     service: switch.turn_on
+
 bmw_x3_airco:
   sequence:
   - service: bmw_connected_drive.activate_air_conditioning
     data:
-      vin: WBATX3100JLB94067
+      vin: !secret vin_x3
+
 bmw_i3_airco:
   sequence:
   - service: bmw_connected_drive.activate_air_conditioning
     data:
-      vin: WBY7Z6106JVD92039
+      vin: !secret vin_i3
+
 go_sleep:
   alias: Go to bed
   sequence:
+    - service: scene.turn_on
+      entity_id: scene.go_to_bed
+    - condition: state
+      entity_id: alarm_control_panel.brunnsgatan_alarm
+      state: 'disarmed'
     - service: alarm_control_panel.alarm_arm_home
       data:
         entity_id: alarm_control_panel.brunnsgatan_alarm
         code: !secret verisure_code
-    - service: scene.turn_on
-      entity_id: scene.go_to_bed
