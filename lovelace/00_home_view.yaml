@@ -120,6 +120,7 @@ cards:
         show:
           points: false
           labels: true
+          labels_secondary: true
 
 
   - type: vertical-stack
