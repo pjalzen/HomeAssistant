@@ -19,9 +19,6 @@ cards:
             tap_action:
               action: call-service
               service: script.go_sleep
-              # service: scene.turn_on
-              # service_data:
-              #   entity_id: scene.go_to_bed
 
           - type: custom:button-card
             name: Lights on
