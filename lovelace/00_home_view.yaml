@@ -107,20 +107,28 @@ cards:
               points: false
               labels: true
 
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.omx_stockholm_30
+            hours_to_show: 12
+            points_per_hour: 60
+            line_width: 4
+            show:
+              points: false
+              labels: true
 
-      - type: custom:mini-graph-card
-        name: World Index
-        entities:
-          - entity: sensor.omx_stockholm_30
-          - entity: sensor.dow_jones
-            y-axis: secondary
-        hours_to_show: 12
-        points_per_hour: 60
-        line_width: 4
-        show:
-          points: false
-          labels: true
-          labels_secondary: true
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.dow_jones
+            hours_to_show: 12
+            points_per_hour: 60
+            line_color: '#f39c12'
+            line_width: 4
+            show:
+              points: false
+              labels: true
 
 
   - type: vertical-stack
