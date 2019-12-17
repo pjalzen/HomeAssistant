@@ -36,6 +36,23 @@ sensor:
       - priceSixMonthsAgo
       - priceThreeMonthsAgo
   - platform: avanza_stock
+    stock: 18985
+    name: Dow Jones
+    monitored_conditions:
+      #change
+      #changePercent
+      #name
+      - highestPrice
+      - tickerSymbol
+      - totalValueTraded
+      - totalVolumeTraded
+      - priceAtStartOfYear
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+  - platform: avanza_stock
     stock: 811105
     name: Toadman Interactive
     monitored_conditions:

@@ -20,4 +20,5 @@ include:
     - sensor.jumia_technologies
     - sensor.toadman_interactive
     - sensor.omx_stockholm_30
+    - sensor.dow_jones
     - sensor.withings_weight_kg_per

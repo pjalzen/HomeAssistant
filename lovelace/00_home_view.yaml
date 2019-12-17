@@ -110,10 +110,13 @@ cards:
 
       - type: custom:mini-graph-card
         entities:
-          - sensor.omx_stockholm_30
+          - entity: sensor.omx_stockholm_30
+            line_color: blue
+          - entity: sensor.dow_jones
+            line_color: yellow
+            y-axis: secondary
         hours_to_show: 12
         points_per_hour: 60
-        line_color: blue
         line_width: 4
         show:
           points: false
