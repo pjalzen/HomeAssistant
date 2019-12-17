@@ -113,7 +113,7 @@ cards:
           - entity: sensor.omx_stockholm_30
             line_color: blue
           - entity: sensor.dow_jones
-            line_color: yellow
+            line_color: '#f39c12'
             y-axis: secondary
         hours_to_show: 12
         points_per_hour: 60
