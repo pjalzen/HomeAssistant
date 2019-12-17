@@ -45,6 +45,10 @@ cards:
       - type: custom:krisinfo-card
         entity: sensor.krisinformation_sverige
 
+      - type: custom:krisinfo-card
+        entity: sensor.krisinformation_sverige
+
+
       - type: entities
         entities:
           - entity: sensor.date
@@ -99,7 +103,7 @@ cards:
             icon: mdi:cloud
             font_size: 60
             hours_to_show: 48
-            points_per_hour: 12
+            #points_per_hour: 12
             line_color: '#f39c12'
             line_width: 8 
             show:
@@ -113,7 +117,7 @@ cards:
               - sensor.omx_stockholm_30
             font_size: 60
             hours_to_show: 12
-            points_per_hour: 60
+            #points_per_hour: 60
             line_color: blue
             line_width: 4
             show:
