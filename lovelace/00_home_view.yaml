@@ -117,7 +117,7 @@ cards:
               - sensor.omx_stockholm_30
             font_size: 60
             hours_to_show: 12
-            #points_per_hour: 60
+            points_per_hour: 4
             line_color: blue
             line_width: 4
             show:
@@ -129,7 +129,7 @@ cards:
               - sensor.dow_jones
             font_size: 60
             hours_to_show: 12
-            #points_per_hour: 60
+            points_per_hour: 4
             line_color: '#f39c12'
             line_width: 4
             show:
