@@ -1,0 +1,14 @@
+title: PJA
+icon: mdi:account-multiple
+cards:
+
+  - type: custom:mini-graph-card
+    entities:
+      - sensor.withings_weight_kg_per
+    hours_to_show: 240
+    #points_per_hour: 60
+    line_color: blue
+    line_width: 2 
+    show:
+      points: false
+      labels: true
