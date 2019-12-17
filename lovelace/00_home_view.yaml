@@ -112,8 +112,10 @@ cards:
           - type: custom:mini-graph-card
             entities:
               - sensor.omx_stockholm_30
+            font_size: 60
             hours_to_show: 12
             points_per_hour: 60
+            line_color: blue
             line_width: 4
             show:
               points: false
@@ -122,6 +124,7 @@ cards:
           - type: custom:mini-graph-card
             entities:
               - sensor.dow_jones
+            font_size: 60
             hours_to_show: 12
             points_per_hour: 60
             line_color: '#f39c12'
