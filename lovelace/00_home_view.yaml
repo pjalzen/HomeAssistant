@@ -54,7 +54,9 @@ cards:
           - entity: sensor.time
           - entity: sensor.nextdawn
           - entity: sensor.nextsunrise
+            name: Next Sunrise
           - entity: sensor.nextsunset
+            name: Next Sunset
           - entity: sensor.nextdusk
           - entity: sensor.moon 
 
