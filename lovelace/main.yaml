@@ -1,5 +1,8 @@
 title: Home
 
+custom_header:
+  compact_mode: true
+
 resources:
   # custom-lovelace
   - url: /local/custom-lovelace/alarm_control_panel-card/alarm_control_panel-card.js
@@ -34,7 +37,7 @@ resources:
     type: module
   - url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
     type: js
-  - url: /community_plugin/compact-custom-header/compact-custom-header.js
+  - url: /community_plugin/custom-header/custom-header.js
     type: module
   - url: /community_plugin/lovelace-slider-entity-row/slider-entity-row.js
     type: module
