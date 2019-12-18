@@ -6,6 +6,3 @@ sensor:
     #longitude: !secret long_coord
     #radius: 100
 
-
-sensor:
-  - platform: brottsplatskartan
