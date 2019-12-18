@@ -1,0 +1,10 @@
+withings:
+  client_id: !secret withings_client_id
+  client_secret: !secret withings_consumer_secret
+  profiles:
+    - PER
+
+sensor:
+  - platform: strava
+    client_id: !secret strava_client_id
+    client_secret: !secret strava_client_secret
