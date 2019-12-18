@@ -43,6 +43,7 @@
 !www/custom-lovelace
 !www/custom-lovelace/*
 !www/lovelace-card-tools
+!www/images
 !www/pollen_img
 
 # Ignore folders.

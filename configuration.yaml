@@ -115,6 +115,10 @@ camera:
 device_tracker: !include entities/device_tracker.yaml
 zone: !include zone.yaml
 
+strava:
+    client_id: !secret strava_client_id
+    client_secret: !secret strava_client_secret
+
 
 # ########################################
 # ###             SERVICES             ###
