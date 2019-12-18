@@ -64,5 +64,5 @@ views:
   - !include 45_security_view.yaml
   - !include 50_finance_view.yaml
   - !include 60_pool_view.yaml
-  - !include 70_personal_view.yaml
+  - !include 70_health_view.yaml
   - !include 99_system_view.yaml
