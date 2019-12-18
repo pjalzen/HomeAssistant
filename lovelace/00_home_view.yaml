@@ -45,10 +45,6 @@ cards:
       - type: custom:krisinfo-card
         entity: sensor.krisinformation_sverige
 
-      - type: custom:krisinfo-card
-        entity: sensor.krisinformation_sverige
-
-
       - type: entities
         entities:
           - entity: sensor.date
