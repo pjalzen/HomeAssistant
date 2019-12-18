@@ -1,5 +1,5 @@
-title: PJA
-icon: mdi:account-multiple
+title: Health & Training
+icon: mdi:run
 cards:
 
   - type: custom:mini-graph-card
