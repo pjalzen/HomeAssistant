@@ -15,7 +15,8 @@ CONF_CLIENT_ID = 'client_id'
 CONF_CLIENT_SECRET = 'client_secret'
 
 AUTH_CALLBACK_NAME = 'api:strava'
-AUTH_CALLBACK_PATH = '/api/strava'
+"""AUTH_CALLBACK_PATH = '/api/strava'"""
+AUTH_CALLBACK_PATH = ':8123/auth/external/callback'
 
 CONFIGURATOR_DESCRIPTION = "To link your Strava account, " \
                            "click the link, login, and authorize:"
