@@ -30,7 +30,7 @@ sensor:
         
       garmin_stress:
         value_template: "{{ state_attr('sensor.garmin_steps', 'averageStressLevel') }}"  
-        unit_of_measurement: 
+        unit_of_measurement:  ''
 
 
 
