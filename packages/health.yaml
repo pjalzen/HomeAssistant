@@ -34,10 +34,10 @@ sensor:
 
 
 
-sensor:
-  - platform: strava
-    client_id: !secret strava_client_id
-    client_secret: !secret strava_client_secret
+# sensor:
+#   - platform: strava
+#     client_id: !secret strava_client_id
+#     client_secret: !secret strava_client_secret
 
     
 
