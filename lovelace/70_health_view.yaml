@@ -1,40 +1,40 @@
 title: Health & Training
 icon: mdi:run
 cards:
-
-  - type: custom:mini-graph-card
-    entities:
-      - sensor.withings_weight_kg_per
-    hours_to_show: 240
-    #points_per_hour: 60
-    line_color: blue
-    line_width: 2 
-    show:
-      points: false
-      labels: true
-
+  - type: vertical-stack
+    cards:
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.withings_weight_kg_per
+        hours_to_show: 240
+        #points_per_hour: 60
+        line_color: blue
+        line_width: 2 
+        show:
+          points: false
+          labels: true
 
   - type: vertical-stack
-      cards:
-        - entities:
-          - name: Steps today
-            icon: mdi:shoe-print
-            entity: sensor.garmin_steps
-          - name: Floors
-            icon: mdi:stairs
-            entity: sensor.garmin_floors
-          - name: Calorieën
-            icon: mdi:fire
-            entity: sensor.garmin_total_kcal
-          type: glance
-        - entities:
-          - name: Stress
-            icon: mdi:human-handsup
-            entity: sensor.garmin_stress
-          - name: Resting HR
-            icon: mdi:heart
-            entity: sensor.garmin_restingheartrate
-          - name: Max HR
-            icon: mdi:heart
-            entity: sensor.garmin_maxheartrate
-          type: glance
+    cards:
+      - entities:
+        - name: Steps today
+          icon: mdi:shoe-print
+          entity: sensor.garmin_steps
+        - name: Floors
+          icon: mdi:stairs
+          entity: sensor.garmin_floors
+        - name: Calorieën
+          icon: mdi:fire
+          entity: sensor.garmin_total_kcal
+        type: glance
+      - entities:
+        - name: Stress
+          icon: mdi:human-handsup
+          entity: sensor.garmin_stress
+        - name: Resting HR
+          icon: mdi:heart
+          entity: sensor.garmin_restingheartrate
+        - name: Max HR
+          icon: mdi:heart
+          entity: sensor.garmin_maxheartrate
+        type: glance
