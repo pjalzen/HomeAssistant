@@ -23,7 +23,7 @@ cards:
         - name: Floors
           icon: mdi:stairs
           entity: sensor.garmin_floors
-        - name: Calorieën
+        - name: Calories
           icon: mdi:fire
           entity: sensor.garmin_total_kcal
         type: glance
