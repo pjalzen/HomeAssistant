@@ -5,11 +5,41 @@ withings:
     - PER
 
 
+sensor: 
+  - platform: garmin_connect
+    username: !secret garmin_connect_username
+    password: !secret garmin_connect_password
+
+  - platform: template
+    sensors:
+      garmin_total_kcal:
+        value_template: "{{ state_attr('sensor.garmin_steps', 'totalKilocalories') }}"
+        unit_of_measurement: 'kcal'
+
+      garmin_restingheartrate:
+        value_template: "{{ state_attr('sensor.garmin_steps', 'restingHeartRate') }}"  
+        unit_of_measurement:  'bpm'
+
+      garmin_maxheartrate:
+        value_template: "{{ state_attr('sensor.garmin_steps', 'maxAvgHeartRate') }}"  
+        unit_of_measurement:  'bpm'
+        
+      garmin_floors:
+        value_template: "{{ state_attr('sensor.garmin_steps', 'floorsAscended') }}"  
+        unit_of_measurement:  ''
+        
+      garmin_stress:
+        value_template: "{{ state_attr('sensor.garmin_steps', 'averageStressLevel') }}"  
+        unit_of_measurement: 
+
+
+
 sensor:
   - platform: strava
     client_id: !secret strava_client_id
     client_secret: !secret strava_client_secret
 
+    
 
 # strava:
 #     client_id: !secret strava_client_id
