@@ -1,12 +1,12 @@
 title: Pool
 icon: mdi:pool
 cards:
-  - type: 'custom:podcast-card'
-    entity: sensor.gpodder   
-    name: PJs PodCasts
-    default_target: media_player.vardagsrum_matrum
-    show_player: True
-    custom_player: True
+  # - type: 'custom:podcast-card'
+  #   entity: sensor.gpodder   
+  #   name: PJs PodCasts
+  #   default_target: media_player.vardagsrum_matrum
+  #   show_player: True
+  #   custom_player: True
 
 
       # - entity: sensor.yr_temperature

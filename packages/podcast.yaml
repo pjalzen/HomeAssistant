@@ -4,4 +4,4 @@
 #   sensor:
 #     - enabled: true
 #       name: My gPodder
-#       #device: gPodder device identifier
+#
