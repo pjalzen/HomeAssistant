@@ -1,7 +1,7 @@
-gpodder:
-  username: !secret gpodder_username
-  password: !secret gpodder_password
-  sensor:
-    - enabled: true
-      name: My gPodder
-      #device: gPodder device identifier
+# gpodder:
+#   username: !secret gpodder_username
+#   password: !secret gpodder_password
+#   sensor:
+#     - enabled: true
+#       name: My gPodder
+#       #device: gPodder device identifier
