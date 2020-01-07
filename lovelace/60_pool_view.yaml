@@ -14,5 +14,16 @@ cards:
       # - entity: sensor.yr_wind_speed
       # - entity: sensor.yr_cloudiness
 
-      
+  - type: custom:mini-graph-card
+    entities:
+      - sensor.garage_temperature
+    name: Garage Temperature
+    font_size: 60
+    hours_to_show: 48
+    #points_per_hour: 12
+    line_color: '#f39c12'
+    line_width: 8 
+    show:
+      points: false
+      labels: true
 

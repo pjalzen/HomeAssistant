@@ -1,5 +1,6 @@
 sensor:
   - platform: mqtt
     state_topic: "arduino/garage/temperature"
+    name: "Garage Temperature"
     icon: mdi:thermometer
     unit_of_measurement: '°C'
