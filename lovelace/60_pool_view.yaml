@@ -19,7 +19,7 @@ cards:
       - sensor.garage_temperature
     name: Garage Temperature
     font_size: 60
-    hours_to_show: 2
+    hours_to_show: 24
     #points_per_hour: 12
     line_color: '#f39c12'
     line_width: 4 
