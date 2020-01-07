@@ -22,7 +22,7 @@ cards:
     hours_to_show: 48
     #points_per_hour: 12
     line_color: '#f39c12'
-    line_width: 8 
+    line_width: 4 
     show:
       points: false
       labels: true
