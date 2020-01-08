@@ -1,0 +1,17 @@
+title: Washer
+icon: mdi:washing-machine
+cards:
+  - type: vertical-stack
+    cards:
+      - entities:
+        - entity: binary_sensor.tvattmaskin_door
+        - entity: sensor.tvattmaskin_duration
+        - entity: sensor.tvattmaskin_elapsed_program_time
+        - entity: sensor.tvattmaskin_remaining_program_time
+        type: glance
+      - entities:
+        - entity: binary_sensor.torktumlare_door
+        - entity: sensor.torktumlare_duration
+        - entity: sensor.torktumlare_elapsed_program_time
+        - entity: sensor.torktumlare_remaining_program_time
+        type: glance
