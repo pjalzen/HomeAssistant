@@ -108,9 +108,7 @@ verisure:
 media_player: !include entities/media_player.yaml
 bmw_connected_drive: !include entities/bmw.yaml 
 
-camera:
-  platform: mjpeg
-  mjpeg_url: !secret dlink_camera_url
+camera: !include entities/camera.yaml
 
 device_tracker: !include entities/device_tracker.yaml
 zone: !include zone.yaml
