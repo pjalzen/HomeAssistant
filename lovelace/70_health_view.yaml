@@ -16,7 +16,8 @@ cards:
 
   - type: vertical-stack
     cards:
-      - entities:
+      - type: glance
+        entities:
         - name: Steps today
           icon: mdi:shoe-print
           entity: sensor.garmin_steps
@@ -26,8 +27,9 @@ cards:
         - name: Calories
           icon: mdi:fire
           entity: sensor.garmin_total_kcal
-        type: glance
-      - entities:
+
+      - type: glance
+        entities:
         - name: Stress
           icon: mdi:human-handsup
           entity: sensor.garmin_stress
@@ -37,4 +39,12 @@ cards:
         - name: Max HR
           icon: mdi:heart
           entity: sensor.garmin_maxheartrate
-        type: glance
+
+      - type: gauge
+        name: Steps today
+        entity: sensor.garmin_steps
+        max: 12000
+        severity:
+          red: 0
+          yellow: 4000
+          green: 7700
