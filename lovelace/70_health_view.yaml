@@ -48,3 +48,17 @@ cards:
           red: 0
           yellow: 4000
           green: 7700
+
+
+      - type: custom:dual-gauge-card
+        title: Garmin
+        outer:
+          entity: sensor.garmin_steps
+          label: "Steps"
+          min: 0
+          max: 12000
+        inner:
+          entity: sensor.garmin_floors
+          label: "Floors"
+          min: 0
+          max: 20
