@@ -26,7 +26,7 @@ cards:
             color: '#ff6262'
             tap_action:
               action: call-service
-              service: scene.apply
+              service: scene.turn_on
               service_data:
                 entity_id: scene.evening_scene
 
