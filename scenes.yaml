@@ -251,3 +251,361 @@
       sentFailed: 0
       sentTS: '2019-12-12 09:20:04:796 '
       state: ready
+- id: '1579380005548'
+  name: Evening scene
+  entities:
+    light.color_light_1:
+      brightness: 120
+      effect: colorloop
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Tradfri by TV
+      hs_color:
+      - 21.405
+      - 72.549
+      rgb_color:
+      - 255
+      - 135
+      - 70
+      state: 'on'
+      supported_features: 61
+      xy_color:
+      - 0.575
+      - 0.362
+    light.color_temperature_light_dining:
+      friendly_name: Color temperature light Dining
+      max_mireds: 500
+      min_mireds: 153
+      state: unavailable
+      supported_features: 43
+    light.hue_play_1:
+      brightness: 254
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Hue play 1
+      hs_color:
+      - 32.812
+      - 75.294
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 167
+      - 63
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.541
+      - 0.402
+    light.hue_play_2:
+      brightness: 254
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Hue play 2
+      hs_color:
+      - 30.673
+      - 87.451
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 146
+      - 31
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.582
+      - 0.39
+    switch.everspring_an180_plugin_onoff_module_switch:
+      friendly_name: Golvlampa Bibliotek
+      node_id: 8
+      state: 'on'
+      value_id: '72057594176946176'
+      value_index: 0
+      value_instance: 1
+    switch.everspring_an180_plugin_onoff_module_switch_2:
+      friendly_name: Golvlampa soffa
+      node_id: 9
+      state: 'on'
+      value_id: '72057594193723392'
+      value_index: 0
+      value_instance: 1
+    switch.everspring_an180_plugin_onoff_module_switch_3:
+      friendly_name: Bordslampa Kökshall
+      node_id: 10
+      state: 'on'
+      value_id: '72057594210500608'
+      value_index: 0
+      value_instance: 1
+    switch.nodon_msp31xx_micro_smart_plug_switch:
+      friendly_name: Ljusslinga
+      node_id: 4
+      power_consumption: 0
+      state: 'on'
+      value_id: '72057594109837312'
+      value_index: 0
+      value_instance: 1
+    switch.nodon_msp31xx_micro_smart_plug_switch_2:
+      friendly_name: Bordslampa TV-bänk
+      node_id: 5
+      power_consumption: 0
+      state: 'on'
+      value_id: '72057594126614528'
+      value_index: 0
+      value_instance: 1
+    switch.nodon_msp31xx_micro_smart_plug_switch_3:
+      friendly_name: Fönsterlampa öster
+      node_id: 6
+      power_consumption: 0
+      state: 'on'
+      value_id: '72057594143391744'
+      value_index: 0
+      value_instance: 1
+    switch.nodon_msp31xx_micro_smart_plug_switch_4:
+      friendly_name: Fönsterlampa norr
+      node_id: 7
+      power_consumption: 0
+      state: 'on'
+      value_id: '72057594160168960'
+      value_index: 0
+      value_instance: 1
+    zwave.everspring_an180_plugin_onoff_module:
+      application_version: '1.03'
+      averageRequestRTT: 190
+      averageResponseRTT: 307
+      capabilities:
+      - listening
+      - routing
+      - beaming
+      - zwave_plus
+      friendly_name: Everspring AN180 Plug-in ON/OFF Module
+      is_awake: true
+      is_failed: false
+      is_info_received: true
+      is_ready: true
+      is_zwave_plus: true
+      lastRequestRTT: 219
+      lastResponseRTT: 438
+      manufacturer_name: Everspring
+      max_baud_rate: 40000
+      node_id: 8
+      node_name: Everspring AN180 Plug-in ON/OFF Module
+      product_name: AN180 Plug-in ON/OFF Module
+      query_stage: Complete
+      receivedCnt: 9
+      receivedDups: 1
+      receivedTS: '2020-01-18 15:03:39:532 '
+      receivedUnsolicited: 4
+      retries: 9
+      sentCnt: 23
+      sentFailed: 2
+      sentTS: '2020-01-18 15:03:35:871 '
+      state: ready
+    zwave.everspring_an180_plugin_onoff_module_2:
+      application_version: '1.03'
+      averageRequestRTT: 476
+      averageResponseRTT: 247
+      capabilities:
+      - listening
+      - routing
+      - beaming
+      - zwave_plus
+      friendly_name: Everspring AN180 Plug-in ON/OFF Module
+      is_awake: true
+      is_failed: false
+      is_info_received: true
+      is_ready: true
+      is_zwave_plus: true
+      lastRequestRTT: 57
+      lastResponseRTT: 71
+      manufacturer_name: Everspring
+      max_baud_rate: 40000
+      neighbors:
+      - 12
+      - 5
+      node_id: 9
+      node_name: Everspring AN180 Plug-in ON/OFF Module
+      product_name: AN180 Plug-in ON/OFF Module
+      query_stage: Complete
+      receivedCnt: 16
+      receivedDups: 3
+      receivedTS: '2020-01-18 15:03:41:077 '
+      receivedUnsolicited: 4
+      retries: 1
+      sentCnt: 15
+      sentFailed: 0
+      sentTS: '2020-01-18 15:03:37:647 '
+      state: ready
+    zwave.everspring_an180_plugin_onoff_module_3:
+      application_version: '1.03'
+      averageRequestRTT: 153
+      averageResponseRTT: 200
+      capabilities:
+      - listening
+      - routing
+      - beaming
+      - zwave_plus
+      friendly_name: Everspring AN180 Plug-in ON/OFF Module
+      is_awake: true
+      is_failed: false
+      is_info_received: true
+      is_ready: true
+      is_zwave_plus: true
+      lastRequestRTT: 179
+      lastResponseRTT: 198
+      manufacturer_name: Everspring
+      max_baud_rate: 40000
+      neighbors:
+      - 1
+      node_id: 10
+      node_name: Everspring AN180 Plug-in ON/OFF Module
+      product_name: AN180 Plug-in ON/OFF Module
+      query_stage: Complete
+      receivedCnt: 9
+      receivedDups: 0
+      receivedTS: '2020-01-18 15:03:41:130 '
+      receivedUnsolicited: 3
+      retries: 5
+      sentCnt: 17
+      sentFailed: 1
+      sentTS: '2020-01-18 15:03:37:946 '
+      state: ready
+    zwave.nodon_msp31xx_micro_smart_plug:
+      application_version: '1.55'
+      averageRequestRTT: 687
+      averageResponseRTT: 558
+      capabilities:
+      - listening
+      - routing
+      - beaming
+      - zwave_plus
+      friendly_name: NodOn MSP-3-1-XX Micro Smart Plug
+      is_awake: true
+      is_failed: false
+      is_info_received: true
+      is_ready: true
+      is_zwave_plus: true
+      lastRequestRTT: 1020
+      lastResponseRTT: 817
+      manufacturer_name: NodOn
+      max_baud_rate: 40000
+      node_id: 4
+      node_name: NodOn MSP-3-1-XX Micro Smart Plug
+      product_name: MSP-3-1-XX Micro Smart Plug
+      query_stage: Complete
+      receivedCnt: 254
+      receivedDups: 26
+      receivedTS: '2020-01-18 21:36:19:625 '
+      receivedUnsolicited: 234
+      retries: 0
+      sentCnt: 21
+      sentFailed: 1
+      sentTS: '2020-01-18 15:02:42:412 '
+      state: ready
+    zwave.nodon_msp31xx_micro_smart_plug_2:
+      application_version: '1.55'
+      averageRequestRTT: 5172
+      averageResponseRTT: 5343
+      capabilities:
+      - listening
+      - routing
+      - beaming
+      - zwave_plus
+      friendly_name: NodOn MSP-3-1-XX Micro Smart Plug
+      is_awake: true
+      is_failed: false
+      is_info_received: true
+      is_ready: true
+      is_zwave_plus: true
+      lastRequestRTT: 8083
+      lastResponseRTT: 8230
+      manufacturer_name: NodOn
+      max_baud_rate: 40000
+      neighbors:
+      - 9
+      node_id: 5
+      node_name: NodOn MSP-3-1-XX Micro Smart Plug
+      product_name: MSP-3-1-XX Micro Smart Plug
+      query_stage: Complete
+      receivedCnt: 551
+      receivedDups: 105
+      receivedTS: '2020-01-18 21:29:28:847 '
+      receivedUnsolicited: 327
+      retries: 4
+      sentCnt: 125
+      sentFailed: 7
+      sentTS: '2020-01-18 15:02:56:276 '
+      state: ready
+    zwave.nodon_msp31xx_micro_smart_plug_3:
+      application_version: '1.55'
+      averageRequestRTT: 2270
+      averageResponseRTT: 8908
+      capabilities:
+      - listening
+      - routing
+      - beaming
+      - zwave_plus
+      friendly_name: NodOn MSP-3-1-XX Micro Smart Plug
+      is_awake: true
+      is_failed: false
+      is_info_received: true
+      is_ready: true
+      is_zwave_plus: true
+      lastRequestRTT: 979
+      lastResponseRTT: 9515
+      manufacturer_name: NodOn
+      max_baud_rate: 40000
+      neighbors:
+      - 7
+      node_id: 6
+      node_name: NodOn MSP-3-1-XX Micro Smart Plug
+      product_name: MSP-3-1-XX Micro Smart Plug
+      query_stage: Complete
+      receivedCnt: 86749
+      receivedDups: 27064
+      receivedTS: '2020-01-18 21:40:03:407 '
+      receivedUnsolicited: 86594
+      retries: 3
+      sentCnt: 39
+      sentFailed: 3
+      sentTS: '2020-01-18 15:03:13:692 '
+      state: ready
+    zwave.nodon_msp31xx_micro_smart_plug_4:
+      application_version: '1.55'
+      averageRequestRTT: 1154
+      averageResponseRTT: 8507
+      capabilities:
+      - listening
+      - routing
+      - beaming
+      - zwave_plus
+      friendly_name: NodOn MSP-3-1-XX Micro Smart Plug
+      is_awake: true
+      is_failed: false
+      is_info_received: true
+      is_ready: true
+      is_zwave_plus: true
+      lastRequestRTT: 191
+      lastResponseRTT: 8883
+      manufacturer_name: NodOn
+      max_baud_rate: 40000
+      neighbors:
+      - 6
+      node_id: 7
+      node_name: NodOn MSP-3-1-XX Micro Smart Plug
+      product_name: MSP-3-1-XX Micro Smart Plug
+      query_stage: Complete
+      receivedCnt: 114835
+      receivedDups: 50002
+      receivedTS: '2020-01-18 21:40:02:926 '
+      receivedUnsolicited: 114581
+      retries: 2
+      sentCnt: 30
+      sentFailed: 0
+      sentTS: '2020-01-18 15:03:25:719 '
+      state: ready
