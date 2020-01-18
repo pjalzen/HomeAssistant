@@ -321,6 +321,10 @@
       xy_color:
       - 0.582
       - 0.39
+    switch.timer:
+      state: 'on'
+    switch.21200481dc4f2271416f:
+      state: 'on'
     switch.everspring_an180_plugin_onoff_module_switch:
       friendly_name: Golvlampa Bibliotek
       node_id: 8
