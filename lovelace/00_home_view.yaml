@@ -26,10 +26,9 @@ cards:
             color: '#ff6262'
             tap_action:
               action: call-service
-              service: light.turn_on
+              service: scene.apply
               service_data:
-                - entity_id: group.all_lights
-                - entity_id: group.all_switches
+                entity_id: scene.evening_scene
 
           - type: custom:button-card
             name: Lights off
