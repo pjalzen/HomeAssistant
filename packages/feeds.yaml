@@ -1,0 +1,15 @@
+sensor:
+  platform: feedparser
+  name: SVT Nyheter
+  feed_url: 'https://www.svt.se/nyheter/rss.xml'
+  #date_format: '%a, %b %d %I:%M %p'
+  # inclusions:
+  #   - title
+  #   - link
+  #   - description
+  #   - image
+  #   - language
+  #   - pubDate
+  # exclusions:
+  #   - language
+  #   - copyright
