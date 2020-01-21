@@ -51,9 +51,11 @@ resources:
     type: module
   - url: /community_plugin/dual-gauge-card/dual-gauge-card.js
     type: js
-  - type: module
-    url: >-
+  - url: /local/list-card.js?v=0
+    type: js
+  - url: >-
       https://cdn.jsdelivr.net/gh/custom-cards/spotify-card@1.8/dist/spotify-card.umd.js
+    type: module
       
   # other
   - url: https://fonts.googleapis.com/css?family=Roboto+Condensed

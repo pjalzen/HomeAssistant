@@ -27,3 +27,18 @@ cards:
       points: false
       labels: true
 
+  - type: custom:list-card
+    entity: sensor.svt_nyheter
+    title: SVT Nyheter
+    feed_attribute: entries
+    columns:
+      - title: ''
+        type: image
+        add_link: link
+        field: image
+      - title: Title
+        field: title
+        style:
+          - white-space: nowrap
+      - title: Description
+        field: description
