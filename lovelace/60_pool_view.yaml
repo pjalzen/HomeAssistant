@@ -36,5 +36,7 @@ cards:
         field: title
         style:
           - white-space: nowrap
-      - title: Description
-        field: description
+      - title: Summary
+        field: summary
+      - title: Published
+        field: published
