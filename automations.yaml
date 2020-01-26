@@ -39,6 +39,16 @@
   - data:
       entity_id: switch.timer
     service: switch.turn_on
+  - data:
+      entity_id: switch.21200481dc4f2271416f
+    service: switch.turn_on
+  - data:
+      entity_id: switch.21200481dc4f2271416f
+    service: switch.turn_on
+  - data:
+      entity_id: switch.shelly_shplg_s_b86d7c
+    service: switch.turn_on
+
 
 - alias: Lights off - by midnight
   initial_state: true
@@ -77,6 +87,10 @@
   - data:
       entity_id: switch.timer
     service: switch.turn_off
+  - data:
+      entity_id: light.hue_lightstrip_plus_1
+    service: light.turn_off
+    
 
 - alias: Lights on - in the morning
   initial_state: true
@@ -100,6 +114,7 @@
       entity_id: light.hallway_upstairs
     service: light.turn_on
 
+
 - alias: Lights off - by sunrise
   initial_state: true
   trigger:
@@ -120,6 +135,13 @@
   - data:
       entity_id: light.hallway_upstairs
     service: light.turn_off
+  - data:
+      entity_id: switch.21200481dc4f2271416f
+    service: switch.turn_off
+  - data:
+      entity_id: switch.shelly_shplg_s_b86d7c
+    service: switch.turn_off
+
 
 - alias: Run Backup 3AM
   initial_state: true
