@@ -8,6 +8,7 @@ cards:
       - type: entities
         title: Entrance & Hallway
         entities:
+          - switch.shelly_shplg_s_b86d7c
           - type: custom:slider-entity-row
             entity: light.qubino_goap_zmnhdd1_flush_dimmer_level
             toggle: true
