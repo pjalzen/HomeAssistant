@@ -5,11 +5,7 @@ custom_header:
 
 resources:
   # custom-lovelace
-  # - url: /local/custom-lovelace/alarm_control_panel-card/alarm_control_panel-card.js
-  #   type: js  
   - url: /local/custom-lovelace/entity-attributes-card/entity-attributes-card.js
-    type: js  
-  - url: /local/custom-lovelace/gauge-card/gauge-card.js
     type: js  
   - url: /local/custom-lovelace/group-card/group-card.js
     type: js  
@@ -21,34 +17,40 @@ resources:
     type: js
 
   # community
-  - url: /community_plugin/text-element/text-element.js
-    type: js
-  - url: /community_plugin/circle-sensor-card/circle-sensor-card.js
-    type: module
-  - url: /community_plugin/krisinfo-card/krisinfo-card.js
-    type: js
-  - url: /community_plugin/simple-thermostat/simple-thermostat.js
+  - url: /community_plugin/banner-card/banner-card.js
     type: module
   - url: /community_plugin/button-card/button-card.js
     type: module
-  - url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
-    type: js
-  - url: /community_plugin/custom-header/custom-header.js
-    type: module
-  - url: /community_plugin/lovelace-slider-entity-row/slider-entity-row.js
-    type: module
-  - url: /community_plugin/weather-card/weather-card.js
-    type: module
-  - url: /community_plugin/mini-graph-card/mini-graph-card.js
+  - url: /community_plugin/button-toolbar/button-toolbar.js
     type: module
   - url: /community_plugin/calendar-card/calendar-card.js
     type: js
+  - url: /community_plugin/circle-sensor-card/circle-sensor-card.js
+    type: module
+  - url: /community_plugin/custom-header/custom-header.js
+    type: module
   - url: /community_plugin/dual-gauge-card/dual-gauge-card.js
+    type: js
+  - url: /community_plugin/krisinfo-card/krisinfo-card.js
+    type: js
+  - url: /community_plugin/light-brightness-preset-row/light-brightness-preset-row.js
     type: js
   - url: /local/list-card.js?v=0
     type: js
+  - url: /community_plugin/lovelace-slider-entity-row/slider-entity-row.js
+    type: module
+  - url: /community_plugin/mini-graph-card/mini-graph-card.js
+    type: module
+  - url: /community_plugin/simple-thermostat/simple-thermostat.js
+    type: module
   - url: >-
       https://cdn.jsdelivr.net/gh/custom-cards/spotify-card@1.8/dist/spotify-card.umd.js
+    type: module
+  - url: /community_plugin/text-element/text-element.js
+    type: js
+  - url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
+    type: js
+  - url: /community_plugin/weather-card/weather-card.js
     type: module
       
   # other
