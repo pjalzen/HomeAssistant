@@ -5,10 +5,8 @@ custom_header:
 
 resources:
   # custom-lovelace
-  - url: /local/custom-lovelace/alarm_control_panel-card/alarm_control_panel-card.js
-    type: js  
-  - url: /local/custom-lovelace/bignumber-card/bignumber-card.js
-    type: js  
+  # - url: /local/custom-lovelace/alarm_control_panel-card/alarm_control_panel-card.js
+  #   type: js  
   - url: /local/custom-lovelace/entity-attributes-card/entity-attributes-card.js
     type: js  
   - url: /local/custom-lovelace/gauge-card/gauge-card.js
