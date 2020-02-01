@@ -2,3 +2,15 @@
   still_image_url: !secret dlink_camera_url
 - platform: mjpeg
   mjpeg_url: http://192.168.72.135/mjpeg
+
+
+
+- platform: reolink_dev
+  host: !secret reolink_pool_ip
+  username: !secret reolink_pool_username
+  password: !secret reolink_pool_password
+  name: Reolink Pool Area
+  # stream: main or sub (optional, default main)
+  # protocol: rtmp or rtsp (optional, default rtmp)
+  # channel: NVR camera channel (optional, default 0)
+  # scan_interval: 5 (optional, default 30s)
