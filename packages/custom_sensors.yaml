@@ -1,4 +1,4 @@
-sensor:
+switch:
   - platform: template
     switches:
       camera_poolarea_email:
