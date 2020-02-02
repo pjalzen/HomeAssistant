@@ -25,6 +25,8 @@
 !custom_components/hacs/repositories/*
 !custom_components/hacs/frontend/*
 !custom_components/hacs/frontend/elements/*
+!custom_components/reolink_dev/*
+!custom_components/reolink_dev/ReolinkPyPi/*
 !media_player
 !sensor
 !customize
