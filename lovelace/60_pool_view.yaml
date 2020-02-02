@@ -27,19 +27,19 @@ cards:
       points: false
       labels: true
 
-  - type: custom:list-card
-    entity: sensor.svt_nyheter
-    title: SVT Nyheter
-    feed_attribute: entries
-    columns:
-      - title: Title
-        field: title
-        style:
-          - white-space: nowrap
-      - title: Summary
-        field: summary
-      - title: Published
-        field: published
+  # - type: custom:list-card
+  #   entity: sensor.svt_nyheter
+  #   title: SVT Nyheter
+  #   feed_attribute: entries
+  #   columns:
+  #     - title: Title
+  #       field: title
+  #       style:
+  #         - white-space: nowrap
+  #     - title: Summary
+  #       field: summary
+  #     - title: Published
+  #       field: published
 
   - type: picture-glance
     camera_image: camera.reolink_pool_area
