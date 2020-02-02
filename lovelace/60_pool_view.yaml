@@ -47,5 +47,5 @@ cards:
       # - switch.camera_frontdoor_ir_lights
       # - switch.camera_frontdoor_email
       # - switch.camera_frontdoor_ftp
-      - binary_sensor.motion_pool_area
+      - binary_sensor.motion_poolarea
     title: Pool Area
