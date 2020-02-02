@@ -133,7 +133,7 @@ sensor:
       - 'time_utc'
       - 'beat'
 
-binary_sensors: !include entities/binary_sensors.yaml
+binary_sensor: !include entities/binary_sensors.yaml
 
 notify: !include notify/notify.yaml
 python_script:
