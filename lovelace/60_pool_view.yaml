@@ -52,9 +52,9 @@ cards:
 
   - type: picture-glance
     camera_image: camera.reolink_front_door
-    # entities:
-    #   - switch.camera_poolarea_ir_lights
-    #   - switch.camera_poolarea_email
-    #   - switch.camera_poolarea_ftp
-    #   - binary_sensor.motion_poolarea
+    entities:
+      - switch.camera_frontdoor_ir_lights
+      - switch.camera_frontdoor_email
+      - switch.camera_frontdoor_ftp
+      - binary_sensor.motion_frontdoor
     title: Front Door
