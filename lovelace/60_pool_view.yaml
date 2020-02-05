@@ -49,3 +49,12 @@ cards:
       - switch.camera_poolarea_ftp
       - binary_sensor.motion_poolarea
     title: Pool Area
+
+  - type: picture-glance
+    camera_image: camera.reolink_front_door
+    # entities:
+    #   - switch.camera_poolarea_ir_lights
+    #   - switch.camera_poolarea_email
+    #   - switch.camera_poolarea_ftp
+    #   - binary_sensor.motion_poolarea
+    title: Front Door

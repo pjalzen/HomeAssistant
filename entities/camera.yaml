@@ -15,3 +15,12 @@
   # channel: NVR camera channel (optional, default 0)
   scan_interval: 5 #(optional, default 30s)
 
+- platform: reolink_dev
+  host: !secret reolink_front_ip
+  username: !secret reolink_front_username
+  password: !secret reolink_front_password
+  name: Reolink Front Door
+  # stream: main or sub (optional, default main)
+  # protocol: rtmp or rtsp (optional, default rtmp)
+  # channel: NVR camera channel (optional, default 0)
+  scan_interval: 5 #(optional, default 30s)
