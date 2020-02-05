@@ -1,0 +1,7 @@
+sensor:
+  - platform: template
+    sensors:
+      shelly_plug_has_firmware_update:
+        friendly_name: "Shelly Plug Firmware Update"
+        entity_id: sensor.shelly_plug_has_firmware_update
+        value_template: "{{ state_attr('sensor.shelly_shplg_s_b86d7c_current_consumption', 'has_firmware_update') }}"

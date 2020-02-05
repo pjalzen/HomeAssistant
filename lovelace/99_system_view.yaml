@@ -26,16 +26,16 @@ cards:
       - sensor.ipv4_address
       - sensor.last_boot
       - sensor.last_update_trigger
-      - binary_sensor.updater
 
   - type: entities
     title: Updates
     show_header_toggle: false
     entities:
       - sensor.hacs
+      - binary_sensor.updater
       # - switch.shelly_shsw_1_942187
       # - switch.shelly_shplg_s_b86d7c
-      - sensor.shelly_shplg_s_b86d7c_has_firmware_update
+      - sensor.shelly_plug_has_firmware_update
 
   - type: gauge
     name: CPU Usage
