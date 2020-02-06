@@ -8,21 +8,20 @@ cards:
 
   - type: vertical-stack
     cards:
-      - type: picture-entity
-        entity: camera.mjpeg_camera
-        camera_view: live
-        # tap_action:
-        #   action: call-service
-        #   service: camera.snapshot
-        #   service_data:
-        #     entity_id: camera.mjpeg_camera
+      - type: picture-glance
+        camera_image: camera.reolink_pool_area
+        entities:
+          - switch.camera_poolarea_ir_lights
+          - switch.camera_poolarea_email
+          - switch.camera_poolarea_ftp
+          - binary_sensor.motion_poolarea
+        title: Pool Area
 
-      - type: picture-entity
-        entity: camera.vardagsrum
-        camera_view: live
-      - type: picture-entity
-        entity: camera.hall_overvaning
-        camera_view: live
-      - type: picture-entity
-        entity: camera.kallare
-        camera_view: live
+      - type: picture-glance
+        camera_image: camera.reolink_front_door
+        entities:
+          - switch.camera_frontdoor_ir_lights
+          - switch.camera_frontdoor_email
+          - switch.camera_frontdoor_ftp
+          - binary_sensor.motion_frontdoor
+        title: Front Door

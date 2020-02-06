@@ -33,9 +33,8 @@ cards:
     entities:
       - sensor.hacs
       - binary_sensor.updater
-      # - switch.shelly_shsw_1_942187
-      # - switch.shelly_shplg_s_b86d7c
-      - sensor.shelly_plug_has_firmware_update
+      - sensor.shelly_1_has_firmware_update
+      - sensor.shelly_plug_s_has_firmware_update
 
   - type: gauge
     name: CPU Usage
