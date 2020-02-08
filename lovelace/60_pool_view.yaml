@@ -18,16 +18,13 @@ cards:
     entity: sensor.svt_nyheter
     title: SVT Nyheter
     feed_attribute: entries
+    row_limit: 10
     columns:
       - title: Title
         field: title
-        style:
-          - white-space: nowrap
         add_link: link
-      # - title: Summary
-      #   field: summary
-      # - title: Published
-      #   field: published
+        # style:
+        #   - white-space: nowrap
 
 
 
