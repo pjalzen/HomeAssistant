@@ -21,11 +21,12 @@ cards:
     row_limit: 10
     columns:
       - field: title
+        title: ''
         add_link: link
          style:
            - white-space: normal
-           
-
+      - field: description
+        title: ''
 
 
 
