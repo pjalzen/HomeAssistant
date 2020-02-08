@@ -48,7 +48,7 @@ cards:
         severity:
           red: 0
           yellow: 5000
-          green: sensor.daily_steps_goal
+          green: 10000 #sensor.daily_steps_goal
 
 
       - type: custom:dual-gauge-card
@@ -57,9 +57,9 @@ cards:
           entity: sensor.steps
           label: "Steps"
           min: 0
-          max: sensor.daily_steps_goal
+          max: 10000 #sensor.daily_steps_goal
         inner:
           entity: sensor.floors_ascended
           label: "Floors"
           min: 0
-          max: sensor.floors_ascended_goal
+          max: 10 #sensor.floors_ascended_goal
