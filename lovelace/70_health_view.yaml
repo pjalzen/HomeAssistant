@@ -7,12 +7,13 @@ cards:
         entities:
           - sensor.withings_weight_kg_per
         hours_to_show: 240
-        #points_per_hour: 60
+        points_per_hour: 10
         line_color: blue
         line_width: 2 
         show:
           points: false
           labels: true
+        title: Weight PJ
 
   - type: vertical-stack
     cards:
