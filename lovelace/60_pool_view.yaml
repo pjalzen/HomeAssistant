@@ -23,8 +23,8 @@ cards:
       - field: title
         title: t
         add_link: link
-         style:
-           - white-space: normal
+        style:
+          - white-space: nowrap
       - field: description
         title: d
 
