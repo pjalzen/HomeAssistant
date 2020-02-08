@@ -140,8 +140,8 @@ cards:
           - field: title
             title: ''
             add_link: link
-          - field: description
-            title: ''
+          # - field: description
+          #   title: ''
 
   - type: vertical-stack
     cards:
