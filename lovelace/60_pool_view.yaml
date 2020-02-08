@@ -20,11 +20,11 @@ cards:
     feed_attribute: entries
     row_limit: 10
     columns:
-      - title: Title
-        field: title
+      - field: title
         add_link: link
-        # style:
-        #   - white-space: nowrap
+         style:
+           - white-space: normal
+           
 
 
 
