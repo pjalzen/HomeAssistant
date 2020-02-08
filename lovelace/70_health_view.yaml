@@ -6,6 +6,7 @@ cards:
       - type: custom:mini-graph-card
         entities:
           - sensor.withings_weight_kg_per
+            name: Weight PJ
         hours_to_show: 1040
         points_per_hour: 0.5
         line_color: blue
@@ -13,7 +14,6 @@ cards:
         show:
           points: false
           labels: true
-        title: Weight PJ
 
   - type: vertical-stack
     cards:
