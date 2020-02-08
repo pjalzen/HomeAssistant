@@ -7,8 +7,8 @@ cards:
         entities:
           - entity: sensor.withings_weight_kg_per
             name: Weight PJ
-        hours_to_show: 1040
-        points_per_hour: 0.5
+        hours_to_show: 168
+        points_per_hour: 0.25
         line_color: blue
         line_width: 2 
         show:
