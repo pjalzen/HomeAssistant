@@ -19,14 +19,18 @@ cards:
     title: SVT Nyheter
     feed_attribute: entries
     columns:
+      - title: ''
+        type: image
+        add_link: link
+        field: image
       - title: Title
         field: title
         style:
           - white-space: nowrap
       # - title: Summary
       #   field: summary
-      - title: Published
-        field: published
+      # - title: Published
+      #   field: published
 
 
 
