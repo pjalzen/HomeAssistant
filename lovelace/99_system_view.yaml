@@ -17,7 +17,7 @@ cards:
     title: Battery level
     show_header_toggle: false
     entities:
-      - sensor.philio_technology_corp_psr04_smart_color_button
+      - sensor.philio_technology_corp_psr04_smart_color_button_battery_level
 
   - type: entities
     title: Host
