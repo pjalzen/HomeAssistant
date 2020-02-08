@@ -44,10 +44,10 @@ cards:
       - type: gauge
         name: Steps today
         entity: sensor.steps
-        max: daily_steps_goal + 100
+        max: daily_steps_goal
         severity:
           red: 0
-          yellow: sensor.daily_steps_goal / 2
+          yellow: 5000
           green: sensor.daily_steps_goal
 
 
