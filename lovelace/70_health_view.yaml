@@ -6,8 +6,8 @@ cards:
       - type: custom:mini-graph-card
         entities:
           - sensor.withings_weight_kg_per
-        hours_to_show: 240
-        points_per_hour: 10
+        hours_to_show: 1040
+        points_per_hour: 0.5
         line_color: blue
         line_width: 2 
         show:
