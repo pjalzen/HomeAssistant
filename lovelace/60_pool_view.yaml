@@ -1,19 +1,6 @@
 title: Pool
 icon: mdi:pool
 cards:
-  # - type: 'custom:podcast-card'
-  #   entity: sensor.gpodder   
-  #   name: PJs PodCasts
-  #   default_target: media_player.vardagsrum_matrum
-  #   show_player: True
-  #   custom_player: True
-
-
-      # - entity: sensor.yr_temperature
-      #   name: Temperatur
-      # - entity: sensor.yr_wind_speed
-      # - entity: sensor.yr_cloudiness
-
   - type: custom:mini-graph-card
     entities:
       - sensor.garage_temperature
@@ -27,18 +14,28 @@ cards:
       points: false
       labels: true
 
-  # - type: custom:list-card
-  #   entity: sensor.svt_nyheter
-  #   title: SVT Nyheter
-  #   feed_attribute: entries
-  #   columns:
-  #     - title: Title
-  #       field: title
-  #       style:
-  #         - white-space: nowrap
-  #     - title: Summary
-  #       field: summary
-  #     - title: Published
-  #       field: published
+  - type: custom:list-card
+    entity: sensor.svt_nyheter
+    title: SVT Nyheter
+    feed_attribute: entries
+    columns:
+      - title: Title
+        field: title
+        style:
+          - white-space: nowrap
+      - title: Summary
+        field: summary
+      - title: Published
+        field: published
+
+
+
+
+  # - type: 'custom:podcast-card'
+  #   entity: sensor.gpodder   
+  #   name: PJs PodCasts
+  #   default_target: media_player.vardagsrum_matrum
+  #   show_player: True
+  #   custom_player: True
 
 
