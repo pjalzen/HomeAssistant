@@ -20,45 +20,45 @@ cards:
         entities:
         - name: Steps today
           icon: mdi:shoe-print
-          entity: sensor.garmin_steps
+          entity: sensor.steps
         - name: Floors
           icon: mdi:stairs
-          entity: sensor.garmin_floors
+          entity: sensor.floors_ascended
         - name: Calories
           icon: mdi:fire
-          entity: sensor.garmin_total_kcal
+          entity: sensor.total_kilocalories
 
       - type: glance
         entities:
         - name: Stress
           icon: mdi:human-handsup
-          entity: sensor.garmin_stress
+          entity: sensor.avg_stress_level
         - name: Resting HR
           icon: mdi:heart
-          entity: sensor.garmin_restingheartrate
+          entity: sensor.resting_heart_rate
         - name: Max HR
           icon: mdi:heart
-          entity: sensor.garmin_maxheartrate
+          entity: sensor.max_heart_rate
 
       - type: gauge
         name: Steps today
-        entity: sensor.garmin_steps
-        max: 12000
+        entity: sensor.steps
+        max: daily_steps_goal + 100
         severity:
           red: 0
-          yellow: 4000
-          green: 7700
+          yellow: sensor.daily_steps_goal / 2
+          green: sensor.daily_steps_goal
 
 
       - type: custom:dual-gauge-card
         title: Garmin
         outer:
-          entity: sensor.garmin_steps
+          entity: sensor.steps
           label: "Steps"
           min: 0
-          max: 12000
+          max: sensor.daily_steps_goal
         inner:
-          entity: sensor.garmin_floors
+          entity: sensor.floors_ascended
           label: "Floors"
           min: 0
-          max: 20
+          max: sensor.floors_ascended_goal
