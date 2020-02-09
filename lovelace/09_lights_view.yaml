@@ -18,7 +18,7 @@ cards:
         title: Living room
         entities:
           - type: custom:slider-entity-row
-            entity: light.color_light_1
+            entity: light.bulb_tv
             toggle: true
           - type: custom:slider-entity-row
             entity: light.hue_play_1
@@ -51,7 +51,7 @@ cards:
         entities:
           - switch.21200481dc4f2271416f
           - type: custom:slider-entity-row
-            entity: light.hue_lightstrip_plus_1
+            entity: light.hue_lightstrip_office
             toggle: true
       - type: entities
         title: Calle
