@@ -22,10 +22,10 @@
       entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_2
     service: switch.turn_on
   - data:
-      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_3
+      entity_id: switch.shelly_shplg_s_b85d6a
     service: switch.turn_on
   - data:
-      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_4
+      entity_id: switch.shelly_shplg_s_51cc16
     service: switch.turn_on
   - data:
       entity_id: switch.everspring_an180_plugin_onoff_module_switch
@@ -34,7 +34,7 @@
       entity_id: switch.everspring_an180_plugin_onoff_module_switch_2
     service: switch.turn_on
   - data:
-      entity_id: switch.everspring_an180_plugin_onoff_module_switch_3
+      entity_id: switch.shelly_shplg_s_51ca64
     service: switch.turn_on
   - data:
       entity_id: switch.timer
@@ -70,10 +70,10 @@
       entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_2
     service: switch.turn_off
   - data:
-      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_3
+      entity_id: switch.shelly_shplg_s_b85d6a
     service: switch.turn_off
   - data:
-      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_4
+      entity_id: switch.shelly_shplg_s_51cc16
     service: switch.turn_off
   - data:
       entity_id: switch.everspring_an180_plugin_onoff_module_switch
@@ -82,7 +82,7 @@
       entity_id: switch.everspring_an180_plugin_onoff_module_switch_2
     service: switch.turn_off
   - data:
-      entity_id: switch.everspring_an180_plugin_onoff_module_switch_3
+      entity_id: switch.shelly_shplg_s_51ca64
     service: switch.turn_off
   - data:
       entity_id: switch.timer
