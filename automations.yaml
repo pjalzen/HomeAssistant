@@ -102,17 +102,32 @@
     condition: sun
   action:
   - data:
-      entity_id: switch.everspring_an180_plugin_onoff_module_switch
+      entity_id: switch.everspring_an180_plugin_onoff_module_switch   #Golvlampa bibliotek
     service: switch.turn_on
   - data:
-      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch         #Ljusslinga veranda
+    service: switch.turn_on
+  - data:
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_2       #Bordslampa TV-bänk
     service: switch.turn_on
   - data:
       entity_id: switch.timer
     service: switch.turn_on
   - data:
-      entity_id: light.hallway_upstairs
-    service: light.turn_on
+      entity_id: switch.21200481dc4f2271416f                          #Fönsterlampa kontor
+    service: switch.turn_on
+  - data:
+      entity_id: switch.shelly_shplg_s_b86d7c                         #FÖnsterlampa entré
+    service: switch.turn_on
+  - data:
+      entity_id: switch.shelly_shplg_s_51ca64                         #Bordslampa kökshall
+    service: switch.turn_on
+  - data:
+      entity_id: switch.shelly_shplg_s_b85d6a                         #Matsal öst
+    service: switch.turn_on
+  - data:
+      entity_id: switch.shelly_shplg_s_51cc16                         #Matsal norr
+    service: switch.turn_on
 
 
 - alias: Lights off - by sunrise
@@ -124,24 +139,33 @@
   condition: []
   action:
   - data:
+      entity_id: switch.everspring_an180_plugin_onoff_module_switch
+    service: switch.turn_off
+  - data:
       entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
     service: switch.turn_off
   - data:
-      entity_id: switch.everspring_an180_plugin_onoff_module_switch
+      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch_2      
     service: switch.turn_off
   - data:
       entity_id: switch.timer
     service: switch.turn_off
-  - data:
-      entity_id: light.hallway_upstairs
-    service: light.turn_off
   - data:
       entity_id: switch.21200481dc4f2271416f
     service: switch.turn_off
   - data:
       entity_id: switch.shelly_shplg_s_b86d7c
     service: switch.turn_off
-
+  - data:
+      entity_id: switch.shelly_shplg_s_51ca64
+    service: switch.turn_off
+  - data:
+      entity_id: switch.shelly_shplg_s_b85d6a
+    service: switch.turn_off
+  - data:
+      entity_id: switch.shelly_shplg_s_51cc16
+    service: switch.turn_off
+    
 
 - alias: Run Backup 3AM
   initial_state: true
