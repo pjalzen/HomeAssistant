@@ -12,7 +12,7 @@ cards:
           - type: custom:slider-entity-row
             entity: light.qubino_goap_zmnhdd1_flush_dimmer_level
             toggle: true
-          #- shelly_shplg_s_51cc16
+          - switch.shelly_shplg_s_51ca64
           # - switch.everspring_an180_plugin_onoff_module_switch_3
 
       - type: entities
