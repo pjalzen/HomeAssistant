@@ -36,8 +36,8 @@ cards:
           - type: custom:slider-entity-row
             entity: light.color_temperature_light_dining
             toggle: true
-          - switch.switch.shelly_shplg_s_b85d6a
-          - switch.switch.shelly_shplg_s_51cc16
+          - switch.shelly_shplg_s_b85d6a
+          - switch.shelly_shplg_s_51cc16
           # - switch.nodon_msp31xx_micro_smart_plug_switch_3
           # - switch.nodon_msp31xx_micro_smart_plug_switch_4
 
