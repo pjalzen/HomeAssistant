@@ -19,38 +19,38 @@ resources:
   # community
   - url: /hacsfiles/banner-card/banner-card.js  # /community_plugin/banner-card/banner-card.js
     type: module
-  - url: /community_plugin/button-card/button-card.js
+  - url: /hacsfiles/button-card/button-card.js
     type: module
-  - url: /community_plugin/button-toolbar/button-toolbar.js
+  - url: /hacsfiles/button-toolbar/button-toolbar.js
     type: module
-  - url: /community_plugin/calendar-card/calendar-card.js
+  - url: /hacsfiles/calendar-card/calendar-card.js
     type: js
-  - url: /community_plugin/circle-sensor-card/circle-sensor-card.js
+  - url: /hacsfiles/circle-sensor-card/circle-sensor-card.js
     type: module
-  - url: /community_plugin/custom-header/custom-header.js
+  - url: /hacsfiles/custom-header/custom-header.js
     type: module
-  - url: /community_plugin/dual-gauge-card/dual-gauge-card.js
+  - url: /hacsfiles/dual-gauge-card/dual-gauge-card.js
     type: js
-  - url: /community_plugin/krisinfo-card/krisinfo-card.js
+  - url: /hacsfiles/krisinfo-card/krisinfo-card.js
     type: js
-  - url: /community_plugin/light-brightness-preset-row/light-brightness-preset-row.js
+  - url: /hacsfiles/light-brightness-preset-row/light-brightness-preset-row.js
     type: js
-  - url: /community_plugin/list-card/list-card.js
+  - url: /hacsfiles/list-card/list-card.js
     type: js
-  - url: /community_plugin/lovelace-slider-entity-row/slider-entity-row.js
+  - url: /hacsfiles/lovelace-slider-entity-row/slider-entity-row.js
     type: module
   - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js   # /community_plugin/mini-graph-card/mini-graph-card.js
     type: module
-  - url: /community_plugin/simple-thermostat/simple-thermostat.js
+  - url: /hacsfiles/simple-thermostat/simple-thermostat.js
     type: module
   - url: >-
       https://cdn.jsdelivr.net/gh/custom-cards/spotify-card@1.8/dist/spotify-card.umd.js
     type: module
-  - url: /community_plugin/text-element/text-element.js
+  - url: /hacsfiles/text-element/text-element.js
     type: js
-  - url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
+  - url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
     type: js
-  - url: /community_plugin/weather-card/weather-card.js
+  - url: /hacsfiles/weather-card/weather-card.js
     type: module
       
   # other
