@@ -73,6 +73,8 @@ cards:
         title: Outdoor
         entities:
           - switch.shelly_shsw_1_942187
+          - switch.shelly_shsw_1_c4f132
+          - switch.shelly_shsw_1_b8efa0
 
       - type: entities
         title: Basement
