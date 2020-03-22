@@ -75,11 +75,8 @@ cards:
           - switch.shelly_shsw_1_942187
           - switch.shelly_shsw_1_c4f132
           - switch.shelly_shsw_1_b8efa0
-
-      - type: entities
-        title: Basement
-        entities:
           - light.hue_lightstrip_outdoor_1
+
 
 
       # - type: custom:button-card
