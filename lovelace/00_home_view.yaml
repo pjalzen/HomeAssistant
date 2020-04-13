@@ -131,15 +131,7 @@ cards:
               points: false
               labels: true
 
-      - type: custom:list-card
-        entity: sensor.svt_nyheter
-        title: SVT Nyheter
-        feed_attribute: entries
-        row_limit: 10
-        columns:
-          - field: title
-            title: ''
-            add_link: link
+
             
 
   - type: vertical-stack
@@ -152,28 +144,38 @@ cards:
           - calendar.familjekalender_for_brunnsgatan_25
           - calendar.helgdagar_i_sverige
           
-      - type: entities
-        title: NHL
-        show_header_toggle: false
-        entities:
-          - entity: sensor.avalanche
-            name: Avalance game
-          - entity: sensor.col_away_team
-          - entity: sensor.col_home_team
+      - type: custom:list-card
+        entity: sensor.svt_nyheter
+        title: SVT Nyheter
+        feed_attribute: entries
+        row_limit: 10
+        columns:
+          - field: title
+            title: ''
+            add_link: link
 
-          - type: divider
+      # - type: entities
+      #   title: NHL
+      #   show_header_toggle: false
+      #   entities:
+      #     - entity: sensor.avalanche
+      #       name: Avalance game
+      #     - entity: sensor.col_away_team
+      #     - entity: sensor.col_home_team
 
-          - entity: sensor.canucks
-            name: Canucks game
-          - entity: sensor.van_away_team
-          - entity: sensor.van_home_team
+      #     - type: divider
 
-          - type: divider
+      #     - entity: sensor.canucks
+      #       name: Canucks game
+      #     - entity: sensor.van_away_team
+      #     - entity: sensor.van_home_team
 
-          - entity: sensor.predators
-            name: Predators game
-          - entity: sensor.nsh_away_team
-          - entity: sensor.nsh_home_team
+      #     - type: divider
+
+      #     - entity: sensor.predators
+      #       name: Predators game
+      #     - entity: sensor.nsh_away_team
+      #     - entity: sensor.nsh_home_team
 
 
 
