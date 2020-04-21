@@ -21,6 +21,7 @@
       - sensor.dow_jones
       - sensor.withings_weight_kg_per
       - sensor.garage_temperature
+      - device_tracker.tile_5ee134a0799d4f06
   
  # include:
  #   domains:

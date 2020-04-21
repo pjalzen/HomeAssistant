@@ -50,6 +50,8 @@ map:                                                # Enables a map showing the 
 frontend:                                           # Enables the frontend
   javascript_version: auto 
   themes: !include_dir_named themes
+    # Denna är snygg: Stell Blue with Colors
+
 
 lovelace:
   mode: yaml
