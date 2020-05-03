@@ -77,7 +77,10 @@ cards:
           - switch.shelly_shsw_1_b8efa0
           - light.hue_lightstrip_outdoor_1
 
-
+      - type: entities
+        title: Garage
+        entities:
+          - switch.shelly_shsw_1_98f4abf248fb
 
       # - type: custom:button-card
       #   entity: switch.nodon_msp31xx_micro_smart_plug_switch_2
