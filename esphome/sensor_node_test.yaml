@@ -1,7 +1,7 @@
 esphome:
-  name: office
+  name: sensor_node_test
   platform: ESP8266
-  board: esp01_1m
+  board: nodemcuv2
 
 wifi:
   ssid: "Sveas rike"
@@ -9,8 +9,8 @@ wifi:
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "Office Fallback Hotspot"
-    password: "dT4vhwDWUNrU"
+    ssid: "Sensor Node Test"
+    password: "k5T3s4PK5EpZ"
 
 captive_portal:
 
