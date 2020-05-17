@@ -117,7 +117,7 @@ camera: !include entities/camera.yaml
 device_tracker: !include entities/device_tracker.yaml
 zone: !include zone.yaml
 
-homeconnect:
+home_connect_beta:
   client_id: !secret homeconnect_client_id 
   client_secret: !secret homeconnect_client_secret
 
