@@ -4,3 +4,25 @@ sensor:
     name: "Garage Temperature"
     icon: mdi:thermometer
     unit_of_measurement: '°C'
+
+  - platform: mqtt
+    state_topic: "pool/ph"
+    name: "Pool pH"
+
+  - platform: mqtt
+    state_topic: "pool/temp"
+    name: "Pool Temp"
+    icon: mdi:thermometer
+    unit_of_measurement: '°C'
+
+  - platform: mqtt
+    state_topic: "pool/do"
+    name: "Pool DO"
+
+  - platform: mqtt
+    state_topic: "pool/ec"
+    name: "Pool EC"
+
+  - platform: mqtt
+    state_topic: "pool/orp"
+    name: "Pool ORP"
