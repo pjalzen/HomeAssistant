@@ -22,7 +22,12 @@
       - sensor.withings_weight_kg_per
       - sensor.garage_temperature
       - device_tracker.tile_5ee134a0799d4f06
-  
+      - sensor.pool_ph
+      - sensor.pool_temp
+      - sensor.pool_do
+      - sensor.pool_ec
+      - sensor.pool_orp
+
  # include:
  #   domains:
  #     - zone
