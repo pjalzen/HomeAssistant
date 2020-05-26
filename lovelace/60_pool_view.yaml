@@ -11,7 +11,7 @@ cards:
         font_size: 60
         hours_to_show: 48
         #points_per_hour: 12
-        line_color: '#f39c12'
+        line_color: blue
         line_width: 4 
         show:
           points: false
@@ -26,7 +26,7 @@ cards:
             font_size: 60
             hours_to_show: 48
             #points_per_hour: 12
-            line_color: '#f39c12'
+            line_color: '#e74c3c'
             line_width: 4 
             show:
               points: false
@@ -55,7 +55,7 @@ cards:
             font_size: 60
             hours_to_show: 48
             #points_per_hour: 12
-            line_color: '#f39c12'
+            line_color: '#e74c3c'
             line_width: 4 
             show:
               points: false
