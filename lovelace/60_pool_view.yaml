@@ -1,19 +1,78 @@
 title: Pool
 icon: mdi:pool
 cards:
-  - type: custom:mini-graph-card
-    entities:
-      - sensor.garage_temperature
-    name: Garage Temperature
-    font_size: 60
-    hours_to_show: 24
-    #points_per_hour: 12
-    line_color: '#f39c12'
-    line_width: 4 
-    show:
-      points: false
-      labels: true
+  - type: vertical-stack
+    cards:
 
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.pool_temp
+        name: Pool Temperature
+        font_size: 60
+        hours_to_show: 48
+        #points_per_hour: 12
+        line_color: '#f39c12'
+        line_width: 4 
+        show:
+          points: false
+          labels: true
+
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.pool_ph
+            name: Pool pH
+            font_size: 60
+            hours_to_show: 48
+            #points_per_hour: 12
+            line_color: '#f39c12'
+            line_width: 4 
+            show:
+              points: false
+              labels: true
+
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.pool_do
+            name: Pool Disolve Oxygen
+            font_size: 60
+            hours_to_show: 48
+            #points_per_hour: 12
+            line_color: '#f39c12'
+            line_width: 4 
+            show:
+              points: false
+              labels: true
+
+      - type: horizontal-stack
+        cards:
+
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.pool_ec
+            name: Pool EC
+            font_size: 60
+            hours_to_show: 48
+            #points_per_hour: 12
+            line_color: '#f39c12'
+            line_width: 4 
+            show:
+              points: false
+              labels: true
+
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.pool_orp
+            name: Pool ORP
+            font_size: 60
+            hours_to_show: 48
+            #points_per_hour: 12
+            line_color: '#f39c12'
+            line_width: 4 
+            show:
+              points: false
+              labels: true
 
 
 
