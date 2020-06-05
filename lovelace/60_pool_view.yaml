@@ -4,6 +4,11 @@ cards:
   - type: vertical-stack
     cards:
 
+      - type: entities
+        title: Water Monitor
+        entities:
+          - switch.nodon_msp31xx_micro_smart_plug_switch_3
+
       - type: custom:mini-graph-card
         entities:
           - sensor.pool_temp
@@ -75,12 +80,5 @@ cards:
               labels: true
 
 
-
-  # - type: 'custom:podcast-card'
-  #   entity: sensor.gpodder   
-  #   name: PJs PodCasts
-  #   default_target: media_player.vardagsrum_matrum
-  #   show_player: True
-  #   custom_player: True
 
 
