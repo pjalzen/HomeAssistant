@@ -39,8 +39,8 @@ cards:
 
           - type: custom:mini-graph-card
             entities:
-              - sensor.pool_do
-            name: Pool Disolve Oxygen
+              - sensor.pool_orp
+            name: Pool ORP
             font_size: 60
             hours_to_show: 48
             #points_per_hour: 12
@@ -68,8 +68,8 @@ cards:
 
           - type: custom:mini-graph-card
             entities:
-              - sensor.pool_orp
-            name: Pool ORP
+              - sensor.pool_do
+            name: Pool Disolve Oxygen
             font_size: 60
             hours_to_show: 48
             #points_per_hour: 12
@@ -78,6 +78,8 @@ cards:
             show:
               points: false
               labels: true
+
+
 
 
 
