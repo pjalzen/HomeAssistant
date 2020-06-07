@@ -81,6 +81,7 @@ cards:
         title: Garage
         entities:
           - switch.shelly_shsw_1_98f4abf248fb
+          - switch.shelly_shsw_1_98f4abf28ba7
 
       # - type: custom:button-card
       #   entity: switch.nodon_msp31xx_micro_smart_plug_switch_2
