@@ -131,6 +131,26 @@ cards:
               points: false
               labels: true
 
+      - type: horizontal-stack
+        cards:
+          - type: glance
+            show_icon: true
+            show_name: true
+            show_state: true
+            title: COVID-19 Sweden
+            entities:
+              - entity: sensor.sweden_confirmed
+                icon: 'mdi:emoticon-neutral-outline'
+                name: Confirmed
+              - entity: sensor.sweden_current
+                icon: 'mdi:emoticon-frown-outline'
+                name: Current
+              - entity: sensor.sweden_recovered
+                icon: 'mdi:emoticon-happy-outline'
+                name: Recovered
+              - entity: sensor.sweden_deaths
+                icon: 'mdi:emoticon-dead-outline'
+                name: Deaths
 
             
 
