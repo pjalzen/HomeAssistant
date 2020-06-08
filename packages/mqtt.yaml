@@ -8,6 +8,7 @@ sensor:
   - platform: mqtt
     state_topic: "pool/ph"
     name: "Pool pH"
+    unit_of_measurement: 'pH'
 
   - platform: mqtt
     state_topic: "pool/temp"
@@ -18,11 +19,14 @@ sensor:
   - platform: mqtt
     state_topic: "pool/do"
     name: "Pool DO"
+    unit_of_measurement: 'mg/L'
 
   - platform: mqtt
     state_topic: "pool/ec"
     name: "Pool EC"
+    unit_of_measurement: 'ms/cm'
 
   - platform: mqtt
     state_topic: "pool/orp"
     name: "Pool ORP"
+    unit_of_measurement: 'mV'
