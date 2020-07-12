@@ -9,7 +9,7 @@ import voluptuous as vol
 import homeassistant.helpers.config_validation as cv
 
 
-from homeassistant.components.climate import ClimateDevice, PLATFORM_SCHEMA
+from homeassistant.components.climate import ClimateEntity, PLATFORM_SCHEMA
 from homeassistant.components.climate.const import (
     HVAC_MODE_OFF, HVAC_MODE_HEAT, HVAC_MODE_COOL,
     HVAC_MODE_DRY, HVAC_MODE_FAN_ONLY, HVAC_MODE_AUTO,
@@ -98,7 +98,7 @@ async def async_setup_platform(hass, config, async_add_entities,
                          temperature_sensor, operation_list, fan_list)
     ])
 
-class HarmonyIRClimate(ClimateDevice, RestoreEntity):
+class HarmonyIRClimate(ClimateEntity, RestoreEntity):
 
     def __init__(self, hass, name, remote_entity, device_id, min_temp, 
                 max_temp, target_temp, target_temp_step, 
