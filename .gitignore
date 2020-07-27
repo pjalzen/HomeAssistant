@@ -38,6 +38,7 @@
 !packages
 !python_scripts
 !themes
+!themes/nord
 !www
 !www/*.jpg
 !www/community
