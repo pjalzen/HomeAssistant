@@ -38,7 +38,7 @@
 !packages
 !python_scripts
 !themes
-!themes/nord
+!themes/*
 !www
 !www/*.jpg
 !www/community

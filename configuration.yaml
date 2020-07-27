@@ -41,6 +41,7 @@ conversation:                                       # Allows you to issue voice 
 
 hacs:
   token: !secret hacs_token
+  appdaemon: true
 
 # ########################################
 # ###                GUI               ###
