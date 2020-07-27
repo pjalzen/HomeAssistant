@@ -1,0 +1,41 @@
+esphome:
+  name: ducati_garage
+  platform: ESP8266
+  board: nodemcuv2
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pwd
+
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Ducati Garage Fallback Hotspot"
+    password: "IKDzLs2IU3Km"
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+binary_sensor:
+  - platform: template
+    name: Ducati
+    device_class: presence
+    lambda: |-
+      if (id(ultrasonic_ducati).state < 1) 
+        return true;
+      else
+        return false;
+
+sensor:
+  - platform: ultrasonic
+    id: ultrasonic_ducati
+    trigger_pin: D2
+    echo_pin: D3
+    name: "Ducati Ultrasonic Sensor"
