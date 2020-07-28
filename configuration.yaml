@@ -41,7 +41,7 @@ conversation:                                       # Allows you to issue voice 
 
 hacs:
   token: !secret hacs_token
-  #appdaemon: true
+  appdaemon: true
 
 # ########################################
 # ###                GUI               ###
@@ -50,7 +50,7 @@ hacs:
 map:                                                # Enables a map showing the location of tracked devices
 frontend:                                           # Enables the frontend
   javascript_version: auto 
-  #themes: !include_dir_merge_named themes/
+  themes: !include_dir_merge_named    themes
   #themes: !include_dir_named themes
     # Denna är snygg: Stell Blue with Colors
 
