@@ -7,7 +7,7 @@ cards:
       - type: custom:button-card
         name: SCENES
         color_type: label-card
-        color: '#ff6262'
+        color: primary-color
         show_icon: false
         
       - type: horizontal-stack
@@ -15,7 +15,7 @@ cards:
           - type: custom:button-card
             name: Go to bed
             icon: mdi:sleep
-            color: '#ff6262'
+            color: primary-color
             tap_action:
               action: call-service
               service: script.go_sleep
@@ -23,7 +23,7 @@ cards:
           - type: custom:button-card
             name: Lights on
             icon: mdi:lightbulb-on
-            color: '#ff6262'
+            color: primary-color
             tap_action:
               action: call-service
               service: scene.turn_on
@@ -33,7 +33,7 @@ cards:
           - type: custom:button-card
             name: Lights off
             icon: mdi:lightbulb-off
-            color: '#ff6262'
+            color: primary-color
             tap_action:
               action: call-service
               service: light.turn_off
