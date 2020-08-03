@@ -27,7 +27,7 @@ cards:
           - type: custom:slider-entity-row
             entity: light.hue_play_2
             toggle: true
-          - switch.nodon_msp31xx_micro_smart_plug_switch_2
+          - switch.nodon_id_rf_msp_3_1_xx_micro_smart_plug_switch_2
           - switch.everspring_an180_plugin_onoff_module_switch_2
 
       - type: entities
@@ -56,6 +56,10 @@ cards:
           - type: custom:slider-entity-row
             entity: light.hue_lightstrip_office
             toggle: true
+      - type: entities
+        title: Bedroom
+        entities:
+          - switch.nodon_id_rf_msp_3_1_xx_micro_smart_plug_switch
       - type: entities
         title: Calle
         entities:
