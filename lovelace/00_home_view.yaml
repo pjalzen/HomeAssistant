@@ -191,28 +191,28 @@ cards:
             title: ''
             add_link: link
 
-      # - type: entities
-      #   title: NHL
-      #   show_header_toggle: false
-      #   entities:
-      #     - entity: sensor.avalanche
-      #       name: Avalance game
-      #     - entity: sensor.col_away_team
-      #     - entity: sensor.col_home_team
+      - type: entities
+        title: NHL
+        show_header_toggle: false
+        entities:
+          - entity: sensor.avalanche
+            name: Avalance game
+          - entity: sensor.col_away_team
+          - entity: sensor.col_home_team
 
-      #     - type: divider
+          - type: divider
 
-      #     - entity: sensor.canucks
-      #       name: Canucks game
-      #     - entity: sensor.van_away_team
-      #     - entity: sensor.van_home_team
+          - entity: sensor.canucks
+            name: Canucks game
+          - entity: sensor.van_away_team
+          - entity: sensor.van_home_team
 
-      #     - type: divider
+          - type: divider
 
-      #     - entity: sensor.predators
-      #       name: Predators game
-      #     - entity: sensor.nsh_away_team
-      #     - entity: sensor.nsh_home_team
+          - entity: sensor.predators
+            name: Predators game
+          - entity: sensor.nsh_away_team
+          - entity: sensor.nsh_home_team
 
 
 
