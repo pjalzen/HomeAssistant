@@ -134,9 +134,9 @@ cards:
               color: white          
               font-size: 0.8em
 
-          # Tyre
+          # Status
           - type: "custom:text-element"
-            text: "Tyre"
+            text: "Status"
             style:
               top: 80%
               left: 60%
@@ -368,9 +368,9 @@ cards:
               color: white          
               font-size: 0.8em
 
-          # Tyre
+          # Status
           - type: "custom:text-element"
-            text: "Tyre"
+            text: "Status"
             style:
               top: 80%
               left: 60%
