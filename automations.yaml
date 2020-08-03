@@ -191,7 +191,7 @@
     service: script.ha_backup
 
 - alias: Set Theme by daylight
-  initial_state: true
+  initial_state: false
   trigger:
   - platform: homeassistant
     event: start
