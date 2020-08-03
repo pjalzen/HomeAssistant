@@ -190,27 +190,27 @@
     data: {}
     service: script.ha_backup
 
-# - alias: Set Theme by daylight
-#   initial_state: true
-#   trigger:
-#   - platform: homeassistant
-#     event: start
-#   - platform: state
-#     entity_id: sun.sun
-#     to: above_horizon
-#   - platform: state
-#     entity_id: sun.sun
-#     to: below_horizon
-#   condition: []
-#   action:
-#   - service: frontend.set_theme
-#     data_template:
-#       name: "{% if states.sun.sun.state == \"above_horizon\" %}\n    {{ \"light-lightred\"\
-#         }}\n{% else %}  \n    {{ \"dark-lightred\"}}\n{% endif %}\n"
-#   - service: notify.pushbullet_pj
-#     data:
-#       title: Background Theme Set
-#       message: Home Assistant
+- alias: Set Theme by daylight
+  initial_state: true
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id: sun.sun
+    to: above_horizon
+  - platform: state
+    entity_id: sun.sun
+    to: below_horizon
+  condition: []
+  action:
+  - service: frontend.set_theme
+    data_template:
+      name: "{% if states.sun.sun.state == \"above_horizon\" %}\n    {{ \"light-lightred\"\
+        }}\n{% else %}  \n    {{ \"dark-lightred\"}}\n{% endif %}\n"
+  - service: notify.pushbullet_pj
+    data:
+      title: Background Theme Set
+      message: Home Assistant
 
 - alias: Restart HA 4AM
   description: ''
