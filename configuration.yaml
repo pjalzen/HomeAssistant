@@ -19,6 +19,9 @@ homeassistant:
   packages: !include_dir_named packages
   whitelist_external_dirs:
     - '/config/www'
+  internal_url: !secret internal_url
+  external_url: !secret external_url
+
 config:                                             # Enables configuration UI
 hassio:
 http:
