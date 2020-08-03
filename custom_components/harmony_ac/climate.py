@@ -37,7 +37,9 @@ CONF_TARGET_TEMP_STEP = 'target_temp_step'
 CONF_TEMP_SENSOR = 'temp_sensor'
 CONF_OPERATIONS = 'operations'
 CONF_FAN_MODES = 'fan_modes'
+CONF_NO_TEMP_OPERATIONS = 'no_temp_operations'
 CONF_DEVICE_ID = 'device_id'
+CONF_DEBUG_MODE = 'debug_mode'
 
 DEFAULT_NAME = 'Harmony Climate Controller'
 DEFAULT_MIN_TEMP = 16
@@ -45,11 +47,14 @@ DEFAULT_MAX_TEMP = 30
 DEFAULT_TARGET_TEMP = 20
 DEFAULT_TARGET_TEMP_STEP = 1
 DEFAULT_OPERATION_LIST = [HVAC_MODE_HEAT, HVAC_MODE_COOL, HVAC_MODE_AUTO]
+DEFAULT_NO_TEMP_OPERATION_LIST = []
 DEFAULT_FAN_MODE_LIST = ['auto', 'low', 'mid', 'high']
+DEFAULT_DEBUG_MODE = False
 
 CUSTOMIZE_SCHEMA = vol.Schema({
     vol.Optional(CONF_OPERATIONS): vol.All(cv.ensure_list, [cv.string]),
-    vol.Optional(CONF_FAN_MODES): vol.All(cv.ensure_list, [cv.string])
+    vol.Optional(CONF_FAN_MODES): vol.All(cv.ensure_list, [cv.string]),
+    vol.Optional(CONF_NO_TEMP_OPERATIONS): vol.All(cv.ensure_list, [cv.string])
 })
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
@@ -69,6 +74,8 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
         cv.positive_int,
     vol.Optional(CONF_TEMP_SENSOR): 
         cv.entity_id,
+    vol.Optional(CONF_DEBUG_MODE, default=DEFAULT_DEBUG_MODE): 
+        cv.boolean,
     vol.Optional(CONF_CUSTOMIZE, default={}): 
         CUSTOMIZE_SCHEMA
 })
@@ -85,24 +92,30 @@ async def async_setup_platform(hass, config, async_add_entities,
     target_temp = config.get(CONF_TARGET_TEMP)
     target_temp_step = config.get(CONF_TARGET_TEMP_STEP)
     temperature_sensor = config.get(CONF_TEMP_SENSOR)
+    debug_mode = config.get(CONF_DEBUG_MODE)
     operation_list = (
         config.get(CONF_CUSTOMIZE).get(CONF_OPERATIONS, []) or 
         DEFAULT_OPERATION_LIST)
     fan_list = (
         config.get(CONF_CUSTOMIZE).get(CONF_FAN_MODES, []) or 
         DEFAULT_FAN_MODE_LIST)
+    no_temp_operations_list = (
+        config.get(CONF_CUSTOMIZE).get(CONF_NO_TEMP_OPERATIONS, []) or 
+        DEFAULT_NO_TEMP_OPERATION_LIST)
          
     async_add_entities([
         HarmonyIRClimate(hass, name, remote_entity, device_id, min_temp, 
                          max_temp, target_temp, target_temp_step,
-                         temperature_sensor, operation_list, fan_list)
+                         temperature_sensor, operation_list, fan_list, 
+                         debug_mode, no_temp_operations_list)
     ])
 
 class HarmonyIRClimate(ClimateEntity, RestoreEntity):
 
     def __init__(self, hass, name, remote_entity, device_id, min_temp, 
                 max_temp, target_temp, target_temp_step, 
-                temperature_sensor, operation_list, fan_list):
+                temperature_sensor, operation_list, fan_list, 
+                debug_mode, no_temp_operations_list):
         """Initialize Harmony IR Climate device."""
         self.hass = hass
         self._name = name
@@ -113,10 +126,13 @@ class HarmonyIRClimate(ClimateEntity, RestoreEntity):
         self._target_temperature = target_temp
         self._target_temperature_step = target_temp_step
         self._temperature_sensor = temperature_sensor
+        self._debug_mode = debug_mode
 
-        valid_hvac_modes = [x for x in operation_list if x in HVAC_MODES]        
+        valid_hvac_modes = [x for x in operation_list if x in HVAC_MODES]
+        valid_no_temp_operation_modes = [x for x in no_temp_operations_list if x in HVAC_MODES]
         
         self._operation_modes = [HVAC_MODE_OFF] + valid_hvac_modes
+        self._no_temp_operation_modes = valid_no_temp_operation_modes
         self._fan_modes = fan_list
 
         self._hvac_mode = HVAC_MODE_OFF
@@ -286,13 +302,16 @@ class HarmonyIRClimate(ClimateEntity, RestoreEntity):
         """Send command to harmony device"""
 
         operation_mode = self._hvac_mode
+        operation_mode_command_string = "".join(x.capitalize() or '_' for x in self._hvac_mode .split('_')) # Remove underscores and capitalize each word
         fan_mode = self._current_fan_mode
         target_temperature = '{0:g}'.format(self._target_temperature)
 
         if operation_mode.lower() == HVAC_MODE_OFF:
             command = 'Off'
+        elif operation_mode.lower() in self._no_temp_operation_modes:
+            command = operation_mode_command_string + fan_mode.capitalize()
         else:
-            command = operation_mode.capitalize() + fan_mode.capitalize() + target_temperature.capitalize()
+            command = operation_mode_command_string + fan_mode.capitalize() + target_temperature.capitalize()
 
         service_data = {
             'entity_id': self._remote_entity,
@@ -303,6 +322,9 @@ class HarmonyIRClimate(ClimateEntity, RestoreEntity):
         _LOGGER.debug(
             "remote.send_command %s", service_data
         )
+
+        if self._debug_mode:
+            return
 
         await self.hass.services.async_call(
             'remote', 'send_command', service_data) 
@@ -324,3 +346,4 @@ class HarmonyIRClimate(ClimateEntity, RestoreEntity):
                 self._current_temperature = float(state.state)
         except ValueError as ex:
             _LOGGER.error("Unable to update from temperature sensor: %s", ex)  
+            
