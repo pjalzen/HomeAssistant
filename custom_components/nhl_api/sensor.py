@@ -18,7 +18,7 @@ from homeassistant.helpers.entity import Entity
 
 _LOGGER = logging.getLogger(__name__)
 
-__version__ = '0.5.2'
+__version__ = '0.5.3'
 
 CONF_ID = 'team_id'
 CONF_NAME = 'name'
@@ -86,7 +86,8 @@ class NHLSensor(Entity):
             plays = {}
         # Localize the UTC time values.
         if dates['next_game_datetime'] != "None":
-            dttm = dt.strptime(dates['next_game_datetime'], '%Y-%m-%dT%H:%M:%SZ')
+            dttm = dt.strptime(dates['next_game_datetime'],
+                               '%Y-%m-%dT%H:%M:%SZ')
             dttm_local = dt_util.as_local(dttm)
             time = {'next_game_time': dttm_local.strftime('%-I:%M%p')}
             # If next game is scheduled Today or Tomorrow,
@@ -98,12 +99,13 @@ class NHLSensor(Entity):
                 now.strftime("%Y-%m-%d"): "Today,",
                 (now + timedelta(days=1)).strftime("%Y-%m-%d"): "Tomorrow,"
             }
-            game_date = pick.get(dttm_local.strftime("%Y-%m-%d"), next_game_date)
+            game_date = pick.get(dttm_local.strftime("%Y-%m-%d"),
+                                 next_game_date)
         else:
-            time ={
+            time = {
                 'next_game_time': ''
             }
-            game_date = ''
+            game_date = 'No Scheduled Game'
             next_game_date = ''
         # Merge all attributes to a single dict.
         all_attr = {**games, **plays, **time, 'next_game_date': next_game_date}
