@@ -27,6 +27,7 @@
 !custom_components/hacs/frontend/elements/*
 !custom_components/reolink_dev/*
 !custom_components/reolink_dev/ReolinkPyPi/*
+!custom_components/shelly/*
 !media_player
 !sensor
 !customize
