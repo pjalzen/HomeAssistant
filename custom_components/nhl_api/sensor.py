@@ -18,7 +18,7 @@ from homeassistant.helpers.entity import Entity
 
 _LOGGER = logging.getLogger(__name__)
 
-__version__ = '0.5.3'
+__version__ = '0.5.4'
 
 CONF_ID = 'team_id'
 CONF_NAME = 'name'
@@ -105,7 +105,7 @@ class NHLSensor(Entity):
             time = {
                 'next_game_time': ''
             }
-            game_date = 'No Scheduled Game'
+            game_date = 'No Game Scheduled'
             next_game_date = ''
         # Merge all attributes to a single dict.
         all_attr = {**games, **plays, **time, 'next_game_date': next_game_date}
