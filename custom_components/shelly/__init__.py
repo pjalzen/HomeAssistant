@@ -42,7 +42,11 @@ from .configuration_schema import CONFIG_SCHEMA, CONFIG_SCHEMA_ROOT
 
 _LOGGER = logging.getLogger(__name__)
 
+<<<<<<< HEAD
 __version__ = "0.2.1-b1"
+=======
+__version__ = "0.2.0-b7"
+>>>>>>> 25bc8c47acecd162c2d754fc7a6083772057fe32
 VERSION = __version__
 
 async def async_setup(hass, config):
