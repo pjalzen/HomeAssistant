@@ -26,10 +26,10 @@
     service: switch.turn_on
   - data:
       entity_id: light.shelly_shplg_s_b85d6a
-    service: switch.turn_on
+    service: light.turn_on
   - data:
       entity_id: light.shelly_shplg_s_51cc16
-    service: switch.turn_on
+    service: light.turn_on
   - data:
       entity_id: switch.everspring_an180_plugin_onoff_module_switch
     service: switch.turn_on
@@ -38,7 +38,7 @@
     service: switch.turn_on
   - data:
       entity_id: light.shelly_shplg_s_51ca64
-    service: switch.turn_on
+    service: light.turn_on
   - data:
       entity_id: switch.timer
     service: switch.turn_on
@@ -50,7 +50,7 @@
     service: switch.turn_on
   - data:
       entity_id: light.shelly_shplg_s_b86d7c
-    service: switch.turn_on
+    service: light.turn_on
 
 
 - alias: Lights off - by midnight
@@ -77,10 +77,10 @@
     service: switch.turn_off
   - data:
       entity_id: light.shelly_shplg_s_b85d6a
-    service: switch.turn_off
+    service: light.turn_off
   - data:
       entity_id: light.shelly_shplg_s_51cc16
-    service: switch.turn_off
+    service: light.turn_off
   - data:
       entity_id: switch.everspring_an180_plugin_onoff_module_switch
     service: switch.turn_off
@@ -89,7 +89,7 @@
     service: switch.turn_off
   - data:
       entity_id: light.shelly_shplg_s_51ca64
-    service: switch.turn_off
+    service: light.turn_off
   - data:
       entity_id: switch.timer
     service: switch.turn_off
@@ -127,16 +127,16 @@
     service: switch.turn_on
   - data:
       entity_id: light.shelly_shplg_s_b86d7c                         #FÖnsterlampa entré
-    service: switch.turn_on
+    service: light.turn_on
   - data:
       entity_id: light.shelly_shplg_s_51ca64                         #Bordslampa kökshall
-    service: switch.turn_on
+    service: light.turn_on
   - data:
       entity_id: light.shelly_shplg_s_b85d6a                         #Matsal öst
-    service: switch.turn_on
+    service: light.turn_on
   - data:
       entity_id: light.shelly_shplg_s_51cc16                         #Matsal norr
-    service: switch.turn_on
+    service: light.turn_on
 
 
 - alias: Lights off - by sunrise
@@ -167,16 +167,16 @@
     service: switch.turn_off
   - data:
       entity_id: light.shelly_shplg_s_b86d7c
-    service: switch.turn_off
+    service: light.turn_off
   - data:
       entity_id: light.shelly_shplg_s_51ca64
-    service: switch.turn_off
+    service: light.turn_off
   - data:
       entity_id: light.shelly_shplg_s_b85d6a
-    service: switch.turn_off
+    service: light.turn_off
   - data:
       entity_id: light.shelly_shplg_s_51cc16
-    service: switch.turn_off
+    service: light.turn_off
     
 
 - alias: Run Backup 3AM
