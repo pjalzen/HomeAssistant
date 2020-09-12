@@ -2,8 +2,8 @@ group:
   lights_dining_room:
     name: Dining Room Lights
     entities:
-      - switch.shelly_shplg_s_b85d6a                    #Fönsterlampa öster
-      - switch.shelly_shplg_s_51cc16                    #Fönsterlampa norr
+      - light.shelly_shplg_s_b85d6a                    #Fönsterlampa öster
+      - light.shelly_shplg_s_51cc16                    #Fönsterlampa norr
       - light.color_temperature_light_dining            #Bordslampa (tak)
 
   lights_living_room:
@@ -19,8 +19,8 @@ group:
   lights_hallway:
     name: Entrance & Hallway Lights
     entities: 
-      - switch.shelly_shplg_s_b86d7c                    #Fönsterlampa hall nere
-      - switch.shelly_shplg_s_51ca64                    #Lampa i gång till köket
+      - light.shelly_shplg_s_b86d7c                    #Fönsterlampa hall nere
+      - light.shelly_shplg_s_51ca64                    #Lampa i gång till köket
       - light.qubino_goap_zmnhdd1_flush_dimmer_level    #Taklampa i gång till kök
 
 
@@ -38,17 +38,17 @@ group:
   lights_basement:
     name: Garage & Basement Lights
     entities:
-      - switch.shelly_shsw_1_98f4abf248fb               #Takbelysning i3
-      - switch.shelly_shsw_1_98f4abf28ba7               #Yakbelysning Ducati
+      - light.shelly_shsw_1_98f4abf248fb               #Takbelysning i3
+      - light.shelly_shsw_1_98f4abf28ba7               #Yakbelysning Ducati
 
   lights_outdoor:
     name: Outdoor & Veranda Lights
     entities:
       - switch.nodon_msp31xx_micro_smart_plug_switch    #Ljussling veranda
-      - switch.shelly_shsw_1_b8efa0                     #Väggbelysning baksidan
-      - switch.shelly_shsw_1_c4f132                     #Entrébelysning
+      - light.shelly_shsw_1_b8efa0                     #Väggbelysning baksidan
+      - light.shelly_shsw_1_c4f132                     #Entrébelysning
       - light.hue_lightstrip_outdoor_1                  #Takslinga entré
-      - switch.shelly_shsw_1_942187                     #Garageportar
+      - light.shelly_shsw_1_942187                     #Garageportar
 
 
 
