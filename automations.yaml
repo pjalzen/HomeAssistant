@@ -25,10 +25,10 @@
       entity_id: switch.nodon_id_rf_msp_3_1_xx_micro_smart_plug_switch_2
     service: switch.turn_on
   - data:
-      entity_id: light.shelly_shplg_s_b85d6a
+      entity_id: switch.shelly_shplg_s_b85d6a
     service: light.turn_on
   - data:
-      entity_id: light.shelly_shplg_s_51cc16
+      entity_id: switch.shelly_shplg_s_51cc16
     service: light.turn_on
   - data:
       entity_id: switch.everspring_an180_plugin_onoff_module_switch
@@ -37,7 +37,7 @@
       entity_id: switch.everspring_an180_plugin_onoff_module_switch_2
     service: switch.turn_on
   - data:
-      entity_id: light.shelly_shplg_s_51ca64
+      entity_id: switch.shelly_shplg_s_51ca64
     service: light.turn_on
   - data:
       entity_id: switch.timer
@@ -49,7 +49,7 @@
       entity_id: switch.21200481dc4f2271416f
     service: switch.turn_on
   - data:
-      entity_id: light.shelly_shplg_s_b86d7c
+      entity_id: switch.shelly_shplg_s_b86d7c
     service: light.turn_on
 
 
@@ -76,10 +76,10 @@
       entity_id: switch.nodon_id_rf_msp_3_1_xx_micro_smart_plug_switch_2
     service: switch.turn_off
   - data:
-      entity_id: light.shelly_shplg_s_b85d6a
+      entity_id: switch.shelly_shplg_s_b85d6a
     service: light.turn_off
   - data:
-      entity_id: light.shelly_shplg_s_51cc16
+      entity_id: switch.shelly_shplg_s_51cc16
     service: light.turn_off
   - data:
       entity_id: switch.everspring_an180_plugin_onoff_module_switch
@@ -88,7 +88,7 @@
       entity_id: switch.everspring_an180_plugin_onoff_module_switch_2
     service: switch.turn_off
   - data:
-      entity_id: light.shelly_shplg_s_51ca64
+      entity_id: switch.shelly_shplg_s_51ca64
     service: light.turn_off
   - data:
       entity_id: switch.timer
@@ -126,16 +126,16 @@
       entity_id: switch.21200481dc4f2271416f                          #Fönsterlampa kontor
     service: switch.turn_on
   - data:
-      entity_id: light.shelly_shplg_s_b86d7c                         #FÖnsterlampa entré
+      entity_id: switch.shelly_shplg_s_b86d7c                         #FÖnsterlampa entré
     service: light.turn_on
   - data:
-      entity_id: light.shelly_shplg_s_51ca64                         #Bordslampa kökshall
+      entity_id: switch.shelly_shplg_s_51ca64                         #Bordslampa kökshall
     service: light.turn_on
   - data:
-      entity_id: light.shelly_shplg_s_b85d6a                         #Matsal öst
+      entity_id: switch.shelly_shplg_s_b85d6a                         #Matsal öst
     service: light.turn_on
   - data:
-      entity_id: light.shelly_shplg_s_51cc16                         #Matsal norr
+      entity_id: switch.shelly_shplg_s_51cc16                         #Matsal norr
     service: light.turn_on
 
 
@@ -166,16 +166,16 @@
       entity_id: switch.21200481dc4f2271416f
     service: switch.turn_off
   - data:
-      entity_id: light.shelly_shplg_s_b86d7c
+      entity_id: switch.shelly_shplg_s_b86d7c
     service: light.turn_off
   - data:
-      entity_id: light.shelly_shplg_s_51ca64
+      entity_id: switch.shelly_shplg_s_51ca64
     service: light.turn_off
   - data:
-      entity_id: light.shelly_shplg_s_b85d6a
+      entity_id: switch.shelly_shplg_s_b85d6a
     service: light.turn_off
   - data:
-      entity_id: light.shelly_shplg_s_51cc16
+      entity_id: switch.shelly_shplg_s_51cc16
     service: light.turn_off
     
 

@@ -8,11 +8,11 @@ cards:
       - type: entities
         title: Entrance & Hallway
         entities:
-          - light.shelly_shplg_s_b86d7c
+          - switch.shelly_shplg_s_b86d7c
           - type: custom:slider-entity-row
             entity: light.qubino_goap_zmnhdd1_flush_dimmer_level
             toggle: true
-          - light.shelly_shplg_s_51ca64
+          - switch.shelly_shplg_s_51ca64
           # - switch.everspring_an180_plugin_onoff_module_switch_3
 
       - type: entities
@@ -36,8 +36,8 @@ cards:
           - type: custom:slider-entity-row
             entity: light.color_temperature_light_dining
             toggle: true
-          - light.shelly_shplg_s_b85d6a
-          - light.shelly_shplg_s_51cc16
+          - switch.shelly_shplg_s_b85d6a
+          - switch.shelly_shplg_s_51cc16
           # - switch.nodon_msp31xx_micro_smart_plug_switch_3
           # - switch.nodon_msp31xx_micro_smart_plug_switch_4
 
@@ -76,16 +76,16 @@ cards:
       - type: entities
         title: Outdoor
         entities:
-          - light.shelly_shsw_1_942187
-          - light.shelly_shsw_1_c4f132
-          - light.shelly_shsw_1_b8efa0
+          - switch.shelly_shsw_1_942187
+          - switch.shelly_shsw_1_c4f132
+          - switch.shelly_shsw_1_b8efa0
           - light.hue_lightstrip_outdoor_1
 
       - type: entities
         title: Garage
         entities:
-          - light.shelly_shsw_1_98f4abf248fb
-          - light.shelly_shsw_1_98f4abf28ba7
+          - switch.shelly_shsw_1_98f4abf248fb
+          - switch.shelly_shsw_1_98f4abf28ba7
 
       # - type: custom:button-card
       #   entity: switch.nodon_msp31xx_micro_smart_plug_switch_2
