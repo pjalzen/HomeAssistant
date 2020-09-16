@@ -104,7 +104,7 @@ hue:
       #allow_unreachable: true
       #allow_hue_groups: true
       
-#shelly:
+shelly:
 
 tuya:
   username: !secret tuya_usr
