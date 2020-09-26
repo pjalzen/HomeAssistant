@@ -177,7 +177,8 @@ cards:
       - type: 'custom:atomic-calendar-revive'
         entities:
           - entity: calendar.familjekalender_for_brunnsgatan_25
-          - entity: calendar.helgdagar_i_sverige
+
+#          - entity: calendar.helgdagar_i_sverige
           
       - type: custom:list-card
         entity: sensor.svt_nyheter
