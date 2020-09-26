@@ -174,12 +174,13 @@ cards:
   - type: vertical-stack
     cards:
 
-      - type: custom:atomic-calendar-revive
-        title: "Family Calendar"
-        progressBar: true
+      - type: 'custom:atomic-calendar-revive'
+        #progressBar: true
         entities:
-          - calendar.familjekalender_for_brunnsgatan_25
-          - calendar.helgdagar_i_sverige
+          - entity: calendar.familjekalender_for_brunnsgatan_25
+          - entity: calendar.helgdagar_i_sverige
+          #title: "Family Calendar"
+          #- calendar.helgdagar_i_sverige
           
       - type: custom:list-card
         entity: sensor.svt_nyheter
