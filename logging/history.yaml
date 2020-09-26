@@ -1,8 +1,8 @@
   include:
     entities:
-      - sensor.yr_temperature
-      - sensor.yr_wind_speed
-      - sensor.yr_cloudiness
+      #- sensor.yr_temperature
+      #- sensor.yr_wind_speed
+      #- sensor.yr_cloudiness
       - sensor.amazon
       - sensor.boliden
       - sensor.capgemini

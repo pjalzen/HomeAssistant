@@ -66,7 +66,7 @@ cards:
         cards:
           - type: custom:mini-graph-card
             entities:
-              - sensor.yr_temperature
+              #- sensor.yr_temperature
             name: Temperature
             font_size: 60
             hours_to_show: 48
@@ -79,7 +79,7 @@ cards:
 
           - type: custom:mini-graph-card
             entities:
-              - sensor.yr_wind_speed
+              #- sensor.yr_wind_speed
             name: Wind speed
             icon: mdi:weather-windy
             font_size: 60
@@ -93,7 +93,7 @@ cards:
 
           - type: custom:mini-graph-card
             entities:
-              - sensor.yr_cloudiness
+              #- sensor.yr_cloudiness
             name: Cloudiness
             icon: mdi:cloud
             font_size: 60
@@ -174,7 +174,7 @@ cards:
   - type: vertical-stack
     cards:
 
-      - type: custom:calendar-card
+      - type: 'custom:atomic-calendar-revive'
         title: "Family Calendar"
         progressBar: true
         entities:

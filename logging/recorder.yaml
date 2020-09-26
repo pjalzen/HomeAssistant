@@ -2,9 +2,9 @@ db_url: !secret recorder_db_url
 purge_keep_days: 7
 include:
   entities:
-    - sensor.yr_temperature
-    - sensor.yr_wind_speed
-    - sensor.yr_cloudiness
+    #- sensor.yr_temperature
+    #- sensor.yr_wind_speed
+    #- sensor.yr_cloudiness
     - sensor.amazon
     - sensor.boliden
     - sensor.capgemini
