@@ -175,6 +175,7 @@ cards:
     cards:
 
       - type: calendar
+        title: Family Calendar
         entities:
           - calendar.familjekalender_for_brunnsgatan_25
           - calendar.helgdagar_i_sverige
