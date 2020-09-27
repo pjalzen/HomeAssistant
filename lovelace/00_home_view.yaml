@@ -174,11 +174,10 @@ cards:
   - type: vertical-stack
     cards:
 
-      - type: 'custom:atomic-calendar-revive'
+      - type: calendar
         entities:
-          - entity: calendar.familjekalender_for_brunnsgatan_25
-
-#          - entity: calendar.helgdagar_i_sverige
+          - calendar.familjekalender_for_brunnsgatan_25
+          - calendar.helgdagar_i_sverige
           
       - type: custom:list-card
         entity: sensor.svt_nyheter
