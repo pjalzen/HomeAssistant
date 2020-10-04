@@ -216,6 +216,7 @@ cards:
 
 
       - type: 'custom:spotify-card'
+        entity: media_player.spotify_per_johan_alzen
         #account: <optional> which account to use for spotcast. Defaults to "default"
         #height: <optional pixels height for the playlist element. If content is larger scrolling will be enabled>
         #limit: <optional number of playlists to retrieve (default 10)>
