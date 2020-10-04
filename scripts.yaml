@@ -51,3 +51,16 @@ go_sleep:
       data:
         entity_id: alarm_control_panel.brunnsgatan_alarm
         code: !secret verisure_code
+
+
+play_spotify_denon_zone2:
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.spotify_per_johan_alzen
+        source: Denon AVR-X3600H
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.spotify_per_johan_alzen
+        media_content_id: 'spotify:user:per-johan.alzen:playlist:37i9dQZF1EpppzBORaCaRY'
+        media_content_type: 'playlist'
