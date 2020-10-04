@@ -217,6 +217,7 @@ cards:
 
       - type: "custom:spotify-card"
         client_id: !secret spotify_client_id 
+        device: media_player.denon_avr_x3600h_zone2
         
         #account: <optional> which account to use for spotcast. Defaults to "default"
         #height: <optional pixels height for the playlist element. If content is larger scrolling will be enabled>
