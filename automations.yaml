@@ -3,7 +3,7 @@
   initial_state: true
   trigger:
   - event: sunset
-    offset: -00:30:00
+    offset: -00:45:00
     platform: sun
   condition:
   - before: '23:30:00'
@@ -101,7 +101,7 @@
 - alias: Lights on - in the morning
   initial_state: true
   trigger:
-  - at: 06:00:00
+  - at: 05:30:00
     platform: time
   condition:
   - before: sunrise
