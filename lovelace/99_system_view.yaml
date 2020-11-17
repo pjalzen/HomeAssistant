@@ -1,5 +1,5 @@
 title: Settings
-icon: mdi:settings-helper
+icon: mdi:cog
 cards:
   - type: entities
     title: Automations
