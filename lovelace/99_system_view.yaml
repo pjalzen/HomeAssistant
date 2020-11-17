@@ -1,5 +1,5 @@
 title: Settings
-icon: mdi:settings-box
+icon: mdi:settings-helper
 cards:
   - type: entities
     title: Automations
