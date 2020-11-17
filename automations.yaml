@@ -143,7 +143,7 @@
   initial_state: true
   trigger:
   - event: sunrise
-    offset: 00:00
+    offset: 00:45:00
     platform: sun
   condition: []
   action:
