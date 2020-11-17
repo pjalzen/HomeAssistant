@@ -51,7 +51,10 @@
   - data:
       entity_id: switch.shelly_shplg_s_b86d7c
     service: switch.turn_on
-
+  - data:
+      entity_id: light.shelly_shdm_1_f3c401
+      brightness: 20
+    service: light.turn_on
 
 - alias: Lights off - by midnight
   initial_state: true
@@ -96,7 +99,9 @@
   - data:
       entity_id: light.hue_lightstrip_plus_1
     service: light.turn_off
-    
+  - data:
+      entity_id: light.shelly_shdm_1_f3c401
+    service: light.turn_off
 
 - alias: Lights on - in the morning
   initial_state: true
