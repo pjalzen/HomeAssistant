@@ -26,15 +26,6 @@ cards:
       - entity: sensor.philio_technology_corp_psr04_smart_color_button_battery_level
         name: "Livingroom Switch"
 
-
-  # - type: entities
-  #   title: Host
-  #   show_header_toggle: false
-  #   entities:
-  #     - sensor.ipv4_address
-  #     - sensor.last_boot
-  #     - sensor.last_update_trigger
-
   - type: entities
     title: Updates
     show_header_toggle: false
@@ -44,12 +35,3 @@ cards:
       - sensor.shelly_1_has_firmware_update
       - sensor.shelly_plug_s_has_firmware_update
 
-  # - type: gauge
-  #   name: CPU Usage
-  #   unit: '%'
-  #   entity: sensor.processor_use
-
-  # - type: gauge
-  #   name: Disk Usage
-  #   unit: '%'
-  #   entity: sensor.disk_use_percent_home
