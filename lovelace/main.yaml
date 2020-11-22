@@ -54,8 +54,6 @@ resources:
     type: module
   - url: /hacsfiles/battery-state-card/battery-state-card.js
     type: module
-  - url: /hacsfiles/lovelace-battery-entity-row/battery-entity-row.js
-    type: module
 
   # other
   - url: https://fonts.googleapis.com/css?family=Roboto+Condensed
