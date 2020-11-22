@@ -20,9 +20,9 @@ cards:
       - sensor.philio_technology_corp_psr04_smart_color_button_battery_level
       - sensor.front_door_battery
 
-  - type: 'custom:battery-state-card'
-    title: "Battery Levels"
-    sort_by_level: "asc"
+  - type: custom:battery-state-card
+    title: Battery Levels
+    sort_by_level: asc
     entities:
       - sensor.philio_technology_corp_psr04_smart_color_button_battery_level
       - sensor.front_door_battery
