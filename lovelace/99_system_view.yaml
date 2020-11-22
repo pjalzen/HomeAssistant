@@ -17,14 +17,14 @@ cards:
     title: Battery Levels
     sort_by_level: asc
     entities:
-      - sensor.front_door_battery
-        name: Door Bell
-      - sensor.fibaro_system_fgms001_zw5_motion_sensor_battery_level
-        name : Library Motion Sensor
-      - sensor.fibaro_system_fgms001_zw5_motion_sensor_battery_level_3
-        name: Garage Motion Sensor
-      - sensor.philio_technology_corp_psr04_smart_color_button_battery_level
-        name: Livingroom Switch
+      - entity: sensor.front_door_battery
+        name: "Door Bell"
+      - entity: sensor.fibaro_system_fgms001_zw5_motion_sensor_battery_level
+        name : "Library Motion Sensor"
+      - entity: sensor.fibaro_system_fgms001_zw5_motion_sensor_battery_level_3
+        name: "Garage Motion Sensor"
+      - entity: sensor.philio_technology_corp_psr04_smart_color_button_battery_level
+        name: "Livingroom Switch"
 
 
   # - type: entities
