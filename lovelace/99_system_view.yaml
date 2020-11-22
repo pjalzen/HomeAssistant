@@ -18,14 +18,22 @@ cards:
     show_header_toggle: false
     entities:
       - sensor.philio_technology_corp_psr04_smart_color_button_battery_level
+      - sensor.front_door_battery
 
-  - type: entities
-    title: Host
-    show_header_toggle: false
+  - type: custom:battery-state-card
+    title: "Battery Levels"
+    sort_by_level: "asc"
     entities:
-      - sensor.ipv4_address
-      - sensor.last_boot
-      - sensor.last_update_trigger
+      - sensor.philio_technology_corp_psr04_smart_color_button_battery_level
+      - sensor.front_door_battery
+
+  # - type: entities
+  #   title: Host
+  #   show_header_toggle: false
+  #   entities:
+  #     - sensor.ipv4_address
+  #     - sensor.last_boot
+  #     - sensor.last_update_trigger
 
   - type: entities
     title: Updates
@@ -36,12 +44,12 @@ cards:
       - sensor.shelly_1_has_firmware_update
       - sensor.shelly_plug_s_has_firmware_update
 
-  - type: gauge
-    name: CPU Usage
-    unit: '%'
-    entity: sensor.processor_use
+  # - type: gauge
+  #   name: CPU Usage
+  #   unit: '%'
+  #   entity: sensor.processor_use
 
-  - type: gauge
-    name: Disk Usage
-    unit: '%'
-    entity: sensor.disk_use_percent_home
+  # - type: gauge
+  #   name: Disk Usage
+  #   unit: '%'
+  #   entity: sensor.disk_use_percent_home

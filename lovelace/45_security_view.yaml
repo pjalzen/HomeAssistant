@@ -25,3 +25,9 @@ cards:
           - switch.camera_garage_ftp
           - binary_sensor.motion_garage
         title: Garage
+
+      # - type: picture-glance
+      #   camera_image: camera.ring
+      #   entities:
+      #     - binary_sensor.motion_garage
+      #   title: Front Door
