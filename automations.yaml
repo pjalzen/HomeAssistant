@@ -53,7 +53,7 @@
     service: switch.turn_on
   - data:
       entity_id: light.shelly_shdm_1_f3c401
-      brightness: 20
+      brightness: 51    #20% av 255
     service: light.turn_on
 
 - alias: Lights off - by midnight
