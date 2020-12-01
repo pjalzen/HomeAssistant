@@ -11,5 +11,8 @@ sensor:
       - ^FTSE
       - ^DJI
       - ^IXIC
-
+      - EURUSD=X
+      - EURSEK=X
+      - SEK=X
+      - EURGBP=X
 
