@@ -11,8 +11,8 @@ cards:
 
   - type: entities
     entities:
-      - entity: yahoofinance.omx
-        type: 'custom:multiple-entity-row'
+      - type: custom:multiple-entity-row
+        entity: yahoofinance.omx
         name: Attributes
         secondary_info:
           entities:
@@ -23,7 +23,6 @@ cards:
             name: MarketChangePercent
             unit: '%'
       - type: section
-
 
 
   - type: custom:mini-graph-card
