@@ -12,7 +12,7 @@ cards:
   - type: entities
     entities:
       - entity: yahoofinance.omx
-        type: "custom:multiple-entity-row"
+        type: 'custom:multiple-entity-row'
         name: Attributes
         secondary_info:
           entities:
