@@ -9,6 +9,24 @@ cards:
   #    - sensor.nike
   #  hours_to_show: 48
 
+  - type: entities
+    entities:
+      - entity: yahoofinance.omx
+        type: custom:multiple-entity-row
+        name: Attributes
+        secondary_info:
+          entities:
+          - attribute: MarketChange
+            name: MarketChange
+
+          - attribute: MarketChangePercent
+            name: MarketChangePercent
+            unit: '%'
+    
+  - type: section
+
+
+
   - type: custom:mini-graph-card
     entities:
       - sensor.amazon
