@@ -29,3 +29,11 @@ include:
     - sensor.pool_do
     - sensor.pool_ec
     - sensor.pool_orp
+    - yahoofinance.eurgbp_x
+    - yahoofinance.eursek_x
+    - yahoofinance.eurusd_x
+    - yahoofinance.ftse
+    - yahoofinance.gdaxi
+    - yahoofinance.ixic
+    - yahoofinance.n225
+    - yahoofinance.omx

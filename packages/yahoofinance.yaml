@@ -2,7 +2,7 @@ sensor:
   - platform: yahoofinance
     show_trending_icon: true
     scan_interval:
-      hours: 0.1
+      hours: 1
     symbols:
       - ^GSPC
       - ^GDAXI
