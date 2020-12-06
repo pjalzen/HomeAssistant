@@ -11,27 +11,84 @@ cards:
 
   - type: entities
     entities:
-      - entity: yahoofinance.omx
-        type: custom:multiple-entity-row
-        secondary_info:
-        entities:
-          - attribute: RegularMarketChange
-            name: Change
-
-          - attribute: RegularMarketChangePercent
-            name: Change%
-            unit: '%'
-      - type: section
       - entity: yahoofinance.gspc
         type: custom:multiple-entity-row
         secondary_info:
         entities:
-          - attribute: RegularMarketChange
+          - attribute: regularMarketChange
             name: Change
-
-          - attribute: RegularMarketChangePercent
+          - attribute: regularMarketChangePercent
             name: Change%
             unit: '%'
+      - type: section
+
+      - entity: yahoofinance.ixic
+        type: custom:multiple-entity-row
+        secondary_info:
+        entities:
+          - attribute: regularMarketChange
+            name: Change
+          - attribute: regularMarketChangePercent
+            name: Change%
+            unit: '%'
+      - type: section
+
+      - entity: yahoofinance.dji
+        type: custom:multiple-entity-row
+        secondary_info:
+        entities:
+          - attribute: regularMarketChange
+            name: Change
+          - attribute: regularMarketChangePercent
+            name: Change%
+            unit: '%'
+      - type: section
+
+      - entity: yahoofinance.n225
+        type: custom:multiple-entity-row
+        secondary_info:
+        entities:
+          - attribute: regularMarketChange
+            name: Change
+          - attribute: regularMarketChangePercent
+            name: Change%
+            unit: '%'
+      - type: section
+
+      - entity: yahoofinance.gdaxi
+        type: custom:multiple-entity-row
+        secondary_info:
+        entities:
+          - attribute: regularMarketChange
+            name: Change
+          - attribute: regularMarketChangePercent
+            name: Change%
+            unit: '%'
+      - type: section
+
+      - entity: yahoofinance.ftse
+        type: custom:multiple-entity-row
+        secondary_info:
+        entities:
+          - attribute: regularMarketChange
+            name: Change
+
+          - attribute: regularMarketChangePercent
+            name: Change%
+            unit: '%'
+      - type: section
+
+      - entity: yahoofinance.omx
+        type: custom:multiple-entity-row
+        secondary_info:
+        entities:
+          - attribute: regularMarketChange
+            name: Change
+
+          - attribute: regularMarketChangePercent
+            name: Change%
+            unit: '%'
+      - type: section
 
 
   - type: custom:mini-graph-card
