@@ -13,7 +13,6 @@ cards:
     entities:
       - entity: yahoofinance.omx
         type: custom:multiple-entity-row
-        name: Attributes
         secondary_info:
         entities:
           - attribute: RegularMarketChange
@@ -23,6 +22,16 @@ cards:
             name: Change%
             unit: '%'
       - type: section
+      - entity: yahoofinance.gspc
+        type: custom:multiple-entity-row
+        secondary_info:
+        entities:
+          - attribute: RegularMarketChange
+            name: Change
+
+          - attribute: RegularMarketChangePercent
+            name: Change%
+            unit: '%'
 
 
   - type: custom:mini-graph-card
