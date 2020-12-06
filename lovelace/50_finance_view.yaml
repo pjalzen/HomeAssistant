@@ -15,7 +15,7 @@ cards:
         type: custom:multiple-entity-row
         name: Attributes
         secondary_info:
-        #entities:
+        entities:
           - attribute: MarketChange
             name: MarketChange
 
