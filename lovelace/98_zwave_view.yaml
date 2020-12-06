@@ -1,0 +1,4 @@
+title: Z-Wave
+icon: mdi:z-wave
+cards:
+  - type: custom:ozw-network-visualization-card
