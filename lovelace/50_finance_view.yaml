@@ -16,11 +16,11 @@ cards:
         name: Attributes
         secondary_info:
         entities:
-          - attribute: MarketChange
-            name: MarketChange
+          - attribute: RegularMarketChange
+            name: Change
 
-          - attribute: MarketChangePercent
-            name: MarketChangePercent
+          - attribute: RegularMarketChangePercent
+            name: Change%
             unit: '%'
       - type: section
 
