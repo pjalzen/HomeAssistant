@@ -11,11 +11,11 @@ cards:
 
   - type: entities
     entities:
-      - type: custom:multiple-entity-row
-        entity: yahoofinance.omx
+      - entity: yahoofinance.omx
+        type: custom:multiple-entity-row
         name: Attributes
         secondary_info:
-          entities:
+        #entities:
           - attribute: MarketChange
             name: MarketChange
 
