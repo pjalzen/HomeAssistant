@@ -17,9 +17,11 @@ cards:
         entities:
           - attribute: regularMarketChange
             name: Change
+            format: "0.00"
           - attribute: regularMarketChangePercent
             name: Change%
             unit: '%'
+            format: "0.00"
       - type: section
 
       - entity: yahoofinance.ixic
@@ -28,9 +30,11 @@ cards:
         entities:
           - attribute: regularMarketChange
             name: Change
+            format: "0.00"
           - attribute: regularMarketChangePercent
             name: Change%
             unit: '%'
+            format: "0.00"
       - type: section
 
       - entity: yahoofinance.dji
@@ -39,9 +43,11 @@ cards:
         entities:
           - attribute: regularMarketChange
             name: Change
+            format: "0.00"
           - attribute: regularMarketChangePercent
             name: Change%
             unit: '%'
+            format: "0.00"
       - type: section
 
       - entity: yahoofinance.n225
@@ -50,9 +56,11 @@ cards:
         entities:
           - attribute: regularMarketChange
             name: Change
+            format: "0.00"
           - attribute: regularMarketChangePercent
             name: Change%
             unit: '%'
+            format: "0.00"
       - type: section
 
       - entity: yahoofinance.gdaxi
@@ -61,9 +69,11 @@ cards:
         entities:
           - attribute: regularMarketChange
             name: Change
+            format: "0.00"
           - attribute: regularMarketChangePercent
             name: Change%
             unit: '%'
+            format: "0.00"
       - type: section
 
       - entity: yahoofinance.ftse
@@ -72,10 +82,12 @@ cards:
         entities:
           - attribute: regularMarketChange
             name: Change
+            format: "0.00"
 
           - attribute: regularMarketChangePercent
             name: Change%
             unit: '%'
+            format: "0.00"
       - type: section
 
       - entity: yahoofinance.omx
@@ -84,10 +96,12 @@ cards:
         entities:
           - attribute: regularMarketChange
             name: Change
+            format: "0.00"
 
           - attribute: regularMarketChangePercent
             name: Change%
             unit: '%'
+            format: "0.00"
       - type: section
 
 
