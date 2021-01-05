@@ -47,3 +47,10 @@
     ignore_availability: true
     name: "Familjekalender f\xF6r Brunnsgatan 25"
     track: true
+
+- cal_id: ipfulhpc2k311ejl6gb4k78m74@group.calendar.google.com
+  entities:
+  - device_id: pjs_trading
+    ignore_availability: true
+    name: PJs Trading
+    track: true
