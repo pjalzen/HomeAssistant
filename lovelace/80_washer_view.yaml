@@ -1,17 +1,37 @@
-title: Washer
+title: Home Appliances
 icon: mdi:washing-machine
 cards:
   - type: vertical-stack
     cards:
       - entities:
+        - entity: switch.tvattmaskin_power
         - entity: binary_sensor.tvattmaskin_door
         - entity: sensor.tvattmaskin_duration
-        - entity: sensor.tvattmaskin_elapsed_program_time
+        - entity: sensor.tvattmaskin_program_progress
         - entity: sensor.tvattmaskin_remaining_program_time
         type: glance
       - entities:
+        - entity: switch.torktumlare_power
         - entity: binary_sensor.torktumlare_door
         - entity: sensor.torktumlare_duration
-        - entity: sensor.torktumlare_elapsed_program_time
+        - entity: sensor.torktumlare_program_progress
         - entity: sensor.torktumlare_remaining_program_time
+        type: glance
+      - entities:
+        - entity: switch.diskmaskin_power
+        - entity: binary_sensor.diskmaskin_door
+        - entity: sensor.diskmaskin_duration
+        - entity: sensor.diskmaskin_remaining_program_time
+        type: glance
+      - entities:
+        - entity: switch.hall_power
+        type: glance        
+      - entities:
+        - entity: switch.ugn_power
+        - entity: enesor.ugn_duration
+        - entity: sensor.ugn_program_progress
+        - entity: sensor.ugn_remaining_program_time
+        type: glance        
+      - entities:
+        - entity: switch.kaffemaskin_power
         type: glance
