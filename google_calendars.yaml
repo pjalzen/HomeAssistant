@@ -54,3 +54,10 @@
     ignore_availability: true
     name: PJs Trading
     track: true
+
+- cal_id: 2jpqg4chp4djba5ea99b22b838@group.calendar.google.com
+  entities:
+  - device_id: nyse_holidays
+    ignore_availability: true
+    name: NYSE Holidays
+    track: true
