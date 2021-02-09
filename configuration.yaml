@@ -30,7 +30,6 @@ http:
   #  - 172.30.33.0/24
     - 127.0.0.1
     - ::1
-  base_url: brunnen.duckdns.org
   #base_url: !secret base_url
   #ssl_certificate: /ssl/fullchain.pem
   #ssl_key: /ssl/privkey.pem
