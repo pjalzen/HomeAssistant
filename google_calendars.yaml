@@ -61,3 +61,10 @@
     ignore_availability: true
     name: NYSE Holidays
     track: true
+
+- cal_id: pa28e1qime88433lac2f0b1ql530fk4i@import.calendar.google.com
+  entities:
+  - device_id: per_johan_alzen_calendar_canvas
+    ignore_availability: true
+    name: "Per-Johan Alz\xE9n Calendar (Canvas)"
+    track: true
