@@ -16,13 +16,13 @@
       entity_id: light.hallway_upstairs
     service: light.turn_on
   - data:
-      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
+      entity_id: switch.porch
     service: switch.turn_on
   - data:
-      entity_id: switch.nodon_id_rf_msp_3_1_xx_micro_smart_plug_switch
+      entity_id: switch.bedroom
     service: switch.turn_on
   - data:
-      entity_id: switch.nodon_id_rf_msp_3_1_xx_micro_smart_plug_switch_2
+      entity_id: switch.livingroom_tv
     service: switch.turn_on
   - data:
       entity_id: switch.shelly_shplg_s_b85d6a
@@ -31,10 +31,10 @@
       entity_id: switch.shelly_shplg_s_51cc16
     service: switch.turn_on
   - data:
-      entity_id: switch.everspring_an180_plugin_onoff_module_switch
+      entity_id: switch.livingroom
     service: switch.turn_on
   - data:
-      entity_id: switch.everspring_an180_plugin_onoff_module_switch_2
+      entity_id: switch.bedroom_window
     service: switch.turn_on
   - data:
       entity_id: switch.shelly_shplg_s_51ca64
@@ -70,13 +70,13 @@
       entity_id: light.hallway_upstairs
     service: light.turn_off
   - data:
-      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
+      entity_id: switch.porch
     service: switch.turn_off
   - data:
-      entity_id: switch.nodon_id_rf_msp_3_1_xx_micro_smart_plug_switch
+      entity_id: switch.bedroom
     service: switch.turn_off
   - data:
-      entity_id: switch.nodon_id_rf_msp_3_1_xx_micro_smart_plug_switch_2
+      entity_id: switch.livingroom_tv
     service: switch.turn_off
   - data:
       entity_id: switch.shelly_shplg_s_b85d6a
@@ -85,10 +85,10 @@
       entity_id: switch.shelly_shplg_s_51cc16
     service: switch.turn_off
   - data:
-      entity_id: switch.everspring_an180_plugin_onoff_module_switch
+      entity_id: switch.livingroom
     service: switch.turn_off
   - data:
-      entity_id: switch.everspring_an180_plugin_onoff_module_switch_2
+      entity_id: switch.bedroom_window
     service: switch.turn_off
   - data:
       entity_id: switch.shelly_shplg_s_51ca64
@@ -113,16 +113,16 @@
     condition: sun
   action:
   - data:
-      entity_id: switch.everspring_an180_plugin_onoff_module_switch   #Golvlampa bibliotek
+      entity_id: switch.livingroom   #Golvlampa bibliotek
     service: switch.turn_on
   - data:
-      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch         #Ljusslinga veranda
+      entity_id: switch.porch         #Ljusslinga veranda
     service: switch.turn_on
   - data:
-      entity_id: switch.nodon_id_rf_msp_3_1_xx_micro_smart_plug_switch_2  #Bordslampa TV-bänk
+      entity_id: switch.livingroom_tv  #Bordslampa TV-bänk
     service: switch.turn_on
   - data:
-      entity_id: switch.nodon_id_rf_msp_3_1_xx_micro_smart_plug_switch    #Sovrummets fönsterslinga
+      entity_id: switch.bedroom    #Sovrummets fönsterslinga
     service: switch.turn_on
   - data:
       entity_id: switch.timer
@@ -153,16 +153,16 @@
   condition: []
   action:
   - data:
-      entity_id: switch.everspring_an180_plugin_onoff_module_switch
+      entity_id: switch.livingroom
     service: switch.turn_off
   - data:
-      entity_id: switch.nodon_msp31xx_micro_smart_plug_switch
+      entity_id: switch.porch
     service: switch.turn_off
   - data:
-      entity_id: switch.nodon_id_rf_msp_3_1_xx_micro_smart_plug_switch_2      
+      entity_id: switch.livingroom_tv      
     service: switch.turn_off
   - data:
-      entity_id: switch.nodon_id_rf_msp_3_1_xx_micro_smart_plug_switch
+      entity_id: switch.bedroom
     service: switch.turn_off
   - data:
       entity_id: switch.timer

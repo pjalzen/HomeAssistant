@@ -62,13 +62,13 @@ go_sleep:
     - service: light.turn_off
       entity_id: light.hue_play_2
     - service: switch.turn_off
-      entity_id: switch.nodon_id_rf_msp_3_1_xx_micro_smart_plug_switch_2  #Lampa på TV-bänk
+      entity_id: switch.livingroom_tv  #Lampa på TV-bänk
     - service: switch.turn_off
-      entity_id: switch.everspring_an180_plugin_onoff_module_switch_2     #Golvlampa soffa
+      entity_id: switch.livingroom     #Golvlampa soffa
     - service: switch.turn_off
       entity_id: switch.shelly_shplg_s_51cc16   #Matsal norr
     - service: switch.turn_off
-      entity_id: switch.everspring_an180_plugin_onoff_module_switch       #Golvlampa bibliotek
+      entity_id: switch.library       #Golvlampa bibliotek
     - service: light.turn_off
       entity_id: light.shelly_shdm_1_f3c401  #Spotlights kökshall
     - service: switch.turn_off

@@ -26,8 +26,8 @@ cards:
           - type: custom:slider-entity-row
             entity: light.hue_play_2
             toggle: true
-          - switch.nodon_id_rf_msp_3_1_xx_micro_smart_plug_switch_2
-          - switch.everspring_an180_plugin_onoff_module_switch_2
+          - switch.livingroom
+          - switch.livingroom_tv
 
       - type: entities
         title: Dining room
@@ -45,7 +45,7 @@ cards:
       - type: entities
         title: Library & Hallway
         entities:
-          - switch.everspring_an180_plugin_onoff_module_switch
+          - switch.library
           - switch.timer
       - type: entities
         title: Office
@@ -54,7 +54,8 @@ cards:
       - type: entities
         title: Bedroom
         entities:
-          - switch.nodon_id_rf_msp_3_1_xx_micro_smart_plug_switch
+          - switch.bedroom_window
+          - switch.bedroom
       - type: entities
         title: Calle
         entities:
@@ -70,7 +71,7 @@ cards:
       - type: entities
         title: Veranda
         entities:
-          - switch.nodon_msp31xx_micro_smart_plug_switch
+          - switch.porch
 
       - type: entities
         title: Outdoor
