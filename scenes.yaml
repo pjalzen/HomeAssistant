@@ -43,21 +43,21 @@
       min_mireds: 153
       state: 'off'
       supported_features: 63
-    switch.everspring_an180_plugin_onoff_module_switch:
+    switch.library:
       friendly_name: Nexa Switch - Upstairs Library
       node_id: 8
       state: 'off'
       value_id: '72057594176946176'
       value_index: 0
       value_instance: 1
-    switch.everspring_an180_plugin_onoff_module_switch_2:
+    switch.livingroom:
       friendly_name: Nexa Switch - Downstairs Sofa
       node_id: 9
       state: 'off'
       value_id: '72057594193723392'
       value_index: 0
       value_instance: 1
-    switch.everspring_an180_plugin_onoff_module_switch_3:
+    switch.bedroom_window:
       friendly_name: Nexa Switch - Downstairs Entrance
       node_id: 10
       state: 'off'
@@ -72,7 +72,7 @@
       value_id: '72057594126614528'
       value_index: 0
       value_instance: 1
-    switch.nodon_msp31xx_micro_smart_plug_switch_4:
+    switch.bedroom:
       friendly_name: Smart Switch - White
       node_id: 7
       power_consumption: 0
