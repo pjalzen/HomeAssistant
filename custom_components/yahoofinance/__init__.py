@@ -10,10 +10,13 @@ from typing import Union
 
 import async_timeout
 from homeassistant.const import CONF_SCAN_INTERVAL
-from homeassistant.helpers import discovery
+from homeassistant.core import callback
+from homeassistant.helpers import discovery, event
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 import homeassistant.helpers.config_validation as cv
+from homeassistant.helpers.event import async_track_point_in_utc_time
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
+from homeassistant.util.dt import utcnow
 import voluptuous as vol
 
 from .const import (
@@ -37,6 +40,8 @@ _LOGGER = logging.getLogger(__name__)
 DEFAULT_SCAN_INTERVAL = timedelta(hours=6)
 MINIMUM_SCAN_INTERVAL = timedelta(seconds=30)
 WEBSESSION_TIMEOUT = 15
+DELAY_ASYNC_REQUEST_REFRESH = 5
+FAILURE_ASYNC_REQUEST_REFRESH = 20
 
 BASIC_SYMBOL_SCHEMA = vol.All(cv.string, vol.Upper)
 
@@ -99,11 +104,11 @@ def normalize_input(defined_symbols):
 
     for value in defined_symbols:
         if isinstance(value, str):
-            if not (value in symbols):
+            if value not in symbols:
                 symbols.add(value)
                 normalized_symbols.append({"symbol": value})
         else:
-            if not (value["symbol"] in symbols):
+            if value["symbol"] not in symbols:
                 symbols.add(value["symbol"])
                 normalized_symbols.append(value)
 
@@ -111,6 +116,7 @@ def normalize_input(defined_symbols):
 
 
 async def async_setup(hass, config) -> bool:
+    """Set up the component."""
     domain_config = config.get(DOMAIN, {})
     defined_symbols = domain_config.get(CONF_SYMBOLS, [])
 
@@ -126,7 +132,7 @@ async def async_setup(hass, config) -> bool:
 
     # Refresh coordinator to get initial symbol data
     _LOGGER.info(
-        f"Requesting data from coordinator with update interval of {scan_interval}."
+        "Requesting data from coordinator with update interval of %s.", scan_interval
     )
     await coordinator.async_refresh()
 
@@ -159,7 +165,7 @@ async def async_setup(hass, config) -> bool:
 
 
 class YahooSymbolUpdateCoordinator(DataUpdateCoordinator):
-    """Class to manage Yahoo finance data update."""
+    """Yahoo finance data update coordinator."""
 
     @staticmethod
     def parse_symbol_data(symbol_data):
@@ -182,6 +188,8 @@ class YahooSymbolUpdateCoordinator(DataUpdateCoordinator):
         self.data = None
         self.loop = hass.loop
         self.websession = async_get_clientsession(hass)
+        self._update_interval = update_interval
+        self._failure_update_interval = timedelta(seconds=FAILURE_ASYNC_REQUEST_REFRESH)
 
         super().__init__(
             hass,
@@ -191,20 +199,65 @@ class YahooSymbolUpdateCoordinator(DataUpdateCoordinator):
             update_interval=update_interval,
         )
 
+    def get_next_update_interval(self):
+        """Get the update interval for the next async_track_point_in_utc_time call."""
+        if self.last_update_success:
+            return self._update_interval
+        else:
+            _LOGGER.warning(
+                "Error obtaining data, retrying in %d seconds.",
+                FAILURE_ASYNC_REQUEST_REFRESH,
+            )
+            return self._failure_update_interval
+
+    @callback
+    def _schedule_refresh(self) -> None:
+        """Schedule a refresh."""
+        if self._unsub_refresh:
+            self._unsub_refresh()
+            self._unsub_refresh = None
+
+        # We _floor_ utcnow to create a schedule on a rounded second,
+        # minimizing the time between the point and the real activation.
+        # That way we obtain a constant update frequency,
+        # as long as the update process takes less than a second
+
+        update_interval = self.get_next_update_interval()
+        if update_interval is not None:
+            self._unsub_refresh = async_track_point_in_utc_time(
+                self.hass,
+                self._job,
+                utcnow().replace(microsecond=0) + update_interval,
+            )
+
     def get_symbols(self):
         """Return symbols tracked by the coordinator."""
         return self._symbols
 
-    def add_symbol(self, symbol):
+    async def _async_request_refresh_later(self, _now):
+        """Request async_request_refresh."""
+        await self.async_request_refresh()
+
+    def add_symbol(self, symbol) -> bool:
         """Add symbol to the symbol list."""
         if symbol not in self._symbols:
             self._symbols.append(symbol)
 
             # Request a refresh to get data for the missing symbol.
             # This would have been called while data for sensor was being parsed.
-            self.hass.async_create_task(self.async_request_refresh())
+            # async_request_refresh has debouncing built into it, so multiple calls
+            # to add_symbol will still resut in single refresh.
+            event.async_call_later(
+                self.hass,
+                DELAY_ASYNC_REQUEST_REFRESH,
+                self._async_request_refresh_later,
+            )
 
-            _LOGGER.info(f"Added symbol {symbol} and requested update")
+            _LOGGER.info(
+                "Added %s and requested update in %d seconds.",
+                symbol,
+                DELAY_ASYNC_REQUEST_REFRESH,
+            )
             return True
 
         return False
@@ -224,9 +277,8 @@ class YahooSymbolUpdateCoordinator(DataUpdateCoordinator):
         """
         Return updated data if new JSON is valid.
 
-        Don't catch any exceptions, they get properly handled in the caller
-        (DataUpdateCoordinator.async_refresh) which also updates last_update_success.
-        UpdateFailed is raised if JSON is invalid.
+        The exception will get properly handled in the caller (DataUpdateCoordinator.async_refresh)
+        which also updates last_update_success. UpdateFailed is raised if JSON is invalid.
         """
 
         json = await self.get_json()
@@ -256,7 +308,7 @@ class YahooSymbolUpdateCoordinator(DataUpdateCoordinator):
             data[symbol] = self.parse_symbol_data(symbol_data)
 
             _LOGGER.debug(
-                "Updated %s (%s)",
+                "Updated %s to %s",
                 symbol,
                 data[symbol][DATA_REGULAR_MARKET_PRICE],
             )

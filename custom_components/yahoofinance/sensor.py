@@ -58,11 +58,11 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
     ]
 
     async_add_entities(sensors, update_before_add=False)
-    _LOGGER.info("Platform added sensors for %s", symbols)
+    _LOGGER.info("Entities added for %s", [item["symbol"] for item in symbols])
 
 
 class YahooFinanceSensor(Entity):
-    """Defines a Yahoo finance sensor."""
+    """Represents a Yahoo finance entity."""
 
     _currency = DEFAULT_CURRENCY
     _icon = DEFAULT_ICON
@@ -149,21 +149,25 @@ class YahooFinanceSensor(Entity):
         return round(value, self._decimal_places)
 
     def _get_target_currency_conversion(self) -> float:
+        value = None
+
         if self._target_currency and self._original_currency:
+            conversion_symbol = (
+                f"{self._original_currency}{self._target_currency}=X".upper()
+            )
             data = self._coordinator.data
+
             if data is not None:
-                source_symbol = (
-                    f"{self._original_currency}{self._target_currency}=X".upper()
-                )
-                _LOGGER.debug(f"Conversion symbol = {source_symbol}")
-                symbol_data = data.get(source_symbol)
+                symbol_data = data.get(conversion_symbol)
 
                 if symbol_data is not None:
-                    return symbol_data[DATA_REGULAR_MARKET_PRICE]
+                    value = symbol_data[DATA_REGULAR_MARKET_PRICE]
                 else:
-                    self._coordinator.add_symbol(source_symbol)
+                    self._coordinator.add_symbol(conversion_symbol)
 
-        return None
+            _LOGGER.debug("%s conversion %s=%s", self._symbol, conversion_symbol, value)
+
+        return value
 
     @staticmethod
     def safe_convert(value, conversion):
@@ -181,7 +185,7 @@ class YahooFinanceSensor(Entity):
         currency = symbol_data[DATA_CURRENCY_SYMBOL]
 
         _LOGGER.debug(
-            "Updated %s (currency=%s, financialCurrency=%s)",
+            "%s currency=%s, financialCurrency=%s",
             self._symbol,
             ("None" if currency is None else currency),
             ("None" if financial_currency is None else financial_currency),
@@ -195,17 +199,16 @@ class YahooFinanceSensor(Entity):
 
         data = self._coordinator.data
         if data is None:
-            _LOGGER.debug("Coordinator data is None")
+            _LOGGER.debug("%s Coordinator data is None", self._symbol)
             return
 
         symbol_data = data.get(self._symbol)
         if symbol_data is None:
-            _LOGGER.debug("Symbol data is None")
+            _LOGGER.debug("%s Symbol data is None", self._symbol)
             return
 
         self._original_currency = self._get_original_currency(symbol_data)
         conversion = self._get_target_currency_conversion()
-        _LOGGER.debug(f"Currency conversion = {conversion}")
 
         self._short_name = symbol_data[DATA_SHORT_NAME]
         self._market_price = self.safe_convert(
@@ -229,7 +232,8 @@ class YahooFinanceSensor(Entity):
         self._attributes[ATTR_QUOTE_TYPE] = symbol_data[DATA_QUOTE_TYPE]
         self._attributes[ATTR_QUOTE_SOURCE_NAME] = symbol_data[DATA_QUOTE_SOURCE_NAME]
 
-        # Use target_currency if we have conversion data, otherwise keep using the currency from data.
+        # Use target_currency if we have conversion data. Otherwise keep using the
+        # currency from data.
         if conversion is not None:
             currency = self._target_currency or self._original_currency
         else:
