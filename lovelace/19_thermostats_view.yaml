@@ -6,66 +6,73 @@ cards:
     cards:
 
       - type: entities
-        title: Heater
+        title: Mill Heater
         show_header_toggle: false
         entities: 
           - entity: climate.millheat
 
-      - type: thermostat
-        entity: climate.entre_syd
-        name: Hallen entré
-      - type: horizontal-stack
-        cards:
-          - type: thermostat
-            entity: climate.vardagsrum_norr
-            name: Vardagsrum norr
-          - type: thermostat
-            entity: climate.vardagsrum_vast
-            name: Vardagsrum väster 
-      - type: horizontal-stack
-        cards:
-          - type: thermostat
-            entity: climate.matsal_norr
-            name: Matsal norr
-          - type: thermostat
-            entity: climate.matsal_ost
-            name: Matsal öster
+      - type: entities
+        title: Garage
+        show_header_toggle: false
+        entities: 
+          - entity: switch.garage_pool
 
-  - type: vertical-stack
-    cards:
-      - type: horizontal-stack
-        cards:
-          - type: thermostat
-            entity: climate.hall_uppe_trapp
-            name: Hall uppe trapp
-          - type: thermostat
-            entity: climate.hall_uppe_garderob
-            name: Hall uppe
-      - type: thermostat
-        entity: climate.kontor_syd
-        name: Kontoret
 
-  - type: vertical-stack
-    cards:
-      - type: thermostat
-        entity: climate.calle_ost
-        name: Calles rum 
-      - type: horizontal-stack
-        cards:
-          - type: thermostat
-            entity: climate.sovrum_vast
-            name: Sovrum väster
-          - type: thermostat
-            entity: climate.sovrum_norr
-            name: Sovrum norr
-      - type: horizontal-stack
-        cards:
-          - type: thermostat
-            entity: climate.emma_norr
-            name: Emmas rum norr 
-          - type: thermostat
-            entity: climate.emma_ost
-            name: Emmas rum öster
+  #     - type: thermostat
+  #       entity: climate.entre_syd
+  #       name: Hallen entré
+  #     - type: horizontal-stack
+  #       cards:
+  #         - type: thermostat
+  #           entity: climate.vardagsrum_norr
+  #           name: Vardagsrum norr
+  #         - type: thermostat
+  #           entity: climate.vardagsrum_vast
+  #           name: Vardagsrum väster 
+  #     - type: horizontal-stack
+  #       cards:
+  #         - type: thermostat
+  #           entity: climate.matsal_norr
+  #           name: Matsal norr
+  #         - type: thermostat
+  #           entity: climate.matsal_ost
+  #           name: Matsal öster
+
+  # - type: vertical-stack
+  #   cards:
+  #     - type: horizontal-stack
+  #       cards:
+  #         - type: thermostat
+  #           entity: climate.hall_uppe_trapp
+  #           name: Hall uppe trapp
+  #         - type: thermostat
+  #           entity: climate.hall_uppe_garderob
+  #           name: Hall uppe
+  #     - type: thermostat
+  #       entity: climate.kontor_syd
+  #       name: Kontoret
+
+  # - type: vertical-stack
+  #   cards:
+  #     - type: thermostat
+  #       entity: climate.calle_ost
+  #       name: Calles rum 
+  #     - type: horizontal-stack
+  #       cards:
+  #         - type: thermostat
+  #           entity: climate.sovrum_vast
+  #           name: Sovrum väster
+  #         - type: thermostat
+  #           entity: climate.sovrum_norr
+  #           name: Sovrum norr
+  #     - type: horizontal-stack
+  #       cards:
+  #         - type: thermostat
+  #           entity: climate.emma_norr
+  #           name: Emmas rum norr 
+  #         - type: thermostat
+  #           entity: climate.emma_ost
+  #           name: Emmas rum öster
 
 
       
