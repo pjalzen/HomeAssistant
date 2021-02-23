@@ -6,15 +6,10 @@ cards:
     cards:
 
       - type: entities
-        title: Mill Heater
+        title: Heaters
         show_header_toggle: false
         entities: 
           - entity: climate.millheat
-
-      - type: entities
-        title: Garage
-        show_header_toggle: false
-        entities: 
           - entity: switch.garage_pool
 
 
