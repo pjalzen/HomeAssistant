@@ -68,3 +68,25 @@
     ignore_availability: true
     name: "Per-Johan Alz\xE9n Calendar (Canvas)"
     track: true
+
+- cal_id: 7b7igtku0ucgnuduumt51iuqoveq15q1@import.calendar.google.com
+  entities:
+  - device_id: timeedit_5ma175_finansiell_matematik_58101vt21_20210301
+    ignore_availability: true
+    name: TimeEdit-5MA175, Finansiell matematik, 58101vt21-20210301
+    track: true
+
+- cal_id: 5d0ehd9o4c65vspss6uabrdhkcuj4kub@import.calendar.google.com
+  entities:
+  - device_id: timeedit_5ma178_monte_carlo_metoder_for_finansie_1_kurstillfalle_2_20210401
+    ignore_availability: true
+    name: "TimeEdit-5MA178, Monte Carlo-metoder f\xF6r finansie..., +1 Kurstillf\xE4\
+      lle (2)-20210401"
+    track: true
+
+- cal_id: ihkpofj0puhbsj8bkt9mv81cj4@group.calendar.google.com
+  entities:
+  - device_id: pjs_studies
+    ignore_availability: true
+    name: PJs Studies
+    track: true
