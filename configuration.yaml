@@ -47,9 +47,9 @@ conversation:                                       # Allows you to issue voice 
 
 #discovery:                                          # Discover some devices automatically
 
-hacs:
-  token: !secret hacs_token
-  appdaemon: true
+#hacs:
+#  token: !secret hacs_token
+#  appdaemon: true
 
 # ########################################
 # ###                GUI               ###
