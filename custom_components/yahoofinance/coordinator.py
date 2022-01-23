@@ -3,12 +3,14 @@ The Yahoo finance component.
 
 https://github.com/iprak/yahoofinance
 """
+from __future__ import annotations
 
 from datetime import timedelta
 import logging
+from typing import Final
 
 import async_timeout
-from homeassistant.core import callback
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers import event
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.event import async_track_point_in_utc_time
@@ -18,29 +20,34 @@ from homeassistant.util.dt import utcnow
 from .const import (
     BASE,
     DATA_REGULAR_MARKET_PRICE,
+    NUMERIC_DATA_DEFAULTS,
     NUMERIC_DATA_GROUPS,
     STRING_DATA_KEYS,
 )
 
 _LOGGER = logging.getLogger(__name__)
-WEBSESSION_TIMEOUT = 15
-DELAY_ASYNC_REQUEST_REFRESH = 5
-FAILURE_ASYNC_REQUEST_REFRESH = 20
+WEBSESSION_TIMEOUT: Final = 15
+DELAY_ASYNC_REQUEST_REFRESH: Final = 5
+FAILURE_ASYNC_REQUEST_REFRESH: Final = 20
 
 
 class YahooSymbolUpdateCoordinator(DataUpdateCoordinator):
     """Yahoo finance data update coordinator."""
 
     @staticmethod
-    def parse_symbol_data(symbol_data):
+    def parse_symbol_data(symbol_data: dict) -> dict[str, any]:
         """Return data pieces which we care about, use 0 for missing numeric values."""
         data = {}
 
         # get() ensures that we have an entry in symbol_data.
-        for group in NUMERIC_DATA_GROUPS:
-            for value in NUMERIC_DATA_GROUPS[group]:
+        for data_group in NUMERIC_DATA_GROUPS.values():
+            for value in data_group:
                 key = value[0]
-                data[key] = symbol_data.get(key, 0)
+
+                # Default value for most missing numeric keys is 0
+                default_value = NUMERIC_DATA_DEFAULTS.get(key, 0)
+
+                data[key] = symbol_data.get(key, default_value)
 
         for key in STRING_DATA_KEYS:
             data[key] = symbol_data.get(key)
@@ -49,7 +56,7 @@ class YahooSymbolUpdateCoordinator(DataUpdateCoordinator):
 
     @staticmethod
     def fix_conversion_symbol(symbol: str, symbol_data: any) -> str:
-        """ Fix the conversion symbol from data."""
+        """Fix the conversion symbol from data."""
 
         if symbol is None or symbol == "" or not symbol.endswith("=X"):
             return symbol
@@ -74,7 +81,9 @@ class YahooSymbolUpdateCoordinator(DataUpdateCoordinator):
 
         return conversion_symbol
 
-    def __init__(self, symbols, hass, update_interval) -> None:
+    def __init__(
+        self, symbols: list[str], hass: HomeAssistant, update_interval: timedelta
+    ) -> None:
         """Initialize."""
         self._symbols = symbols
         self.data = None
@@ -91,7 +100,7 @@ class YahooSymbolUpdateCoordinator(DataUpdateCoordinator):
             update_interval=update_interval,
         )
 
-    def get_next_update_interval(self):
+    def get_next_update_interval(self) -> timedelta:
         """Get the update interval for the next async_track_point_in_utc_time call."""
         if self.last_update_success:
             return self._update_interval
@@ -122,7 +131,7 @@ class YahooSymbolUpdateCoordinator(DataUpdateCoordinator):
                 utcnow().replace(microsecond=0) + update_interval,
             )
 
-    def get_symbols(self):
+    def get_symbols(self) -> list[str]:
         """Return symbols tracked by the coordinator."""
         return self._symbols
 
@@ -130,7 +139,7 @@ class YahooSymbolUpdateCoordinator(DataUpdateCoordinator):
         """Request async_request_refresh."""
         await self.async_request_refresh()
 
-    def add_symbol(self, symbol) -> bool:
+    def add_symbol(self, symbol: str) -> bool:
         """Add symbol to the symbol list."""
         if symbol not in self._symbols:
             self._symbols.append(symbol)
@@ -154,19 +163,19 @@ class YahooSymbolUpdateCoordinator(DataUpdateCoordinator):
 
         return False
 
-    async def get_json(self):
+    async def get_json(self) -> dict:
         """Get the JSON data."""
         json = None
         url = BASE + ",".join(self._symbols)
         _LOGGER.debug("Requesting data from '%s'", url)
 
-        async with async_timeout.timeout(WEBSESSION_TIMEOUT, loop=self.loop):
+        async with async_timeout.timeout(WEBSESSION_TIMEOUT):
             response = await self.websession.get(url)
             json = await response.json()
 
         return json
 
-    async def _async_update(self):
+    async def _async_update(self) -> dict:
         """
         Return updated data if new JSON is valid.
 
@@ -205,8 +214,8 @@ class YahooSymbolUpdateCoordinator(DataUpdateCoordinator):
         _LOGGER.info("All symbols updated")
         return data
 
-    def process_json_result(self, result):
-        """Processes json result and returns (error status, updated data)."""
+    def process_json_result(self, result) -> tuple[bool, dict]:
+        """Process json result and return (error status, updated data)."""
 
         # Using current data if available. If returned data is missing then we might be
         # able to use previous data.

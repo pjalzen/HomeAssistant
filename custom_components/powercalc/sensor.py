@@ -3,356 +3,302 @@
 from __future__ import annotations
 
 import logging
-import os
-from typing import Optional
+from typing import Final
 
 import homeassistant.helpers.config_validation as cv
 import homeassistant.helpers.entity_registry as er
 import voluptuous as vol
 from homeassistant.components import (
     binary_sensor,
+    climate,
+    device_tracker,
     fan,
     input_boolean,
+    input_number,
+    input_select,
     light,
     media_player,
     remote,
+    sensor,
     switch,
+    vacuum,
+    water_heater,
 )
-from homeassistant.components.hue.const import DOMAIN as HUE_DOMAIN
-from homeassistant.components.light import PLATFORM_SCHEMA, Light
-from homeassistant.const import (
-    CONF_ENTITY_ID,
-    CONF_NAME,
-    DEVICE_CLASS_POWER,
-    EVENT_HOMEASSISTANT_START,
-    POWER_WATT,
-    STATE_OFF,
-    STATE_STANDBY,
-    STATE_UNAVAILABLE,
-    STATE_UNKNOWN,
-)
+from homeassistant.components.sensor import DOMAIN as SENSOR_DOMAIN
+from homeassistant.components.sensor import PLATFORM_SCHEMA, SensorEntity
+from homeassistant.components.utility_meter.const import METER_TYPES
+from homeassistant.const import CONF_ENTITIES, CONF_ENTITY_ID, CONF_NAME
 from homeassistant.core import split_entity_id
-from homeassistant.helpers.entity import Entity
-from homeassistant.helpers.event import async_track_state_change_event
-from homeassistant.helpers.typing import HomeAssistantType
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
+from homeassistant.helpers.typing import (
+    ConfigType,
+    DiscoveryInfoType,
+    HomeAssistantType,
+)
 
+from .common import SourceEntity, validate_name_pattern
 from .const import (
+    CALCULATION_MODES,
+    CONF_CREATE_ENERGY_SENSOR,
+    CONF_CREATE_ENERGY_SENSORS,
+    CONF_CREATE_GROUP,
+    CONF_CREATE_UTILITY_METERS,
     CONF_CUSTOM_MODEL_DIRECTORY,
+    CONF_DISABLE_STANDBY_POWER,
     CONF_DISABLE_STANDBY_USAGE,
+    CONF_ENERGY_SENSOR_NAMING,
     CONF_FIXED,
     CONF_LINEAR,
     CONF_MANUFACTURER,
-    CONF_MAX_WATT,
-    CONF_MIN_WATT,
     CONF_MODE,
     CONF_MODEL,
+    CONF_MULTIPLY_FACTOR,
+    CONF_MULTIPLY_FACTOR_STANDBY,
+    CONF_POWER_SENSOR_NAMING,
+    CONF_STANDBY_POWER,
     CONF_STANDBY_USAGE,
-    CONF_WATT,
-    DATA_CALCULATOR_FACTORY,
+    CONF_UTILITY_METER_TYPES,
     DOMAIN,
-    MODE_FIXED,
-    MODE_LINEAR,
-    MODE_LUT,
+    DOMAIN_CONFIG,
 )
-from .errors import ModelNotSupported, StrategyConfigurationError, UnsupportedMode
-from .light_model import LightModel
+from .errors import PowercalcSetupError, SensorConfigurationError
+from .sensors.energy import VirtualEnergySensor, create_energy_sensor
+from .sensors.group import GroupedEnergySensor, GroupedPowerSensor, GroupedSensor
+from .sensors.power import VirtualPowerSensor, create_power_sensor
+from .sensors.utility_meter import create_utility_meters
 from .strategy_fixed import CONFIG_SCHEMA as FIXED_SCHEMA
-from .strategy_interface import PowerCalculationStrategyInterface
 from .strategy_linear import CONFIG_SCHEMA as LINEAR_SCHEMA
 
 _LOGGER = logging.getLogger(__name__)
 
-PLATFORM_SCHEMA = vol.All(
-    cv.deprecated(CONF_MIN_WATT),
-    cv.deprecated(CONF_MAX_WATT),
-    cv.deprecated(CONF_WATT),
+SUPPORTED_ENTITY_DOMAINS = (
+    light.DOMAIN,
+    switch.DOMAIN,
+    fan.DOMAIN,
+    binary_sensor.DOMAIN,
+    climate.DOMAIN,
+    device_tracker.DOMAIN,
+    remote.DOMAIN,
+    media_player.DOMAIN,
+    input_boolean.DOMAIN,
+    input_number.DOMAIN,
+    input_select.DOMAIN,
+    sensor.DOMAIN,
+    vacuum.DOMAIN,
+    water_heater.DOMAIN,
+)
+
+SENSOR_CONFIG = {
+    vol.Optional(CONF_NAME): cv.string,
+    vol.Optional(CONF_ENTITY_ID): cv.entity_domain(SUPPORTED_ENTITY_DOMAINS),
+    vol.Optional(CONF_MODEL): cv.string,
+    vol.Optional(CONF_MANUFACTURER): cv.string,
+    vol.Optional(CONF_MODE): vol.In(CALCULATION_MODES),
+    vol.Optional(CONF_STANDBY_POWER): vol.Coerce(float),
+    vol.Optional(CONF_DISABLE_STANDBY_POWER, default=False): cv.boolean,
+    vol.Optional(CONF_STANDBY_USAGE): vol.Coerce(float),
+    vol.Optional(CONF_DISABLE_STANDBY_USAGE, default=False): cv.boolean,
+    vol.Optional(CONF_CUSTOM_MODEL_DIRECTORY): cv.string,
+    vol.Optional(CONF_FIXED): FIXED_SCHEMA,
+    vol.Optional(CONF_LINEAR): LINEAR_SCHEMA,
+    vol.Optional(CONF_CREATE_ENERGY_SENSOR): cv.boolean,
+    vol.Optional(CONF_CREATE_UTILITY_METERS): cv.boolean,
+    vol.Optional(CONF_UTILITY_METER_TYPES): vol.All(
+        cv.ensure_list, [vol.In(METER_TYPES)]
+    ),
+    vol.Optional(CONF_MULTIPLY_FACTOR): vol.Coerce(float),
+    vol.Optional(CONF_MULTIPLY_FACTOR_STANDBY, default=False): cv.boolean,
+    vol.Optional(CONF_POWER_SENSOR_NAMING): validate_name_pattern,
+    vol.Optional(CONF_ENERGY_SENSOR_NAMING): validate_name_pattern,
+}
+
+GROUPED_SENSOR_CONFIG = {
+    vol.Optional(CONF_CREATE_GROUP): cv.string,
+    vol.Optional(CONF_ENTITIES, None): vol.All(cv.ensure_list, [SENSOR_CONFIG]),
+}
+
+PLATFORM_SCHEMA: Final = vol.All(
+    cv.has_at_least_one_key(CONF_ENTITY_ID, CONF_ENTITIES),
+    cv.deprecated(
+        CONF_DISABLE_STANDBY_USAGE, replacement_key=CONF_DISABLE_STANDBY_POWER
+    ),
+    cv.deprecated(CONF_STANDBY_USAGE, replacement_key=CONF_STANDBY_POWER),
     PLATFORM_SCHEMA.extend(
         {
-            vol.Optional(CONF_NAME): cv.string,
-            vol.Required(CONF_ENTITY_ID): cv.entity_domain(
-                (
-                    light.DOMAIN,
-                    switch.DOMAIN,
-                    fan.DOMAIN,
-                    binary_sensor.DOMAIN,
-                    remote.DOMAIN,
-                    media_player.DOMAIN,
-                    input_boolean.DOMAIN,
-                )
-            ),
-            vol.Optional(CONF_MODEL): cv.string,
-            vol.Optional(CONF_MANUFACTURER): cv.string,
-            vol.Optional(CONF_MODE): vol.In([MODE_LUT, MODE_FIXED, MODE_LINEAR]),
-            vol.Optional(CONF_MIN_WATT): cv.string,
-            vol.Optional(CONF_MAX_WATT): cv.string,
-            vol.Optional(CONF_WATT): cv.string,
-            vol.Optional(CONF_STANDBY_USAGE): vol.Coerce(float),
-            vol.Optional(CONF_DISABLE_STANDBY_USAGE, default=False): cv.boolean,
-            vol.Optional(CONF_CUSTOM_MODEL_DIRECTORY): cv.string,
-            vol.Optional(CONF_FIXED): FIXED_SCHEMA,
-            vol.Optional(CONF_LINEAR): LINEAR_SCHEMA,
+            **SENSOR_CONFIG,
+            **GROUPED_SENSOR_CONFIG,
         }
     ),
 )
 
-NAME_FORMAT = "{} power"
+ENTITY_ID_FORMAT = SENSOR_DOMAIN + ".{}"
 
 
 async def async_setup_platform(
-    hass: HomeAssistantType, config, async_add_entities, discovery_info=None
+    hass: HomeAssistantType,
+    config: ConfigType,
+    async_add_entities: AddEntitiesCallback,
+    discovery_info: DiscoveryInfoType | None = None,
 ):
-    """Set up the sensor platform."""
+    """Set up the virtual power sensors."""
 
-    calculation_strategy_factory = hass.data[DOMAIN][DATA_CALCULATOR_FACTORY]
+    global_config = hass.data[DOMAIN][DOMAIN_CONFIG]
 
-    entity_id = config[CONF_ENTITY_ID]
+    entities = []
+    try:
+        if CONF_ENTITIES in config:
+            for sensor_config in config.get(CONF_ENTITIES):
+                merged_sensor_config = get_merged_sensor_configuration(
+                    global_config, config, sensor_config
+                )
+                entities.extend(
+                    await create_individual_sensors(hass, merged_sensor_config)
+                )
+
+            if CONF_CREATE_GROUP in config:
+                group_name = config.get(CONF_CREATE_GROUP)
+                group_sensors = create_group_sensors(
+                    group_name, merged_sensor_config, entities, hass=hass
+                )
+                entities.extend(group_sensors)
+        else:
+            merged_sensor_config = get_merged_sensor_configuration(
+                global_config, config
+            )
+            entities.extend(await create_individual_sensors(hass, merged_sensor_config))
+    except SensorConfigurationError as err:
+        _LOGGER.error(err)
+        return
+
+    if entities:
+        async_add_entities(entities)
+
+
+def get_merged_sensor_configuration(*configs: dict) -> dict:
+    """Merges configuration from multiple levels (sensor, group, global) into a single dict"""
+
+    merged_config = {}
+    for config in configs:
+        merged_config.update(config)
+
+    if CONF_STANDBY_USAGE in merged_config:
+        merged_config[CONF_STANDBY_POWER] = merged_config[CONF_STANDBY_USAGE]
+    if CONF_DISABLE_STANDBY_USAGE in merged_config:
+        merged_config[CONF_DISABLE_STANDBY_POWER] = merged_config[
+            CONF_DISABLE_STANDBY_USAGE
+        ]
+
+    if not CONF_CREATE_ENERGY_SENSOR in merged_config:
+        merged_config[CONF_CREATE_ENERGY_SENSOR] = merged_config.get(
+            CONF_CREATE_ENERGY_SENSORS
+        )
+
+    if not CONF_ENTITY_ID in merged_config:
+        raise SensorConfigurationError(
+            "You must supply a entity_id in the configuration, see the README"
+        )
+
+    return merged_config
+
+
+async def create_source_entity(entity_id: str, hass: HomeAssistantType) -> SourceEntity:
+    """Create object containing all information about the source entity"""
+
+    source_entity_domain, source_object_id = split_entity_id(entity_id)
 
     entity_registry = await er.async_get_registry(hass)
     entity_entry = entity_registry.async_get(entity_id)
-    entity_state = hass.states.get(entity_id)
 
     unique_id = None
-
+    supported_color_modes = []
     if entity_entry:
-        entity_name = entity_entry.name or entity_entry.original_name
-        entity_domain = entity_entry.domain
+        source_entity_name = entity_entry.name or entity_entry.original_name
+        source_entity_domain = entity_entry.domain
         unique_id = entity_entry.unique_id
-    elif entity_state:
-        entity_name = entity_state.name
-        entity_domain = entity_state.domain
+        if entity_entry.capabilities:
+            supported_color_modes = entity_entry.capabilities.get(
+                light.ATTR_SUPPORTED_COLOR_MODES
+            )
     else:
-        entity_name = split_entity_id(entity_id)[1].replace("_", " ")
-        entity_domain = split_entity_id(entity_id)[0]
+        source_entity_name = source_object_id.replace("_", " ")
 
-    name = config.get(CONF_NAME) or NAME_FORMAT.format(entity_name)
-
-    light_model = None
-    try:
-        light_model = await get_light_model(hass, entity_entry, config)
-    except (ModelNotSupported) as err:
-        _LOGGER.info("Model not found in library %s: %s", entity_id, err)
-
-    try:
-        mode = select_calculation_mode(config, light_model)
-        calculation_strategy = calculation_strategy_factory.create(
-            config, mode, light_model, entity_domain
+    entity_state = hass.states.get(entity_id)
+    if entity_state:
+        source_entity_name = entity_state.name
+        supported_color_modes = entity_state.attributes.get(
+            light.ATTR_SUPPORTED_COLOR_MODES
         )
-        await calculation_strategy.validate_config(entity_entry)
-    except (ModelNotSupported, UnsupportedMode) as err:
-        _LOGGER.error("Skipping sensor setup %s: %s", entity_id, err)
-        return
-    except StrategyConfigurationError as err:
-        _LOGGER.error("Error setting up calculation strategy: %s", err)
-        return
 
-    standby_usage = None
-    if config.get(CONF_DISABLE_STANDBY_USAGE) == False:
-        standby_usage = config.get(CONF_STANDBY_USAGE)
-        if standby_usage is None and light_model is not None:
-            standby_usage = light_model.standby_usage
-
-    _LOGGER.debug(
-        "Setting up power sensor. entity_id:%s sensor_name:%s strategy=%s manufacturer=%s model=%s standby_usage=%s",
+    return SourceEntity(
+        unique_id,
+        source_object_id,
         entity_id,
-        name,
-        calculation_strategy.__class__.__name__,
-        light_model.manufacturer if light_model else "",
-        light_model.model if light_model else "",
-        standby_usage,
-    )
-
-    async_add_entities(
-        [
-            GenericPowerSensor(
-                power_calculator=calculation_strategy,
-                name=name,
-                entity_id=entity_id,
-                unique_id=unique_id,
-                standby_usage=standby_usage,
-            )
-        ]
+        source_entity_name,
+        source_entity_domain,
+        supported_color_modes or [],
+        entity_entry,
     )
 
 
-def select_calculation_mode(config: dict, light_model: LightModel):
-    """Select the calculation mode"""
-    config_mode = config.get(CONF_MODE)
-    if config_mode:
-        return config_mode
+async def create_individual_sensors(
+    hass: HomeAssistantType, sensor_config: dict
+) -> list[SensorEntity]:
+    """Create entities (power, energy, utility_meters) which track the appliance."""
 
-    if config.get(CONF_LINEAR):
-        return MODE_LINEAR
+    source_entity = await create_source_entity(sensor_config[CONF_ENTITY_ID], hass)
 
-    if config.get(CONF_FIXED):
-        return MODE_FIXED
+    try:
+        power_sensor = await create_power_sensor(hass, sensor_config, source_entity)
+    except PowercalcSetupError as err:
+        return []
 
-    if light_model:
-        return light_model.supported_modes[0]
+    entities_to_add = [power_sensor]
 
-    # BC compat
-    if config.get(CONF_MIN_WATT):
-        return MODE_LINEAR
+    if sensor_config.get(CONF_CREATE_ENERGY_SENSOR):
+        energy_sensor = await create_energy_sensor(
+            hass, sensor_config, power_sensor, source_entity
+        )
+        entities_to_add.append(energy_sensor)
+        entities_to_add.extend(
+            create_utility_meters(hass, energy_sensor, sensor_config)
+        )
 
-    # BC compat
-    if config.get(CONF_WATT):
-        return MODE_FIXED
+    return entities_to_add
 
-    raise UnsupportedMode(
-        "Cannot select a mode (LINEAR, FIXED or LUT), supply it in the config"
+
+def create_group_sensors(
+    group_name: str,
+    sensor_config: dict,
+    entities: list[SensorEntity],
+    hass: HomeAssistantType,
+) -> list[GroupedSensor]:
+    """Create grouped power and energy sensors."""
+
+    group_sensors = []
+
+    power_sensors = list(
+        filter(lambda elm: isinstance(elm, VirtualPowerSensor), entities)
+    )
+    power_sensor_ids = list(map(lambda x: x.entity_id, power_sensors))
+    name_pattern = sensor_config.get(CONF_POWER_SENSOR_NAMING)
+    name = name_pattern.format(group_name)
+    group_sensors.append(GroupedPowerSensor(name, power_sensor_ids, hass))
+    _LOGGER.debug("Creating grouped power sensor: %s", name)
+
+    energy_sensors = list(
+        filter(lambda elm: isinstance(elm, VirtualEnergySensor), entities)
+    )
+    energy_sensor_ids = list(map(lambda x: x.entity_id, energy_sensors))
+    name_pattern = sensor_config.get(CONF_ENERGY_SENSOR_NAMING)
+    name = name_pattern.format(group_name)
+    group_energy_sensor = GroupedEnergySensor(
+        name, energy_sensor_ids, hass, rounding_digits=4
+    )
+    group_sensors.append(group_energy_sensor)
+    _LOGGER.debug("Creating grouped energy sensor: %s", name)
+
+    group_sensors.extend(
+        create_utility_meters(hass, group_energy_sensor, sensor_config)
     )
 
-
-async def get_light_model(hass, entity_entry, config: dict) -> Optional[LightModel]:
-    manufacturer = config.get(CONF_MANUFACTURER)
-    model = config.get(CONF_MODEL)
-    if (manufacturer is None or model is None) and entity_entry:
-        hue_model_data = await autodiscover_hue_model(hass, entity_entry)
-        if hue_model_data:
-            manufacturer = hue_model_data["manufacturer"]
-            model = hue_model_data["model"]
-
-    if manufacturer is None or model is None:
-        return None
-
-    custom_model_directory = config.get(CONF_CUSTOM_MODEL_DIRECTORY)
-    if custom_model_directory:
-        custom_model_directory = os.path.join(
-            hass.config.config_dir, custom_model_directory
-        )
-
-    return LightModel(manufacturer, model, custom_model_directory)
-
-
-async def autodiscover_hue_model(hass, entity_entry):
-    # When Philips Hue model is enabled we can auto discover manufacturer and model from the bridge data
-    if hass.data.get(HUE_DOMAIN) == None or entity_entry.platform != "hue":
-        return
-
-    light = await find_hue_light(hass, entity_entry)
-    if light is None:
-        _LOGGER.error(
-            "Cannot autodisover model for '%s', not found in the hue bridge api",
-            entity_entry.entity_id,
-        )
-        return
-
-    _LOGGER.debug(
-        "Auto discovered Hue model for entity %s: (manufacturer=%s, model=%s)",
-        entity_entry.entity_id,
-        light.manufacturername,
-        light.modelid,
-    )
-
-    return {"manufacturer": light.manufacturername, "model": light.modelid}
-
-
-async def find_hue_light(
-    hass: HomeAssistantType, entity_entry: er.RegistryEntry
-) -> Light | None:
-    """Find the light in the Hue bridge, we need to extract the model id."""
-
-    bridge = hass.data[HUE_DOMAIN][entity_entry.config_entry_id]
-    lights = bridge.api.lights
-    for light_id in lights:
-        light = bridge.api.lights[light_id]
-        if light.uniqueid == entity_entry.unique_id:
-            return light
-
-    return None
-
-
-class GenericPowerSensor(Entity):
-    """Representation of a Sensor."""
-
-    def __init__(
-        self,
-        power_calculator: PowerCalculationStrategyInterface,
-        name: str,
-        entity_id: str,
-        unique_id: str,
-        standby_usage: float | None,
-    ):
-        """Initialize the sensor."""
-        self._power_calculator = power_calculator
-        self._entity_id = entity_id
-        self._name = name
-        self._power = None
-        self._unique_id = unique_id
-        self._standby_usage = standby_usage
-
-    async def async_added_to_hass(self):
-        """Register callbacks."""
-
-        async def appliance_state_listener(event):
-            """Handle for state changes for dependent sensors."""
-            new_state = event.data.get("new_state")
-
-            await self._update_power_sensor(new_state)
-
-        async def home_assistant_startup(event):
-            """Add listeners and get initial state."""
-
-            async_track_state_change_event(
-                self.hass, [self._entity_id], appliance_state_listener
-            )
-
-            new_state = self.hass.states.get(self._entity_id)
-
-            await self._update_power_sensor(new_state)
-
-        self.hass.bus.async_listen_once(
-            EVENT_HOMEASSISTANT_START, home_assistant_startup
-        )
-
-    async def _update_power_sensor(self, state) -> bool:
-        """Update power sensor based on new dependant hue light state."""
-        if state is None or state.state == STATE_UNKNOWN:
-            return False
-
-        if state.state == STATE_UNAVAILABLE:
-            return False
-
-        if state.state == STATE_OFF or state.state == STATE_STANDBY:
-            self._power = self._standby_usage or 0
-        else:
-            self._power = await self._power_calculator.calculate(state)
-
-        _LOGGER.debug(
-            'State changed to "%s" for entity "%s". Power:%s',
-            state.state,
-            state.entity_id,
-            self._power,
-        )
-
-        self.async_write_ha_state()
-        return True
-
-    @property
-    def name(self):
-        """Return the name of the sensor."""
-        return self._name
-
-    @property
-    def state(self):
-        """Return the state of the sensor."""
-        return self._power
-
-    @property
-    def unique_id(self):
-        """Return a unique id."""
-        return self._unique_id
-
-    @property
-    def available(self):
-        """Return True if entity is available."""
-        return self._power is not None
-
-    @property
-    def unit_of_measurement(self):
-        """Return the unit of measurement."""
-        return POWER_WATT
-
-    @property
-    def device_class(self) -> str:
-        """Device class of the sensor."""
-        return DEVICE_CLASS_POWER
+    return group_sensors

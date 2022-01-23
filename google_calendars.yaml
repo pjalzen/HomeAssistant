@@ -90,3 +90,98 @@
     ignore_availability: true
     name: PJs Studies
     track: true
+
+- cal_id: 291io25jhijiog3slb7oraammb3crolo@import.calendar.google.com
+  entities:
+  - device_id: timeedit_4ma521_multivariate_analysis_ht21_20210801
+    ignore_availability: true
+    name: TimeEdit-4MA521, Multivariate Analysis, HT21-20210801
+    track: true
+
+- cal_id: 8l8s22lr8ha4tensmgc6uctgh23ci383@import.calendar.google.com
+  entities:
+  - device_id: timeedit_4ma507_risk_and_portfolio_analysis_ht2_20210801
+    ignore_availability: true
+    name: TimeEdit-4MA507, Risk and Portfolio Analysis, HT2...-20210801
+    track: true
+
+- cal_id: fg8u3h1j71fholb3nvtqrcjjlg87ae46@import.calendar.google.com
+  entities:
+  - device_id: timeedit_5ma179_enterprise_risk_management_5802_1_course_instance_2_20210801
+    ignore_availability: true
+    name: TimeEdit-5MA179, Enterprise Risk Management, 5802..., +1 Course instance
+      (2)-20210801
+    track: true
+
+- cal_id: u9bkr0jpl43pbnqomtmr75bg8p0euqot@import.calendar.google.com
+  entities:
+  - device_id: timeedit_5ms056_multivariat_dataanalys_58201ht2_1_kurstillfalle_2_20210901
+    ignore_availability: true
+    name: "TimeEdit-5MS056, Multivariat dataanalys, 58201ht2..., +1 Kurstillf\xE4\
+      lle (2)-20210901"
+    track: true
+
+- cal_id: bq4g6lv14bcksacjsbdnrvfqp8@group.calendar.google.com
+  entities:
+  - device_id: hv71
+    ignore_availability: true
+    name: HV71
+    track: true
+
+- cal_id: gveugq129a0rtavki16i5421buv75iu9@import.calendar.google.com
+  entities:
+  - device_id: timeedit_5ms062_big_data_och_analys_av_hogdimens_1_kurstillfalle_2_20211001
+    ignore_availability: true
+    name: "TimeEdit-5MS062, Big data och analys av h\xF6gdimens..., +1 Kurstillf\xE4\
+      lle (2)-20211001"
+    track: true
+
+- cal_id: sc0eg3jkmb3v2q0ru2gdficn4butgetp@import.calendar.google.com
+  entities:
+  - device_id: timeedit_neurala_natverk_och_larande_maskiner_d7_20211001
+    ignore_availability: true
+    name: "TimeEdit-Neurala n\xE4tverk och l\xE4rande maskiner, D7...-20211001"
+    track: true
+
+- cal_id: h6gimrp76rn5ptcg98kvj6c1lj1evg9d@import.calendar.google.com
+  entities:
+  - device_id: timeedit_4ma501_sannolikhetsteorins_matematiska_20211001
+    ignore_availability: true
+    name: TimeEdit-4MA501, Sannolikhetsteorins matematiska ...-20211001
+    track: true
+
+- cal_id: tbnaiu2eu1ga5b2gbcml2vbv57v30lms@import.calendar.google.com
+  entities:
+  - device_id: timeedit_1ma502_stokastiska_processer_vaxjo_ht_20211001
+    ignore_availability: true
+    name: "TimeEdit-1MA502, Stokastiska processer, V\xE4xj\xF6, HT...-20211001"
+    track: true
+
+- cal_id: iuk7ed670nuj268s35hv570sjts58ul3@import.calendar.google.com
+  entities:
+  - device_id: timeedit_4ma415_funktionalanalys_vaxjo_ht21_20211001
+    ignore_availability: true
+    name: "TimeEdit-4MA415, Funktionalanalys, V\xE4xj\xF6, HT21-20211001"
+    track: true
+
+- cal_id: 21or28pq936atdgl59kbur7gm072fq8l@import.calendar.google.com
+  entities:
+  - device_id: timeedit_4ma506_monte_carlo_methods_vt22_20220101
+    ignore_availability: true
+    name: TimeEdit-4MA506, Monte Carlo methods, VT22-20220101
+    track: true
+
+- cal_id: 9bejoa4f5c0qhou4qomfsfct80@group.calendar.google.com
+  entities:
+  - device_id: helena_pj
+    ignore_availability: true
+    name: Helena & PJ
+    track: true
+
+- cal_id: cetdbut7ceen6ol2ec78t7ucfjfaficf@import.calendar.google.com
+  entities:
+  - device_id: timeedit_5ms072_tidsserieanalys_och_spatial_stat_1_kurstillfalle_2_20220101
+    ignore_availability: true
+    name: "TimeEdit-5MS072, Tidsserieanalys och spatial stat..., +1 Kurstillf\xE4\
+      lle (2)-20220101"
+    track: true
