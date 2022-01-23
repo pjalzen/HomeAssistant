@@ -2,7 +2,7 @@ homeassistant:
   name: Home                                        # Name of the location where Home Assistant is running
   latitude: !secret lat_coord                       # Location required to calculate the time the sun rises and sets
   longitude: !secret long_coord
-  elevation: 151                                    # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 230                                    # Impacts weather/sunrise data (altitude above sea level in meters)
   unit_system: metric                               # metric for Metric, imperial for Imperial
   time_zone: !secret time_zone                      # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   auth_providers:
