@@ -62,6 +62,7 @@ frontend:                                           # Enables the frontend
   #themes: !include_dir_named themes
     # Denna är snygg: Stell Blue with Colors
 
+lovelace_gen:
 
 lovelace:
   mode: yaml
@@ -182,8 +183,8 @@ google:
 #tts:
 #  - platform: google                                # Text to speech
 
-shell_command:
-  lovelace_gen: 'python /config/lovelace-gen.py > /config/lovelace-gen.log'
+#shell_command:
+  #lovelace_gen: 'python /config/lovelace-gen.py > /config/lovelace-gen.log'
   #lovelace_gen_states: !secret lovelace_gen_states
 
 mobile_app:
