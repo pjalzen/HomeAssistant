@@ -94,3 +94,123 @@
     switch.library:
       friendly_name: Bibliotek golvlamp
       state: 'on'
+- id: '1644138684389'
+  name: Evening
+  entities:
+    switch.shelly_shplg_s_51cc16:
+      shelly_type: Shelly Plug S
+      shelly_id: 51CC16
+      ip_address: 192.168.1.137
+      protocols:
+      - CoAP-discovery
+      - CoAP-msg
+      - poll
+      over_temp: 0
+      has_firmware_update: false
+      cloud_status: connected
+      over_power: false
+      total_consumption: 0.27 kWh
+      friendly_name: Dining Floor Lamp
+      state: 'off'
+    switch.shelly_shplg_s_b86d7c:
+      shelly_type: Shelly Plug S
+      shelly_id: B86D7C
+      ip_address: 192.168.1.140
+      protocols:
+      - CoAP-discovery
+      - CoAP-msg
+      - poll
+      over_temp: 0
+      has_firmware_update: false
+      cloud_status: connected
+      over_power: false
+      total_consumption: 0.11 kWh
+      friendly_name: Livingroom Media
+      state: 'off'
+    switch.shelly_shplg_s_51ca64:
+      shelly_type: Shelly Plug S
+      shelly_id: 51CA64
+      ip_address: 192.168.1.138
+      protocols:
+      - CoAP-discovery
+      - CoAP-msg
+      - poll
+      over_temp: 0
+      has_firmware_update: false
+      cloud_status: connected
+      over_power: false
+      total_consumption: 1.77 kWh
+      friendly_name: Calle Window East
+      state: 'off'
+    select.z_wave_plus_micro_smart_plug_on_off_local_protection_state_2:
+      options:
+      - Unprotected
+      - NoOperationPossible
+      friendly_name: 'Z-Wave Plus Micro Smart Plug ON/OFF: Local protection state'
+      state: Unprotected
+    switch.library1:
+      friendly_name: Library Cupboard
+      state: 'off'
+    select.z_wave_plus_micro_smart_plug_on_off_local_protection_state:
+      options:
+      - Unprotected
+      - NoOperationPossible
+      friendly_name: 'Z-Wave Plus Micro Smart Plug ON/OFF: Local protection state'
+      state: Unprotected
+    switch.library2:
+      friendly_name: Library Floor Lamp
+      state: 'off'
+    select.z_wave_plus_micro_smart_plug_on_off_local_protection_state_3:
+      options:
+      - Unprotected
+      - NoOperationPossible
+      friendly_name: 'Z-Wave Plus Micro Smart Plug ON/OFF: Local protection state'
+      state: Unprotected
+    switch.emma1:
+      friendly_name: Emma Window West
+      state: 'off'
+    switch.music1:
+      friendly_name: Music Window South
+      state: 'off'
+    light.hue_lightstrip_music:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      mode: normal
+      dynamics: none
+      friendly_name: Music Strip
+      supported_features: 40
+      state: 'off'
+    light.hue_play_1:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      mode: normal
+      dynamics: none
+      friendly_name: Music Play 1
+      supported_features: 40
+      state: 'off'
+    light.hue_play_2:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      mode: normal
+      dynamics: none
+      friendly_name: Music Play 2
+      supported_features: 40
+      state: 'off'
+    light.dining_bulb:
+      supported_color_modes:
+      - xy
+      mode: normal
+      dynamics: none
+      friendly_name: Bulb TV
+      supported_features: 40
+      state: 'off'
+  icon: mdi:weather-sunset
