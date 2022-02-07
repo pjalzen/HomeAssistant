@@ -15,8 +15,8 @@ cards:
       - type: entities
         title: Dining room
         entities:
-          - switch.shelly_shplg_s_b85d6a
-          - light.bulb_tv
+          - switch.shelly_shplg_s_51cc16
+          - light.dining_bulb
 
   - type: vertical-stack
     cards:
@@ -37,6 +37,7 @@ cards:
           - type: custom:slider-entity-row
             entity: light.hue_play_2
             toggle: true
+          - light.music_strip
 
       - type: entities
         title: Calle
