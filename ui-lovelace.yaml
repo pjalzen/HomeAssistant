@@ -65,20 +65,20 @@ resources:
     type: css 
     
 views:
-  - !include /lovelace/00_home_view.yaml
-  - !include /lovelace/09_lights_view.yaml
-  #- !include /lovelace/10_downstairs_view.yaml
-  - !include /lovelace/19_thermostats_view.yaml
-  #- !include /lovelace/20_upstairs_view.yaml
-  #- !include /lovelace/30_basement_view.yaml
-  - !include /lovelace/40_car_view.yaml
-  - !include /lovelace/45_security_view.yaml
-  - !include /lovelace/50_finance_view.yaml
-  - !include /lovelace/60_pool_view.yaml
-  - !include /lovelace/70_health_view.yaml
-  - !include /lovelace/80_washer_view.yaml
-  - !include /lovelace/98_zwave_view.yaml
-  - !include /lovelace/99_system_view.yaml
+  - !include lovelace/00_home_view.yaml
+  - !include lovelace/09_lights_view.yaml
+  #- !include lovelace/10_downstairs_view.yaml
+  - !include lovelace/19_thermostats_view.yaml
+  #- !include lovelace/20_upstairs_view.yaml
+  #- !include lovelace/30_basement_view.yaml
+  - !include lovelace/40_car_view.yaml
+  - !include lovelace/45_security_view.yaml
+  - !include lovelace/50_finance_view.yaml
+  - !include lovelace/60_pool_view.yaml
+  - !include lovelace/70_health_view.yaml
+  - !include lovelace/80_washer_view.yaml
+  - !include lovelace/98_zwave_view.yaml
+  - !include lovelace/99_system_view.yaml
 
 
 
