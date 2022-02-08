@@ -1,0 +1,19 @@
+sun_lights:
+  name: Lights follow the sun
+  entities:
+    - light.dining_bulb
+    - light.hue_lightstrip_music
+    - light.hue_play_1
+    - light.hue_play_2
+
+sun_switches:
+  name: Switches follow the sun
+  entities:
+    - switch.shelly_shplg_s_b86d7c
+    - switch.shelly_shplg_s_51cc16
+    - switch.library1
+    - switch.library2
+    - switch.music1
+    - switch.office1
+    - switch.shelly_shplg_s_51ca64
+    - switch.emma1
