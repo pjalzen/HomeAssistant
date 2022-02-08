@@ -40,6 +40,11 @@ cards:
           - type: custom:slider-entity-row
             entity: light.hue_lightstrip_music
             toggle: true
+      
+      - type: entities
+        title: Office
+        entities:
+          - switch.office1
 
       - type: entities
         title: Calle
