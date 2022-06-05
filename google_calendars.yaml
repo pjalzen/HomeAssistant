@@ -185,3 +185,10 @@
     name: "TimeEdit-5MS072, Tidsserieanalys och spatial stat..., +1 Kurstillf\xE4\
       lle (2)-20220101"
     track: true
+
+- cal_id: 4fi2et78v03us9gf3g0oge1bsed6fq4f@import.calendar.google.com
+  entities:
+  - device_id: timeedit_2ma501_bayesianska_metoder_vaxjo_vt22_20220301
+    ignore_availability: true
+    name: "TimeEdit-2MA501, Bayesianska metoder, V\xE4xj\xF6, VT22-20220301"
+    track: true

@@ -88,7 +88,7 @@ class GarminConnectSensor(CoordinatorEntity, SensorEntity):
         self._attr_name = name
         self._attr_device_class = self._device_class
         self._attr_icon = icon
-        self._attr_unit_of_measurement = unit
+        self._attr_native_unit_of_measurement = unit
         self._attr_unique_id = f"{self._unique_id}_{self._type}"
         self._attr_state_class = SensorStateClass.TOTAL
 
@@ -108,9 +108,9 @@ class GarminConnectSensor(CoordinatorEntity, SensorEntity):
                 self.coordinator.data[self._type]
             )
             if active_alarms:
-                value = active_alarms[0]
+                return active_alarms[0]
             else:
-                value = None
+                return None
 
         if self._device_class == DEVICE_CLASS_TIMESTAMP:
             return value

@@ -59,7 +59,7 @@ from .frontend import setup_frontend
 
 _LOGGER = logging.getLogger(__name__)
 
-__version__ = "0.3.3"
+__version__ = "1.0.0-b2"
 VERSION = __version__
 
 async def async_setup(hass, config):
@@ -117,6 +117,10 @@ async def async_unload_entry(hass, config_entry):
     instance = hass.data[DOMAIN][config_entry.entry_id]
     await instance.stop()
     await instance.clean()
+    return True
+
+async def async_remove_config_entry_device(hass, config_entry, device_entry):    
+    instance = hass.data[DOMAIN][config_entry.entry_id]
     return True
 
 class ShellyInstance():
@@ -251,7 +255,6 @@ class ShellyInstance():
                 await self.hass.helpers.entity_registry.async_get_registry()
             entity_id = "sensor." + slugify(conf.get(CONF_OBJECT_ID_PREFIX)) + "_version"
             entity_reg.async_remove(entity_id)
-
 
     def update_config_attributes(self):
         self.conf_attributes = set(self.conf.get(CONF_ATTRIBUTES))
@@ -409,12 +412,12 @@ class ShellyInstance():
         _LOGGER.info("Shutting down Shelly")
         entity_reg = \
             await self.hass.helpers.entity_registry.async_get_registry()
-        #entities_to_remove = []
-        #for entity in entity_reg.entities.values():
-        #    if entity.platform == "shelly":
-        #        entities_to_remove.append(entity.entity_id)
-        #for entity_id in entities_to_remove:
-        #    entity_reg.async_remove(entity_id)
+        # entities_to_remove = []
+        # for entity in entity_reg.entities.values():
+        #     if entity.platform == "shelly":
+        #         entities_to_remove.append(entity.entity_id)
+        # for entity_id in entities_to_remove:
+        #     entity_reg.async_remove(entity_id)
         if self.cancel_update_listener:
             self.cancel_update_listener()
         if self.pys:
@@ -552,7 +555,8 @@ class ShellyInstance():
                         if sensor in ALL_SENSORS and \
                             ALL_SENSORS[sensor].get('attr') == key:
                             attr = {'sensor_type':key,
-                                    'itm': block}
+                                    'itm': block,
+                                    'ukey': ukey}
                             if key in SENSOR_TYPES_CFG and \
                                 SENSOR_TYPES_CFG[key][4] == 'bool':
                                 self.add_device("binary_sensor", attr)
@@ -628,16 +632,6 @@ class ShellyInstance():
                 SENSOR_CONSUMPTION in sensor_cfg or \
                 SENSOR_POWER in sensor_cfg: #POWER deprecated
                 self.add_device("sensor", dev)
-            # if SENSOR_TOTAL_CONSUMPTION in sensor_cfg or \
-            #     SENSOR_CONSUMPTION in sensor_cfg or \
-            #     SENSOR_POWER in sensor_cfg: #POWER deprecated
-            #     self.add_device("sensor", {'sensor_type' : 'total_consumption',
-            #                                 'itm': dev})
-            # if SENSOR_TOTAL_RETURNED in sensor_cfg or \
-            #     SENSOR_CONSUMPTION in sensor_cfg or \
-            #     SENSOR_POWER in sensor_cfg: #POWER deprecated
-            #     self.add_device("sensor", {'sensor_type' : 'total_returned',
-            #                                 'itm': dev})
         elif dev.device_type == 'SWITCH':
             sensor_cfg = self._get_sensor_config(dev.id, dev.block.id)
             if SENSOR_SWITCH in sensor_cfg:
@@ -648,6 +642,8 @@ class ShellyInstance():
             self.add_device("binary_sensor", dev)
         elif dev.device_type in ["LIGHT", "DIMMER", "RGBLIGHT"]:
             self.add_device("light", dev)
+        elif dev.device_type == 'TRV':
+            self.add_device("climate", dev)
         else:
             _LOGGER.error("Unknown device type, %s", dev.device_type)
 

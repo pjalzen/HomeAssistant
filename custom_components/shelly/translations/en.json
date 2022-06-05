@@ -17,6 +17,7 @@
             "total_consumption": "Total consumption",
             "current_consumption": "Current consumption",
             "over_power": "Over power",
+            "over_voltage": "Over voltage",
             "device_temp": "Device temperature",
             "over_temp": "Over temperature",
             "battery": "Battery level",
@@ -36,13 +37,15 @@
             "total_work_time": "Total work time",
             "latest_beta_fw_version": "Latest beta version",            
             "mqtt": "MQTT connected",
-            "cloud": "Cloud status"
+            "cloud": "Cloud status",
+            "position": "Position",
+            "target_temperature" : "Target temperature"
         },
         "config" : {
             "groups" : {
                 "name": "Friendly Name",
                 "general" : "Gereral",
-                "mqtt-integrated": "Integrerad MQTT server",
+                "mqtt-integrated": "Integrated MQTT server",
                 "mqtt-broker": "MQTT broker connection",
                 "discovery": "Discovery",
                 "cloud": "Shelly Cloud"
@@ -64,7 +67,7 @@
                 "desc": "Create upgrade switch when Shelly has new firmware"
             },
             "upgrade_beta_switch": {
-                "title": "Show upgrad to beta switch",
+                "title": "Show upgrade to beta switch",
                 "desc": "Enable upgrade to Beta version switch"
             },
             "igmp_fix": {
@@ -205,6 +208,7 @@
                     "total_consumption": "Total consumption",
                     "current_consumption": "Current consumption",
                     "over_power": "Over power",
+                    "over_voltage": "Over voltage",
                     "device_temp": "Device temperature",
                     "over_temp": "Over temperature",
                     "battery": "Battery level",
@@ -235,6 +239,7 @@
                     "current_consumption": "Current consumption",
                     "total_consumption": "Total consumption",
                     "over_power": "Over power",
+                    "over_voltage": "Over voltage",
                     "device_temp": "Device temperature",
                     "over_temp": "Over temperature",
                     "mqtt": "MQTT connected",

@@ -42,7 +42,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             if 'sensor_type' in dev:
                 sensor_type = dev['sensor_type']
                 async_add_entities([ShellyBinaryInfoSensor(dev['itm'], instance,
-                                           sensor_type, sensor_type)])
+                                           sensor_type, sensor_type, dev['ukey'])])
             return
         if dev.device_type == "SWITCH":
             async_add_entities([ShellySwitch(dev, instance)])
@@ -65,7 +65,7 @@ class ShellySwitch(ShellyDevice, BinarySensorEntity):
         """Initialize an ShellySwitch."""
         ShellyDevice.__init__(self, dev, instance)
         self._unique_id += "_switch"
-        self.entity_id += "_switch"
+        self.entity_id = "binary_sensor" + self.entity_id + "_switch"
         self._state = None
         self._click_delay = 700
         self._last_state_change = 0
@@ -145,7 +145,7 @@ class ShellyBinarySensor(ShellyDevice, BinarySensorEntity):
         self._sensor_cfg = SENSOR_TYPES_CFG[SENSOR_TYPE_DEFAULT]
         ShellyDevice.__init__(self, dev, instance)
         self._unique_id += "_" + sensor_name
-        self.entity_id += "_" + sensor_name
+        self.entity_id = "binary_sensor" + self.entity_id + "_" + sensor_name
         self._sensor_type = sensor_type
         self._sensor_name = sensor_name
         #self._battery = None
@@ -188,12 +188,13 @@ class ShellyBinarySensor(ShellyDevice, BinarySensorEntity):
 class ShellyBinaryInfoSensor(ShellyBlock, BinarySensorEntity):
     """Representation of a Shelly Info Sensor."""
 
-    def __init__(self, block, instance, sensor_type, sensor_name):
+    def __init__(self, block, instance, sensor_type, sensor_name, ukey):
         self._sensor_cfg = SENSOR_TYPES_CFG[SENSOR_TYPE_DEFAULT]
         ShellyBlock.__init__(self, block, instance, "_" + sensor_name)
         self.entity_id = "sensor" + self.entity_id
         self._sensor_name = sensor_name
         self._sensor_type = sensor_type
+        self.ukey = ukey
         if self._sensor_type in SENSOR_TYPES_CFG:
             self._sensor_cfg = SENSOR_TYPES_CFG[self._sensor_type]
         self._state = None
