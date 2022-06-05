@@ -233,3 +233,11 @@
   - alias: ''
     data: {}
     service: homeassistant.restart
+
+
+- alias: Reset Gone to bed
+  variables:
+    go_to_bed: false
+  trigger:
+  - at: '02:00:00'
+    platform: time

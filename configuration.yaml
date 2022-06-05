@@ -189,6 +189,12 @@ google:
 
 mobile_app:
 
+input_boolean:
+  go_to_bed:
+    name: Indicates gone to bed
+    icon: mdi:sleep
+
+
 
 # ########################################
 # ###      SCRIPTS & AUTOMATIONS       ###
