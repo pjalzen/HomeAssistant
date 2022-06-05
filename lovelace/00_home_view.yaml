@@ -20,7 +20,7 @@ cards:
             color: primary-color
             tap_action:
               action: call-service
-              service: script.go_sleep
+              service: script.gone_sleeping
 
           - type: custom:button-card
             name: Lights on
