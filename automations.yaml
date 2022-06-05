@@ -236,8 +236,9 @@
 
 
 - alias: Reset Gone to bed
-  variables:
-    input_boolena.go_to_bed: false
+  initial_state: true
   trigger:
   - at: '02:00:00'
     platform: time
+  variables:
+    input_boolean.go_to_bed: false
