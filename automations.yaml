@@ -1,4 +1,3 @@
-
 - alias: Lights on - just before sunset
   initial_state: false
   trigger:
@@ -53,12 +52,12 @@
     service: switch.turn_on
   - data:
       entity_id: light.shelly_shdm_1_f3c401
-      brightness: 51    #20% av 255
+      brightness: 51
     service: light.turn_on
   - data:
       entity_id: switch.library
     service: switch.turn_on
-
+  id: 3bc8d145dd5b4a4fa4a5d28148af9a69
 - alias: Lights off - by midnight
   initial_state: false
   trigger:
@@ -108,7 +107,7 @@
   - data:
       entity_id: switch.library
     service: switch.turn_off
-
+  id: 5ebcf9b6b5ee426fb46846fe8f1a2090
 - alias: Lights on - in the morning
   initial_state: false
   trigger:
@@ -119,37 +118,36 @@
     condition: sun
   action:
   - data:
-      entity_id: switch.livingroom   #Golvlampa bibliotek
+      entity_id: switch.livingroom
     service: switch.turn_on
   - data:
-      entity_id: switch.porch         #Ljusslinga veranda
+      entity_id: switch.porch
     service: switch.turn_on
   - data:
-      entity_id: switch.livingroom_tv  #Bordslampa TV-bänk
+      entity_id: switch.livingroom_tv
     service: switch.turn_on
   - data:
-      entity_id: switch.bedroom    #Sovrummets fönsterslinga
+      entity_id: switch.bedroom
     service: switch.turn_on
   - data:
       entity_id: switch.timer
     service: switch.turn_on
   - data:
-      entity_id: switch.21200481dc4f2271416f                          #Fönsterlampa kontor
+      entity_id: switch.21200481dc4f2271416f
     service: switch.turn_on
   - data:
-      entity_id: switch.shelly_shplg_s_b86d7c                         #FÖnsterlampa entré
+      entity_id: switch.shelly_shplg_s_b86d7c
     service: switch.turn_on
   - data:
-      entity_id: switch.shelly_shplg_s_51ca64                         #Bordslampa kökshall
+      entity_id: switch.shelly_shplg_s_51ca64
     service: switch.turn_on
   - data:
-      entity_id: switch.shelly_shplg_s_b85d6a                         #Matsal öst
+      entity_id: switch.shelly_shplg_s_b85d6a
     service: switch.turn_on
   - data:
-      entity_id: switch.shelly_shplg_s_51cc16                         #Matsal norr
+      entity_id: switch.shelly_shplg_s_51cc16
     service: switch.turn_on
-
-
+  id: 01ddcdce026642feb916345e433cf539
 - alias: Lights off - by sunrise
   initial_state: false
   trigger:
@@ -165,7 +163,7 @@
       entity_id: switch.porch
     service: switch.turn_off
   - data:
-      entity_id: switch.livingroom_tv      
+      entity_id: switch.livingroom_tv
     service: switch.turn_off
   - data:
       entity_id: switch.bedroom
@@ -188,8 +186,7 @@
   - data:
       entity_id: switch.shelly_shplg_s_51cc16
     service: switch.turn_off
-    
-
+  id: 26fd3e86db4b45a7a36b9d403a0c6ab6
 - alias: Run Backup 3AM
   initial_state: true
   trigger:
@@ -200,7 +197,7 @@
   - alias: ''
     data: {}
     service: script.ha_backup
-
+  id: aac9c297743b4bf2a1a4a9dcda250776
 - alias: Set Theme by daylight
   initial_state: false
   trigger:
@@ -222,23 +219,36 @@
     data:
       title: Background Theme Set
       message: Home Assistant
-
+  id: 10f8f3a37882403e9efc08ed2664b352
 - alias: Restart HA 4AM
   description: ''
   trigger:
-  - at: '04:00:00'
+  - at: 04:00:00
     platform: time
   condition: []
   action:
   - alias: ''
     data: {}
     service: homeassistant.restart
-
-
+  id: 43a643c5144d4fefa57aefe2cea5da62
 - alias: Reset Gone to bed
   initial_state: true
   trigger:
-  - at: '02:00:00'
+  - at: 02:00:00
     platform: time
   variables:
     input_boolean.go_to_bed: false
+  id: 12dadd81d8c64734a0e86fb4f2d20e0c
+- id: '1654442441102'
+  alias: Reset Sleep indicator
+  description: ''
+  trigger:
+  - platform: time
+    at: 02:00:00
+  condition: []
+  action:
+  - service: input_boolean.turn_off
+    data: {}
+    target:
+      entity_id: input_boolean.go_to_bed
+  mode: single
