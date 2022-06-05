@@ -41,8 +41,9 @@ bmw_i3_airco:
 
 go_sleep:
   alias: Go to bed
+  icon: mdi.sleep
   variables:
-    input_boolean.go_to_bed: true
+    go_to_bed: true
 
 go_sleep_2:
   alias: Go to bed - old
