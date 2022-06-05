@@ -42,7 +42,7 @@ bmw_i3_airco:
 go_sleep:
   alias: Go to bed
   variables:
-    go_to_bed: True
+    input_boolena.go_to_bed: True
 
 go_sleep_2:
   alias: Go to bed - old
