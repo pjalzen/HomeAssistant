@@ -1,11 +1,13 @@
 """This script adds MQTT discovery support for Shellies Gen2 devices."""
 
+ATTR_BATTERY_POWERED = "battery_powered"
 ATTR_BINARY_SENSORS = "binary_sensors"
 ATTR_BUTTON = "button"
 ATTR_BUTTONS = "buttons"
 ATTR_COVER = "cover"
 ATTR_COVER_SENSORS = "cover_sensors"
 ATTR_COVERS = "covers"
+ATTR_FAN = "fan"
 ATTR_FW_ID = "fw_id"
 ATTR_ID = "id"
 ATTR_INPUT_BINARY_SENSORS = "inputs_binary_sensors"
@@ -16,12 +18,14 @@ ATTR_MAC = "mac"
 ATTR_MANUFACTURER = "Allterco Robotics"
 ATTR_MIN_FIRMWARE_DATE = "min_firmware_date"
 ATTR_MODEL = "model"
+ATTR_MODEL_ID = "model_id"
 ATTR_NAME = "name"
 ATTR_RELAY_BINARY_SENSORS = "relay_binary_sensors"
 ATTR_RELAY_SENSORS = "relay_sensors"
 ATTR_RELAYS = "relays"
 ATTR_SENSORS = "sensors"
 ATTR_SWITCH = "switch"
+ATTR_UPDATES = "updates"
 
 BUTTON_RESTART = "restart"
 BUTTON_UPDATE_FIRMWARE = "update_firmware"
@@ -31,9 +35,11 @@ CONF_QOS = "qos"
 
 DEFAULT_DISC_PREFIX = "homeassistant"
 
+DEVICE_CLASS_BATTERY = "battery"
 DEVICE_CLASS_CONNECTIVITY = "connectivity"
 DEVICE_CLASS_CURRENT = "current"
 DEVICE_CLASS_ENERGY = "energy"
+DEVICE_CLASS_HUMIDITY = "humidity"
 DEVICE_CLASS_POWER = "power"
 DEVICE_CLASS_POWER_FACTOR = "power_factor"
 DEVICE_CLASS_PROBLEM = "problem"
@@ -41,7 +47,6 @@ DEVICE_CLASS_RESTART = "restart"
 DEVICE_CLASS_SIGNAL_STRENGTH = "signal_strength"
 DEVICE_CLASS_TEMPERATURE = "temperature"
 DEVICE_CLASS_TIMESTAMP = "timestamp"
-DEVICE_CLASS_UPDATE = "update"
 DEVICE_CLASS_UPDATE = "update"
 DEVICE_CLASS_VOLTAGE = "voltage"
 
@@ -57,6 +62,7 @@ KEY_AVAILABILITY = "avty"
 KEY_AVAILABILITY_MODE = "avty_mode"
 KEY_COMMAND_OFF_TEMPLATE = "cmd_off_tpl"
 KEY_COMMAND_ON_TEMPLATE = "cmd_on_tpl"
+KEY_COMMAND_TEMPLATE = "cmd_tpl"
 KEY_COMMAND_TOPIC = "cmd_t"
 KEY_CONFIGURATION_URL = "cu"
 KEY_CONNECTIONS = "cns"
@@ -64,25 +70,32 @@ KEY_DEFAULT_TOPIC = "~"
 KEY_DEVICE = "dev"
 KEY_DEVICE_CLASS = "dev_cla"
 KEY_ENABLED_BY_DEFAULT = "en"
-KEY_ENTITY_CATEGORY = "entity_category"
+KEY_ENTITY_CATEGORY = "ent_cat"
+KEY_ENTITY_PICTURE = "ent_pic"
+KEY_EXPIRE_AFTER = "expire_after"
+KEY_HW_VERSION = "hw"
 KEY_ICON = "icon"
-KEY_JSON_ATTRIBUTES_TEMPLATE = "json_attributes_template"
-KEY_JSON_ATTRIBUTES_TOPIC = "json_attributes_topic"
+KEY_JSON_ATTRIBUTES_TEMPLATE = "json_attr_tpl"
+KEY_JSON_ATTRIBUTES_TOPIC = "json_attr_t"
+KEY_LATEST_VERSION_TEMPLATE = "l_ver_tpl"
+KEY_LATEST_VERSION_TOPIC = "l_ver_t"
 KEY_MAC = "mac"
 KEY_MANUFACTURER = "mf"
 KEY_MODEL = "mdl"
 KEY_NAME = "name"
 KEY_PAYLOAD = "pl"
-KEY_PAYLOAD_AVAILABLE = "payload_available"
+KEY_PAYLOAD_AVAILABLE = "pl_avail"
+KEY_PAYLOAD_INSTALL = "pl_inst"
 KEY_PAYLOAD_CLOSE = "pl_cls"
-KEY_PAYLOAD_NOT_AVAILABLE = "payload_not_available"
+KEY_PAYLOAD_NOT_AVAILABLE = "pl_not_avail"
 KEY_PAYLOAD_OFF = "pl_off"
 KEY_PAYLOAD_ON = "pl_on"
 KEY_PAYLOAD_OPEN = "pl_open"
-KEY_PAYLOAD_PRESS = "payload_press"
+KEY_PAYLOAD_PRESS = "pl_prs"
 KEY_PAYLOAD_STOP = "pl_stop"
 KEY_POSITION_TEMPLATE = "pos_tpl"
 KEY_POSITION_TOPIC = "pos_t"
+KEY_RELEASE_URL = "rel_u"
 KEY_QOS = "qos"
 KEY_SCHEMA = "schema"
 KEY_SET_POSITION_TEMPLATE = "set_pos_tpl"
@@ -95,32 +108,37 @@ KEY_STATE_OPENING = "stat_opening"
 KEY_STATE_STOPPED = "stat_stopped"
 KEY_STATE_TEMPLATE = "stat_tpl"
 KEY_STATE_TOPIC = "stat_t"
+KEY_STATE_VALUE_TEMPLATE = "stat_val_tpl"
 KEY_SUBTYPE = "stype"
 KEY_SW_VERSION = "sw"
+KEY_TITLE = "tit"
 KEY_TOPIC = "t"
-KEY_TOPIC_LONG = "topic"
-KEY_TOPIC_SUFFIX = "topic_suffix"
 KEY_TYPE = "type"
 KEY_UNIQUE_ID = "uniq_id"
 KEY_UNIT = "unit_of_meas"
 KEY_VALUE_TEMPLATE = "val_tpl"
-KEY_VALUE_TEMPLATE_LONG = "value_template"
 
 MODEL_PLUS_1 = "shellyplus1"
 MODEL_PLUS_1PM = "shellyplus1pm"
 MODEL_PLUS_2PM = "shellyplus2pm"
+MODEL_PLUS_HT = "shellyplusht"
 MODEL_PLUS_I4 = "shellyplusi4"
+MODEL_PLUS_PLUG_US = "shellyplugus"
 MODEL_PRO_1 = "shellypro1"
 MODEL_PRO_1PM = "shellypro1pm"
 MODEL_PRO_2 = "shellypro2"
 MODEL_PRO_2PM = "shellypro2pm"
+MODEL_PRO_3 = "shellypro3"
 MODEL_PRO_4PM = "shellypro4pm"
 
+SENSOR_BATTERY = "battery"
 SENSOR_CLOUD = "cloud"
 SENSOR_CURRENT = "current"
 SENSOR_ENERGY = "energy"
 SENSOR_ETH_IP = "eth_ip"
+SENSOR_EXTERNAL_POWER = "external_power"
 SENSOR_FIRMWARE = "firmware"
+SENSOR_HUMIDITY = "humidity"
 SENSOR_INPUT = "input"
 SENSOR_LAST_RESTART = "last_restart"
 SENSOR_OVERPOWER = "overpower"
@@ -134,28 +152,68 @@ SENSOR_VOLTAGE = "voltage"
 SENSOR_WIFI_IP = "wifi_ip"
 SENSOR_WIFI_SIGNAL = "wifi_signal"
 
+UPDATE_FIRMWARE = "firmware"
+UPDATE_FIRMWARE_BETA = "firmware_beta"
+
+SCRIPT_CODE = """let topic_prefix = null;
+let installed_version = null;
+
+Shelly.call(^MQTT.GetConfig^, {}, function (config) {
+    topic_prefix = config.topic_prefix;
+});
+
+function SendDeviceStatus() {
+    let _device_info = Shelly.getDeviceInfo();
+    installed_version = _device_info.ver;
+    Shelly.call(^Shelly.GetStatus^, {}, function (status) {
+        status.sys.installed_version = installed_version;
+        MQTT.publish(topic_prefix + ^/status/rpc^, JSON.stringify(status));
+    });
+};
+
+
+MQTT.setConnectHandler(SendDeviceStatus);
+let UpdateTimer = Timer.set(30000, true, SendDeviceStatus);
+"""
+SCRIPT_CURRENT_NAME = "shellies_discovery_gen2_script_20221116"
+SCRIPT_OLD_NAMES = ["Send Device Status", "send_device_status", "send_device_status.js"]
+
 STATE_CLASS_MEASUREMENT = "measurement"
 STATE_CLASS_TOTAL_INCREASING = "total_increasing"
 
 TOPIC_COVER = "~status/cover:{cover}"
+TOPIC_HUMIDITY = "~status/humidity:0"
 TOPIC_INPUT = "~status/input:{relay}"
 TOPIC_ONLINE = "~online"
 TOPIC_RPC = "~rpc"
+TOPIC_STATUS_CLOUD = "~status/cloud"
+TOPIC_STATUS_DEVICE_POWER = "~status/devicepower:0"
 TOPIC_STATUS_RPC = "~status/rpc"
+TOPIC_STATUS_SYS = "~status/sys"
+TOPIC_STATUS_WIFI = "~status/wifi"
 TOPIC_SWITCH_RELAY = "~status/switch:{relay}"
+TOPIC_TEMPERATURE = "~status/temperature:0"
 
-TPL_CLOUD = "{%if value_json.result.cloud.connected%}ON{%else%}OFF{%endif%}"
+TPL_BATTERY = "{{value_json.battery.percent}}"
+TPL_CLOUD = "{%if value_json.cloud.connected%}ON{%else%}OFF{%endif%}"
+TPL_CLOUD_INDEPENDENT = "{%if value_json.connected%}ON{%else%}OFF{%endif%}"
 TPL_CURRENT = "{{value_json.current|round(1)}}"
 TPL_ENERGY = "{{value_json.aenergy.total|round(2)}}"
-TPL_ETH_IP = "{{value_json.result.eth.ip}}"
-TPL_FIRMWARE_STABLE = "{%if value_json.result.sys.available_updates.stable is defined%}ON{%else%}OFF{%endif%}"
-TPL_FIRMWARE_STABLE_ATTRS = (
-    "{{value_json.result.sys.available_updates.get(^stable^, {})|to_json}}"
+TPL_ETH_IP = "{{value_json.eth.ip}}"
+TPL_EXTERNAL_POWER = "{%if value_json.external.present%}ON{%else%}OFF{%endif%}"
+TPL_FIRMWARE_BETA = "{%if value_json.sys.available_updates.beta is defined%}{{value_json.sys.available_updates.beta.version}}{%else%}{{value_json.sys.installed_version}}{%endif%}"
+TPL_FIRMWARE_STABLE = "{%if value_json.sys.available_updates.stable is defined%}{{value_json.sys.available_updates.stable.version}}{%else%}{{value_json.sys.installed_version}}{%endif%}"
+TPL_FIRMWARE_STABLE_INDEPENDENT = (
+    "{%if value_json.available_updates.stable is defined%}ON{%else%}OFF{%endif%}"
 )
+TPL_FIRMWARE_STABLE_ATTRS = "{{value_json.available_updates.get(^stable^,{})|to_json}}"
+TPL_FIRMWARE_STABLE_ATTRS_INDEPENDENT = (
+    "{{value_json.available_updates.get(^stable^,{})|to_json}}"
+)
+TPL_HUMIDITY = "{{value_json.rh|round(1)}}"
 TPL_INPUT = "{%if value_json.state%}ON{%else%}OFF{%endif%}"
-TPL_MQTT_CONNECTED = (
-    "{%if value_json.result.mqtt.connected%}online{%else%}offline{%endif%}"
-)
+TPL_INSTALLED_FIRMWARE = "{{value_json.sys.installed_version}}"
+TPL_MQTT_CONNECTED = "{%if value_json.mqtt.connected%}online{%else%}offline{%endif%}"
 TPL_POWER = "{{value_json.apower|round(1)}}"
 TPL_POWER_FACTOR = "{{value_json.pf*100|round}}"
 TPL_RELAY_OVERPOWER = (
@@ -168,11 +226,16 @@ TPL_RELAY_OVERVOLTAGE = (
     "{%if ^overvoltage^ in value_json.get(^errors^,[])%}ON{%else%}OFF{%endif%}"
 )
 TPL_TEMPERATURE = "{{value_json.temperature.tC|round(1)}}"
-TPL_UPTIME = "{{(as_timestamp(now())-value_json.result.sys.uptime)|timestamp_local}}"
+TPL_TEMPERATURE_INDEPENDENT = "{{value_json.tC|round(1)}}"
+TPL_UPTIME = "{{(as_timestamp(now())-value_json.sys.uptime)|timestamp_local}}"
+TPL_UPTIME_INDEPENDENT = "{{(as_timestamp(now())-value_json.uptime)|timestamp_local}}"
 TPL_VOLTAGE = "{{value_json.voltage|round(1)}}"
-TPL_WIFI_IP = "{{value_json.result.wifi.sta_ip}}"
-TPL_WIFI_SIGNAL = "{{value_json.result.wifi.rssi}}"
-TPL_WIFI_SSID = "{{value_json.result.wifi.ssid}}"
+TPL_WIFI_IP = "{{value_json.wifi.sta_ip}}"
+TPL_WIFI_IP_INDEPENDENT = "{{value_json.sta_ip}}"
+TPL_WIFI_SIGNAL = "{{value_json.wifi.rssi}}"
+TPL_WIFI_SIGNAL_INDEPENDENT = "{{value_json.rssi}}"
+TPL_WIFI_SSID = "{{value_json.wifi.ssid}}"
+TPL_WIFI_SSID_INDEPENDENT = "{{value_json.ssid}}"
 
 TRIGGER_BUTTON_DOUBLE_PRESS = "button_double_press"
 TRIGGER_BUTTON_LONG_PRESS = "button_long_press"
@@ -203,12 +266,22 @@ DESCRIPTION_BUTTON_RESTART = {
     KEY_NAME: "Restart",
     KEY_PAYLOAD_PRESS: "{{^id^:1,^src^:^{device_id}^,^method^:^Shelly.Reboot^}}",
 }
-DESCRIPTION_UPDATE_FIRMWARE = {
-    KEY_DEVICE_CLASS: DEVICE_CLASS_UPDATE,
+DESCRIPTION_BATTERY = {
+    KEY_DEVICE_CLASS: DEVICE_CLASS_BATTERY,
     KEY_ENABLED_BY_DEFAULT: True,
-    KEY_ENTITY_CATEGORY: ENTITY_CATEGORY_CONFIG,
-    KEY_NAME: "Update Firmware",
-    KEY_PAYLOAD_PRESS: "{{^id^:1,^src^:^{device_id}^,^method^:^Shelly.Update^,^params^:{{^stage^:^stable^}}}}",
+    KEY_ENTITY_CATEGORY: ENTITY_CATEGORY_DIAGNOSTIC,
+    KEY_NAME: "Battery",
+    KEY_STATE_TOPIC: TOPIC_STATUS_DEVICE_POWER,
+    KEY_UNIT: UNIT_PERCENT,
+    KEY_VALUE_TEMPLATE: TPL_BATTERY,
+}
+DESCRIPTION_SENSOR_EXTERNAL_POWER = {
+    KEY_DEVICE_CLASS: DEVICE_CLASS_POWER,
+    KEY_ENABLED_BY_DEFAULT: True,
+    KEY_ENTITY_CATEGORY: ENTITY_CATEGORY_DIAGNOSTIC,
+    KEY_NAME: "External power",
+    KEY_STATE_TOPIC: TOPIC_STATUS_DEVICE_POWER,
+    KEY_VALUE_TEMPLATE: TPL_EXTERNAL_POWER,
 }
 DESCRIPTION_SENSOR_CLOUD = {
     KEY_DEVICE_CLASS: DEVICE_CLASS_CONNECTIVITY,
@@ -262,16 +335,6 @@ DESCRIPTION_SENSOR_ETH_IP = {
     KEY_STATE_TOPIC: TOPIC_STATUS_RPC,
     KEY_VALUE_TEMPLATE: TPL_ETH_IP,
 }
-DESCRIPTION_SENSOR_FIRMWARE = {
-    KEY_DEVICE_CLASS: DEVICE_CLASS_UPDATE,
-    KEY_ENABLED_BY_DEFAULT: True,
-    KEY_ENTITY_CATEGORY: ENTITY_CATEGORY_DIAGNOSTIC,
-    KEY_NAME: "Firmware",
-    KEY_STATE_TOPIC: TOPIC_STATUS_RPC,
-    KEY_VALUE_TEMPLATE: TPL_FIRMWARE_STABLE,
-    KEY_JSON_ATTRIBUTES_TOPIC: TOPIC_STATUS_RPC,
-    KEY_JSON_ATTRIBUTES_TEMPLATE: TPL_FIRMWARE_STABLE_ATTRS,
-}
 DESCRIPTION_SENSOR_INPUT = {
     KEY_ENABLED_BY_DEFAULT: False,
     KEY_STATE_TOPIC: TOPIC_INPUT,
@@ -281,7 +344,7 @@ DESCRIPTION_SENSOR_LAST_RESTART = {
     KEY_DEVICE_CLASS: DEVICE_CLASS_TIMESTAMP,
     KEY_ENABLED_BY_DEFAULT: False,
     KEY_ENTITY_CATEGORY: ENTITY_CATEGORY_DIAGNOSTIC,
-    KEY_NAME: "Last Restart",
+    KEY_NAME: "Last restart",
     KEY_STATE_TOPIC: TOPIC_STATUS_RPC,
     KEY_VALUE_TEMPLATE: TPL_UPTIME,
 }
@@ -330,7 +393,7 @@ DESCRIPTION_SENSOR_POWER_COVER = {
 DESCRIPTION_SENSOR_POWER_FACTOR = {
     KEY_DEVICE_CLASS: DEVICE_CLASS_POWER_FACTOR,
     KEY_ENABLED_BY_DEFAULT: False,
-    KEY_NAME: "Power Factor",
+    KEY_NAME: "Power factor",
     KEY_STATE_CLASS: STATE_CLASS_MEASUREMENT,
     KEY_STATE_TOPIC: TOPIC_SWITCH_RELAY,
     KEY_UNIT: UNIT_PERCENT,
@@ -339,7 +402,7 @@ DESCRIPTION_SENSOR_POWER_FACTOR = {
 DESCRIPTION_SENSOR_POWER_FACTOR_COVER = {
     KEY_DEVICE_CLASS: DEVICE_CLASS_POWER_FACTOR,
     KEY_ENABLED_BY_DEFAULT: False,
-    KEY_NAME: "Power Factor",
+    KEY_NAME: "Power factor",
     KEY_STATE_CLASS: STATE_CLASS_MEASUREMENT,
     KEY_STATE_TOPIC: TOPIC_COVER,
     KEY_UNIT: UNIT_PERCENT,
@@ -401,23 +464,117 @@ DESCRIPTION_SENSOR_WIFI_SIGNAL = {
     KEY_DEVICE_CLASS: DEVICE_CLASS_SIGNAL_STRENGTH,
     KEY_ENABLED_BY_DEFAULT: False,
     KEY_ENTITY_CATEGORY: ENTITY_CATEGORY_DIAGNOSTIC,
-    KEY_NAME: "WiFi Signal",
+    KEY_NAME: "WiFi signal",
     KEY_STATE_CLASS: STATE_CLASS_MEASUREMENT,
     KEY_STATE_TOPIC: TOPIC_STATUS_RPC,
     KEY_UNIT: UNIT_DBM,
     KEY_VALUE_TEMPLATE: TPL_WIFI_SIGNAL,
 }
+DESCRIPTION_SLEEPING_SENSOR_CLOUD = {
+    KEY_DEVICE_CLASS: DEVICE_CLASS_CONNECTIVITY,
+    KEY_ENABLED_BY_DEFAULT: False,
+    KEY_ENTITY_CATEGORY: ENTITY_CATEGORY_DIAGNOSTIC,
+    KEY_NAME: "Cloud",
+    KEY_STATE_TOPIC: TOPIC_STATUS_CLOUD,
+    KEY_VALUE_TEMPLATE: TPL_CLOUD_INDEPENDENT,
+}
+DESCRIPTION_SLEEPING_SENSOR_FIRMWARE = {
+    KEY_DEVICE_CLASS: DEVICE_CLASS_UPDATE,
+    KEY_ENABLED_BY_DEFAULT: True,
+    KEY_ENTITY_CATEGORY: ENTITY_CATEGORY_DIAGNOSTIC,
+    KEY_NAME: "Firmware",
+    KEY_STATE_TOPIC: TOPIC_STATUS_SYS,
+    KEY_VALUE_TEMPLATE: TPL_FIRMWARE_STABLE_INDEPENDENT,
+    KEY_JSON_ATTRIBUTES_TOPIC: TOPIC_STATUS_SYS,
+    KEY_JSON_ATTRIBUTES_TEMPLATE: TPL_FIRMWARE_STABLE_ATTRS_INDEPENDENT,
+}
+DESCRIPTION_SLEEPING_SENSOR_HUMIDITY = {
+    KEY_DEVICE_CLASS: DEVICE_CLASS_HUMIDITY,
+    KEY_ENABLED_BY_DEFAULT: True,
+    KEY_NAME: "Humidity",
+    KEY_STATE_CLASS: STATE_CLASS_MEASUREMENT,
+    KEY_STATE_TOPIC: TOPIC_HUMIDITY,
+    KEY_UNIT: UNIT_PERCENT,
+    KEY_VALUE_TEMPLATE: TPL_HUMIDITY,
+}
+DESCRIPTION_SLEEPING_SENSOR_TEMPERATURE = {
+    KEY_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
+    KEY_ENABLED_BY_DEFAULT: True,
+    KEY_NAME: "Temperature",
+    KEY_STATE_CLASS: STATE_CLASS_MEASUREMENT,
+    KEY_STATE_TOPIC: TOPIC_TEMPERATURE,
+    KEY_UNIT: UNIT_CELSIUS,
+    KEY_VALUE_TEMPLATE: TPL_TEMPERATURE_INDEPENDENT,
+}
+DESCRIPTION_SLEEPING_SENSOR_LAST_RESTART = {
+    KEY_DEVICE_CLASS: DEVICE_CLASS_TIMESTAMP,
+    KEY_ENABLED_BY_DEFAULT: False,
+    KEY_ENTITY_CATEGORY: ENTITY_CATEGORY_DIAGNOSTIC,
+    KEY_NAME: "Last restart",
+    KEY_STATE_TOPIC: TOPIC_STATUS_SYS,
+    KEY_VALUE_TEMPLATE: TPL_UPTIME_INDEPENDENT,
+}
+DESCRIPTION_SLEEPING_SENSOR_SSID = {
+    KEY_ENABLED_BY_DEFAULT: False,
+    KEY_ENTITY_CATEGORY: ENTITY_CATEGORY_DIAGNOSTIC,
+    KEY_ICON: "mdi:wifi-settings",
+    KEY_NAME: "SSID",
+    KEY_STATE_TOPIC: TOPIC_STATUS_WIFI,
+    KEY_VALUE_TEMPLATE: TPL_WIFI_SSID_INDEPENDENT,
+}
+DESCRIPTION_SLEEPING_SENSOR_WIFI_IP = {
+    KEY_ENABLED_BY_DEFAULT: False,
+    KEY_ENTITY_CATEGORY: ENTITY_CATEGORY_DIAGNOSTIC,
+    KEY_ICON: "mdi:ip-outline",
+    KEY_NAME: "WiFi IP",
+    KEY_STATE_TOPIC: TOPIC_STATUS_WIFI,
+    KEY_VALUE_TEMPLATE: TPL_WIFI_IP_INDEPENDENT,
+}
+DESCRIPTION_SLEEPING_SENSOR_WIFI_SIGNAL = {
+    KEY_DEVICE_CLASS: DEVICE_CLASS_SIGNAL_STRENGTH,
+    KEY_ENABLED_BY_DEFAULT: False,
+    KEY_ENTITY_CATEGORY: ENTITY_CATEGORY_DIAGNOSTIC,
+    KEY_NAME: "WiFi signal",
+    KEY_STATE_CLASS: STATE_CLASS_MEASUREMENT,
+    KEY_STATE_TOPIC: TOPIC_STATUS_WIFI,
+    KEY_UNIT: UNIT_DBM,
+    KEY_VALUE_TEMPLATE: TPL_WIFI_SIGNAL_INDEPENDENT,
+}
+DESCRIPTION_UPDATE_FIRMWARE = {
+    KEY_DEVICE_CLASS: "firmware",
+    KEY_ENABLED_BY_DEFAULT: True,
+    KEY_ENTITY_CATEGORY: ENTITY_CATEGORY_DIAGNOSTIC,
+    KEY_LATEST_VERSION_TEMPLATE: TPL_FIRMWARE_STABLE,
+    KEY_LATEST_VERSION_TOPIC: TOPIC_STATUS_RPC,
+    KEY_NAME: "Firmware",
+    KEY_PAYLOAD_INSTALL: "{{^id^:1,^src^:^{device_id}^,^method^:^Shelly.Update^,^params^:{{^stage^:^stable^}}}}",
+    KEY_STATE_TOPIC: TOPIC_STATUS_RPC,
+    KEY_VALUE_TEMPLATE: TPL_INSTALLED_FIRMWARE,
+}
+DESCRIPTION_UPDATE_FIRMWARE_BETA = {
+    KEY_DEVICE_CLASS: "firmware",
+    KEY_ENABLED_BY_DEFAULT: False,
+    KEY_ENTITY_CATEGORY: ENTITY_CATEGORY_DIAGNOSTIC,
+    KEY_LATEST_VERSION_TEMPLATE: TPL_FIRMWARE_BETA,
+    KEY_LATEST_VERSION_TOPIC: TOPIC_STATUS_RPC,
+    KEY_NAME: "Firmware beta",
+    KEY_PAYLOAD_INSTALL: "{{^id^:1,^src^:^{device_id}^,^method^:^Shelly.Update^,^params^:{{^stage^:^beta^}}}}",
+    KEY_STATE_TOPIC: TOPIC_STATUS_RPC,
+    KEY_VALUE_TEMPLATE: TPL_INSTALLED_FIRMWARE,
+}
+
 
 SUPPORTED_MODELS = {
     MODEL_PLUS_1: {
         ATTR_NAME: "Shelly Plus 1",
+        ATTR_MODEL_ID: "SNSW-001X16EU",
         ATTR_BINARY_SENSORS: {
             SENSOR_CLOUD: DESCRIPTION_SENSOR_CLOUD,
-            SENSOR_FIRMWARE: DESCRIPTION_SENSOR_FIRMWARE,
+            SENSOR_FIRMWARE: {},
         },
         ATTR_BUTTONS: {
             BUTTON_RESTART: DESCRIPTION_BUTTON_RESTART,
-            BUTTON_UPDATE_FIRMWARE: DESCRIPTION_UPDATE_FIRMWARE,
+            BUTTON_UPDATE_FIRMWARE: {},
         },
         ATTR_INPUTS: 1,
         ATTR_INPUT_BINARY_SENSORS: {SENSOR_INPUT: DESCRIPTION_SENSOR_INPUT},
@@ -430,17 +587,22 @@ SUPPORTED_MODELS = {
             SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
             SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
         },
+        ATTR_UPDATES: {
+            UPDATE_FIRMWARE: DESCRIPTION_UPDATE_FIRMWARE,
+            UPDATE_FIRMWARE_BETA: DESCRIPTION_UPDATE_FIRMWARE_BETA,
+        },
         ATTR_MIN_FIRMWARE_DATE: 20220308,
     },
     MODEL_PLUS_1PM: {
         ATTR_NAME: "Shelly Plus 1PM",
+        ATTR_MODEL_ID: "SNSW-001P16EU",
         ATTR_BINARY_SENSORS: {
             SENSOR_CLOUD: DESCRIPTION_SENSOR_CLOUD,
-            SENSOR_FIRMWARE: DESCRIPTION_SENSOR_FIRMWARE,
+            SENSOR_FIRMWARE: {},
         },
         ATTR_BUTTONS: {
             BUTTON_RESTART: DESCRIPTION_BUTTON_RESTART,
-            BUTTON_UPDATE_FIRMWARE: DESCRIPTION_UPDATE_FIRMWARE,
+            BUTTON_UPDATE_FIRMWARE: {},
         },
         ATTR_INPUTS: 1,
         ATTR_INPUT_BINARY_SENSORS: {SENSOR_INPUT: DESCRIPTION_SENSOR_INPUT},
@@ -464,17 +626,22 @@ SUPPORTED_MODELS = {
             SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
             SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
         },
+        ATTR_UPDATES: {
+            UPDATE_FIRMWARE: DESCRIPTION_UPDATE_FIRMWARE,
+            UPDATE_FIRMWARE_BETA: DESCRIPTION_UPDATE_FIRMWARE_BETA,
+        },
         ATTR_MIN_FIRMWARE_DATE: 20220308,
     },
     MODEL_PLUS_2PM: {
         ATTR_NAME: "Shelly Plus 2PM",
+        ATTR_MODEL_ID: "SNSW-002P16EU",
         ATTR_BINARY_SENSORS: {
             SENSOR_CLOUD: DESCRIPTION_SENSOR_CLOUD,
-            SENSOR_FIRMWARE: DESCRIPTION_SENSOR_FIRMWARE,
+            SENSOR_FIRMWARE: {},
         },
         ATTR_BUTTONS: {
             BUTTON_RESTART: DESCRIPTION_BUTTON_RESTART,
-            BUTTON_UPDATE_FIRMWARE: DESCRIPTION_UPDATE_FIRMWARE,
+            BUTTON_UPDATE_FIRMWARE: {},
         },
         ATTR_COVERS: 1,
         ATTR_COVER_SENSORS: {
@@ -497,8 +664,8 @@ SUPPORTED_MODELS = {
         ATTR_RELAY_SENSORS: {
             SENSOR_CURRENT: DESCRIPTION_SENSOR_CURRENT,
             SENSOR_ENERGY: DESCRIPTION_SENSOR_ENERGY,
-            SENSOR_POWER_FACTOR: DESCRIPTION_SENSOR_POWER_FACTOR,
             SENSOR_POWER: DESCRIPTION_SENSOR_POWER,
+            SENSOR_POWER_FACTOR: DESCRIPTION_SENSOR_POWER_FACTOR,
             SENSOR_TEMPERATURE: DESCRIPTION_SENSOR_TEMPERATURE,
             SENSOR_VOLTAGE: DESCRIPTION_SENSOR_VOLTAGE,
         },
@@ -508,17 +675,42 @@ SUPPORTED_MODELS = {
             SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
             SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
         },
+        ATTR_UPDATES: {
+            UPDATE_FIRMWARE: DESCRIPTION_UPDATE_FIRMWARE,
+            UPDATE_FIRMWARE_BETA: DESCRIPTION_UPDATE_FIRMWARE_BETA,
+        },
         ATTR_MIN_FIRMWARE_DATE: 20220308,
+    },
+    MODEL_PLUS_HT: {
+        ATTR_BATTERY_POWERED: True,
+        ATTR_NAME: "Shelly Plus H&T",
+        ATTR_MODEL_ID: "SNSN-0013A",
+        ATTR_BINARY_SENSORS: {
+            SENSOR_EXTERNAL_POWER: DESCRIPTION_SENSOR_EXTERNAL_POWER,
+            SENSOR_CLOUD: DESCRIPTION_SLEEPING_SENSOR_CLOUD,
+            SENSOR_FIRMWARE: DESCRIPTION_SLEEPING_SENSOR_FIRMWARE,
+        },
+        ATTR_SENSORS: {
+            SENSOR_BATTERY: DESCRIPTION_BATTERY,
+            SENSOR_HUMIDITY: DESCRIPTION_SLEEPING_SENSOR_HUMIDITY,
+            SENSOR_LAST_RESTART: DESCRIPTION_SLEEPING_SENSOR_LAST_RESTART,
+            SENSOR_SSID: DESCRIPTION_SLEEPING_SENSOR_SSID,
+            SENSOR_TEMPERATURE: DESCRIPTION_SLEEPING_SENSOR_TEMPERATURE,
+            SENSOR_WIFI_IP: DESCRIPTION_SLEEPING_SENSOR_WIFI_IP,
+            SENSOR_WIFI_SIGNAL: DESCRIPTION_SLEEPING_SENSOR_WIFI_SIGNAL,
+        },
+        ATTR_MIN_FIRMWARE_DATE: 20220421,
     },
     MODEL_PLUS_I4: {
         ATTR_NAME: "Shelly Plus I4",
+        ATTR_MODEL_ID: "SNSW-0024X",
         ATTR_BINARY_SENSORS: {
             SENSOR_CLOUD: DESCRIPTION_SENSOR_CLOUD,
-            SENSOR_FIRMWARE: DESCRIPTION_SENSOR_FIRMWARE,
+            SENSOR_FIRMWARE: {},
         },
         ATTR_BUTTONS: {
             BUTTON_RESTART: DESCRIPTION_BUTTON_RESTART,
-            BUTTON_UPDATE_FIRMWARE: DESCRIPTION_UPDATE_FIRMWARE,
+            BUTTON_UPDATE_FIRMWARE: {},
         },
         ATTR_INPUTS: 4,
         ATTR_INPUT_BINARY_SENSORS: {SENSOR_INPUT: DESCRIPTION_SENSOR_INPUT},
@@ -529,45 +721,23 @@ SUPPORTED_MODELS = {
             SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
             SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
         },
-        ATTR_MIN_FIRMWARE_DATE: 20220308,
-    },
-    MODEL_PRO_1: {
-        ATTR_NAME: "Shelly Pro 1",
-        ATTR_BINARY_SENSORS: {
-            SENSOR_CLOUD: DESCRIPTION_SENSOR_CLOUD,
-            SENSOR_FIRMWARE: DESCRIPTION_SENSOR_FIRMWARE,
-        },
-        ATTR_BUTTONS: {
-            BUTTON_RESTART: DESCRIPTION_BUTTON_RESTART,
-            BUTTON_UPDATE_FIRMWARE: DESCRIPTION_UPDATE_FIRMWARE,
-        },
-        ATTR_INPUTS: 2,
-        ATTR_INPUT_BINARY_SENSORS: {SENSOR_INPUT: DESCRIPTION_SENSOR_INPUT},
-        ATTR_INPUT_EVENTS: [EVENT_SINGLE_PUSH, EVENT_DOUBLE_PUSH, EVENT_LONG_PUSH],
-        ATTR_RELAYS: 1,
-        ATTR_RELAY_BINARY_SENSORS: {SENSOR_OVERTEMP: DESCRIPTION_SENSOR_OVERTEMP},
-        ATTR_SENSORS: {
-            SENSOR_ETH_IP: DESCRIPTION_SENSOR_ETH_IP,
-            SENSOR_LAST_RESTART: DESCRIPTION_SENSOR_LAST_RESTART,
-            SENSOR_SSID: DESCRIPTION_SENSOR_SSID,
-            SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
-            SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
+        ATTR_UPDATES: {
+            UPDATE_FIRMWARE: DESCRIPTION_UPDATE_FIRMWARE,
+            UPDATE_FIRMWARE_BETA: DESCRIPTION_UPDATE_FIRMWARE_BETA,
         },
         ATTR_MIN_FIRMWARE_DATE: 20220308,
     },
-    MODEL_PRO_1PM: {
-        ATTR_NAME: "Shelly Pro 1PM",
+    MODEL_PLUS_PLUG_US: {
+        ATTR_NAME: "Shelly Plus Plug US",
+        ATTR_MODEL_ID: "SNPL-00116US",
         ATTR_BINARY_SENSORS: {
             SENSOR_CLOUD: DESCRIPTION_SENSOR_CLOUD,
-            SENSOR_FIRMWARE: DESCRIPTION_SENSOR_FIRMWARE,
+            SENSOR_FIRMWARE: {},
         },
         ATTR_BUTTONS: {
             BUTTON_RESTART: DESCRIPTION_BUTTON_RESTART,
-            BUTTON_UPDATE_FIRMWARE: DESCRIPTION_UPDATE_FIRMWARE,
+            BUTTON_UPDATE_FIRMWARE: {},
         },
-        ATTR_INPUTS: 2,
-        ATTR_INPUT_BINARY_SENSORS: {SENSOR_INPUT: DESCRIPTION_SENSOR_INPUT},
-        ATTR_INPUT_EVENTS: [EVENT_SINGLE_PUSH, EVENT_DOUBLE_PUSH, EVENT_LONG_PUSH],
         ATTR_RELAYS: 1,
         ATTR_RELAY_BINARY_SENSORS: {
             SENSOR_OVERPOWER: DESCRIPTION_SENSOR_OVERPOWER,
@@ -582,23 +752,97 @@ SUPPORTED_MODELS = {
             SENSOR_VOLTAGE: DESCRIPTION_SENSOR_VOLTAGE,
         },
         ATTR_SENSORS: {
+            SENSOR_LAST_RESTART: DESCRIPTION_SENSOR_LAST_RESTART,
+            SENSOR_SSID: DESCRIPTION_SENSOR_SSID,
+            SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
+            SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
+        },
+        ATTR_UPDATES: {
+            UPDATE_FIRMWARE: DESCRIPTION_UPDATE_FIRMWARE,
+            UPDATE_FIRMWARE_BETA: DESCRIPTION_UPDATE_FIRMWARE_BETA,
+        },
+        ATTR_MIN_FIRMWARE_DATE: 20220211,
+    },
+    MODEL_PRO_1: {
+        ATTR_NAME: "Shelly Pro 1",
+        ATTR_MODEL_ID: "SPSW-001XE16EU",
+        ATTR_BINARY_SENSORS: {
+            SENSOR_CLOUD: DESCRIPTION_SENSOR_CLOUD,
+            SENSOR_FIRMWARE: {},
+        },
+        ATTR_BUTTONS: {
+            BUTTON_RESTART: DESCRIPTION_BUTTON_RESTART,
+            BUTTON_UPDATE_FIRMWARE: {},
+        },
+        ATTR_INPUTS: 2,
+        ATTR_INPUT_BINARY_SENSORS: {SENSOR_INPUT: DESCRIPTION_SENSOR_INPUT},
+        ATTR_INPUT_EVENTS: [EVENT_SINGLE_PUSH, EVENT_DOUBLE_PUSH, EVENT_LONG_PUSH],
+        ATTR_RELAYS: 1,
+        ATTR_RELAY_BINARY_SENSORS: {SENSOR_OVERTEMP: DESCRIPTION_SENSOR_OVERTEMP},
+        ATTR_SENSORS: {
             SENSOR_ETH_IP: DESCRIPTION_SENSOR_ETH_IP,
             SENSOR_LAST_RESTART: DESCRIPTION_SENSOR_LAST_RESTART,
             SENSOR_SSID: DESCRIPTION_SENSOR_SSID,
             SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
             SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
         },
+        ATTR_UPDATES: {
+            UPDATE_FIRMWARE: DESCRIPTION_UPDATE_FIRMWARE,
+            UPDATE_FIRMWARE_BETA: DESCRIPTION_UPDATE_FIRMWARE_BETA,
+        },
+        ATTR_MIN_FIRMWARE_DATE: 20220308,
+    },
+    MODEL_PRO_1PM: {
+        ATTR_NAME: "Shelly Pro 1PM",
+        ATTR_MODEL_ID: "SPSW-001PE16EU",
+        ATTR_BINARY_SENSORS: {
+            SENSOR_CLOUD: DESCRIPTION_SENSOR_CLOUD,
+            SENSOR_FIRMWARE: {},
+        },
+        ATTR_BUTTONS: {
+            BUTTON_RESTART: DESCRIPTION_BUTTON_RESTART,
+            BUTTON_UPDATE_FIRMWARE: {},
+        },
+        ATTR_INPUTS: 2,
+        ATTR_INPUT_BINARY_SENSORS: {SENSOR_INPUT: DESCRIPTION_SENSOR_INPUT},
+        ATTR_INPUT_EVENTS: [EVENT_SINGLE_PUSH, EVENT_DOUBLE_PUSH, EVENT_LONG_PUSH],
+        ATTR_RELAYS: 1,
+        ATTR_RELAY_BINARY_SENSORS: {
+            SENSOR_OVERPOWER: DESCRIPTION_SENSOR_OVERPOWER,
+            SENSOR_OVERTEMP: DESCRIPTION_SENSOR_OVERTEMP,
+            SENSOR_OVERVOLTAGE: DESCRIPTION_SENSOR_OVERVOLTAGE,
+        },
+        ATTR_RELAY_SENSORS: {
+            SENSOR_CURRENT: DESCRIPTION_SENSOR_CURRENT,
+            SENSOR_ENERGY: DESCRIPTION_SENSOR_ENERGY,
+            SENSOR_POWER: DESCRIPTION_SENSOR_POWER,
+            SENSOR_POWER_FACTOR: DESCRIPTION_SENSOR_POWER_FACTOR,
+            SENSOR_TEMPERATURE: DESCRIPTION_SENSOR_TEMPERATURE,
+            SENSOR_VOLTAGE: DESCRIPTION_SENSOR_VOLTAGE,
+        },
+        ATTR_SENSORS: {
+            SENSOR_ETH_IP: DESCRIPTION_SENSOR_ETH_IP,
+            SENSOR_LAST_RESTART: DESCRIPTION_SENSOR_LAST_RESTART,
+            SENSOR_SSID: DESCRIPTION_SENSOR_SSID,
+            SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
+            SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
+        },
+        ATTR_UPDATES: {
+            UPDATE_FIRMWARE: DESCRIPTION_UPDATE_FIRMWARE,
+            UPDATE_FIRMWARE_BETA: DESCRIPTION_UPDATE_FIRMWARE_BETA,
+        },
         ATTR_MIN_FIRMWARE_DATE: 20220308,
     },
     MODEL_PRO_2: {
         ATTR_NAME: "Shelly Pro 2",
+        ATTR_MODEL_ID: "SPSW-002XE16EU",
         ATTR_BINARY_SENSORS: {
             SENSOR_CLOUD: DESCRIPTION_SENSOR_CLOUD,
-            SENSOR_FIRMWARE: DESCRIPTION_SENSOR_FIRMWARE,
+            SENSOR_FIRMWARE: {},
         },
         ATTR_BUTTONS: {
             BUTTON_RESTART: DESCRIPTION_BUTTON_RESTART,
-            BUTTON_UPDATE_FIRMWARE: DESCRIPTION_UPDATE_FIRMWARE,
+            BUTTON_UPDATE_FIRMWARE: {},
         },
         ATTR_INPUTS: 2,
         ATTR_INPUT_BINARY_SENSORS: {SENSOR_INPUT: DESCRIPTION_SENSOR_INPUT},
@@ -612,17 +856,22 @@ SUPPORTED_MODELS = {
             SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
             SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
         },
+        ATTR_UPDATES: {
+            UPDATE_FIRMWARE: DESCRIPTION_UPDATE_FIRMWARE,
+            UPDATE_FIRMWARE_BETA: DESCRIPTION_UPDATE_FIRMWARE_BETA,
+        },
         ATTR_MIN_FIRMWARE_DATE: 20220308,
     },
     MODEL_PRO_2PM: {
         ATTR_NAME: "Shelly Pro 2PM",
+        ATTR_MODEL_ID: "SPSW-002PE16EU",
         ATTR_BINARY_SENSORS: {
             SENSOR_CLOUD: DESCRIPTION_SENSOR_CLOUD,
-            SENSOR_FIRMWARE: DESCRIPTION_SENSOR_FIRMWARE,
+            SENSOR_FIRMWARE: {},
         },
         ATTR_BUTTONS: {
             BUTTON_RESTART: DESCRIPTION_BUTTON_RESTART,
-            BUTTON_UPDATE_FIRMWARE: DESCRIPTION_UPDATE_FIRMWARE,
+            BUTTON_UPDATE_FIRMWARE: {},
         },
         ATTR_COVERS: 1,
         ATTR_COVER_SENSORS: {
@@ -646,6 +895,7 @@ SUPPORTED_MODELS = {
             SENSOR_CURRENT: DESCRIPTION_SENSOR_CURRENT,
             SENSOR_ENERGY: DESCRIPTION_SENSOR_ENERGY,
             SENSOR_POWER: DESCRIPTION_SENSOR_POWER,
+            SENSOR_POWER_FACTOR: DESCRIPTION_SENSOR_POWER_FACTOR,
             SENSOR_TEMPERATURE: DESCRIPTION_SENSOR_TEMPERATURE,
             SENSOR_VOLTAGE: DESCRIPTION_SENSOR_VOLTAGE,
         },
@@ -656,17 +906,52 @@ SUPPORTED_MODELS = {
             SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
             SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
         },
+        ATTR_UPDATES: {
+            UPDATE_FIRMWARE: DESCRIPTION_UPDATE_FIRMWARE,
+            UPDATE_FIRMWARE_BETA: DESCRIPTION_UPDATE_FIRMWARE_BETA,
+        },
+        ATTR_MIN_FIRMWARE_DATE: 20220308,
+    },
+    MODEL_PRO_3: {
+        ATTR_NAME: "Shelly Pro 3",
+        ATTR_MODEL_ID: "SPSW-003XE16EU",
+        ATTR_BINARY_SENSORS: {
+            SENSOR_CLOUD: DESCRIPTION_SENSOR_CLOUD,
+            SENSOR_FIRMWARE: {},
+        },
+        ATTR_BUTTONS: {
+            BUTTON_RESTART: DESCRIPTION_BUTTON_RESTART,
+            BUTTON_UPDATE_FIRMWARE: {},
+        },
+        ATTR_INPUTS: 3,
+        ATTR_INPUT_BINARY_SENSORS: {SENSOR_INPUT: DESCRIPTION_SENSOR_INPUT},
+        ATTR_INPUT_EVENTS: [EVENT_SINGLE_PUSH, EVENT_DOUBLE_PUSH, EVENT_LONG_PUSH],
+        ATTR_RELAYS: 3,
+        ATTR_RELAY_BINARY_SENSORS: {SENSOR_OVERTEMP: DESCRIPTION_SENSOR_OVERTEMP},
+        ATTR_RELAY_SENSORS: {SENSOR_TEMPERATURE: DESCRIPTION_SENSOR_TEMPERATURE},
+        ATTR_SENSORS: {
+            SENSOR_ETH_IP: DESCRIPTION_SENSOR_ETH_IP,
+            SENSOR_LAST_RESTART: DESCRIPTION_SENSOR_LAST_RESTART,
+            SENSOR_SSID: DESCRIPTION_SENSOR_SSID,
+            SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
+            SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
+        },
+        ATTR_UPDATES: {
+            UPDATE_FIRMWARE: DESCRIPTION_UPDATE_FIRMWARE,
+            UPDATE_FIRMWARE_BETA: DESCRIPTION_UPDATE_FIRMWARE_BETA,
+        },
         ATTR_MIN_FIRMWARE_DATE: 20220308,
     },
     MODEL_PRO_4PM: {
         ATTR_NAME: "Shelly Pro 4PM",
+        ATTR_MODEL_ID: "SPSW-004PE16EU",
         ATTR_BINARY_SENSORS: {
             SENSOR_CLOUD: DESCRIPTION_SENSOR_CLOUD,
-            SENSOR_FIRMWARE: DESCRIPTION_SENSOR_FIRMWARE,
+            SENSOR_FIRMWARE: {},
         },
         ATTR_BUTTONS: {
             BUTTON_RESTART: DESCRIPTION_BUTTON_RESTART,
-            BUTTON_UPDATE_FIRMWARE: DESCRIPTION_UPDATE_FIRMWARE,
+            BUTTON_UPDATE_FIRMWARE: {},
         },
         ATTR_INPUTS: 4,
         ATTR_INPUT_BINARY_SENSORS: {SENSOR_INPUT: DESCRIPTION_SENSOR_INPUT},
@@ -692,6 +977,10 @@ SUPPORTED_MODELS = {
             SENSOR_WIFI_IP: DESCRIPTION_SENSOR_WIFI_IP,
             SENSOR_WIFI_SIGNAL: DESCRIPTION_SENSOR_WIFI_SIGNAL,
         },
+        ATTR_UPDATES: {
+            UPDATE_FIRMWARE: DESCRIPTION_UPDATE_FIRMWARE,
+            UPDATE_FIRMWARE_BETA: DESCRIPTION_UPDATE_FIRMWARE_BETA,
+        },
         ATTR_MIN_FIRMWARE_DATE: 20220308,
     },
 }
@@ -704,7 +993,13 @@ def get_consumption_type(consumption_list, relay_id):
     except IndexError:
         return ATTR_SWITCH
 
-    return ATTR_LIGHT if "light" in consumption_type else ATTR_SWITCH
+    if "light" in consumption_type.lower():
+        return ATTR_LIGHT
+
+    if "fan" in consumption_type.lower():
+        return ATTR_FAN
+
+    return ATTR_SWITCH
 
 
 def mqtt_publish(topic, payload):
@@ -822,6 +1117,33 @@ def get_light(relay_id, relay_type, profile):
     return topic, payload
 
 
+def get_fan(relay_id, relay_type, profile):
+    """Create configuration for Shelly relay as fan entity."""
+    topic = encode_config_topic(f"{disc_prefix}/fan/{device_id}-{relay_id}/config")
+
+    if relay_type != ATTR_FAN or profile == ATTR_COVER:
+        payload = ""
+        return topic, payload
+
+    relay_name = (
+        device_config[f"switch:{relay_id}"][ATTR_NAME]
+        or f"{device_name} Relay {relay_id}"
+    )
+    payload = {
+        KEY_NAME: relay_name,
+        KEY_COMMAND_TOPIC: TOPIC_RPC,
+        KEY_COMMAND_TEMPLATE: f"{{%if value==^ON^%}}{{^id^:1,^src^:^{device_id}^,^method^:^Switch.Set^,^params^:{{^id^:{relay_id},^on^:true}}}}{{%else%}}{{^id^:1,^src^:^{device_id}^,^method^:^Switch.Set^,^params^:{{^id^:{relay_id},^on^:false}}}}{{%endif%}}",
+        KEY_STATE_TOPIC: TOPIC_SWITCH_RELAY.format(relay=relay_id),
+        KEY_STATE_VALUE_TEMPLATE: "{%if value_json.output%}ON{%else%}OFF{%endif%}",
+        KEY_AVAILABILITY: availability,
+        KEY_UNIQUE_ID: f"{device_id}-{relay_id}".lower(),
+        KEY_QOS: qos,
+        KEY_DEVICE: device_info,
+        KEY_DEFAULT_TOPIC: default_topic,
+    }
+    return topic, payload
+
+
 def get_sensor(sensor, description, profile=None, relay_id=None, cover_id=None):
     """Create configuration for Shelly sensor entity."""
     if cover_id is not None:
@@ -865,12 +1187,17 @@ def get_sensor(sensor, description, profile=None, relay_id=None, cover_id=None):
         KEY_NAME: sensor_name,
         KEY_VALUE_TEMPLATE: description[KEY_VALUE_TEMPLATE],
         KEY_ENABLED_BY_DEFAULT: str(description[KEY_ENABLED_BY_DEFAULT]).lower(),
-        KEY_AVAILABILITY: availability,
         KEY_UNIQUE_ID: unique_id,
         KEY_QOS: qos,
         KEY_DEVICE: device_info,
         KEY_DEFAULT_TOPIC: default_topic,
     }
+
+    if availability:
+        payload[KEY_AVAILABILITY] = availability
+
+    if expire_after:
+        payload[KEY_EXPIRE_AFTER] = expire_after
 
     if cover_id is not None:
         payload[KEY_STATE_TOPIC] = description[KEY_STATE_TOPIC].format(cover=cover_id)
@@ -906,6 +1233,10 @@ def get_binary_sensor(
             f"{disc_prefix}/binary_sensor/{device_id}-{sensor}/config"
         )
 
+    if not description:
+        payload = ""
+        return topic, payload
+
     if profile == ATTR_COVER:
         payload = ""
         return topic, payload
@@ -937,12 +1268,17 @@ def get_binary_sensor(
         KEY_NAME: sensor_name,
         KEY_VALUE_TEMPLATE: description[KEY_VALUE_TEMPLATE],
         KEY_ENABLED_BY_DEFAULT: str(description[KEY_ENABLED_BY_DEFAULT]).lower(),
-        KEY_AVAILABILITY: availability,
         KEY_UNIQUE_ID: unique_id,
         KEY_QOS: qos,
         KEY_DEVICE: device_info,
         KEY_DEFAULT_TOPIC: default_topic,
     }
+
+    if availability:
+        payload[KEY_AVAILABILITY] = availability
+
+    if expire_after:
+        payload[KEY_EXPIRE_AFTER] = expire_after
 
     if entity_id is not None:
         payload[KEY_STATE_TOPIC] = description[KEY_STATE_TOPIC].format(relay=entity_id)
@@ -994,6 +1330,10 @@ def get_button(button, description):
     """Create configuration for Shelly button entity."""
     topic = encode_config_topic(f"{disc_prefix}/button/{device_id}-{button}/config")
 
+    if not description:
+        payload = ""
+        return topic, payload
+
     payload = {
         KEY_NAME: f"{device_name} {description[KEY_NAME]}",
         KEY_COMMAND_TOPIC: TOPIC_RPC,
@@ -1006,6 +1346,41 @@ def get_button(button, description):
         KEY_DEFAULT_TOPIC: default_topic,
     }
 
+    if description.get(KEY_DEVICE_CLASS):
+        payload[KEY_DEVICE_CLASS] = description[KEY_DEVICE_CLASS]
+    if description.get(KEY_ENTITY_CATEGORY):
+        payload[KEY_ENTITY_CATEGORY] = description[KEY_ENTITY_CATEGORY]
+    if description.get(KEY_ICON):
+        payload[KEY_ICON] = description[KEY_ICON]
+
+    return topic, payload
+
+
+def get_update(update, description):
+    """Create configuration for Shelly update entity."""
+    topic = encode_config_topic(f"{disc_prefix}/update/{device_id}-{update}/config")
+
+    payload = {
+        KEY_NAME: f"{device_name} {description[KEY_NAME]}",
+        KEY_ENABLED_BY_DEFAULT: str(description[KEY_ENABLED_BY_DEFAULT]).lower(),
+        KEY_UNIQUE_ID: f"{device_id}-{update}".lower(),
+        KEY_STATE_TOPIC: description[KEY_STATE_TOPIC],
+        KEY_VALUE_TEMPLATE: description[KEY_VALUE_TEMPLATE],
+        KEY_LATEST_VERSION_TEMPLATE: description[KEY_LATEST_VERSION_TEMPLATE],
+        KEY_LATEST_VERSION_TOPIC: description[KEY_LATEST_VERSION_TOPIC],
+        KEY_ENTITY_PICTURE: "https://brands.home-assistant.io/_/shelly/icon.png",
+        KEY_RELEASE_URL: "https://shelly-api-docs.shelly.cloud/gen2/changelog",
+        KEY_TITLE: f"{device_name} Firmware",
+        KEY_QOS: qos,
+        KEY_AVAILABILITY: availability,
+        KEY_DEVICE: device_info,
+        KEY_DEFAULT_TOPIC: default_topic,
+    }
+    if description.get(KEY_PAYLOAD_INSTALL):
+        payload[KEY_COMMAND_TOPIC] = TOPIC_RPC
+        payload[KEY_PAYLOAD_INSTALL] = description[KEY_PAYLOAD_INSTALL].format(
+            device_id=device_id
+        )
     if description.get(KEY_DEVICE_CLASS):
         payload[KEY_DEVICE_CLASS] = description[KEY_DEVICE_CLASS]
     if description.get(KEY_ENTITY_CATEGORY):
@@ -1045,6 +1420,9 @@ def configure_device():
         topic, payload = get_light(relay_id, relay_type, profile)
         config[topic] = payload
 
+        topic, payload = get_fan(relay_id, relay_type, profile)
+        config[topic] = payload
+
         for sensor, description in relay_sensors.items():
             topic, payload = get_sensor(
                 sensor, description, profile=profile, relay_id=relay_id
@@ -1078,6 +1456,10 @@ def configure_device():
         topic, payload = get_button(button, descripton)
         config[topic] = payload
 
+    for update, descripton in updates.items():
+        topic, payload = get_update(update, descripton)
+        config[topic] = payload
+
     for sensor, description in sensors.items():
         topic, payload = get_sensor(sensor, description)
         config[topic] = payload
@@ -1087,6 +1469,94 @@ def configure_device():
         config[topic] = payload
 
     return config
+
+
+def install_script(script_id):
+    """Install the script on the device."""
+    topic = encode_config_topic(f"{device_id}/rpc")
+
+    logger.info("Installing the script with ID: %s", script_id)  # noqa: F821
+
+    payload = {
+        "id": 1,
+        "src": "shelies_discovery_script",
+        "method": "Script.Create",
+        "params": {"name": SCRIPT_CURRENT_NAME},
+    }
+    mqtt_publish(topic, payload)
+    payload = {
+        "id": 1,
+        "src": "shelies_discovery_script",
+        "method": "Script.PutCode",
+        "params": {"id": script_id, "code": SCRIPT_CODE},
+    }
+    mqtt_publish(topic, payload)
+    payload = {
+        "id": 1,
+        "src": "shelies_discovery_script",
+        "method": "Script.Start",
+        "params": {"id": script_id},
+    }
+    mqtt_publish(topic, payload)
+    payload = f"{{'id': 1, 'src': 'shelies_discovery_script', 'method': 'Script.SetConfig', 'params': {{'id': {script_id}, 'config': {{'enable': true}}}}}}"
+    mqtt_publish(topic, payload)
+
+
+def script_installed():
+    """Return True if the current version of the script is installed."""
+    script_id = 1
+
+    while True:
+        if f"script:{script_id}" in device_config:
+            if device_config[f"script:{script_id}"]["name"] == SCRIPT_CURRENT_NAME:
+                return True
+        else:
+            return False
+
+        script_id = script_id + 1
+
+
+def get_script_id():
+    """Return the script ID."""
+    script_id = 1
+
+    while True:
+        if f"script:{script_id}" in device_config:
+            script_id = script_id + 1
+        else:
+            return script_id
+
+
+def remove_old_script_versions():
+    """Remove old script versions."""
+    script_id = 1
+    removed = False
+    topic = encode_config_topic(f"{device_id}/rpc")
+
+    while True:
+        if f"script:{script_id}" in device_config:
+            script_name = device_config[f"script:{script_id}"]["name"]
+            if script_name in SCRIPT_OLD_NAMES:
+                logger.info("Removing the old script %s", script_name)  # noqa: F821
+                removed = True
+                payload = {
+                    "id": 1,
+                    "src": "shelies_discovery_script",
+                    "method": "Script.Stop",
+                    "params": {"id": script_id},
+                }
+                mqtt_publish(topic, payload)
+                payload = {
+                    "id": 1,
+                    "src": "shelies_discovery_script",
+                    "method": "Script.Delete",
+                    "params": {"id": script_id},
+                }
+                mqtt_publish(topic, payload)
+        else:
+            return removed
+
+        script_id = script_id + 1
 
 
 device_id = data[ATTR_ID]  # noqa: F821
@@ -1101,6 +1571,12 @@ if model not in SUPPORTED_MODELS:
 
 device_config = data["device_config"]  # noqa: F821
 firmware_id = device_config["sys"]["device"][ATTR_FW_ID]
+
+if model != MODEL_PLUS_HT and script_installed() is False:
+    removed = remove_old_script_versions()
+    if not removed:
+        script_id = get_script_id()
+        install_script(script_id)
 
 min_firmware_date = SUPPORTED_MODELS[model][ATTR_MIN_FIRMWARE_DATE]
 try:
@@ -1121,6 +1597,7 @@ if mac is None:
 device_name = device_config["sys"]["device"][ATTR_NAME]
 device_url = f"http://{device_config['mqtt']['topic_prefix']}.local/"
 default_topic = f"{device_config['mqtt']['topic_prefix']}/"
+wakeup_period = device_config["sys"].get("sleep", {}).get("wakeup_period", 0)
 
 if not device_name:
     device_name = SUPPORTED_MODELS[model][ATTR_NAME]
@@ -1136,22 +1613,27 @@ device_info = {
     KEY_NAME: device_name,
     KEY_MODEL: SUPPORTED_MODELS[model][ATTR_NAME],
     KEY_SW_VERSION: firmware_id,
+    KEY_HW_VERSION: f"gen2 ({SUPPORTED_MODELS[model].get(ATTR_MODEL_ID)})",
     KEY_MANUFACTURER: ATTR_MANUFACTURER,
     KEY_CONFIGURATION_URL: device_url,
 }
 
-# do not use constants with an abbreviation here
-availability = [
-    {
-        KEY_TOPIC_LONG: TOPIC_ONLINE,
-        KEY_PAYLOAD_AVAILABLE: "true",
-        KEY_PAYLOAD_NOT_AVAILABLE: "false",
-    },
-    {
-        KEY_TOPIC_LONG: TOPIC_STATUS_RPC,
-        KEY_VALUE_TEMPLATE_LONG: TPL_MQTT_CONNECTED,
-    },
-]
+if wakeup_period > 0:
+    availability = None
+    expire_after = wakeup_period * 1.2
+else:
+    availability = [
+        {
+            KEY_TOPIC: TOPIC_ONLINE,
+            KEY_PAYLOAD_AVAILABLE: "true",
+            KEY_PAYLOAD_NOT_AVAILABLE: "false",
+        },
+        {
+            KEY_TOPIC: TOPIC_STATUS_RPC,
+            KEY_VALUE_TEMPLATE: TPL_MQTT_CONNECTED,
+        },
+    ]
+    expire_after = None
 
 inputs = SUPPORTED_MODELS[model].get(ATTR_INPUTS, 0)
 input_events = SUPPORTED_MODELS[model].get(ATTR_INPUT_EVENTS, [])
@@ -1164,6 +1646,7 @@ relay_binary_sensors = SUPPORTED_MODELS[model].get(ATTR_RELAY_BINARY_SENSORS, {}
 buttons = SUPPORTED_MODELS[model].get(ATTR_BUTTONS, {})
 sensors = SUPPORTED_MODELS[model].get(ATTR_SENSORS, {})
 binary_sensors = SUPPORTED_MODELS[model].get(ATTR_BINARY_SENSORS, {})
+updates = SUPPORTED_MODELS[model].get(ATTR_UPDATES, {})
 
 covers = SUPPORTED_MODELS[model].get(ATTR_COVERS, 0)
 cover_sensors = SUPPORTED_MODELS[model].get(ATTR_COVER_SENSORS, {})

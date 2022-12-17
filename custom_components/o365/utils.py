@@ -10,9 +10,10 @@ import yaml
 from bs4 import BeautifulSoup
 from homeassistant.const import CONF_NAME
 from homeassistant.util import dt
+from voluptuous.error import Error as VoluptuousError
+
 from O365.calendar import Attendee  # pylint: disable=no-name-in-module)
 from O365.calendar import EventSensitivity  # pylint: disable=no-name-in-module)
-from voluptuous.error import Error as VoluptuousError
 
 from .const import (
     CONF_ACCOUNT_NAME,
@@ -23,20 +24,25 @@ from .const import (
     CONF_EMAIL_SENSORS,
     CONF_ENABLE_UPDATE,
     CONF_ENTITIES,
+    CONF_GROUPS,
     CONF_QUERY_SENSORS,
     CONF_STATUS_SENSORS,
     CONF_TRACK,
     CONST_CONFIG_TYPE_LIST,
+    CONST_GROUP,
     DATETIME_FORMAT,
     DEFAULT_CACHE_PATH,
     DOMAIN,
     PERM_CALENDARS_READ,
     PERM_CALENDARS_READWRITE,
     PERM_CHAT_READ,
+    PERM_GROUP_READ_ALL,
+    PERM_GROUP_READWRITE_ALL,
     PERM_MAIL_READ,
     PERM_MAIL_SEND,
     PERM_MINIMUM_CALENDAR,
     PERM_MINIMUM_CHAT,
+    PERM_MINIMUM_GROUP,
     PERM_MINIMUM_MAIL,
     PERM_MINIMUM_PRESENCE,
     PERM_MINIMUM_USER,
@@ -55,12 +61,21 @@ def clean_html(html):
     """Clean the HTML."""
     soup = BeautifulSoup(html, features="html.parser")
     if body := soup.find("body"):
-        return body.get_text(" ", strip=True)
+        # get text
+        text = body.get_text()
+
+        # break into lines and remove leading and trailing space on each
+        lines = (line.strip() for line in text.splitlines())
+        # break multi-headlines into a line each
+        chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
+        # drop blank lines
+        text = "\n".join(chunk for chunk in chunks if chunk)
+        return text.replace("\xa0", " ")
 
     return html
 
 
-def build_minimum_permissions(config):
+def build_minimum_permissions(hass, config, conf_type):
     """Build the minimum permissions required to operate."""
     email_sensors = config.get(CONF_EMAIL_SENSORS, [])
     query_sensors = config.get(CONF_QUERY_SENSORS, [])
@@ -74,6 +89,12 @@ def build_minimum_permissions(config):
     if len(chat_sensors) > 0:
         minimum_permissions.append(PERM_MINIMUM_CHAT)
 
+    yaml_filename = build_yaml_filename(config, conf_type)
+    calendars = load_calendars(build_config_file_path(hass, yaml_filename))
+    for calendar in calendars:
+        if calendar.startswith(CONST_GROUP):
+            minimum_permissions.append(PERM_MINIMUM_GROUP)
+            break
     return minimum_permissions
 
 
@@ -84,11 +105,17 @@ def build_requested_permissions(config):
     status_sensors = config.get(CONF_STATUS_SENSORS, [])
     chat_sensors = config.get(CONF_CHAT_SENSORS, [])
     enable_update = config.get(CONF_ENABLE_UPDATE, True)
+    groups = config.get(CONF_GROUPS, False)
     scope = [PERM_OFFLINE_ACCESS, PERM_USER_READ]
     if enable_update:
         scope.extend((PERM_MAIL_SEND, PERM_CALENDARS_READWRITE))
     else:
         scope.append(PERM_CALENDARS_READ)
+    if groups:
+        if enable_update:
+            scope.append(PERM_GROUP_READWRITE_ALL)
+        else:
+            scope.append(PERM_GROUP_READ_ALL)
     if len(email_sensors) > 0 or len(query_sensors) > 0:
         scope.append(PERM_MAIL_READ)
     if len(status_sensors) > 0:
@@ -319,11 +346,14 @@ def build_token_filename(conf, conf_type):
     return TOKEN_FILENAME.format(config_file)
 
 
-def build_yaml_filename(conf):
+def build_yaml_filename(conf, conf_type=None):
     """Create the token file name."""
-    config_file = (
-        f"_{conf.get(CONF_ACCOUNT_NAME)}"
-        if conf.get(CONF_CONFIG_TYPE) == CONST_CONFIG_TYPE_LIST
-        else ""
-    )
+    if conf_type:
+        config_file = f"_{conf.get(CONF_ACCOUNT_NAME)}"
+    else:
+        config_file = (
+            f"_{conf.get(CONF_ACCOUNT_NAME)}"
+            if conf.get(CONF_CONFIG_TYPE) == CONST_CONFIG_TYPE_LIST
+            else ""
+        )
     return YAML_CALENDARS.format(DOMAIN, config_file)

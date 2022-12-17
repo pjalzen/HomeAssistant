@@ -9,6 +9,7 @@ from homeassistant.components.notify import (
     ATTR_TITLE,
 )
 from homeassistant.const import CONF_NAME
+
 from O365.calendar import AttendeeType  # pylint: disable=no-name-in-module
 from O365.calendar import EventSensitivity  # pylint: disable=no-name-in-module
 from O365.calendar import EventShowAs  # pylint: disable=no-name-in-module
@@ -29,6 +30,7 @@ from .const import (
     ATTR_PHOTOS,
     ATTR_RESPONSE,
     ATTR_SEND_RESPONSE,
+    ATTR_SENDER,
     ATTR_SENSITIVITY,
     ATTR_SHOW_AS,
     ATTR_START,
@@ -50,6 +52,7 @@ from .const import (
     CONF_EMAIL_SENSORS,
     CONF_ENABLE_UPDATE,
     CONF_ENTITIES,
+    CONF_GROUPS,
     CONF_HAS_ATTACHMENT,
     CONF_HOURS_BACKWARD_TO_GET,
     CONF_HOURS_FORWARD_TO_GET,
@@ -127,6 +130,7 @@ MULTI_ACCOUNT_SCHEMA = vol.Schema(
                     vol.Required(CONF_CLIENT_SECRET): cv.string,
                     vol.Optional(CONF_TRACK_NEW, default=True): bool,
                     vol.Optional(CONF_ENABLE_UPDATE, default=False): bool,
+                    vol.Optional(CONF_GROUPS, default=False): bool,
                     vol.Required(CONF_ACCOUNT_NAME, ""): cv.string,
                     vol.Exclusive(CONF_ALT_AUTH_FLOW, "alt_auth"): bool,
                     vol.Exclusive(CONF_ALT_AUTH_METHOD, "alt_auth"): bool,
@@ -144,6 +148,7 @@ NOTIFY_DATA_SCHEMA = vol.Schema(
     {
         vol.Optional(ATTR_MESSAGE_IS_HTML, default=False): bool,
         vol.Optional(ATTR_TARGET): cv.string,
+        vol.Optional(ATTR_SENDER): cv.string,
         vol.Optional(ATTR_ZIP_ATTACHMENTS, default=False): bool,
         vol.Optional(ATTR_ZIP_NAME): cv.string,
         vol.Optional(ATTR_PHOTOS, default=[]): [cv.string],

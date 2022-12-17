@@ -13,6 +13,7 @@ from .const import (
     ATTR_ATTACHMENTS,
     ATTR_MESSAGE_IS_HTML,
     ATTR_PHOTOS,
+    ATTR_SENDER,
     ATTR_ZIP_ATTACHMENTS,
     ATTR_ZIP_NAME,
     CONF_ACCOUNT,
@@ -43,10 +44,10 @@ async def async_get_service(
     account_name = discovery_info[CONF_ACCOUNT_NAME]
     conf = hass.data[DOMAIN][account_name]
     account = conf[CONF_ACCOUNT]
-    is_authenticated = account.is_authenticated
-    if not is_authenticated:
-        return
-    return O365EmailService(account, hass, conf)
+    if account.is_authenticated:
+        return O365EmailService(account, hass, conf)
+
+    return
 
 
 class O365EmailService(BaseNotificationService):
@@ -100,6 +101,8 @@ class O365EmailService(BaseNotificationService):
         message = self._build_message(data, message, new_message.attachments)
         self._build_attachments(data, new_message.attachments)
         new_message.to.add(target)
+        if data and data.get(ATTR_SENDER, None):
+            new_message.sender = data.get(ATTR_SENDER)
         new_message.subject = title
         new_message.body = message
         await self.hass.async_add_executor_job(new_message.send)

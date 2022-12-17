@@ -6,15 +6,13 @@
     "codeowners": [
         "@bramstroker"
     ],
+    "config_flow": true,
     "dependencies": [
-        "device_tracker",
-        "hue",
-        "fan",
-        "switch",
-        "binary_sensor",
         "light",
         "group",
-        "template"
+        "template",
+        "select",
+        "utility_meter"
     ],
     "documentation": "https://github.com/bramstroker/homeassistant-powercalc",
     "domain": "powercalc",
@@ -24,5 +22,5 @@
     "requirements": [
         "numpy>=1.21.1"
     ],
-    "version": "v0.21.1"
+    "version": "v1.1.3"
 }

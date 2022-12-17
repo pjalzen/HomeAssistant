@@ -192,3 +192,9 @@
     ignore_availability: true
     name: "TimeEdit-2MA501, Bayesianska metoder, V\xE4xj\xF6, VT22-20220301"
     track: true
+
+- cal_id: o5tp2hljjnicabjlpqsqspibdn0j25mg@import.calendar.google.com
+  entities:
+  - device_id: hv_kalendern
+    ignore_availability: true
+    name: HV-kalendern

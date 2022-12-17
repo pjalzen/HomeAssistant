@@ -11,9 +11,9 @@
     "@RogerSelwyn"
   ],
   "requirements": [
-    "O365==2.0.19",
+    "O365==2.0.21",
     "BeautifulSoup4>=4.10.0"
   ],
-  "version": "v3.2.1",
+  "version": "v3.3.0",
   "iot_class": "cloud_polling"
 }
