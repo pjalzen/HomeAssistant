@@ -160,18 +160,18 @@ sensor:
 
 binary_sensor: !include entities/binary_sensors.yaml
 
-notify: !include notify/notify.yaml
+#notify: !include notify/notify.yaml
 python_script:
 
-mqtt:
-  broker: !secret mqtt_broker
-  port: !secret mqtt_port
-  client_id: home-assistant-raspi
-  keepalive: 60
-  username: !secret mqtt_username 
-  password: !secret mqtt_password 
-  discovery: true
-  discovery_prefix: homeassistant
+#mqtt:
+#  broker: !secret mqtt_broker
+#  port: !secret mqtt_port
+#  client_id: home-assistant-raspi
+#  keepalive: 60
+#  username: !secret mqtt_username 
+#  password: !secret mqtt_password 
+#  discovery: true
+#  discovery_prefix: homeassistant
 
 ifttt:
   key: !secret ifttt_api_key
