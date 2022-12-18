@@ -5,6 +5,7 @@ from copy import deepcopy
 from datetime import date, datetime, timedelta
 from operator import attrgetter, itemgetter
 
+import voluptuous as vol
 from homeassistant.components.calendar import (
     CalendarEntity,
     CalendarEvent,
@@ -12,16 +13,16 @@ from homeassistant.components.calendar import (
     is_offset_reached,
 )
 from homeassistant.const import CONF_NAME
+from homeassistant.helpers import entity_platform
 from homeassistant.helpers.entity import generate_entity_id
 from homeassistant.util import dt
 from requests.exceptions import HTTPError, RetryError
 
 from .const import (
-    ATTR_CALENDAR_ID,
-    ATTR_ENTITY_ID,
     CALENDAR_ENTITY_ID_FORMAT,
     CONF_ACCOUNT,
     CONF_ACCOUNT_NAME,
+    CONF_CAL_ID,
     CONF_CAL_IDS,
     CONF_CONFIG_TYPE,
     CONF_DEVICE_ID,
@@ -32,15 +33,19 @@ from .const import (
     CONF_MAX_RESULTS,
     CONF_SEARCH,
     CONF_TRACK,
-    CONF_TRACK_NEW,
+    CONF_TRACK_NEW_CALENDAR,
     CONST_CONFIG_TYPE_LIST,
     CONST_GROUP,
     DEFAULT_OFFSET,
     DOMAIN,
+    LEGACY_ACCOUNT_NAME,
     PERM_CALENDARS_READWRITE,
     PERM_MINIMUM_CALENDAR_WRITE,
+    YAML_CALENDARS,
+    EventResponse,
 )
 from .schema import (
+    CALENDAR_DEVICE_SCHEMA,
     CALENDAR_SERVICE_CREATE_SCHEMA,
     CALENDAR_SERVICE_MODIFY_SCHEMA,
     CALENDAR_SERVICE_REMOVE_SCHEMA,
@@ -51,15 +56,18 @@ from .utils import (
     build_config_file_path,
     build_token_filename,
     build_yaml_filename,
+    check_file_location,
     clean_html,
     format_event_data,
     get_permissions,
-    load_calendars,
+    load_yaml_file,
     update_calendar_file,
     validate_minimum_permission,
 )
 
 _LOGGER = logging.getLogger(__name__)
+
+PARALLEL_UPDATES = 3
 
 
 async def async_setup_platform(
@@ -83,8 +91,10 @@ async def async_setup_platform(
 
 
 def _setup_add_entities(hass, account, add_entities, conf):
-    yaml_filename = build_yaml_filename(conf)
-    calendars = load_calendars(build_config_file_path(hass, yaml_filename))
+    yaml_filename = build_yaml_filename(conf, YAML_CALENDARS)
+    yaml_filepath = build_config_file_path(hass, yaml_filename)
+    check_file_location(hass, yaml_filename, yaml_filepath)
+    calendars = load_yaml_file(yaml_filepath, CONF_CAL_ID, CALENDAR_DEVICE_SCHEMA)
     cal_ids = {}
 
     for cal_id, calendar in calendars.items():
@@ -94,7 +104,7 @@ def _setup_add_entities(hass, account, add_entities, conf):
             entity_id = _build_entity_id(hass, entity, conf)
             # _LOGGER.debug("Connecting to calendar: %s", cal_id)
             try:
-                cal = O365CalendarEntity(account, cal_id, entity, entity_id)
+                cal = O365CalendarEntity(account, cal_id, entity, entity_id, conf)
             except HTTPError:
                 _LOGGER.warning(
                     "No permission for calendar, please remove - Name: %s; Device: %s;",
@@ -109,9 +119,13 @@ def _setup_add_entities(hass, account, add_entities, conf):
 
 
 def _build_entity_id(hass, entity, conf):
+    account_name = conf[CONF_ACCOUNT_NAME]
     entity_suffix = (
-        f"_{conf[CONF_ACCOUNT_NAME]}"
-        if (conf[CONF_CONFIG_TYPE] == CONST_CONFIG_TYPE_LIST)
+        f"_{account_name}"
+        if (
+            conf[CONF_CONFIG_TYPE] == CONST_CONFIG_TYPE_LIST
+            and account_name != LEGACY_ACCOUNT_NAME
+        )
         else ""
     )
 
@@ -123,22 +137,33 @@ def _build_entity_id(hass, entity, conf):
 
 
 async def _async_setup_register_services(hass, conf):
+    platform = entity_platform.async_get_current_platform()
     calendar_services = CalendarServices(hass)
     await calendar_services.async_scan_for_calendars(None)
 
     if conf[CONF_ENABLE_UPDATE]:
-        hass.services.async_register(
-            DOMAIN, "modify_calendar_event", calendar_services.modify_calendar_event
+
+        platform.async_register_entity_service(
+            "create_calendar_event",
+            CALENDAR_SERVICE_CREATE_SCHEMA,
+            "create_calendar_event",
         )
-        hass.services.async_register(
-            DOMAIN, "create_calendar_event", calendar_services.create_calendar_event
+        platform.async_register_entity_service(
+            "modify_calendar_event",
+            CALENDAR_SERVICE_MODIFY_SCHEMA,
+            "modify_calendar_event",
         )
-        hass.services.async_register(
-            DOMAIN, "remove_calendar_event", calendar_services.remove_calendar_event
+        platform.async_register_entity_service(
+            "remove_calendar_event",
+            CALENDAR_SERVICE_REMOVE_SCHEMA,
+            "remove_calendar_event",
         )
-        hass.services.async_register(
-            DOMAIN, "respond_calendar_event", calendar_services.respond_calendar_event
+        platform.async_register_entity_service(
+            "respond_calendar_event",
+            CALENDAR_SERVICE_RESPOND_SCHEMA,
+            "respond_calendar_event",
         )
+
     hass.services.async_register(
         DOMAIN, "scan_for_calendars", calendar_services.async_scan_for_calendars
     )
@@ -147,8 +172,10 @@ async def _async_setup_register_services(hass, conf):
 class O365CalendarEntity(CalendarEntity):
     """O365 Calendar Event Processing."""
 
-    def __init__(self, account, calendar_id, entity, entity_id):
+    def __init__(self, account, calendar_id, entity, entity_id, config):
         """Initialise the O365 Calendar Event."""
+        self._config = config
+        self._account = account
         self._start_offset = entity.get(CONF_HOURS_BACKWARD_TO_GET)
         self._end_offset = entity.get(CONF_HOURS_FORWARD_TO_GET)
         self._event = {}
@@ -156,7 +183,6 @@ class O365CalendarEntity(CalendarEntity):
         self.entity_id = entity_id
         self._offset_reached = False
         self._data_attribute = []
-
         self.data = self._init_data(account, calendar_id, entity)
 
     def _init_data(self, account, calendar_id, entity):
@@ -220,11 +246,144 @@ class O365CalendarEntity(CalendarEntity):
             return
         else:
             events = []
-        self._data_attribute = [
-            format_event_data(x, self.data.calendar_id) for x in events
-        ]
+        self._data_attribute = [format_event_data(x) for x in events]
         self._data_attribute.sort(key=itemgetter("start"))
         self._event = event
+
+    def create_calendar_event(
+        self,
+        subject,
+        start,
+        end,
+        body=None,
+        location=None,
+        categories=None,
+        sensitivity=None,
+        show_as=None,
+        is_all_day=False,
+        attendees=None,
+    ):
+        """Create the event."""
+        if categories is None:
+            categories = []
+        if attendees is None:
+            attendees = []
+        if not self._validate_permissions("create", self._config):
+            return
+
+        calendar = self.data.calendar
+
+        event = calendar.new_event()
+        event = add_call_data_to_event(
+            event,
+            subject,
+            start,
+            end,
+            body,
+            location,
+            categories,
+            sensitivity,
+            show_as,
+            is_all_day,
+            attendees,
+        )
+        event.save()
+
+    def modify_calendar_event(
+        self,
+        event_id,
+        subject=None,
+        start=None,
+        end=None,
+        body=None,
+        location=None,
+        categories=None,
+        sensitivity=None,
+        show_as=None,
+        is_all_day=False,
+        attendees=None,
+    ):
+        """Modify the event."""
+        if categories is None:
+            categories = []
+        if attendees is None:
+            attendees = []
+
+        if not self._validate_permissions("modify", self._config):
+            return
+
+        if self.data.group_calendar:
+            _group_calendar_log(self.entity_id)
+            return
+
+        event = self._get_event_from_calendar(event_id)
+        event = add_call_data_to_event(
+            event,
+            subject,
+            start,
+            end,
+            body,
+            location,
+            categories,
+            sensitivity,
+            show_as,
+            is_all_day,
+            attendees,
+        )
+        event.save()
+
+    def remove_calendar_event(self, event_id):
+        """Remove the event."""
+        if not self._validate_permissions("delete", self._config):
+            return
+
+        if self.data.group_calendar:
+            _group_calendar_log(self.entity_id)
+            return
+
+        event = self._get_event_from_calendar(event_id)
+        event.delete()
+
+    def respond_calendar_event(
+        self, event_id, response, send_response=True, message=None
+    ):
+        """Respond to calendar event."""
+        if not self._validate_permissions("respond to", self._config):
+            return
+
+        if self.data.group_calendar:
+            _group_calendar_log(self.entity_id)
+            return
+
+        self._send_response(event_id, response, send_response, message)
+
+    def _send_response(self, event_id, response, send_response, message):
+        event = self._get_event_from_calendar(event_id)
+        if response == EventResponse.Accept:
+            event.accept_event(message, send_response=send_response)
+
+        elif response == EventResponse.Tentative:
+            event.accept_event(message, tentatively=True, send_response=send_response)
+
+        elif response == EventResponse.Decline:
+            event.decline_event(message, send_response=send_response)
+
+    def _get_event_from_calendar(self, event_id):
+        calendar = self.data.calendar
+        return calendar.get_event(event_id)
+
+    def _validate_permissions(self, error_message, config):
+        permissions = get_permissions(
+            self.hass,
+            filename=build_token_filename(config, config.get(CONF_CONFIG_TYPE)),
+        )
+        if not validate_minimum_permission(PERM_MINIMUM_CALENDAR_WRITE, permissions):
+            raise vol.Invalid(
+                f"Not authorisied to {PERM_CALENDARS_READWRITE} calendar event "
+                + f"- requires permission: {error_message}"
+            )
+
+        return True
 
 
 class O365CalendarData:
@@ -240,13 +399,14 @@ class O365CalendarData:
     ):
         """Initialise the O365 Calendar Data."""
         self._limit = limit
-        self._group_calendar = calendar_id.startswith(CONST_GROUP)
-        if self._group_calendar:
-            self._schedule = account.schedule(resource=calendar_id)
+        self.group_calendar = calendar_id.startswith(CONST_GROUP)
+        self.calendar_id = calendar_id
+        if self.group_calendar:
+            self._schedule = None
+            self.calendar = account.schedule(resource=self.calendar_id)
         else:
             self._schedule = account.schedule()
-        self.calendar_id = calendar_id
-        self.calendar = None
+            self.calendar = None
         self._search = search
         self.event = None
         self._entity_id = entity_id
@@ -258,11 +418,6 @@ class O365CalendarData:
 
     async def async_o365_get_events(self, hass, start_date, end_date):
         """Get the events."""
-        if self._group_calendar:
-            return await self._async_calendar_schedule_get_events(
-                hass, self._schedule, start_date, end_date
-            )
-
         if not self.calendar:
             await self._async_get_calendar(hass)
 
@@ -442,81 +597,6 @@ class CalendarServices:
         """Initialise the calendar services."""
         self._hass = hass
 
-    def create_calendar_event(self, call):
-        """Create the event."""
-        config = self._get_config(call.data)
-
-        if not self._validate_permissions("create", config):
-            return
-
-        event_data, group_calendar = self._setup_event_data(call.data, config)
-        if not event_data:
-            return
-        CALENDAR_SERVICE_CREATE_SCHEMA(event_data)
-
-        calendar_id = event_data.get(ATTR_CALENDAR_ID, None)
-        if group_calendar:
-            calendar = config[CONF_ACCOUNT].schedule(resource=calendar_id)
-        else:
-            schedule = config[CONF_ACCOUNT].schedule()
-            calendar = schedule.get_calendar(calendar_id=calendar_id)
-        event = calendar.new_event()
-        event = add_call_data_to_event(event, call.data)
-        event.save()
-
-    def modify_calendar_event(self, call):
-        """Modify the event."""
-        config = self._get_config(call.data)
-
-        if not self._validate_permissions("modify", config):
-            return
-
-        event_data, group_calendar = self._setup_event_data(call.data, config)
-        if group_calendar:
-            _group_calendar_log(event_data.get(ATTR_ENTITY_ID, None))
-            return
-
-        CALENDAR_SERVICE_MODIFY_SCHEMA(event_data)
-        event = self._get_event_from_calendar(
-            config,
-            event_data,
-        )
-        event = add_call_data_to_event(event, call.data)
-        event.save()
-
-    def remove_calendar_event(self, call):
-        """Remove the event."""
-        config = self._get_config(call.data)
-
-        if not self._validate_permissions("delete", config):
-            return
-
-        event_data, group_calendar = self._setup_event_data(call.data, config)
-        if group_calendar:
-            _group_calendar_log(event_data.get(ATTR_ENTITY_ID, None))
-            return
-
-        CALENDAR_SERVICE_REMOVE_SCHEMA(event_data)
-        event = self._get_event_from_calendar(config, event_data)
-        event.delete()
-
-    def respond_calendar_event(self, call):
-        """Respond to calendar event."""
-        config = self._get_config(call.data)
-        if not self._validate_permissions("respond to", config):
-            return
-
-        event_data, group_calendar = self._setup_event_data(call.data, config)
-        if group_calendar:
-            _group_calendar_log(event_data.get(ATTR_ENTITY_ID, None))
-            return
-
-        CALENDAR_SERVICE_RESPOND_SCHEMA(event_data, group_calendar)
-        event = self._get_event_from_calendar(config, event_data)
-        response = event_data.get("response")
-        _validate_response(response)
-        _send_response(event, event_data, response)
-
     async def async_scan_for_calendars(self, call):  # pylint: disable=unused-argument
         """Scan for new calendars."""
         for config in self._hass.data[DOMAIN]:
@@ -526,98 +606,18 @@ class CalendarServices:
                 calendars = await self._hass.async_add_executor_job(
                     schedule.list_calendars
                 )
-                track = config.get(CONF_TRACK_NEW, True)
+                track = config.get(CONF_TRACK_NEW_CALENDAR, True)
                 for calendar in calendars:
                     update_calendar_file(
-                        build_yaml_filename(config),
+                        build_yaml_filename(config, YAML_CALENDARS),
                         calendar,
                         self._hass,
                         track,
                     )
 
-    def _get_event_from_calendar(self, config, event_data):
-        calendar_id = event_data.get(ATTR_CALENDAR_ID, None)
-        schedule = config[CONF_ACCOUNT].schedule()
-        calendar = schedule.get_calendar(calendar_id=calendar_id)
-        return calendar.get_event(event_data["event_id"])
-
-    def _validate_permissions(self, error_message, config):
-        permissions = get_permissions(
-            self._hass,
-            filename=build_token_filename(config, config.get(CONF_CONFIG_TYPE)),
-        )
-        if not validate_minimum_permission(PERM_MINIMUM_CALENDAR_WRITE, permissions):
-            _LOGGER.error(
-                "Not authorisied to %s calendar event - requires permission: %s",
-                error_message,
-                PERM_CALENDARS_READWRITE,
-            )
-            return False
-        return True
-
-    def _setup_event_data(self, call_data, config):
-        event_data = dict(call_data.items())
-        group_calendar = False
-        if entity_id := call_data.get(ATTR_ENTITY_ID, None):
-            calendar_id = config.get(CONF_CAL_IDS).get(entity_id)
-            group_calendar = calendar_id.startswith(CONST_GROUP)
-            event_data[ATTR_CALENDAR_ID] = calendar_id
-        elif config[CONF_CONFIG_TYPE] == CONST_CONFIG_TYPE_LIST:
-            event_data[ATTR_CALENDAR_ID] = None
-            _LOGGER.error("Must use entity_id for service calls to calendars.")
-            raise ValueError("Must use entity_id for service calls to calendars.")
-        else:
-            _LOGGER.warning(
-                "Use of calendar_id for service calls has been deprecated and will be "
-                "removed in a future release. Please use entity_id instead."
-            )
-
-        return event_data, group_calendar
-
-    def _get_config(self, event_data):
-        for config in self._hass.data[DOMAIN]:
-            config_data = self._hass.data[DOMAIN][config]
-            if entity_id := event_data.get(ATTR_ENTITY_ID, None):
-                if entity_id in config_data[CONF_CAL_IDS]:
-                    return config_data
-            else:
-                for cal in config_data[CONF_CAL_IDS]:
-                    if config_data[CONF_CAL_IDS][cal] == event_data.get(
-                        ATTR_CALENDAR_ID, None
-                    ):
-                        return config_data
-        _LOGGER.error(
-            "Invalid Entity_ID (%s) or Calendar_ID (%s)",
-            event_data.get(ATTR_ENTITY_ID, None),
-            event_data.get(ATTR_CALENDAR_ID, None),
-        )
-        return None
-
-
-def _validate_response(response):
-    responses = ["accept", "tentative", "decline"]
-    if response is None:
-        raise ValueError("response not set")
-    if response.lower() not in responses:
-        raise ValueError(f"response must be one of {', '.join(responses)}")
-
-
-def _send_response(event, event_data, response):
-    send_response = event_data.get("send_response", True)
-    if response.lower() == "accept":
-        event.accept_event(event_data.get("message"), send_response=send_response)
-
-    elif response.lower() == "tentative":
-        event.accept_event(
-            event_data.get("message"), tentatively=True, send_response=send_response
-        )
-
-    elif response.lower() == "decline":
-        event.decline_event(event_data.get("message"), send_response=send_response)
-
 
 def _group_calendar_log(entity_id):
-    _LOGGER.error(
-        "O365 Python does not have capability to update/respond to group calendar events: %s",
-        entity_id,
+    raise vol.Invalid(
+        "O365 Python does not have capability "
+        + f"to update/respond to group calendar events: {entity_id}"
     )

@@ -8,8 +8,7 @@ from homeassistant.components.notify import (
     ATTR_TARGET,
     ATTR_TITLE,
 )
-from homeassistant.const import CONF_NAME
-
+from homeassistant.const import CONF_ENABLED, CONF_NAME
 from O365.calendar import AttendeeType  # pylint: disable=no-name-in-module
 from O365.calendar import EventSensitivity  # pylint: disable=no-name-in-module
 from O365.calendar import EventShowAs  # pylint: disable=no-name-in-module
@@ -18,8 +17,9 @@ from .const import (
     ATTR_ATTACHMENTS,
     ATTR_ATTENDEES,
     ATTR_BODY,
-    ATTR_CALENDAR_ID,
     ATTR_CATEGORIES,
+    ATTR_DESCRIPTION,
+    ATTR_DUE,
     ATTR_EMAIL,
     ATTR_END,
     ATTR_ENTITY_ID,
@@ -28,6 +28,7 @@ from .const import (
     ATTR_LOCATION,
     ATTR_MESSAGE_IS_HTML,
     ATTR_PHOTOS,
+    ATTR_REMINDER,
     ATTR_RESPONSE,
     ATTR_SEND_RESPONSE,
     ATTR_SENDER,
@@ -40,7 +41,6 @@ from .const import (
     ATTR_ZIP_NAME,
     CONF_ACCOUNT_NAME,
     CONF_ACCOUNTS,
-    CONF_ALT_AUTH_FLOW,
     CONF_ALT_AUTH_METHOD,
     CONF_BODY_CONTAINS,
     CONF_CAL_ID,
@@ -67,8 +67,11 @@ from .const import (
     CONF_STATUS_SENSORS,
     CONF_SUBJECT_CONTAINS,
     CONF_SUBJECT_IS,
+    CONF_TASK_LIST_ID,
+    CONF_TODO_SENSORS,
     CONF_TRACK,
     CONF_TRACK_NEW,
+    CONF_TRACK_NEW_CALENDAR,
     EventResponse,
 )
 
@@ -106,15 +109,20 @@ QUERY_SENSOR = vol.Schema(
         vol.Optional(CONF_DOWNLOAD_ATTACHMENTS): bool,
     }
 )
+TODO_SENSOR = vol.Schema(
+    {
+        vol.Required(CONF_ENABLED, default=False): bool,
+        vol.Optional(CONF_TRACK_NEW, default=True): bool,
+    }
+)
 
 LEGACY_SCHEMA = vol.Schema(
     {
         vol.Required(CONF_CLIENT_ID): cv.string,
         vol.Required(CONF_CLIENT_SECRET): cv.string,
-        vol.Optional(CONF_TRACK_NEW, default=True): bool,
+        vol.Optional(CONF_TRACK_NEW_CALENDAR, default=True): bool,
         vol.Optional(CONF_ENABLE_UPDATE, default=True): bool,
-        vol.Exclusive(CONF_ALT_AUTH_FLOW, "alt_auth"): bool,
-        vol.Exclusive(CONF_ALT_AUTH_METHOD, "alt_auth"): bool,
+        vol.Optional(CONF_ALT_AUTH_METHOD, default=False): bool,
         vol.Optional(CONF_EMAIL_SENSORS): [EMAIL_SENSOR],
         vol.Optional(CONF_QUERY_SENSORS): [QUERY_SENSOR],
         vol.Optional(CONF_STATUS_SENSORS): [STATUS_SENSOR],
@@ -128,16 +136,16 @@ MULTI_ACCOUNT_SCHEMA = vol.Schema(
                 {
                     vol.Required(CONF_CLIENT_ID): cv.string,
                     vol.Required(CONF_CLIENT_SECRET): cv.string,
-                    vol.Optional(CONF_TRACK_NEW, default=True): bool,
+                    vol.Optional(CONF_TRACK_NEW_CALENDAR, default=True): bool,
                     vol.Optional(CONF_ENABLE_UPDATE, default=False): bool,
                     vol.Optional(CONF_GROUPS, default=False): bool,
                     vol.Required(CONF_ACCOUNT_NAME, ""): cv.string,
-                    vol.Exclusive(CONF_ALT_AUTH_FLOW, "alt_auth"): bool,
-                    vol.Exclusive(CONF_ALT_AUTH_METHOD, "alt_auth"): bool,
+                    vol.Optional(CONF_ALT_AUTH_METHOD, default=False): bool,
                     vol.Optional(CONF_EMAIL_SENSORS): [EMAIL_SENSOR],
                     vol.Optional(CONF_QUERY_SENSORS): [QUERY_SENSOR],
                     vol.Optional(CONF_STATUS_SENSORS): [STATUS_SENSOR],
                     vol.Optional(CONF_CHAT_SENSORS): [CHAT_SENSOR],
+                    vol.Optional(CONF_TODO_SENSORS): TODO_SENSOR,
                 }
             ]
         )
@@ -164,16 +172,13 @@ NOTIFY_BASE_SCHEMA = vol.Schema(
     }
 )
 
-CALENDAR_SERVICE_RESPOND_SCHEMA = vol.Schema(
-    {
-        vol.Optional(ATTR_ENTITY_ID): cv.string,
-        vol.Required(ATTR_EVENT_ID): cv.string,
-        vol.Required(ATTR_CALENDAR_ID): cv.string,
-        vol.Optional(ATTR_RESPONSE, None): cv.enum(EventResponse),
-        vol.Optional(ATTR_SEND_RESPONSE, True): bool,
-        vol.Optional(ATTR_MESSAGE, None): cv.string,
-    }
-)
+CALENDAR_SERVICE_RESPOND_SCHEMA = {
+    vol.Required(ATTR_ENTITY_ID): cv.string,
+    vol.Required(ATTR_EVENT_ID): cv.string,
+    vol.Required(ATTR_RESPONSE, None): cv.enum(EventResponse),
+    vol.Optional(ATTR_SEND_RESPONSE, True): bool,
+    vol.Optional(ATTR_MESSAGE, None): cv.string,
+}
 
 ATTENDEE_SCHEMA = vol.Schema(
     {
@@ -182,49 +187,40 @@ ATTENDEE_SCHEMA = vol.Schema(
     }
 )
 
-CALENDAR_SERVICE_CREATE_SCHEMA = vol.Schema(
-    {
-        vol.Optional(ATTR_ENTITY_ID): cv.string,
-        vol.Required(ATTR_CALENDAR_ID): cv.string,
-        vol.Required(ATTR_START): cv.datetime,
-        vol.Required(ATTR_END): cv.datetime,
-        vol.Required(ATTR_SUBJECT): cv.string,
-        vol.Optional(ATTR_BODY): cv.string,
-        vol.Optional(ATTR_LOCATION): cv.string,
-        vol.Optional(ATTR_CATEGORIES): [cv.string],
-        vol.Optional(ATTR_SENSITIVITY): cv.enum(EventSensitivity),
-        vol.Optional(ATTR_SHOW_AS): cv.enum(EventShowAs),
-        vol.Optional(ATTR_IS_ALL_DAY): bool,
-        vol.Optional(ATTR_ATTENDEES): [ATTENDEE_SCHEMA],
-    }
-)
-
-CALENDAR_SERVICE_MODIFY_SCHEMA = vol.Schema(
-    {
-        vol.Optional(ATTR_ENTITY_ID): cv.string,
-        vol.Required(ATTR_EVENT_ID): cv.string,
-        vol.Required(ATTR_CALENDAR_ID): cv.string,
-        vol.Optional(ATTR_START): cv.datetime,
-        vol.Optional(ATTR_END): cv.datetime,
-        vol.Required(ATTR_SUBJECT): cv.string,
-        vol.Optional(ATTR_BODY): cv.string,
-        vol.Optional(ATTR_LOCATION): cv.string,
-        vol.Optional(ATTR_CATEGORIES): [cv.string],
-        vol.Optional(ATTR_SENSITIVITY): cv.enum(EventSensitivity),
-        vol.Optional(ATTR_SHOW_AS): cv.enum(EventShowAs),
-        vol.Optional(ATTR_IS_ALL_DAY): bool,
-        vol.Optional(ATTR_ATTENDEES): [ATTENDEE_SCHEMA],
-    }
-)
+CALENDAR_SERVICE_CREATE_SCHEMA = {
+    vol.Required(ATTR_SUBJECT): cv.string,
+    vol.Required(ATTR_START): cv.datetime,
+    vol.Required(ATTR_END): cv.datetime,
+    vol.Optional(ATTR_BODY): cv.string,
+    vol.Optional(ATTR_LOCATION): cv.string,
+    vol.Optional(ATTR_CATEGORIES): [cv.string],
+    vol.Optional(ATTR_SENSITIVITY): cv.enum(EventSensitivity),
+    vol.Optional(ATTR_SHOW_AS): cv.enum(EventShowAs),
+    vol.Optional(ATTR_IS_ALL_DAY): bool,
+    vol.Optional(ATTR_ATTENDEES): [ATTENDEE_SCHEMA],
+}
 
 
-CALENDAR_SERVICE_REMOVE_SCHEMA = vol.Schema(
-    {
-        vol.Optional(ATTR_ENTITY_ID): cv.string,
-        vol.Required(ATTR_EVENT_ID): cv.string,
-        vol.Required(ATTR_CALENDAR_ID): cv.string,
-    }
-)
+CALENDAR_SERVICE_MODIFY_SCHEMA = {
+    vol.Required(ATTR_ENTITY_ID): cv.string,
+    vol.Required(ATTR_EVENT_ID): cv.string,
+    vol.Optional(ATTR_START): cv.datetime,
+    vol.Optional(ATTR_END): cv.datetime,
+    vol.Required(ATTR_SUBJECT): cv.string,
+    vol.Optional(ATTR_BODY): cv.string,
+    vol.Optional(ATTR_LOCATION): cv.string,
+    vol.Optional(ATTR_CATEGORIES): [cv.string],
+    vol.Optional(ATTR_SENSITIVITY): cv.enum(EventSensitivity),
+    vol.Optional(ATTR_SHOW_AS): cv.enum(EventShowAs),
+    vol.Optional(ATTR_IS_ALL_DAY): bool,
+    vol.Optional(ATTR_ATTENDEES): [ATTENDEE_SCHEMA],
+}
+
+
+CALENDAR_SERVICE_REMOVE_SCHEMA = {
+    vol.Required(ATTR_ENTITY_ID): cv.string,
+    vol.Required(ATTR_EVENT_ID): cv.string,
+}
 
 SINGLE_CALSEARCH_CONFIG = vol.Schema(
     {
@@ -247,3 +243,17 @@ CALENDAR_DEVICE_SCHEMA = vol.Schema(
     },
     extra=vol.ALLOW_EXTRA,
 )
+TASK_LIST_SCHEMA = vol.Schema(
+    {
+        vol.Required(CONF_TASK_LIST_ID): cv.string,
+        vol.Required(CONF_NAME): cv.string,
+        vol.Required(CONF_TRACK): cv.boolean,
+    }
+)
+
+NEW_TASK_SCHEMA = {
+    vol.Required(ATTR_SUBJECT): cv.string,
+    vol.Optional(ATTR_DESCRIPTION): cv.string,
+    vol.Optional(ATTR_DUE): cv.string,
+    vol.Optional(ATTR_REMINDER): cv.datetime,
+}

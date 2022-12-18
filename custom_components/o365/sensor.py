@@ -1,17 +1,25 @@
 """Sensor processing."""
-import datetime as dt
+import datetime
 import functools as ft
 import logging
 from operator import itemgetter
 
-from homeassistant.const import CONF_NAME
-from homeassistant.helpers.entity import Entity
+import voluptuous as vol
+from homeassistant.const import CONF_ENABLED, CONF_NAME
+from homeassistant.helpers import entity_platform
+from homeassistant.helpers.entity import Entity, generate_entity_id
+from homeassistant.util import dt
+from requests.exceptions import HTTPError
 
 from .const import (
+    ATTR_ALL_TASKS,
     ATTR_CHAT_ID,
     ATTR_CONTENT,
+    ATTR_DUE,
     ATTR_FROM_DISPLAY_NAME,
     ATTR_IMPORTANCE,
+    ATTR_OVERDUE_TASKS,
+    ATTR_REMINDER,
     ATTR_SUBJECT,
     ATTR_SUMMARY,
     CONF_ACCOUNT,
@@ -20,6 +28,7 @@ from .const import (
     CONF_CHAT_SENSORS,
     CONF_DOWNLOAD_ATTACHMENTS,
     CONF_EMAIL_SENSORS,
+    CONF_ENABLE_UPDATE,
     CONF_HAS_ATTACHMENT,
     CONF_IMPORTANCE,
     CONF_IS_UNREAD,
@@ -30,11 +39,26 @@ from .const import (
     CONF_STATUS_SENSORS,
     CONF_SUBJECT_CONTAINS,
     CONF_SUBJECT_IS,
+    CONF_TASK_LIST_ID,
+    CONF_TODO_SENSORS,
+    CONF_TRACK,
+    CONF_TRACK_NEW,
     DOMAIN,
+    SENSOR_ENTITY_ID_FORMAT,
+    YAML_TASK_LISTS,
 )
-from .utils import get_email_attributes
+from .schema import NEW_TASK_SCHEMA, TASK_LIST_SCHEMA
+from .utils import (
+    build_config_file_path,
+    build_yaml_filename,
+    get_email_attributes,
+    load_yaml_file,
+    update_task_list_file,
+)
 
 _LOGGER = logging.getLogger(__name__)
+
+PARALLEL_UPDATES = 6
 
 
 async def async_setup_platform(
@@ -56,6 +80,8 @@ async def async_setup_platform(
     await _async_query_sensors(hass, account, add_entities, conf)
     _status_sensors(account, add_entities, conf)
     _chat_sensors(account, add_entities, conf)
+    await _async_todo_sensors(hass, account, add_entities, conf)
+    await _async_setup_register_services(hass, conf)
 
     return True
 
@@ -103,6 +129,61 @@ def _chat_sensors(account, add_entities, conf):
     for sensor_conf in chat_sensors:
         teams_chat_sensor = O365TeamsChatSensor(account, sensor_conf)
         add_entities([teams_chat_sensor], True)
+
+
+async def _async_todo_sensors(hass, account, add_entities, conf):
+    todo_sensors = conf.get(CONF_TODO_SENSORS)
+    if todo_sensors and todo_sensors.get(CONF_ENABLED):
+        sensor_services = SensorServices(hass)
+        await sensor_services.async_scan_for_task_lists(None)
+
+        yaml_filename = build_yaml_filename(conf, YAML_TASK_LISTS)
+        yaml_filepath = build_config_file_path(hass, yaml_filename)
+        task_dict = load_yaml_file(yaml_filepath, CONF_TASK_LIST_ID, TASK_LIST_SCHEMA)
+        task_lists = list(task_dict.values())
+        tasks = account.tasks()
+        for task in task_lists:
+            name = task.get(CONF_NAME)
+            track = task.get(CONF_TRACK)
+            task_list_id = task.get(CONF_TASK_LIST_ID)
+            entity_id = _build_entity_id(hass, name, conf)
+            if not track:
+                continue
+            todo = await hass.async_add_executor_job(  # pylint: disable=no-member
+                ft.partial(
+                    tasks.get_folder,
+                    folder_id=task_list_id,
+                )
+            )
+            todo_sensor = O365TodoSensor(todo, name, entity_id)
+            add_entities([todo_sensor], True)
+
+
+def _build_entity_id(hass, name, conf):
+    return generate_entity_id(
+        SENSOR_ENTITY_ID_FORMAT,
+        f"{name}_{conf[CONF_ACCOUNT_NAME]}",
+        hass=hass,
+    )
+
+
+async def _async_setup_register_services(hass, conf):
+    todo_sensors = conf.get(CONF_TODO_SENSORS)
+    if not todo_sensors or not todo_sensors.get(CONF_ENABLED):
+        return
+
+    platform = entity_platform.async_get_current_platform()
+    if conf.get(CONF_ENABLE_UPDATE):
+        platform.async_register_entity_service(
+            "new_task",
+            NEW_TASK_SCHEMA,
+            "new_task",
+        )
+
+    sensor_services = SensorServices(hass)
+    hass.services.async_register(
+        DOMAIN, "scan_for_task_lists", sensor_services.async_scan_for_task_lists
+    )
 
 
 def _get_mail_folder(account, sensor_conf, sensor_type):
@@ -159,6 +240,11 @@ class O365MailSensor:
         return self._state
 
     @property
+    def icon(self):
+        """Entity icon."""
+        return "mdi:microsoft-outlook"
+
+    @property
     def extra_state_attributes(self):
         """Device state attributes."""
         return self._attributes
@@ -173,10 +259,17 @@ class O365MailSensor:
                 download_attachments=self._download_attachments,
             )
         )
-        attrs = [get_email_attributes(x, self._download_attachments) for x in data]
+
+        attrs = await self.hass.async_add_executor_job(  # pylint: disable=no-member
+            self._get_attributes, data
+        )
+
         attrs.sort(key=itemgetter("received"), reverse=True)
         self._state = len(attrs)
         self._attributes = {"data": attrs}
+
+    def _get_attributes(self, data):
+        return [get_email_attributes(x, self._download_attachments) for x in data]
 
 
 class O365QuerySensor(O365MailSensor, Entity):
@@ -196,6 +289,9 @@ class O365QuerySensor(O365MailSensor, Entity):
         self._query = self._mail_folder.new_query()
         self._query.order_by("receivedDateTime", ascending=False)
 
+        self._build_query()
+
+    def _build_query(self):
         if (
             self._body_contains is not None
             or self._subject_contains is not None
@@ -205,7 +301,7 @@ class O365QuerySensor(O365MailSensor, Entity):
             or self._email_from is not None
             or self._is_unread is not None
         ):
-            self._add_to_query("ge", "receivedDateTime", dt.datetime(1900, 5, 1))
+            self._add_to_query("ge", "receivedDateTime", datetime.datetime(1900, 5, 1))
         self._add_to_query("contains", "body", self._body_contains)
         self._add_to_query("contains", "subject", self._subject_contains)
         self._add_to_query("equals", "subject", self._subject_is)
@@ -266,6 +362,11 @@ class O365TeamsStatusSensor(Entity):
         """Sensor state."""
         return self._state
 
+    @property
+    def icon(self):
+        """Entity icon."""
+        return "mdi:microsoft-teams"
+
     async def async_update(self):
         """Update state."""
         data = await self.hass.async_add_executor_job(self._teams.get_my_presence)
@@ -296,6 +397,11 @@ class O365TeamsChatSensor(Entity):
     def state(self):
         """Sensor state."""
         return self._state
+
+    @property
+    def icon(self):
+        """Entity icon."""
+        return "mdi:microsoft-teams"
 
     @property
     def extra_state_attributes(self):
@@ -333,3 +439,123 @@ class O365TeamsChatSensor(Entity):
             if state:
                 break
         self._state = state
+
+
+class O365TodoSensor(Entity):
+    """O365 Teams sensor processing."""
+
+    def __init__(self, todo, name, entity_id):
+        """Initialise the Teams Sensor."""
+        self._todo = todo
+        self._query = self._todo.new_query("status").unequal("completed")
+        self._id = todo.folder_id
+        self._name = name
+        self.entity_id = entity_id
+        self._tasks = []
+        self._error = False
+
+    @property
+    def name(self):
+        """Sensor name."""
+        return self._name
+
+    @property
+    def state(self):
+        """Sensor state."""
+        return len(self._tasks)
+
+    @property
+    def icon(self):
+        """Entity icon."""
+        return "mdi:clipboard-check-outline"
+
+    @property
+    def extra_state_attributes(self):
+        """Extra state attributes."""
+        all_tasks = []
+        overdue_tasks = []
+        for item in self._tasks:
+            task = {ATTR_SUBJECT: item.subject}
+            if item.due:
+                due = item.due.date()
+                task[ATTR_DUE] = due
+                if due < dt.utcnow().date():
+                    overdue_task = {ATTR_SUBJECT: item.subject, ATTR_DUE: due}
+                    if item.is_reminder_on:
+                        overdue_task[ATTR_REMINDER] = item.reminder
+                    overdue_tasks.append(overdue_task)
+
+            if item.is_reminder_on:
+                task[ATTR_REMINDER] = item.reminder
+
+            all_tasks.append(task)
+
+        extra_attributes = {ATTR_ALL_TASKS: all_tasks}
+        if overdue_tasks:
+            extra_attributes[ATTR_OVERDUE_TASKS] = overdue_tasks
+        return extra_attributes
+
+    async def async_update(self):
+        """Update state."""
+        try:
+            data = await self.hass.async_add_executor_job(  # pylint: disable=no-member
+                ft.partial(self._todo.get_tasks, batch=100, query=self._query)
+            )
+            if self._error:
+                _LOGGER.info("Task list reconnected for: %s", self._name)
+                self._error = False
+            self._tasks = list(data)
+        except HTTPError:
+            if not self._error:
+                _LOGGER.error(
+                    "Task list not found for: %s - Has it been deleted?",
+                    self._name,
+                )
+                self._error = True
+
+    def new_task(self, subject, description=None, due=None, reminder=None):
+        """Create a new task for this task list."""
+        new_task = self._todo.new_task(subject=subject)
+        if description:
+            new_task.body = description
+        if due:
+            try:
+                if len(due) > 10:
+                    new_task.due = dt.parse_datetime(due).date()
+                else:
+                    new_task.due = dt.parse_date(due)
+            except ValueError:
+                error = f"Due date {due} is not in valid format YYYY-MM-DD"
+                raise vol.Invalid(error)  # pylint: disable=raise-missing-from
+
+        if reminder:
+            new_task.reminder = reminder
+
+        new_task.save()
+        return True
+
+
+class SensorServices:
+    """Sensor Services."""
+
+    def __init__(self, hass):
+        """Initialise the sensor services."""
+        self._hass = hass
+
+    async def async_scan_for_task_lists(self, call):  # pylint: disable=unused-argument
+        """Scan for new task lists."""
+        for config in self._hass.data[DOMAIN]:
+            config = self._hass.data[DOMAIN][config]
+            todo_sensor = config.get(CONF_TODO_SENSORS)
+            if todo_sensor and CONF_ACCOUNT in config and todo_sensor.get(CONF_ENABLED):
+                todos = config[CONF_ACCOUNT].tasks()
+
+                todolists = await self._hass.async_add_executor_job(todos.list_folders)
+                track = todo_sensor.get(CONF_TRACK_NEW)
+                for todo in todolists:
+                    update_task_list_file(
+                        build_yaml_filename(config, YAML_TASK_LISTS),
+                        todo,
+                        self._hass,
+                        track,
+                    )

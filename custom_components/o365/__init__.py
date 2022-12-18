@@ -1,14 +1,19 @@
 """Main initialisation code."""
+import copy
 import functools as ft
 import logging
+import os
+import shutil
 
+import yaml
 from aiohttp import web_response
 from homeassistant.components import configurator
 from homeassistant.components.http import HomeAssistantView
+from homeassistant.const import CONF_ENABLED
 from homeassistant.core import callback
 from homeassistant.helpers import discovery
+from homeassistant.helpers.issue_registry import IssueSeverity, async_create_issue
 from homeassistant.helpers.network import get_url
-
 from O365 import Account, FileSystemTokenBackend
 
 from .const import (
@@ -18,7 +23,6 @@ from .const import (
     CONF_ACCOUNT,
     CONF_ACCOUNT_NAME,
     CONF_ACCOUNTS,
-    CONF_ALT_AUTH_FLOW,
     CONF_ALT_AUTH_METHOD,
     CONF_CHAT_SENSORS,
     CONF_CLIENT_ID,
@@ -28,7 +32,8 @@ from .const import (
     CONF_ENABLE_UPDATE,
     CONF_QUERY_SENSORS,
     CONF_STATUS_SENSORS,
-    CONF_TRACK_NEW,
+    CONF_TODO_SENSORS,
+    CONF_TRACK_NEW_CALENDAR,
     CONFIGURATOR_DESCRIPTION_ALT,
     CONFIGURATOR_DESCRIPTION_DEFAULT,
     CONFIGURATOR_FIELDS,
@@ -40,6 +45,9 @@ from .const import (
     DEFAULT_CACHE_PATH,
     DEFAULT_NAME,
     DOMAIN,
+    LEGACY_ACCOUNT_NAME,
+    TOKEN_FILENAME,
+    YAML_CALENDARS,
 )
 from .schema import LEGACY_SCHEMA, MULTI_ACCOUNT_SCHEMA
 from .utils import (
@@ -47,6 +55,7 @@ from .utils import (
     build_minimum_permissions,
     build_requested_permissions,
     build_token_filename,
+    check_file_location,
     validate_permissions,
 )
 
@@ -55,11 +64,12 @@ _LOGGER = logging.getLogger(__name__)
 
 async def async_setup(hass, config):
     """Set up the O365 platform."""
-    # validate_permissions(hass)
     conf = config.get(DOMAIN, {})
     if CONF_ACCOUNTS not in conf:
+        await _async_log_repair(hass)
         accounts = [LEGACY_SCHEMA(conf)]
         conf_type = CONST_CONFIG_TYPE_DICT
+        _write_out_config(hass, accounts)
     else:
         accounts = MULTI_ACCOUNT_SCHEMA(conf)[CONF_ACCOUNTS]
         conf_type = CONST_CONFIG_TYPE_LIST
@@ -68,6 +78,67 @@ async def async_setup(hass, config):
         await _async_setup_account(hass, account, conf_type)
 
     return True
+
+
+async def _async_log_repair(hass):
+
+    url = "https://rogerselwyn.github.io/O365-HomeAssistant/legacy_migration.html"
+    message = (
+        "Secondary/Legacy configuration method is now deprecated and will be "
+        + "removed in a future release. Please migrate to the Primary configuration method "
+        + "documented here - "
+        + f"{url}"
+    )
+    _LOGGER.warning(message)
+    # Register a repair issue
+    async_create_issue(
+        hass,
+        DOMAIN,
+        "deprecated_legacy_configuration",
+        # breaks_in_ha_version="2023.4.0",  # Warning first added in 2022.11.0
+        is_fixable=False,
+        learn_more_url=url,
+        severity=IssueSeverity.WARNING,
+        translation_key="deprecated_legacy_configuration",
+    )
+
+
+def _write_out_config(hass, accounts):
+    yaml_filepath = build_config_file_path(hass, "o365_converted_configuration.yaml")
+    account_name = LEGACY_ACCOUNT_NAME
+    account = copy.deepcopy(accounts[0])
+    account[CONF_ACCOUNT_NAME] = account_name
+    account.move_to_end(CONF_ACCOUNT_NAME, False)
+    account[CONF_CLIENT_ID] = "xxxxx"
+    account[CONF_CLIENT_SECRET] = "xxxxx"
+    account = dict(account)
+    _remove_ordered_dict(account, CONF_EMAIL_SENSORS)
+    _remove_ordered_dict(account, CONF_QUERY_SENSORS)
+    _remove_ordered_dict(account, CONF_STATUS_SENSORS)
+    _remove_ordered_dict(account, CONF_CHAT_SENSORS)
+    config = {"o365": {"accounts": [account]}}
+    config_path = build_config_file_path(hass, "")
+    if not os.path.exists(config_path):
+        os.mkdir(config_path)
+    with open(yaml_filepath, "w", encoding="UTF8") as out:
+        out.write("\n")
+        yaml.dump(
+            config,
+            out,
+            Dumper=_IncreaseIndent,
+            default_flow_style=False,
+            encoding="UTF8",
+        )
+        out.close()
+    _copy_token_file(hass, account_name)
+
+
+def _remove_ordered_dict(account, sensor):
+    if sensor in account:
+        sensors = account[sensor]
+        new_sensors = [dict(item) for item in sensors]
+        account[sensor] = new_sensors
+    return account
 
 
 async def _async_setup_account(hass, account_conf, conf_type):
@@ -79,6 +150,7 @@ async def _async_setup_account(hass, account_conf, conf_type):
 
     token_path = build_config_file_path(hass, DEFAULT_CACHE_PATH)
     token_file = build_token_filename(account_conf, conf_type)
+    check_file_location(hass, DEFAULT_CACHE_PATH, token_path)
     token_backend = await hass.async_add_executor_job(
         ft.partial(
             FileSystemTokenBackend, token_path=token_path, token_filename=token_file
@@ -97,13 +169,29 @@ async def _async_setup_account(hass, account_conf, conf_type):
         _request_authorization(hass, account_conf, account, account_name, conf_type)
 
 
+def _copy_token_file(hass, account_name):
+    old_file = TOKEN_FILENAME.format("")
+    new_file = TOKEN_FILENAME.format(f"_{account_name}")
+    old_filepath = build_config_file_path(hass, f"{DEFAULT_CACHE_PATH}/{old_file}")
+    new_filepath = build_config_file_path(hass, f"{DEFAULT_CACHE_PATH}/{new_file}")
+    if os.path.exists(old_filepath):
+        shutil.copy(src=old_filepath, dst=new_filepath)
+
+    old_file = YAML_CALENDARS.format(DOMAIN, "")
+    new_file = YAML_CALENDARS.format(DOMAIN, f"_{account_name}")
+    old_filepath = build_config_file_path(hass, old_file)
+    new_filepath = build_config_file_path(hass, new_file)
+    if os.path.exists(old_filepath):
+        shutil.copy(src=old_filepath, dst=new_filepath)
+
+
 def do_setup(hass, config, account, account_name, conf_type):
     """Run the setup after we have everything configured."""
-    _get_auth_method(config, account_name)
     email_sensors = config.get(CONF_EMAIL_SENSORS, [])
     query_sensors = config.get(CONF_QUERY_SENSORS, [])
     status_sensors = config.get(CONF_STATUS_SENSORS, [])
     chat_sensors = config.get(CONF_CHAT_SENSORS, [])
+    todo_sensors = config.get(CONF_TODO_SENSORS, [])
     enable_update = config.get(CONF_ENABLE_UPDATE, True)
 
     account_config = {
@@ -112,8 +200,9 @@ def do_setup(hass, config, account, account_name, conf_type):
         CONF_QUERY_SENSORS: query_sensors,
         CONF_STATUS_SENSORS: status_sensors,
         CONF_CHAT_SENSORS: chat_sensors,
+        CONF_TODO_SENSORS: todo_sensors,
         CONF_ENABLE_UPDATE: enable_update,
-        CONF_TRACK_NEW: config.get(CONF_TRACK_NEW, True),
+        CONF_TRACK_NEW_CALENDAR: config.get(CONF_TRACK_NEW_CALENDAR, True),
         CONF_ACCOUNT_NAME: config.get(CONF_ACCOUNT_NAME, ""),
         CONF_CONFIG_TYPE: conf_type,
     }
@@ -141,6 +230,10 @@ def _load_platforms(hass, account_name, config, account_config):
         or len(account_config[CONF_QUERY_SENSORS]) > 0
         or len(account_config[CONF_STATUS_SENSORS]) > 0
         or len(account_config[CONF_CHAT_SENSORS]) > 0
+        or (
+            len(account_config[CONF_TODO_SENSORS]) > 0
+            and account_config[CONF_TODO_SENSORS].get(CONF_ENABLED, False)
+        )
     ):
         hass.async_create_task(
             discovery.async_load_platform(
@@ -204,7 +297,7 @@ def _create_request_content_default(hass, url, callback_view, account_name):
 
 
 def _request_authorization(hass, conf, account, account_name, conf_type):
-    alt_config = _get_auth_method(conf, account_name)
+    alt_config = conf.get(CONF_ALT_AUTH_METHOD)
     callback_url = _get_callback_url(hass, alt_config)
     scope = build_requested_permissions(conf)
     url, state = account.con.get_authorization_url(
@@ -230,32 +323,6 @@ def _get_callback_url(hass, alt_config):
         return f"{get_url(hass, prefer_external=True)}{AUTH_CALLBACK_PATH_ALT}"
 
     return AUTH_CALLBACK_PATH_DEFAULT
-
-
-def _get_auth_method(conf, account_name):
-    alt_flow = conf.get(CONF_ALT_AUTH_FLOW)
-    alt_method = conf.get(CONF_ALT_AUTH_METHOD)
-    if alt_flow is None and alt_method is None:
-        _auth_deprecated_message(account_name, True)
-        return False
-    if alt_flow:
-        _auth_deprecated_message(account_name, False)
-    if alt_flow is False:
-        _auth_deprecated_message(account_name, True)
-        return True
-    return alt_method is True
-
-
-def _auth_deprecated_message(account_name, method_value):
-    message = (
-        f"Use of '{CONF_ALT_AUTH_FLOW}' configuration variable is deprecated."
-        + f" Please set '{CONF_ALT_AUTH_METHOD}' to {method_value}"
-        + f" and remove '{CONF_ALT_AUTH_FLOW}' if present from your config"
-        + f" to retain existing authentication method for account: {account_name}."
-        + " See https://github.com/RogerSelwyn/O365-HomeAssistant/#authentication"
-        + " for more details."
-    )
-    _LOGGER.warning(message)
 
 
 class O365AuthCallbackView(HomeAssistantView):
@@ -336,3 +403,8 @@ class O365AuthCallbackView(HomeAssistantView):
 
     def _log_authenticated(self, account_name):
         _LOGGER.info("Succesfully authenticated for account: %s", account_name)
+
+
+class _IncreaseIndent(yaml.Dumper):
+    def increase_indent(self, flow=False, indentless=False):
+        return super(_IncreaseIndent, self).increase_indent(flow, False)

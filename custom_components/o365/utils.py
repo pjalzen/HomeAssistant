@@ -2,18 +2,16 @@
 import json
 import logging
 import os
+import shutil
 import zipfile
 from datetime import datetime
 from pathlib import Path
 
 import yaml
 from bs4 import BeautifulSoup
-from homeassistant.const import CONF_NAME
-from homeassistant.util import dt
-from voluptuous.error import Error as VoluptuousError
-
+from homeassistant.const import CONF_ENABLED, CONF_NAME
 from O365.calendar import Attendee  # pylint: disable=no-name-in-module)
-from O365.calendar import EventSensitivity  # pylint: disable=no-name-in-module)
+from voluptuous.error import Error as VoluptuousError
 
 from .const import (
     CONF_ACCOUNT_NAME,
@@ -27,12 +25,15 @@ from .const import (
     CONF_GROUPS,
     CONF_QUERY_SENSORS,
     CONF_STATUS_SENSORS,
+    CONF_TASK_LIST_ID,
+    CONF_TODO_SENSORS,
     CONF_TRACK,
     CONST_CONFIG_TYPE_LIST,
     CONST_GROUP,
     DATETIME_FORMAT,
     DEFAULT_CACHE_PATH,
     DOMAIN,
+    O365_STORAGE,
     PERM_CALENDARS_READ,
     PERM_CALENDARS_READWRITE,
     PERM_CHAT_READ,
@@ -45,14 +46,17 @@ from .const import (
     PERM_MINIMUM_GROUP,
     PERM_MINIMUM_MAIL,
     PERM_MINIMUM_PRESENCE,
+    PERM_MINIMUM_TASKS,
     PERM_MINIMUM_USER,
     PERM_OFFLINE_ACCESS,
     PERM_PRESENCE_READ,
+    PERM_TASKS_READ,
+    PERM_TASKS_READWRITE,
     PERM_USER_READ,
     TOKEN_FILENAME,
     YAML_CALENDARS,
 )
-from .schema import CALENDAR_DEVICE_SCHEMA
+from .schema import CALENDAR_DEVICE_SCHEMA, TASK_LIST_SCHEMA
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -81,6 +85,7 @@ def build_minimum_permissions(hass, config, conf_type):
     query_sensors = config.get(CONF_QUERY_SENSORS, [])
     status_sensors = config.get(CONF_STATUS_SENSORS, [])
     chat_sensors = config.get(CONF_CHAT_SENSORS, [])
+    todo_sensors = config.get(CONF_TODO_SENSORS, [])
     minimum_permissions = [PERM_MINIMUM_USER, PERM_MINIMUM_CALENDAR]
     if len(email_sensors) > 0 or len(query_sensors) > 0:
         minimum_permissions.append(PERM_MINIMUM_MAIL)
@@ -88,13 +93,12 @@ def build_minimum_permissions(hass, config, conf_type):
         minimum_permissions.append(PERM_MINIMUM_PRESENCE)
     if len(chat_sensors) > 0:
         minimum_permissions.append(PERM_MINIMUM_CHAT)
+    if len(todo_sensors) > 0 and todo_sensors.get(CONF_ENABLED, False):
+        minimum_permissions.append(PERM_MINIMUM_TASKS)
 
-    yaml_filename = build_yaml_filename(config, conf_type)
-    calendars = load_calendars(build_config_file_path(hass, yaml_filename))
-    for calendar in calendars:
-        if calendar.startswith(CONST_GROUP):
-            minimum_permissions.append(PERM_MINIMUM_GROUP)
-            break
+    if group_permissions_required(hass, config, conf_type):
+        minimum_permissions.append(PERM_MINIMUM_GROUP)
+
     return minimum_permissions
 
 
@@ -104,6 +108,7 @@ def build_requested_permissions(config):
     query_sensors = config.get(CONF_QUERY_SENSORS, [])
     status_sensors = config.get(CONF_STATUS_SENSORS, [])
     chat_sensors = config.get(CONF_CHAT_SENSORS, [])
+    todo_sensors = config.get(CONF_TODO_SENSORS, [])
     enable_update = config.get(CONF_ENABLE_UPDATE, True)
     groups = config.get(CONF_GROUPS, False)
     scope = [PERM_OFFLINE_ACCESS, PERM_USER_READ]
@@ -122,8 +127,27 @@ def build_requested_permissions(config):
         scope.append(PERM_PRESENCE_READ)
     if len(chat_sensors) > 0:
         scope.append(PERM_CHAT_READ)
+    if todo_sensors and todo_sensors.get(CONF_ENABLED, False):
+        if enable_update:
+            scope.append(PERM_TASKS_READWRITE)
+        else:
+            scope.append(PERM_TASKS_READ)
 
     return scope
+
+
+def group_permissions_required(hass, config, conf_type):
+    """Return if group permissions are required."""
+    yaml_filename = build_yaml_filename(config, YAML_CALENDARS, conf_type)
+    calendars = load_yaml_file(
+        build_config_file_path(hass, yaml_filename), CONF_CAL_ID, CALENDAR_DEVICE_SCHEMA
+    )
+    for cal_id, calendar in calendars.items():
+        if cal_id.startswith(CONST_GROUP):
+            for entity in calendar.get(CONF_ENTITIES):
+                if entity[CONF_TRACK]:
+                    return True
+    return False
 
 
 def validate_permissions(
@@ -212,7 +236,7 @@ def get_email_attributes(mail, download_attachments):
     return data
 
 
-def format_event_data(event, calendar_id):
+def format_event_data(event):
     """Format the event data."""
     return {
         "summary": event.subject,
@@ -229,28 +253,39 @@ def format_event_data(event, calendar_id):
             for x in event.attendees._Attendees__attendees  # pylint: disable=protected-access
         ],
         "uid": event.object_id,
-        "calendar_id": calendar_id,
     }
 
 
-def add_call_data_to_event(event, event_data):
+def add_call_data_to_event(
+    event,
+    subject,
+    start,
+    end,
+    body,
+    location,
+    categories,
+    sensitivity,
+    show_as,
+    is_all_day,
+    attendees,
+):
     """Add the call data."""
-    if subject := event_data.get("subject"):
+    if subject:
         event.subject = subject
 
-    if body := event_data.get("body"):
+    if body:
         event.body = body
 
-    if location := event_data.get("location"):
+    if location:
         event.location = location
 
-    if categories := event_data.get("categories"):
+    if categories:
         event.categories = categories
 
-    if show_as := event_data.get("show_as"):
+    if show_as:
         event.show_as = show_as
 
-    if attendees := event_data.get("attendees"):
+    if attendees:
         event.attendees.clear()
         event.attendees.add(
             [
@@ -259,13 +294,12 @@ def add_call_data_to_event(event, event_data):
             ]
         )
 
-    if start := event_data.get("start"):
-        event.start = dt.parse_datetime(start)
+    if start:
+        event.start = start
 
-    if end := event_data.get("end"):
-        event.end = dt.parse_datetime(end)
+    if end:
+        event.end = end
 
-    is_all_day = event_data.get("is_all_day")
     if is_all_day is not None:
         event.is_all_day = is_all_day
         if event.is_all_day:
@@ -276,30 +310,30 @@ def add_call_data_to_event(event, event_data):
                 event.end.year, event.end.month, event.end.day, 0, 0, 0
             )
 
-    if sensitivity := event_data.get("sensitivity"):
-        event.sensitivity = EventSensitivity(sensitivity.lower())
+    if sensitivity:
+        event.sensitivity = sensitivity
     return event
 
 
-def load_calendars(path):
-    """Load the o365_calendar_devices.yaml."""
-    calendars = {}
+def load_yaml_file(path, item_id, item_schema):
+    """Load the o365 yaml file."""
+    items = {}
     try:
         with open(path, encoding="utf8") as file:
             data = yaml.safe_load(file)
             if data is None:
                 return {}
-            for calendar in data:
+            for item in data:
                 try:
-                    calendars[calendar[CONF_CAL_ID]] = CALENDAR_DEVICE_SCHEMA(calendar)
+                    items[item[item_id]] = item_schema(item)
                 except VoluptuousError as exception:
                     # keep going
-                    _LOGGER.warning("Calendar Invalid Data: %s", exception)
+                    _LOGGER.warning("Invalid Data: %s", exception)
     except FileNotFoundError:
         # When YAML file could not be loaded/did not contain a dict
         return {}
 
-    return calendars
+    return items
 
 
 def get_calendar_info(calendar, track_new_devices):
@@ -321,7 +355,9 @@ def get_calendar_info(calendar, track_new_devices):
 def update_calendar_file(path, calendar, hass, track_new_devices):
     """Update the calendar file."""
     yaml_filepath = build_config_file_path(hass, path)
-    existing_calendars = load_calendars(yaml_filepath)
+    existing_calendars = load_yaml_file(
+        yaml_filepath, CONF_CAL_ID, CALENDAR_DEVICE_SCHEMA
+    )
     cal = get_calendar_info(calendar, track_new_devices)
     if cal[CONF_CAL_ID] in existing_calendars:
         return
@@ -331,11 +367,37 @@ def update_calendar_file(path, calendar, hass, track_new_devices):
         out.close()
 
 
-def build_config_file_path(hass, filename):
-    """Create filename in config path."""
+def get_task_list_info(task_list, track_new_devices):
+    """Convert data from O365 into DEVICE_SCHEMA."""
+    return TASK_LIST_SCHEMA(
+        {
+            CONF_TASK_LIST_ID: task_list.folder_id,
+            CONF_NAME: task_list.name,
+            CONF_TRACK: track_new_devices,
+        }
+    )
+
+
+def update_task_list_file(path, task_list, hass, track_new_devices):
+    """Update the calendar file."""
+    yaml_filepath = build_config_file_path(hass, path)
+    existing_task_lists = load_yaml_file(
+        yaml_filepath, CONF_TASK_LIST_ID, TASK_LIST_SCHEMA
+    )
+    task_list = get_task_list_info(task_list, track_new_devices)
+    if task_list[CONF_TASK_LIST_ID] in existing_task_lists:
+        return
+    with open(yaml_filepath, "a", encoding="UTF8") as out:
+        out.write("\n")
+        yaml.dump([task_list], out, default_flow_style=False, encoding="UTF8")
+        out.close()
+
+
+def build_config_file_path(hass, filepath):
+    """Create config path."""
     root = hass.config.config_dir
 
-    return os.path.join(root, filename)
+    return os.path.join(root, O365_STORAGE, filepath)
 
 
 def build_token_filename(conf, conf_type):
@@ -346,7 +408,7 @@ def build_token_filename(conf, conf_type):
     return TOKEN_FILENAME.format(config_file)
 
 
-def build_yaml_filename(conf, conf_type=None):
+def build_yaml_filename(conf, filename, conf_type=None):
     """Create the token file name."""
     if conf_type:
         config_file = f"_{conf.get(CONF_ACCOUNT_NAME)}"
@@ -356,4 +418,15 @@ def build_yaml_filename(conf, conf_type=None):
             if conf.get(CONF_CONFIG_TYPE) == CONST_CONFIG_TYPE_LIST
             else ""
         )
-    return YAML_CALENDARS.format(DOMAIN, config_file)
+    return filename.format(DOMAIN, config_file)
+
+
+def check_file_location(hass, filepath, newpath):
+    """Check if file has been moved. If not move it. This function to be removed 2023/05/30."""
+    root = hass.config.config_dir
+    oldpath = os.path.join(
+        root,
+        filepath,
+    )
+    if os.path.exists(oldpath):
+        shutil.move(oldpath, newpath)
